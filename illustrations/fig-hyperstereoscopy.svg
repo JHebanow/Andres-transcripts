@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1330" width="980" height="1330" font-family="Georgia, 'Iowan Old Style', serif">
+<defs><marker id="mM" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#8a8073"/></marker><marker id="mR" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#b03a2e"/></marker></defs>
+<rect width="980" height="1330" fill="#fbf9f4"/>
+<text x="490.0" y="44" text-anchor="middle" font-size="27" fill="#3a3a3a">Hyperstereoscopy: how two 2.5D fields buy a third dimension</text>
+<text x="490.0" y="72" text-anchor="middle" font-size="15.5" font-style="italic" fill="#8a8073">Binocular projection yields four coordinates, of which only three are independent; the remaining degree of freedom encodes depth.</text>
+<rect x="30" y="96" width="920" height="560" fill="none" stroke="#ddd6c8"/>
+<text x="52" y="126" font-size="15" fill="#8a8073">1 &#160;·&#160; One point in the world, two eyes, two projections</text>
+<line x1="216.4" y1="509.7" x2="435.8" y2="399.4" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="259.8" y1="520.6" x2="471.3" y2="405.1" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="305.6" y1="532.2" x2="508.1" y2="411.0" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="354.1" y1="544.4" x2="546.5" y2="417.1" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="405.4" y1="557.3" x2="586.5" y2="423.5" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="460.0" y1="571.1" x2="628.2" y2="430.2" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="518.0" y1="585.7" x2="671.7" y2="437.1" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="216.4" y1="509.7" x2="533.1" y2="589.5" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="252.5" y1="491.5" x2="558.9" y2="563.6" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="285.5" y1="475.0" x2="582.0" y2="540.3" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="315.7" y1="459.8" x2="602.9" y2="519.4" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="343.5" y1="445.8" x2="621.8" y2="500.3" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="369.1" y1="432.9" x2="639.0" y2="483.0" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="392.9" y1="421.0" x2="654.8" y2="467.2" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="414.9" y1="409.9" x2="669.2" y2="452.6" stroke="#ddd6c8" stroke-width="1"/>
+<line x1="435.4" y1="399.6" x2="682.6" y2="439.2" stroke="#ddd6c8" stroke-width="1"/>
+<polygon points="397.5,440.0 632.8,483.9 650.4,202.0 393.9,190.5" fill="#2f6f93" fill-opacity="0.04" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="356.2" y1="419.5" x2="397.5" y2="440.0" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="420.2" y1="431.0" x2="632.8" y2="483.9" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="419.7" y1="356.0" x2="650.4" y2="202.0" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="354.2" y1="347.0" x2="393.9" y2="190.5" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="338.1" y1="410.5" x2="356.2" y2="419.5" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="338.1" y1="410.5" x2="420.2" y2="431.0" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="338.1" y1="410.5" x2="419.7" y2="356.0" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="338.1" y1="410.5" x2="354.2" y2="347.0" stroke="#2f6f93" stroke-width="1" stroke-opacity="0.42"/>
+<polygon points="356.2,419.5 420.2,431.0 419.7,356.0 354.2,347.0" fill="#2f6f93" fill-opacity="0.16" stroke="#2f6f93" stroke-width="2.2"/>
+<polygon points="463.8,452.3 718.4,499.8 745.0,206.2 465.5,193.7" fill="#c0632c" fill-opacity="0.04" stroke="#c0632c" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="444.0" y1="435.2" x2="463.8" y2="452.3" stroke="#c0632c" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="514.9" y1="447.9" x2="718.4" y2="499.8" stroke="#c0632c" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="516.7" y1="369.3" x2="745.0" y2="206.2" stroke="#c0632c" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="444.0" y1="359.4" x2="465.5" y2="193.7" stroke="#c0632c" stroke-width="1" stroke-opacity="0.30"/>
+<line x1="435.2" y1="427.6" x2="444.0" y2="435.2" stroke="#c0632c" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="435.2" y1="427.6" x2="514.9" y2="447.9" stroke="#c0632c" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="435.2" y1="427.6" x2="516.7" y2="369.3" stroke="#c0632c" stroke-width="1" stroke-opacity="0.42"/>
+<line x1="435.2" y1="427.6" x2="444.0" y2="359.4" stroke="#c0632c" stroke-width="1" stroke-opacity="0.42"/>
+<polygon points="444.0,435.2 514.9,447.9 516.7,369.3 444.0,359.4" fill="#c0632c" fill-opacity="0.16" stroke="#c0632c" stroke-width="2.2"/>
+<line x1="532.4" y1="319.8" x2="338.1" y2="410.5" stroke="#2f6f93" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="532.4" y1="319.8" x2="435.2" y2="427.6" stroke="#c0632c" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="386.3" y1="351.5" x2="387.6" y2="425.1" stroke="#2f6f93" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="386.9" y1="381.6" x2="396.8" y2="383.1" stroke="#2f6f93" stroke-width="2.4"/>
+<line x1="386.9" y1="377.6" x2="386.9" y2="385.6" stroke="#2f6f93" stroke-width="1.4"/>
+<line x1="396.8" y1="379.1" x2="396.8" y2="387.1" stroke="#2f6f93" stroke-width="1.4"/>
+<circle cx="396.8" cy="383.1" r="4.5" fill="#2f6f93"/>
+<text x="391.85" y="373.35" text-anchor="middle" font-size="14" font-style="italic" fill="#2f6f93" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">x&#8343;</text>
+<line x1="479.7" y1="364.2" x2="478.8" y2="441.4" stroke="#c0632c" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="479.3" y1="395.8" x2="465.7" y2="393.7" stroke="#c0632c" stroke-width="2.4"/>
+<line x1="479.3" y1="391.8" x2="479.3" y2="399.8" stroke="#c0632c" stroke-width="1.4"/>
+<line x1="465.7" y1="389.7" x2="465.7" y2="397.7" stroke="#c0632c" stroke-width="1.4"/>
+<circle cx="465.7" cy="393.7" r="4.5" fill="#c0632c"/>
+<text x="472.5" y="385.75" text-anchor="middle" font-size="14" font-style="italic" fill="#c0632c" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">x&#7523;</text>
+<circle cx="532.4" cy="319.8" r="6" fill="#3a3a3a"/>
+<text x="543.4" y="311.8" font-size="16" font-style="italic" fill="#3a3a3a" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">P</text>
+<path d="M 321.1 410.5 Q 338.1 392.45 355.1 410.5 Q 338.1 428.55 321.1 410.5 Z" fill="#fbf9f4" stroke="#2f6f93" stroke-width="2"/>
+<circle cx="338.1" cy="410.5" r="5.4" fill="#2f6f93" fill-opacity="0.28" stroke="#2f6f93" stroke-width="1.6"/>
+<circle cx="338.1" cy="410.5" r="2.2" fill="#2f6f93"/>
+<text x="313.1" y="415.5" font-size="15" font-style="italic" fill="#2f6f93" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">L</text>
+<path d="M 418.2 427.6 Q 435.2 409.55 452.2 427.6 Q 435.2 445.65000000000003 418.2 427.6 Z" fill="#fbf9f4" stroke="#c0632c" stroke-width="2"/>
+<circle cx="435.2" cy="427.6" r="5.4" fill="#c0632c" fill-opacity="0.28" stroke="#c0632c" stroke-width="1.6"/>
+<circle cx="435.2" cy="427.6" r="2.2" fill="#c0632c"/>
+<text x="458.2" y="432.6" font-size="15" font-style="italic" fill="#c0632c" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">R</text>
+<line x1="216.4" y1="509.7" x2="288.1" y2="527.8" stroke="#8a8073" stroke-width="1.4" marker-end="url(#mM)"/>
+<text x="297.1" y="531.8" font-size="14" font-style="italic" fill="#8a8073" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">x</text>
+<line x1="216.4" y1="509.7" x2="210.0" y2="424.2" stroke="#8a8073" stroke-width="1.4" marker-end="url(#mM)"/>
+<text x="214.0" y="417.2" font-size="14" font-style="italic" fill="#8a8073" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">y</text>
+<line x1="216.4" y1="509.7" x2="273.5" y2="481.0" stroke="#8a8073" stroke-width="1.4" marker-end="url(#mM)"/>
+<text x="269.5" y="495.0" font-size="14" font-style="italic" fill="#8a8073" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">z</text>
+<text x="194" y="246" text-anchor="end" font-size="14.5" fill="#2f6f93" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">left eye&#8217;s 2D field</text>
+<line x1="203" y1="241" x2="355.2" y2="383.7" stroke="#2f6f93" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.65"/>
+<text x="761" y="246" text-anchor="start" font-size="14.5" fill="#c0632c" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">right eye&#8217;s 2D field</text>
+<line x1="752" y1="241" x2="515.8" y2="409.1" stroke="#c0632c" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.65"/>
+<text x="761" y="166" text-anchor="start" font-size="14.5" fill="#3a3a3a" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">viewing frustum</text>
+<line x1="752" y1="161" x2="661.8" y2="286.0" stroke="#3a3a3a" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.65"/>
+<text x="194" y="166" text-anchor="end" font-size="14.5" fill="#3a3a3a" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">P &#8212; one point in</text>
+<line x1="203" y1="161" x2="532.4" y2="319.8" stroke="#3a3a3a" stroke-width="0.9" stroke-dasharray="3 3" opacity="0.65"/>
+<text x="194" y="186" text-anchor="end" font-size="14.5" fill="#3a3a3a" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">the shared 3D space</text>
+<rect x="30" y="676" width="450" height="300" fill="none" stroke="#ddd6c8"/>
+<text x="52" y="704" font-size="15" fill="#8a8073">2 &#160;·&#160; The y-coordinate is redundant</text>
+<rect x="78" y="740" width="150" height="150" fill="#2f6f93" fill-opacity="0.10" stroke="#2f6f93" stroke-width="1.9"/>
+<line x1="153.0" y1="740" x2="153.0" y2="890" stroke="#2f6f93" stroke-width="1" stroke-dasharray="4 3" opacity="0.65"/>
+<line x1="78" y1="793.0" x2="228" y2="793.0" stroke="#8a8073" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="153.0" y1="793.0" x2="178.5" y2="793.0" stroke="#2f6f93" stroke-width="2.4"/>
+<line x1="153.0" y1="788.0" x2="153.0" y2="798.0" stroke="#2f6f93" stroke-width="1.5"/>
+<line x1="178.5" y1="788.0" x2="178.5" y2="798.0" stroke="#2f6f93" stroke-width="1.5"/>
+<circle cx="178.5" cy="793.0" r="4.5" fill="#2f6f93"/>
+<text x="178.5" y="819.0" text-anchor="middle" font-size="14.5" font-style="italic" fill="#2f6f93" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">(x&#8343;, y&#8343;)</text>
+<text x="153.0" y="916" text-anchor="middle" font-size="14.5" fill="#2f6f93">left field</text>
+<rect x="284" y="740" width="150" height="150" fill="#c0632c" fill-opacity="0.10" stroke="#c0632c" stroke-width="1.9"/>
+<line x1="359.0" y1="740" x2="359.0" y2="890" stroke="#c0632c" stroke-width="1" stroke-dasharray="4 3" opacity="0.65"/>
+<line x1="284" y1="793.0" x2="434" y2="793.0" stroke="#8a8073" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="359.0" y1="793.0" x2="333.5" y2="793.0" stroke="#c0632c" stroke-width="2.4"/>
+<line x1="359.0" y1="788.0" x2="359.0" y2="798.0" stroke="#c0632c" stroke-width="1.5"/>
+<line x1="333.5" y1="788.0" x2="333.5" y2="798.0" stroke="#c0632c" stroke-width="1.5"/>
+<circle cx="333.5" cy="793.0" r="4.5" fill="#c0632c"/>
+<text x="333.5" y="819.0" text-anchor="middle" font-size="14.5" font-style="italic" fill="#c0632c" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">(x&#7523;, y&#7523;)</text>
+<text x="359.0" y="916" text-anchor="middle" font-size="14.5" fill="#c0632c">right field</text>
+<line x1="228" y1="793.0" x2="284" y2="793.0" stroke="#b08a2e" stroke-width="1.8" stroke-dasharray="5 3"/>
+<text x="256" y="782.0" text-anchor="middle" font-size="14.5" font-style="italic" fill="#b08a2e">y&#8343; = y&#7523;</text>
+<rect x="500" y="676" width="450" height="300" fill="none" stroke="#ddd6c8"/>
+<text x="522" y="704" font-size="15" fill="#8a8073">3 &#160;·&#160; Fusion: the disparity becomes depth</text>
+<polygon points="535.1,912.3 685.1,938.7 687.5,767.5 528.0,754.6" fill="#b03a2e" fill-opacity="0.07" stroke="#b03a2e" stroke-width="1.9"/>
+<polyline points="712.6,806.0 712.5,802.2 712.1,798.3 711.2,794.5 710.0,790.7 708.5,787.0 706.6,783.5 704.4,780.2 702.0,777.1 699.2,774.2 696.2,771.7 693.0,769.4 689.7,767.5 686.2,765.9 682.6,764.6 678.9,763.8 675.3,763.3 671.6,763.2 668.0,763.5 664.4,764.1 661.0,765.1 657.7,766.5 654.7,768.2 651.8,770.3 649.1,772.6 646.7,775.2 644.6,778.0 642.8,781.1 641.3,784.4 640.2,787.8 639.3,791.3 638.8,794.9 638.7,798.6 638.9,802.3 639.4,806.0 640.2,809.6 641.4,813.2 642.9,816.7 644.7,820.0 646.8,823.2 649.1,826.2 651.7,828.9 654.5,831.4 657.5,833.6 660.7,835.6 664.0,837.2 667.4,838.5 671.0,839.5 674.5,840.1 678.1,840.3 681.7,840.2 685.2,839.8 688.6,838.9 691.9,837.7 695.1,836.2 698.1,834.3 700.9,832.1 703.4,829.6 705.7,826.9 707.7,823.9 709.4,820.6 710.7,817.2 711.7,813.6 712.4,809.8 712.6,806.0" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.55"/>
+<polyline points="675.3,763.3 673.9,764.2 672.4,765.4 671.0,767.1 669.7,769.1 668.3,771.4 667.0,774.1 665.8,777.1 664.7,780.3 663.7,783.8 662.7,787.5 662.0,791.3 661.3,795.3 660.7,799.4 660.4,803.4 660.1,807.5 660.0,811.5 660.1,815.4 660.3,819.1 660.6,822.7 661.1,826.0 661.8,829.1 662.5,831.8 663.4,834.3 664.4,836.4 665.4,838.2 666.6,839.6 667.8,840.6 669.1,841.3 670.4,841.5 671.8,841.4 673.1,840.9 674.5,840.1 675.9,838.9 677.2,837.3 678.5,835.5 679.8,833.3 681.0,830.9 682.1,828.2 683.2,825.4 684.2,822.3 685.1,819.0 685.9,815.6 686.6,812.1 687.2,808.5 687.7,804.8 688.0,801.2 688.2,797.5 688.4,793.9 688.4,790.3 688.2,786.8 688.0,783.5 687.6,780.3 687.1,777.3 686.5,774.5 685.7,772.0 684.9,769.7 684.0,767.7 682.9,766.0 681.8,764.6 680.6,763.6 679.3,763.0 678.0,762.7 676.7,762.8 675.3,763.3" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.55"/>
+<polyline points="712.6,806.0 711.2,806.9 709.4,807.8 707.3,808.6 704.8,809.3 701.9,810.0 698.8,810.6 695.5,811.1 691.9,811.5 688.1,811.9 684.2,812.1 680.1,812.3 676.0,812.3 671.9,812.3 667.9,812.1 663.9,811.8 660.0,811.5 656.3,811.0 652.8,810.5 649.6,809.9 646.6,809.2 644.0,808.4 641.6,807.6 639.6,806.8 638.0,805.9 636.8,805.0 635.9,804.0 635.4,803.1 635.3,802.2 635.6,801.2 636.3,800.3 637.3,799.4 638.7,798.6 640.4,797.8 642.4,797.0 644.7,796.3 647.2,795.7 650.0,795.1 653.0,794.6 656.2,794.2 659.5,793.8 663.0,793.5 666.5,793.3 670.2,793.2 673.9,793.2 677.5,793.2 681.2,793.3 684.8,793.6 688.4,793.9 691.8,794.2 695.1,794.7 698.2,795.2 701.1,795.8 703.8,796.4 706.3,797.1 708.4,797.9 710.3,798.7 711.9,799.6 713.1,800.5 714.0,801.4 714.5,802.3 714.6,803.2 714.3,804.2 713.7,805.1 712.6,806.0" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.55"/>
+<polyline points="742.0,809.0 741.9,802.1 741.1,795.2 739.7,788.4 737.6,781.6 734.9,775.1 731.5,768.8 727.6,762.9 723.2,757.4 718.3,752.3 712.9,747.7 707.2,743.7 701.2,740.4 695.0,737.6 688.6,735.5 682.1,734.1 675.6,733.3 669.1,733.2 662.7,733.9 656.5,735.1 650.5,737.1 644.8,739.6 639.5,742.7 634.5,746.4 630.0,750.5 625.9,755.2 622.3,760.2 619.3,765.6 616.8,771.3 614.8,777.2 613.5,783.3 612.7,789.6 612.5,796.0 612.8,802.3 613.8,808.7 615.3,815.0 617.4,821.1 620.0,827.1 623.0,832.8 626.6,838.2 630.6,843.3 635.1,848.1 639.9,852.4 645.0,856.3 650.4,859.7 656.1,862.5 662.0,864.9 668.1,866.6 674.3,867.7 680.5,868.3 686.7,868.2 692.8,867.5 698.8,866.2 704.6,864.2 710.2,861.6 715.6,858.5 720.5,854.7 725.1,850.5 729.2,845.7 732.8,840.4 735.8,834.7 738.3,828.7 740.2,822.3 741.4,815.7 742.0,809.0" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.32"/>
+<polyline points="675.6,733.3 673.0,734.6 670.5,736.6 668.0,739.3 665.5,742.7 663.1,746.8 660.7,751.4 658.5,756.7 656.4,762.5 654.5,768.8 652.8,775.4 651.3,782.4 650.1,789.6 649.1,797.0 648.4,804.4 648.0,811.8 647.8,819.1 648.0,826.1 648.4,832.9 649.1,839.2 650.1,845.1 651.3,850.6 652.7,855.4 654.3,859.6 656.1,863.2 658.1,866.2 660.2,868.4 662.4,870.0 664.7,870.8 667.1,871.0 669.5,870.6 671.9,869.5 674.3,867.7 676.6,865.5 678.9,862.6 681.1,859.2 683.3,855.4 685.3,851.2 687.2,846.5 689.0,841.5 690.7,836.2 692.2,830.6 693.5,824.8 694.7,818.9 695.6,812.8 696.4,806.6 697.0,800.4 697.5,794.2 697.7,788.1 697.7,782.0 697.5,776.1 697.1,770.4 696.5,764.9 695.7,759.7 694.7,754.8 693.5,750.3 692.1,746.2 690.5,742.6 688.8,739.5 686.9,736.9 684.9,734.9 682.7,733.5 680.4,732.8 678.0,732.7 675.6,733.3" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.32"/>
+<polyline points="742.0,809.0 739.7,810.6 736.7,812.1 733.1,813.6 728.8,815.0 723.8,816.2 718.3,817.4 712.3,818.4 705.8,819.2 698.9,819.8 691.8,820.3 684.5,820.6 677.0,820.7 669.5,820.5 662.1,820.2 654.8,819.7 647.8,819.1 641.2,818.2 634.9,817.2 629.2,816.1 624.0,814.8 619.3,813.4 615.3,811.9 612.0,810.4 609.4,808.7 607.4,807.1 606.2,805.4 605.6,803.8 605.7,802.1 606.5,800.5 607.9,798.9 609.9,797.4 612.5,796.0 615.6,794.6 619.2,793.3 623.3,792.1 627.7,791.1 632.6,790.1 637.7,789.3 643.2,788.6 648.9,788.0 654.8,787.5 660.8,787.2 666.9,787.0 673.2,787.0 679.4,787.0 685.6,787.2 691.7,787.6 697.7,788.1 703.5,788.7 709.1,789.4 714.5,790.3 719.6,791.2 724.3,792.3 728.6,793.5 732.5,794.8 736.0,796.2 738.9,797.6 741.2,799.1 743.0,800.7 744.2,802.4 744.6,804.0 744.5,805.7 743.6,807.3 742.0,809.0" fill="none" stroke="#b03a2e" stroke-width="1" opacity="0.32"/>
+<line x1="605.5" y1="845.4" x2="674.9" y2="802.2" stroke="#b03a2e" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#mR)"/>
+<circle cx="605.5" cy="845.4" r="3.4" fill="#b03a2e" opacity="0.55"/>
+<circle cx="674.9" cy="802.2" r="5" fill="#b03a2e"/>
+<text x="649.2" y="825.8" font-size="14.5" font-style="italic" fill="#b03a2e" paint-order="stroke" stroke="#fbf9f4" stroke-width="4" stroke-linejoin="round">z</text>
+<text x="635.0" y="964" text-anchor="middle" font-size="14.5" fill="#b03a2e">fused field</text>
+<text x="754" y="762" font-size="15" fill="#3a3a3a">z = f(x&#8343; &#8722; x&#7523;)</text>
+<text x="754" y="784" font-size="13.5" fill="#8a8073">depth, from the disparity</text>
+<text x="754" y="826" font-size="15" fill="#3a3a3a">d = &#8730;(x&#178; + y&#178; + f(z))</text>
+<text x="754" y="848" font-size="13.5" fill="#8a8073">the Pythagorean distance,</text>
+<text x="754" y="866" font-size="13.5" fill="#8a8073">generalised to three</text>
+<text x="754" y="884" font-size="13.5" fill="#8a8073">dimensions; f(z) sets the</text>
+<text x="754" y="902" font-size="13.5" fill="#8a8073">speed the waves travel at</text>
+<line x1="30" y1="1012" x2="950" y2="1012" stroke="#ddd6c8"/>
+<line x1="48" y1="1039" x2="96" y2="1039" stroke="#2f6f93" stroke-width="2.2"/>
+<text x="112" y="1044" font-size="14.5" fill="#3a3a3a">the left eye&#8217;s 2D field &#8212; the near face of its viewing frustum</text>
+<line x1="48" y1="1069" x2="96" y2="1069" stroke="#c0632c" stroke-width="2.2"/>
+<text x="112" y="1074" font-size="14.5" fill="#3a3a3a">the right eye&#8217;s 2D field &#8212; the same, displaced along x</text>
+<line x1="48" y1="1099" x2="96" y2="1099" stroke="#3a3a3a" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="112" y="1104" font-size="14.5" fill="#3a3a3a">the ray from the world point <tspan font-style='italic'>P</tspan> to each eye; where it crosses a field is that eye&#8217;s dot</text>
+<path d="M 55 1129 Q 72 1110.95 89 1129 Q 72 1147.05 55 1129 Z" fill="none" stroke="#3a3a3a" stroke-width="1.6"/>
+<circle cx="72" cy="1129" r="4.4" fill="#3a3a3a" fill-opacity="0.3" stroke="#3a3a3a" stroke-width="1.4"/>
+<text x="112" y="1134" font-size="14.5" fill="#3a3a3a">the two eyes; each 2D field is the near face of that eye&#8217;s frustum</text>
+<text x="48" y="1182" font-size="14.5" fill="#3a3a3a"><tspan font-weight="bold">Read it as:</tspan> a single point <tspan font-style="italic">P</tspan> in the shared 3D space projects onto both fields at once. Specifying both</text>
+<text x="48" y="1206" font-size="14.5" fill="#3a3a3a">dots takes four numbers &#8212; (x&#8343;, y&#8343;) and (x&#7523;, y&#7523;) &#8212; but if the dots really do come from one point, the two y&#8217;s are the</text>
+<text x="48" y="1230" font-size="14.5" fill="#3a3a3a">same. That redundancy is what lets the two fields be matched up and aligned; and the one degree of freedom</text>
+<text x="48" y="1254" font-size="14.5" fill="#3a3a3a">left over &#8212; the disparity x&#8343; &#8722; x&#7523; &#8212; is spent on depth. Distance stops being &#8730;(x&#178;&#160;+&#160;y&#178;) and becomes</text>
+<text x="48" y="1278" font-size="14.5" fill="#3a3a3a">&#8730;(x&#178;&#160;+&#160;y&#178;&#160;+&#160;f(z)), so waves that used to spread as circles now spread as spheres.</text>
+</svg>

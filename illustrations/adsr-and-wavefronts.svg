@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 880" width="960" height="880" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="960" height="880" fill="#ffffff"/>
+  <defs>
+    <marker id="ar" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#1a202c"/>
+    </marker>
+    <marker id="tip" markerWidth="6" markerHeight="5" refX="5.5" refY="2.5" orient="auto">
+      <path d="M0,0 L6,2.5 L0,5 z" fill="#4a5568"/>
+    </marker>
+    <filter id="soften" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4.5"/>
+    </filter>
+  </defs>
+
+  <!-- ================= reference envelope ================= -->
+  <text x="60" y="42" font-size="17" fill="#1a202c">The envelope of a wave: attack, decay, sustain, release</text>
+
+  <line x1="90" y1="90" x2="90" y2="235" stroke="#1a202c" stroke-width="1.8" />
+  <line x1="90" y1="235" x2="640" y2="235" stroke="#1a202c" stroke-width="1.8" marker-end="url(#ar)"/>
+  <text x="36" y="95" font-size="13" fill="#1a202c">Max</text>
+  <text x="72" y="240" font-size="13" fill="#1a202c">0</text>
+  <text x="14" y="190" font-size="13" fill="#1a202c" transform="rotate(-90 22 190)">Amplitude</text>
+  <text x="330" y="272" font-size="14" fill="#1a202c">Time</text>
+
+  <!-- envelope path -->
+  <path d="M90,235 L190,90 L250,140 L420,140 C455,140 470,190 500,222 C520,232 560,235 600,235"
+        fill="none" stroke="#1a202c" stroke-width="2.4"/>
+  <line x1="90" y1="90" x2="190" y2="90" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="190" y1="90" x2="190" y2="235" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="250" y1="140" x2="250" y2="235" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="420" y1="140" x2="420" y2="235" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <text x="125" y="130" font-size="22" font-weight="bold" fill="#1a202c">A</text>
+  <text x="208" y="130" font-size="22" font-weight="bold" fill="#1a202c">D</text>
+  <text x="325" y="118" font-size="22" font-weight="bold" fill="#1a202c">S</text>
+  <text x="505" y="118" font-size="22" font-weight="bold" fill="#1a202c">R</text>
+  <text x="96" y="253" font-size="11.5" fill="#4a5568">ATTACK</text>
+  <text x="196" y="253" font-size="11.5" fill="#4a5568">DECAY</text>
+  <text x="290" y="253" font-size="11.5" fill="#4a5568">SUSTAIN</text>
+  <text x="450" y="253" font-size="11.5" fill="#4a5568">RELEASE</text>
+
+  <text x="680" y="128" font-size="14" fill="#2d3748">The shape of this envelope is</text>
+  <text x="680" y="148" font-size="14" fill="#2d3748">carried over into the shape of</text>
+  <text x="680" y="168" font-size="14" fill="#2d3748">the wave that propagates through</text>
+  <text x="680" y="188" font-size="14" fill="#2d3748">the world simulation &#8212; and the</text>
+  <text x="680" y="208" font-size="14" fill="#2d3748"><tspan font-weight="bold">attack</tspan> is what you feel first.</text>
+
+  <line x1="60" y1="310" x2="900" y2="310" stroke="#cbd5e0" stroke-width="1"/>
+
+  <!-- ================= sharp attack ================= -->
+  <text x="60" y="350" font-size="16" fill="#9b2c2c" font-weight="bold">Sharp attack</text>
+  <text x="60" y="374" font-size="14" fill="#2d3748">no warning &#8212; you are hit all at once by an</text>
+  <text x="60" y="394" font-size="14" fill="#2d3748">intense, destructive wave of information</text>
+
+  <!-- small envelope: near-vertical attack -->
+  <line x1="60" y1="490" x2="60" y2="410" stroke="#718096" stroke-width="1.4"/>
+  <line x1="60" y1="490" x2="245" y2="490" stroke="#718096" stroke-width="1.4"/>
+  <path d="M60,490 L64,412 L92,455 L180,455 C205,455 220,485 245,490" fill="none" stroke="#9b2c2c" stroke-width="2.4"/>
+
+  <line x1="285" y1="455" x2="365" y2="455" stroke="#1a202c" stroke-width="1.8" marker-end="url(#ar)"/>
+
+  <!-- crisp concentric wavefronts -->
+  <g transform="translate(640,455)" fill="none" stroke="#1a202c">
+    <ellipse rx="150" ry="88" stroke-width="5"/>
+    <ellipse rx="112" ry="66" stroke-width="5"/>
+    <ellipse rx="76" ry="45" stroke-width="5"/>
+    <ellipse rx="42" ry="25" stroke-width="5"/>
+    <ellipse rx="15" ry="9" stroke-width="5"/>
+  </g>
+  <text x="540" y="573" font-size="13" fill="#4a5568">hard-edged wavefronts, high contrast</text>
+
+  <line x1="60" y1="600" x2="900" y2="600" stroke="#cbd5e0" stroke-width="1"/>
+
+  <!-- ================= soft attack ================= -->
+  <text x="60" y="640" font-size="16" fill="#2b6cb0" font-weight="bold">Soft attack</text>
+  <text x="60" y="664" font-size="14" fill="#2d3748">a warning, a build-up, and only then the wave &#8212;</text>
+  <text x="60" y="684" font-size="14" fill="#2d3748">energies that merge and harmonize rather than hit</text>
+
+  <!-- small envelope: gradual ramp -->
+  <line x1="60" y1="775" x2="60" y2="690" stroke="#718096" stroke-width="1.4"/>
+  <line x1="60" y1="775" x2="245" y2="775" stroke="#718096" stroke-width="1.4"/>
+  <path d="M60,775 C92,772 102,718 132,708 L152,708 C178,708 192,766 245,775" fill="none" stroke="#2b6cb0" stroke-width="2.4"/>
+
+  <line x1="285" y1="735" x2="365" y2="735" stroke="#1a202c" stroke-width="1.8" marker-end="url(#ar)"/>
+
+  <!-- soft, cloudy concentric wavefronts -->
+  <g transform="translate(640,735)" fill="none" stroke="#1a202c" filter="url(#soften)">
+    <ellipse rx="150" ry="88" stroke-width="7" stroke-opacity="0.30"/>
+    <ellipse rx="112" ry="66" stroke-width="7" stroke-opacity="0.42"/>
+    <ellipse rx="76" ry="45" stroke-width="7" stroke-opacity="0.55"/>
+    <ellipse rx="42" ry="25" stroke-width="7" stroke-opacity="0.68"/>
+    <ellipse rx="15" ry="9" stroke-width="7" stroke-opacity="0.80"/>
+  </g>
+  <text x="550" y="855" font-size="13" fill="#4a5568">diffuse, distributed wavefronts</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="Georgia, 'Iowan Old Style', serif">
+<rect width="900" height="560" fill="#FBFAF7"/>
+<defs><marker id="ar" markerWidth="7" markerHeight="7" refX="5.5" refY="2.6" orient="auto"><path d="M0,0 L5.5,2.6 L0,5.2 z" fill="#5c5c5c"/></marker></defs>
+<text x="450.0" y="36" text-anchor="middle" font-size="20" fill="#1a1a1a">Nested valence models &#8212; and why they are not transitive</text>
+<text x="450.0" y="59" text-anchor="middle" font-size="13.5" fill="#6b6b6b" font-style="italic">Each level swallows in the valence function of the level one step up. No level models the whole chain.</text>
+<rect x="24" y="80" width="852" height="292" fill="#ffffff" stroke="#e0ddd6" stroke-width="1" rx="3"/>
+<circle cx="148" cy="196" r="72" fill="#ffffff" stroke="#B4472F" stroke-width="2.2"/>
+<text x="148" y="193" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#B4472F">the organism</text>
+<text x="148" y="211" text-anchor="middle" font-size="11" fill="#6b6b6b">you, as a whole</text>
+<path d="M 227 182 Q 266 156 305 182" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="266" y="152" text-anchor="middle" font-size="10.5" fill="#6b6b6b">is modelled by</text>
+<path d="M 305 210 Q 266 236 227 210" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="266" y="250" text-anchor="middle" font-size="10.5" fill="#6b6b6b">reports to</text>
+<circle cx="370" cy="196" r="58" fill="#ffffff" stroke="#7E4A8C" stroke-width="2.2"/>
+<text x="370" y="193" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#7E4A8C">the kidney</text>
+<text x="370" y="211" text-anchor="middle" font-size="11" fill="#6b6b6b">an organ</text>
+<path d="M 435 182 Q 478 156 521 182" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="478" y="152" text-anchor="middle" font-size="10.5" fill="#6b6b6b">is modelled by</text>
+<path d="M 521 210 Q 478 236 435 210" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="478" y="250" text-anchor="middle" font-size="10.5" fill="#6b6b6b">reports to</text>
+<circle cx="576" cy="196" r="48" fill="#ffffff" stroke="#2F6B8F" stroke-width="2.2"/>
+<text x="576" y="201" text-anchor="middle" font-size="13" font-weight="bold" fill="#2F6B8F">a module</text>
+<text x="576" y="262" text-anchor="middle" font-size="11" fill="#6b6b6b">within the kidney</text>
+<path d="M 631 182 Q 672 156 713 182" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="672" y="152" text-anchor="middle" font-size="10.5" fill="#6b6b6b">is modelled by</text>
+<path d="M 713 210 Q 672 236 631 210" fill="none" stroke="#5c5c5c" stroke-width="1.5" marker-end="url(#ar)"/>
+<text x="672" y="250" text-anchor="middle" font-size="10.5" fill="#6b6b6b">reports to</text>
+<circle cx="760" cy="196" r="40" fill="#ffffff" stroke="#8a8578" stroke-width="2.2"/>
+<text x="760" y="201" text-anchor="middle" font-size="13" font-weight="bold" fill="#8a8578">a cell</text>
+<text x="760" y="254" text-anchor="middle" font-size="11" fill="#6b6b6b">within the module</text>
+<path d="M 150 288 Q 460 344 762 292" fill="none" stroke="#B4472F" stroke-width="1.8" stroke-dasharray="6 4" opacity="0.95"/>
+<circle cx="456" cy="330" r="13" fill="#ffffff"/>
+<line x1="448" y1="322" x2="464" y2="338" stroke="#B4472F" stroke-width="2.6"/>
+<line x1="464" y1="322" x2="448" y2="338" stroke="#B4472F" stroke-width="2.6"/>
+<text x="490" y="335" font-size="12" fill="#B4472F" font-weight="bold">no direct channel</text>
+<text x="44" y="110" font-size="11.5" fill="#6b6b6b" font-style="italic">the cell does not know you exist</text>
+<line x1="24" y1="400" x2="876" y2="400" stroke="#e0ddd6" stroke-width="1"/>
+<text x="30" y="426" font-size="13.5" fill="#3d3d3d"><tspan font-weight="bold">How the organism holds together:</tspan> a module inside the kidney need not represent <tspan font-style="italic">you</tspan>. It only represents the kidney&#8217;s valence landscape</text>
+<text x="30" y="448" font-size="13.5" fill="#3d3d3d">&#8212; if I make this move, the kidney feels bad; if I make another, it feels good. As long as the chain is unbroken, every level is incentivised</text>
+<text x="30" y="470" font-size="13.5" fill="#3d3d3d">towards energy-minimisation coherent with the levels above and below it.</text>
+<text x="30" y="504" font-size="13.5" fill="#3d3d3d"><tspan font-weight="bold" fill="#B4472F">But the relation is not transitive.</tspan> Your heart has no ready channel to your stomach. Communication across the chain is not the default;</text>
+<text x="30" y="526" font-size="13.5" fill="#3d3d3d">it takes concentration and coherence &#8212; which is one thing meditation and psychedelics are for: forcing an attempt at coherence across levels.</text>
+</svg>

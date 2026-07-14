@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" font-family="Georgia, 'Iowan Old Style', serif">
+<rect width="760" height="500" fill="#FBFAF7"/>
+<text x="380.0" y="36" text-anchor="middle" font-size="20" fill="#1a1a1a">Overlapping groups: the chess club</text>
+<text x="380.0" y="59" text-anchor="middle" font-size="13.5" fill="#6b6b6b" font-style="italic">Which alliances exist depends on the scale you look at &#8212; and they cut across one another.</text>
+<rect x="24" y="80" width="712" height="288" fill="#ffffff" stroke="#e0ddd6" stroke-width="1" rx="3"/>
+<circle cx="438.0" cy="232.0" r="95.9" fill="#F2EBF4" fill-opacity="0.75" stroke="#7E4A8C" stroke-width="1.8"/>
+<circle cx="334.9" cy="263.5" r="30.3" fill="#E6EDF2" fill-opacity="0.8" stroke="#2F6B8F" stroke-width="1.8"/>
+<circle cx="376.3" cy="251.0" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="490.3" cy="205.0" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="372.0" cy="228.7" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="462.6" cy="288.6" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="385.4" cy="176.0" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="477.4" cy="258.5" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="503.4" cy="273.9" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="431.9" cy="215.4" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="522.2" cy="222.5" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="443.8" cy="240.8" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="417.3" cy="228.3" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="453.6" cy="271.5" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="495.7" cy="243.0" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="394.1" cy="244.1" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="477.0" cy="170.8" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="421.5" cy="269.9" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="432.4" cy="254.2" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="443.6" cy="177.7" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="468.6" cy="187.9" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="477.5" cy="232.1" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="492.0" cy="225.3" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="448.6" cy="197.2" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="384.3" cy="211.0" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="485.1" cy="282.7" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="410.9" cy="308.5" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="440.9" cy="298.8" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="397.8" cy="273.9" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="366.4" cy="195.7" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="503.5" cy="189.5" r="4.4" fill="#7E4A8C" fill-opacity="0.6" stroke="#ffffff" stroke-width="1"/>
+<circle cx="354.0" cy="257.7" r="5.4" fill="#7E4A8C" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="320.4" cy="274.2" r="5.4" fill="#2F6B8F" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="325.5" cy="246.5" r="5.4" fill="#2F6B8F" stroke="#ffffff" stroke-width="1.5"/>
+<text x="438" y="126" text-anchor="middle" font-size="13" font-weight="bold" fill="#7E4A8C">the chess club (30)</text>
+<text x="312" y="317" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2F6B8F">three close friends</text>
+<line x1="24" y1="392" x2="736" y2="392" stroke="#e0ddd6" stroke-width="1"/>
+<text x="30" y="414" font-size="13.5" fill="#3d3d3d" textLength="700" lengthAdjust="spacing">Three friends get on at the level of three; the chess club gets on at the level of thirty; <tspan font-weight="bold">only one of</tspan></text>
+<text x="30" y="434" font-size="13.5" fill="#3d3d3d" textLength="700" lengthAdjust="spacing"><tspan font-weight="bold">the three is in the club.</tspan> The groupings do not nest &#8212; they cut across each other. And this is what</text>
+<text x="30" y="454" font-size="13.5" fill="#3d3d3d" textLength="700" lengthAdjust="spacing">holds the whole together: two feuding cliques cannot destroy each other if two-thirds of both belong</text>
+<text x="30" y="474" font-size="13.5" fill="#3d3d3d">to the club. <tspan font-weight="bold">Hence a hypergraph, not a set of sets</tspan> &#8212; edges binding many nodes at once.</text>
+</svg>

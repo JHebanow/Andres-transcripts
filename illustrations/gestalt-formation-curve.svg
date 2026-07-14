@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+  <defs>
+    <marker id="ax" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#1a202c"/>
+    </marker>
+    <marker id="gr" markerWidth="6" markerHeight="5" refX="5.5" refY="2.5" orient="auto">
+      <path d="M0,0 L6,2.5 L0,5 z" fill="#718096"/>
+    </marker>
+  </defs>
+
+  <!-- threshold -->
+  <line x1="110" y1="180" x2="820" y2="180" stroke="#2f855a" stroke-width="1.6" stroke-dasharray="6,5"/>
+  <text x="640" y="172" font-size="13" fill="#276749">past roughly half of it, the rest comes easily</text>
+
+  <!-- axes -->
+  <line x1="110" y1="390" x2="110" y2="60" stroke="#1a202c" stroke-width="1.8" marker-end="url(#ax)"/>
+  <line x1="110" y1="390" x2="840" y2="390" stroke="#1a202c" stroke-width="1.8" marker-end="url(#ax)"/>
+  <text x="122" y="56" font-size="15" fill="#1a202c">&#8220;do you get it?&#8221;</text>
+  <text x="770" y="416" font-size="15" fill="#1a202c">time</text>
+
+  <!-- the curve: flat, staircase of hints, flicker, plateau -->
+  <path d="M110,390 L230,388
+           L275,340 L305,338
+           L345,285 L378,283
+           L415,232 L440,230
+           L470,120 L495,122
+           L520,300 L545,302
+           L570,110 L595,112
+           L620,270 L645,272
+           L672,105 L700,102
+           L740,100 L820,100"
+        fill="none" stroke="#2b6cb0" stroke-width="2.8" stroke-linejoin="round"/>
+
+  <!-- annotations with leaders -->
+  <text x="128" y="368" font-size="13" fill="#4a5568">nothing, for a long time</text>
+
+  <line x1="330" y1="386" x2="330" y2="352" stroke="#718096" stroke-width="1" marker-end="url(#gr)"/>
+  <text x="262" y="404" font-size="13" fill="#4a5568">a little bit of a hint</text>
+
+  <line x1="430" y1="332" x2="430" y2="248" stroke="#718096" stroke-width="1" marker-end="url(#gr)"/>
+  <text x="378" y="350" font-size="13" fill="#4a5568">a larger hint</text>
+
+  <text x="470" y="86" font-size="13" fill="#4a5568">whoa, now I get it! &#8212; oh, it goes away</text>
+  <line x1="545" y1="96" x2="545" y2="292" stroke="#718096" stroke-width="1" marker-end="url(#gr)"/>
+
+  <text x="620" y="330" font-size="13" fill="#4a5568">&#8230;I get it again, it goes away, I get it again&#8230;</text>
+
+  <text x="700" y="76" font-size="13" fill="#2b6cb0">and then it stabilizes</text>
+  <line x1="770" y1="82" x2="770" y2="94" stroke="#718096" stroke-width="1" marker-end="url(#gr)"/>
+
+  <line x1="60" y1="440" x2="840" y2="440" stroke="#cbd5e0" stroke-width="1"/>
+  <text x="60" y="466" font-size="13.5" fill="#2d3748">The search for a gestalt: a low-energy attractor that satisfies all the constraints at once. Like climbing uphill, and then sliding down.</text>
+</svg>
