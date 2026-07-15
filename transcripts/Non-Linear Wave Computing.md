@@ -90,7 +90,7 @@ Those are the three kinds of waves. I'll mostly be speaking about the first one,
 
 ## Resonance is non-linear
 
-Not only Steven Lehar, but also Stephen Grossberg has a generalized concept of resonance[^grossberg] — and there are several books that argue this from the side of brain rhythms.[^rhythms] We tend to think of resonance only in terms of superposition of linear waves. When you pluck a string on a guitar or a piano, the waves are fairly linear and the harmonics don't interfere with one another. But that is not the case for every kind of medium.
+Several books argue this from the side of brain rhythms — *Rhythms of the Brain* among them.[^rhythms] And not only Steven Lehar but also Stephen Grossberg has a generalized concept of resonance.[^grossberg] We tend to think of resonance only in terms of superposition of linear waves. When you pluck a string on a guitar or a piano, the waves are fairly linear and the harmonics don't interfere with one another. But that is not the case for every kind of medium.
 
 And if you read QRI content thinking that we're only talking about resonance in the linear way, you're actually going to miss out on the more juicy stuff that we're proposing — which is that the non-linearities are really essential to understanding it all.
 
@@ -426,7 +426,7 @@ Take care, everybody. See you next time. Ciao.
 
 [^grossberg]: Stephen Grossberg, originator of **Adaptive Resonance Theory** (ART), in which perceptual categories are formed when bottom-up input and top-down expectation lock into a resonant state.
 
-[^rhythms]: György Buzsáki, *Rhythms of the Brain* (Oxford University Press, 2006) — the standard treatment of brain rhythms as the product of endogenous pattern-generating networks specialized for particular frequencies, envelopes, and modes of synchronization. He doesn't name it, but it's a work he cites elsewhere (e.g. in the Tracer Replication Tool write-up) and the description fits.
+[^rhythms]: György Buzsáki, *Rhythms of the Brain* (Oxford University Press, 2006) — the standard treatment of brain rhythms as the product of endogenous pattern-generating networks specialized for particular frequencies, envelopes, and modes of synchronization.
 
 [^principia-qualia]: Mike Johnson, *Principia Qualia* (2016) — introduces **valence structuralism** (the claim that valence is a structural property of the mathematical object corresponding to an experience) and the **Symmetry Theory of Valence** (symmetry/consonance in that object ≈ pleasantness). PDF: [opentheory.net/PrincipiaQualia.pdf](https://opentheory.net/PrincipiaQualia.pdf).
 
