@@ -20,11 +20,11 @@
   <text x="560" y="172" fill="#276749" font-size="15">(already pretty fabricated)</text>
 
   <!-- 5-MeO stepped descent -->
-  <circle cx="255" cy="140" r="7" fill="#9b2c2c"/>
-  <circle cx="255" cy="175" r="5.5" fill="#9b2c2c"/>
-  <circle cx="255" cy="205" r="4" fill="#9b2c2c"/>
-  <circle cx="255" cy="230" r="3" fill="#9b2c2c"/>
-  <circle cx="255" cy="249" r="2.5" fill="#9b2c2c"/>
+  <circle cx="148" cy="140" r="7" fill="#9b2c2c"/>
+  <circle cx="148" cy="175" r="5.5" fill="#9b2c2c"/>
+  <circle cx="148" cy="205" r="4" fill="#9b2c2c"/>
+  <circle cx="148" cy="230" r="3" fill="#9b2c2c"/>
+  <circle cx="148" cy="249" r="2.5" fill="#9b2c2c"/>
 
   <!-- defabrication arrows (down, left of origin) -->
   <line x1="165" y1="175" x2="165" y2="405" stroke="#c05621" stroke-width="5" marker-end="url(#orange)"/>
