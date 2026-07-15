@@ -281,9 +281,9 @@ All right. With that: thank you so much, everybody. **Infinite bliss!** Take car
 
 [^noether]: **Noether's theorem** (Emmy Noether, 1918): every continuous symmetry of a physical system corresponds to a conserved quantity — invariance under time translation gives conservation of energy, under spatial translation conservation of momentum, under rotation conservation of angular momentum.
 
-[^tunicate]: The companion write-up names the case he has in mind: the tunicate (sea squirt), whose larva has a brain and a notochord and which, on settling and metamorphosing, resorbs much of its nervous system.[^companion]
+[^tunicate]: The case he has in mind is the tunicate (sea squirt), whose larva has a brain and a notochord and which, on settling and metamorphosing, resorbs much of its nervous system.
 
-[^projective]: Andrés's talk "Projective Intelligence: How the Visual/Tactile Fields Use Projective Geometry for Signal Processing" (<https://youtu.be/ZhAiQ69F_nY>; listed among QRI's 2024 outputs at <https://qri.org/blog/2024>). The core claim is that interfacing between representational spaces of different geometry and dimensionality is a fundamental computational principle, of which visual/tactile cross-modal prediction is the everyday case.
+[^projective]: Andrés's talk [[Projective Intelligence|Projective Intelligence: How the Visual/Tactile Fields Use Projective Geometry for Signal Processing]] — transcript included on this site. The core claim is that interfacing between representational spaces of different geometry and dimensionality is a fundamental computational principle, of which visual/tactile cross-modal prediction is the everyday case.
 
 [^one-electron]: The one-electron universe was proposed by John Wheeler, who put it to Feynman in a phone call in 1940; Feynman recounted it in his 1965 Nobel lecture and developed the associated interpretation of positrons as electrons moving backwards in time.
 
@@ -305,4 +305,3 @@ All right. With that: thank you so much, everybody. **Infinite bliss!** Take car
 
 [^mara]: Andrés's talk on the Mara dynamic: <https://youtu.be/3TT-HDfb668>
 
-[^companion]: Andrés's own written companion to this video, "The Self: Buddhaminds, Cross-Frequency Coupling, the One Electron Universe, and Indra's Net" (Apr 2026): <https://andrsgmezemilsson.substack.com/p/the-self-buddhaminds-cross-frequency>.

@@ -2,7 +2,7 @@
 
 Hello, hello everybody, welcome back. Today we're going to talk about wave computing — more specifically, non-linear wave computing. The title of this video is "Non-Linear Wave Computing: Vibes, Gestalts, and Realms."
 
-Essentially, I think that wave computing is a component of **qualia computing**[^qualia-computing]: the way in which our world simulation is constructed and fabricated by our nervous system, managed and edited, elegantly updated, and so on.
+Essentially, I think that wave computing is a component of **qualia computing**: the way in which our world simulation is constructed and fabricated by our nervous system, managed and edited, elegantly updated, and so on.
 
 ## The qualia of the day
 
@@ -412,11 +412,10 @@ Take care, everybody. See you next time. Ciao.
 
 ## Footnotes
 
-[^qualia-computing]: "Qualia computing" is Andrés's umbrella term for the view that the nervous system performs computation in the medium of qualia itself, and the name of his blog ([qualiacomputing.com](https://qualiacomputing.com/)), where this talk is also indexed.
 
-[^catenary]: In the talk this is called a "catenoid." The curve traced by a chain or cord hanging freely between two points is a **catenary** (a cosh curve); a *catenoid* is the minimal surface you get by revolving a catenary about an axis — a surface, not a curve.
+[^catenary]: In the talk this is called a "catenoid." The curve traced by a chain or cord hanging freely between two points is a **catenary** (a cosh curve); a *catenoid* is the minimal surface you get by revolving a catenary about an axis.
 
-[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. Lehar's site: [slehar.com](https://slehar.com/).
+[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. Lehar's site: [slehar.com](https://slehar.com/wwwRel/Lehar.html).
 
 [^phase-conjugation]: The effect described — two pump beams crossed in a nonlinear crystal such that a third beam is returned along its incoming path — is **optical phase conjugation**, usually realized via degenerate four-wave mixing.
 
@@ -424,7 +423,7 @@ Take care, everybody. See you next time. Ciao.
 
 [^shinzen]: Shinzen Young's well-known formula is *Suffering = Pain × Resistance*: with resistance driven to zero by equanimity, arbitrarily intense sensation need not constitute suffering. See *The Science of Enlightenment* (2016).
 
-[^grossberg]: Stephen Grossberg, originator of **Adaptive Resonance Theory** (ART), in which perceptual categories are formed when bottom-up input and top-down expectation lock into a resonant state.
+[^grossberg]: Stephen Grossberg, originator of **Adaptive Resonance Theory** (ART), in which perceptual categories are formed when bottom-up input and top-down expectation lock into a resonant state; see his *Conscious Mind, Resonant Brain: How Each Brain Makes a Mind* (Oxford University Press, 2021).
 
 [^rhythms]: György Buzsáki, *Rhythms of the Brain* (Oxford University Press, 2006) — the standard treatment of brain rhythms as the product of endogenous pattern-generating networks specialized for particular frequencies, envelopes, and modes of synchronization.
 
@@ -436,11 +435,11 @@ Take care, everybody. See you next time. Ciao.
 
 [^pihkal]: The talk says "*PiHKAL*," but Shulgin's LSD entry is in ***TiHKAL*** (*Tryptamines I Have Known and Loved*, 1997, entry #26). *PiHKAL* (*Phenethylamines I Have Known and Loved*, 1991) covers the phenethylamines.
 
-[^smell-pca]: Almost certainly Manuel Zarzo, "Relevant psychological dimensions in the perceptual space of perfumery odors," *Food Quality and Preference* 19 (2008), 315–322 — a PCA of the Boelens–Haring perfumery database. The paper's result is close to, but not identical with, what is described here. Zarzo finds that the **second** principal component discriminates feminine from masculine cosmetic odors — i.e. masculinity/femininity is one bipolar axis, not two — while the **first** is a freshness dimension, and the *hedonic* dimension did not clearly emerge in this database. The "core affect space" he invokes for the arousal axis is Russell's circumplex model of affect (valence × arousal).
+[^smell-pca]: Almost certainly Manuel Zarzo, "Relevant psychological dimensions in the perceptual space of perfumery odors," *Food Quality and Preference* 19 (2008), 315–322 — a PCA of the Boelens–Haring perfumery database. The "core affect space" he invokes for the arousal axis is Russell's circumplex model of affect (valence × arousal).
 
 [^martinus]: Martinus Thomsen (1890–1981), Danish mystic and author of *Livets Bog*, whose cosmology holds that beings evolve across incarnations toward a state combining the "masculine" and "feminine" poles.
 
-[^pearce]: David Pearce, transhumanist philosopher, author of *The Hedonistic Imperative* and co-founder (with Nick Bostrom) of the World Transhumanist Association; a long-time interlocutor of Andrés's. The attribution checks out, and the image is of *vestigial anatomy* — evolutionary leftovers a posthuman lineage would simply shed. Pearce, in interview: he now thinks binary gender should go the way of horns and a tail, and elsewhere that "like horns or a tail, gender and other brutish features of Darwinian life should be relegated to evolutionary history" — the thought being that in beings with unbounded morphological freedom, hyper-masculine and hyper-feminine cognitive styles may persist as options while the *dichotomy* itself stops being load-bearing. See the [Sentience Research interview](https://sentience-research.org/the-imperative-to-abolish-suffering-an-interview-with-david-pearce/).
+[^pearce]: David Pearce, transhumanist philosopher, author of *The Hedonistic Imperative* and co-founder (with Nick Bostrom) of the World Transhumanist Association; a long-time interlocutor of Andrés's. Pearce has said that "like horns or a tail, gender and other brutish features of Darwinian life should be relegated to evolutionary history" — vestigial anatomy a posthuman lineage would simply shed. The thought is that in beings with unbounded morphological freedom, hyper-masculine and hyper-feminine cognitive styles may persist as options while the *dichotomy* itself stops being load-bearing. See the [Sentience Research interview](https://sentience-research.org/the-imperative-to-abolish-suffering-an-interview-with-david-pearce/).
 
 [^future-neuroscience]: Mike Johnson, "A Future for Neuroscience" (2018), on Selen Atasoy's connectome-specific harmonic waves. The piece proposes decomposing EQ into **entrainment quotient (EnQ)** — how rapidly and deeply your harmonics fall into alignment with another person's — and **metronome quotient (MQ)** — how strongly you can create, maintain and project an emotional frame, causing others to entrain to it. It also observes that women appear on average to have higher EnQ, matching the gender remark here, and it is the source of the "mind music" phrasing. [opentheory.net](https://opentheory.net/2018/08/a-future-for-neuroscience/) / [LessWrong](https://www.lesswrong.com/posts/2pnvgwGkMZkQzCvwi/a-future-for-neuroscience).
 
@@ -452,7 +451,7 @@ Take care, everybody. See you next time. Ciao.
 
 [^cdns]: **CDNS** — Consonance/Dissonance/Noise Signature — QRI's proposed parameterization of an experience (Gomez Emilsson 2017, "Quantifying Bliss"), used together with the Symmetry Theory of Valence to predict valence from harmonic structure.
 
-[^ten-realms]: The six realms (hell, hungry ghost, animal, asura/Titan, human, deva/god) of saṃsāra, extended in the Tendai/Nichiren "ten worlds" scheme by the four "noble" states: śrāvaka (voice-hearer), pratyekabuddha (cause-awakened one), bodhisattva, and buddha. His four "last ones" follow this list exactly.
+[^ten-realms]: The six realms (hell, hungry ghost, animal, asura/Titan, human, deva/god) of saṃsāra, extended in the Tendai/Nichiren "ten worlds" scheme by the four "noble" states: śrāvaka (voice-hearer), pratyekabuddha (cause-awakened one), bodhisattva, and buddha.
 
 [^storehouse]: The ālaya-vijñāna or "storehouse consciousness" of Yogācāra Buddhism: the substrate in which the karmic seeds (bīja) of past experience are deposited and from which later experience ripens.
 

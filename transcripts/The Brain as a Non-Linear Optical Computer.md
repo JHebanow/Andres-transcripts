@@ -563,9 +563,9 @@ Infinite bliss, everybody. Take care. Until next time. Ciao.
 
 [^hedonium]: *Hedonium Shockwave* — one of QRI's *Magical Creatures* line of scents, an exploration of positive valence in its purest form: <https://qri.org/blog/magical-creatures>; Cammarata is also the subject of Scott Alexander's *Nick Cammarata on Jhana*: <https://www.astralcodexten.com/p/nick-cammarata-on-jhana>.
 
-[^stv]: The Symmetry Theory of Valence, first set out in Michael Johnson's *Principia Qualia* (2016): symmetry in the mathematical representation of an experience corresponds to its pleasantness.
+[^stv]: The Symmetry Theory of Valence, first set out in Michael Johnson's [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016): symmetry in the mathematical representation of an experience corresponds to its pleasantness.
 
-[^log-scales]: See *Logarithmic Scales of Pleasure and Pain* (Qualia Computing, 2019), which argues that hedonic intensity is distributed with long tails and should be measured on a log scale.
+[^log-scales]: See ["Logarithmic Scales of Pleasure and Pain"](https://qri.org/blog/log-scales) (QRI, 2019), which argues that hedonic intensity is distributed with long tails and should be measured on a log scale.
 
 [^attention-awareness]: [[Attention and Awareness|Attention & Awareness: Oscillatory Complementarity, Non-Linearities, and the Pointlessness of It All]] — transcript included on this site.
 
@@ -573,9 +573,9 @@ Infinite bliss, everybody. Take care. Until next time. Ciao.
 
 [^rhythms]: See *On Rhythms of the Brain: Jhanas, Local Field Potentials, and Electromagnetic Theories of Consciousness*: <https://qualiacomputing.com/2022/10/27/on-rhythms-of-the-brain-jhanas-local-field-potentials-and-electromagnetic-theories-of-consciousness/>.
 
-[^boundary]: The binding problem (how disparate features come to be experienced as one unified whole) and its "overlooked cousin," the boundary problem (what makes one experience one experience and not part of another). Andrés and Chris Percy set out an EM-field-topology approach in *Don't forget the boundary problem!* (*Frontiers in Human Neuroscience*, 2023).
+[^boundary]: The [binding problem](https://wiki.qri.org/wiki/Binding_Problem) (how disparate features come to be experienced as one unified whole) and its "overlooked cousin," the boundary problem (what makes one experience one experience and not part of another). Andrés and Chris Percy set out an EM-field-topology approach in ["Don't forget the boundary problem!"](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2023.1233119/full) (*Frontiers in Human Neuroscience*, 2023).
 
-[^zero-ontology]: "Zero ontology": the view that the universe's total information/structure sums to zero, and that everything that exists arises from symmetry-breaking on that nothing, so that no net "something" is ever added.
+[^zero-ontology]: "Zero ontology": the view that the universe's total information/structure sums to zero, and that everything that exists arises from symmetry-breaking on that nothing, so that no net "something" is ever added. See Andrés's talk ["Why Does Anything Exist? Zero Ontology, Physical Information, and Pure Awareness"](https://www.youtube.com/watch?v=KdDNfTREQJU), and Arthur Witherall's essay on David Pearce's zero ontology, ["The Zero Ontology"](https://www.hedweb.com/witherall/zero.htm).
 
 [^ninth]: The "unfabricated" attainment beyond the eight jhānas — *nirodha samāpatti*, the cessation of perception and feeling — is sometimes numbered as a ninth attainment.
 
