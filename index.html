@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Andrés Transcripts</title>
-<meta name="description" content="Polished, illustrated transcripts of Andrés Gómez-Emilsson's talks (Qualia Research Institute), with figures, footnotes, and synced video.">
+<meta name="description" content="Transcripts of Andrés Gómez-Emilsson's talks (Qualia Research Institute), with figures and synced video.">
 <meta property="og:title" content="Andrés Transcripts">
 <meta property="og:description" content="Polished, illustrated transcripts of Andrés Gómez-Emilsson's talks (Qualia Research Institute), with figures, footnotes, and synced video.">
 <meta property="og:type" content="website">
@@ -363,6 +363,10 @@ function setPageActions(note){
   +     '<button id="dlPdfBtn" title="Opens the print dialog — choose “Save as PDF”">PDF</button>'
   +   '</span></span>'
   + '<span class="ok" id="copyOk">copied ✓</span>';
+  if (note.substack)
+    html += '<a class="btn sbtn" href="' + esc(note.substack) + '" target="_blank" rel="noopener" title="Companion write-up on Substack">'
+          + '<svg viewBox="0 0 448 512" width="11" height="11" fill="currentColor" style="vertical-align:-1px;margin-right:.35em">'
+          + '<path d="M0 0h448v62H0zM0 100h448v62H0zM0 200h448v312L224 385 0 512z"/></svg>Substack</a>';
   pa.innerHTML = html;
 
   $('#copyMd').addEventListener('click', async () => {
