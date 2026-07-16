@@ -198,16 +198,44 @@
   #resume.show{ transform:translate(-50%, 0); }
   #resume:hover{ border-color:var(--accent); }
 
+  /* ---------- mobile drawers ---------- */
+  .drawerTab{ display:none; position:fixed; top:42%; z-index:205; padding:.9rem .32rem;
+        font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.06em;
+        writing-mode:vertical-rl; text-orientation:mixed; cursor:pointer;
+        background:var(--card); color:var(--muted); border:1px solid var(--border); }
+  .drawerTab.left{ left:0; border-left:none; border-radius:0 8px 8px 0; }
+  .drawerTab.right{ right:0; border-right:none; border-radius:8px 0 0 8px; transform:rotate(180deg); }
+  #backdrop{ display:none; position:fixed; inset:0; background:#0007; z-index:210; }
+  body.dL #backdrop, body.dR #backdrop{ display:block; }
+
   @media (max-width:1180px){
     .layout, body.sync .layout{ display:block; max-width:800px; }
-    nav.files{ display:none; }
-    .sidePanel{ position:static; max-height:none; margin-bottom:1rem; }
-    .toc{ display:none; }
+    .sideRsz{ display:none; }
+    body.article .drawerTab{ display:block; }
+
+    /* left drawer: transcript list */
+    nav.files{ display:block; position:fixed; left:0; top:0; bottom:0; z-index:220;
+        width:min(78vw, 320px); max-height:none; background:var(--bg);
+        border-right:1px solid var(--border); padding:1.2rem 1rem;
+        transform:translateX(-105%); transition:transform .28s ease; overflow:auto; }
+    body.dL nav.files{ transform:none; }
+
+    /* right drawer: chapters */
+    .sidePanel{ position:static; display:block; max-height:none; margin-bottom:1rem; }
+    .sidePanel .toc{ position:fixed; right:0; top:0; bottom:0; z-index:220;
+        width:min(78vw, 320px); background:var(--bg); border-left:1px solid var(--border);
+        padding:1.2rem 1rem; transform:translateX(105%); transition:transform .28s ease;
+        overflow:auto; }
+    body.dR .sidePanel .toc{ transform:none; }
+
+    /* split screen: video docked at the top, collapsible */
     body.sync .videoPanel{ position:sticky; top:3.2rem; z-index:50; background:var(--bg);
         padding:.4rem 0; }
     body.sync .videoPanel .frame{ max-height:36vh; max-width:calc(36vh*16/9); margin:0 auto; }
-    .sideRsz{ display:none; }
+    body.vhide .videoPanel .frame, body.vhide .videoPanel .vtabs{ display:none; }
+    #vidToggle{ display:inline-block; }
   }
+  #vidToggle{ display:none; }
   .err{ color:#c0392b; font-family:system-ui,sans-serif; }
   .loading{ color:var(--muted); font-family:system-ui,sans-serif; }
 </style>
@@ -229,6 +257,9 @@
 <div id="fnpop"></div>
 <div id="lightbox"><img alt=""></div>
 <button id="resume">↩ Continue where you left off</button>
+<button class="drawerTab left" id="drawerL" title="Transcripts">☰ Transcripts</button>
+<button class="drawerTab right" id="drawerR" title="Chapters">☰ Chapters</button>
+<div id="backdrop"></div>
 
 <script>
 "use strict";
@@ -342,6 +373,7 @@ function route(){
   if (h && !h.startsWith('#/')) return;   // in-page anchor — let the browser handle it
   teardownPlayer();
   hideResume();
+  closeDrawers();
   const raw = h.replace(/^#\/?/, '');
   const qi = raw.indexOf('?');
   const slug = decodeURIComponent(qi < 0 ? raw : raw.slice(0, qi));
@@ -533,8 +565,26 @@ function offerResume(note){
 function hideResume(){ $('#resume').classList.remove('show'); }
 
 /* ================= global UI (once) ================= */
+function closeDrawers(){ document.body.classList.remove('dL','dR'); }
 function initGlobalUI(){
   window.addEventListener('resize', applySideLayout);
+
+  // mobile drawers
+  $('#drawerL').addEventListener('click', () => {
+    const b = document.body;
+    const open = b.classList.contains('dL');
+    closeDrawers(); if (!open) b.classList.add('dL');
+  });
+  $('#drawerR').addEventListener('click', () => {
+    const b = document.body;
+    const open = b.classList.contains('dR');
+    closeDrawers(); if (!open) b.classList.add('dR');
+  });
+  $('#backdrop').addEventListener('click', closeDrawers);
+  // any navigation from inside a drawer closes it
+  document.addEventListener('click', e => {
+    if (e.target.closest('nav.files a, .toc a')) closeDrawers();
+  });
 
   // close download menu on outside click
   document.addEventListener('click', e => {
@@ -578,7 +628,7 @@ function initGlobalUI(){
   // keyboard
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape'){
-      lb.classList.remove('open'); hideFnPop(0); closeSearch(); hideResume();
+      lb.classList.remove('open'); hideFnPop(0); closeSearch(); hideResume(); closeDrawers();
       return;
     }
     if (e.target.matches('input, textarea, select') || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -657,7 +707,7 @@ function initGlobalUI(){
 
 /* ================= list page ================= */
 function renderList(){
-  document.body.classList.remove('sync','hide-nav');
+  document.body.classList.remove('sync','hide-nav','article','vhide');
   document.title = manifest.site.title;
   setPageActions(null);
   curNote = null;
@@ -700,6 +750,8 @@ async function renderNote(note, params){
   const hasVideo = vids.length > 0;
   const hasSync = !!(hasVideo && note.timestamps && note.timestamps.length);
   document.body.classList.toggle('sync', hasVideo);   // wide right column whenever there is a video
+  document.body.classList.add('article');
+  document.body.classList.remove('vhide');
 
   let nav = '<nav class="files"><h4>Transcripts</h4>';
   for (const n of manifest.notes)
@@ -722,6 +774,7 @@ async function renderNote(note, params){
       + (hasSync ? '<button class="btn on" id="followBtn" title="Scroll the transcript to follow the video">Auto-scroll: on</button>' : '')
       + '<span class="now" id="nowSec"></span>'
       + '<a class="btn" id="extLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + esc(vids[0].id) + '" title="Open on YouTube">↗ YouTube</a>'
+      + '<button class="btn" id="vidToggle" title="Show or hide the video">Hide video</button>'
       + '</div>' : '')
     +   '<div class="toc" id="toc"><h4>Chapters</h4></div>'
     + '</div>'
@@ -735,6 +788,11 @@ async function renderNote(note, params){
     initSideResize();
     document.querySelectorAll('.vtab').forEach(b =>
       b.addEventListener('click', () => switchVid(+b.dataset.i)));
+    const vt = $('#vidToggle');
+    if (vt) vt.addEventListener('click', () => {
+      const hidden = document.body.classList.toggle('vhide');
+      vt.textContent = hidden ? 'Show video' : 'Hide video';
+    });
   }
   applySideLayout();
   window.addEventListener('scroll', onScrollToc, {passive:true});
@@ -890,22 +948,39 @@ function onScrollToc(){
 }
 
 /* ================= YouTube player + sync ================= */
+function plainEmbed(videoId){
+  // fallback when the YouTube API can't load (e.g. strict tracking protection):
+  // a bare embed — the video plays, sync features are simply unavailable
+  const el = document.getElementById('yt');
+  if (!el) return;
+  el.outerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(videoId)
+    + '" allow="encrypted-media; picture-in-picture" allowfullscreen'
+    + ' style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>';
+}
 function initPlayer(videoId, hasSync){
   const make = () => {
-    player = new YT.Player('yt', {
-      videoId: videoId,
-      playerVars: {rel:0, modestbranding:1},
-      events: { onReady: startPolling }
-    });
+    try{
+      player = new YT.Player('yt', {
+        videoId: videoId,
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: {rel:0, modestbranding:1},
+        events: { onReady: startPolling, onError: () => {} }
+      });
+    }catch(e){ plainEmbed(videoId); }
   };
   if (ytReady) make();
   else {
     if (!document.getElementById('ytapi')){
       const s = document.createElement('script');
       s.id = 'ytapi'; s.src = 'https://www.youtube.com/iframe_api';
+      s.onerror = () => { ytReady = 'failed'; };
       document.head.appendChild(s);
     }
-    const wait = setInterval(() => { if (ytReady){ clearInterval(wait); make(); } }, 100);
+    let tries = 0;
+    const wait = setInterval(() => {
+      if (ytReady === true){ clearInterval(wait); make(); }
+      else if (ytReady === 'failed' || ++tries > 30){ clearInterval(wait); plainEmbed(videoId); }
+    }, 100);
   }
 
   const fb = $('#followBtn');
