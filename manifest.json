@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Andrés Transcripts"
+    "title": "Andrés' Transcripts"
   },
   "notes": [
     {
@@ -83,7 +83,8 @@
           "label": "Watch",
           "id": "TNJrJEA8sEM"
         }
-      ]
+      ],
+      "date": "2022-03-16"
     },
     {
       "file": "transcripts/Non-Linear Wave Computing.md",
@@ -261,7 +262,9 @@
           "label": "Watch",
           "id": "6PrIp55l_MI"
         }
-      ]
+      ],
+      "date": "2022-03-05",
+      "qri": "https://qri.org/blog/nonlinear-wave-computing"
     },
     {
       "file": "transcripts/Projective Intelligence.md",
@@ -319,7 +322,8 @@
           "label": "Watch",
           "id": "ZhAiQ69F_nY"
         }
-      ]
+      ],
+      "date": "2024-10-29"
     },
     {
       "file": "transcripts/Subagents part 1 and 2.md",
@@ -523,7 +527,8 @@
           "label": "Part 2",
           "id": "1Ls-aYJ3lnY"
         }
-      ]
+      ],
+      "date": "2025-05-19"
     },
     {
       "file": "transcripts/The Brain as a Non-Linear Optical Computer.md",
@@ -673,7 +678,8 @@
           "label": "Watch",
           "id": "ELp0904CjLw"
         }
-      ]
+      ],
+      "date": "2022-11-26"
     },
     {
       "file": "transcripts/The Self, the Buddha Hive mind and Indra's Net.md",
@@ -780,7 +786,342 @@
           "id": "40BOjNE6-gw"
         }
       ],
-      "substack": "https://andrsgmezemilsson.substack.com/p/the-self-buddhaminds-cross-frequency"
+      "substack": "https://andrsgmezemilsson.substack.com/p/the-self-buddhaminds-cross-frequency",
+      "date": "2026-04-16"
+    },
+    {
+      "file": "transcripts/Monads That Know Their Own Nature.md",
+      "slug": "monads-that-know-their-own-nature",
+      "title": "Monads That Know Their Own Nature: Answering the Meta-Problem with Process Topology & Observer Theory",
+      "youtube": "X5ZY-u9gqTU",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "X5ZY-u9gqTU"
+        }
+      ],
+      "timestamps": [
+        {
+          "h": "Introduction: back from Mexico",
+          "t": 0
+        },
+        {
+          "h": "The meta-problem of consciousness",
+          "t": 122
+        },
+        {
+          "h": "The Reality of Wholes: three tiers of computational systems",
+          "t": 349
+        },
+        {
+          "h": "Tier one: cellular automata",
+          "t": 389
+        },
+        {
+          "h": "Tier two: process physics",
+          "t": 610
+        },
+        {
+          "h": "Tier three: a general (holistic) computer",
+          "t": 777
+        },
+        {
+          "h": "The PageRank Monadology: local rules plus a holistic update",
+          "t": 910
+        },
+        {
+          "h": "Why the unity of experience implies a tier-three universe",
+          "t": 1139
+        },
+        {
+          "h": "Deriving physics from phenomenology",
+          "t": 1306
+        },
+        {
+          "h": "From tier-three systems to observers: observer theory",
+          "t": 1404
+        },
+        {
+          "h": "Four kinds of observer system",
+          "t": 1704
+        },
+        {
+          "h": "Option one: a digital simulation",
+          "t": 1722
+        },
+        {
+          "h": "Option two: a grid of quantum-coherent buckets",
+          "t": 1775
+        },
+        {
+          "h": "Option three: the monad-observer system (the brain)",
+          "t": 1842
+        },
+        {
+          "h": "Option four (ruled out): the mega-monad",
+          "t": 1976
+        },
+        {
+          "h": "Monads that know their own nature: self-awareness and self-knowledge",
+          "t": 2075
+        },
+        {
+          "h": "Closing: QRI plans and meetup",
+          "t": 2377
+        }
+      ],
+      "date": "2026-01-29"
+    },
+    {
+      "file": "transcripts/From Neural Activity to Field Topology.md",
+      "slug": "from-neural-activity-to-field-topology",
+      "title": "From Neural Activity to Field Topology: How Coupling Kernels Shape Consciousness",
+      "youtube": "CA4oRbXz2CM",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "CA4oRbXz2CM"
+        }
+      ],
+      "date": "2025-02-21",
+      "qualiacomputing": "https://qualiacomputing.com/2025/02/09/from-neural-activity-to-field-topology-how-coupling-kernels-shape-consciousness/",
+      "timestamps": [
+        {
+          "h": "Announcements",
+          "t": 184
+        },
+        {
+          "h": "An ethics interlude: cluster headaches and kidney stones",
+          "t": 440
+        },
+        {
+          "h": "The big picture: why do near-identical molecules produce radically different experiences?",
+          "t": 662
+        },
+        {
+          "h": "0. What's a coupling kernel?",
+          "t": 927
+        },
+        {
+          "h": "Small-world networks",
+          "t": 1412
+        },
+        {
+          "h": "1. Coupling kernels as neural-global bridge",
+          "t": 1611
+        },
+        {
+          "h": "Divisive normalization",
+          "t": 1946
+        },
+        {
+          "h": "2. Geometric constraints on coupling effects",
+          "t": 2117
+        },
+        {
+          "h": "3. Network geometry interactions and *Projective Intelligence*",
+          "t": 2364
+        },
+        {
+          "h": "Meditative cessations",
+          "t": 2615
+        },
+        {
+          "h": "4. Topological solution to the boundary problem",
+          "t": 2874
+        },
+        {
+          "h": "5. Electromagnetic field topology and its modulation",
+          "t": 3170
+        },
+        {
+          "h": "6. 5-MeO-DMT and topological simplification",
+          "t": 3346
+        },
+        {
+          "h": "7. Coupling kernels and field topology",
+          "t": 3498
+        },
+        {
+          "h": "8. DMT vs 5-MeO-DMT effects",
+          "t": 3670
+        },
+        {
+          "h": "9. Paths and experience: the path integral of perspectives",
+          "t": 3774
+        },
+        {
+          "h": "Recap",
+          "t": 4156
+        },
+        {
+          "h": "Acknowledgments",
+          "t": 4458
+        }
+      ]
+    },
+    {
+      "file": "transcripts/Psychedelics and the Free Energy Principle.md",
+      "slug": "psychedelics-and-the-free-energy-principle",
+      "title": "Psychedelics and the Free Energy Principle: From REBUS to Indra's Net",
+      "youtube": "45tG1oVigVo",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "45tG1oVigVo"
+        }
+      ],
+      "date": "2021-06-21",
+      "qualiacomputing": "https://qualiacomputing.com/2019/08/27/carhart-harris-friston-2019-rebus-and-the-anarchic-brain/",
+      "timestamps": [
+        {
+          "h": "The qualia of the day: Indra's Net",
+          "t": 68
+        },
+        {
+          "h": "The free energy principle",
+          "t": 504
+        },
+        {
+          "h": "A one-true-ontologist idea",
+          "t": 620
+        },
+        {
+          "h": "What the principle says",
+          "t": 908
+        },
+        {
+          "h": "Variational free energy",
+          "t": 1096
+        },
+        {
+          "h": "The dark-room objection",
+          "t": 1274
+        },
+        {
+          "h": "Active inference and the precision of priors",
+          "t": 1401
+        },
+        {
+          "h": "Markov blankets and predictive coding",
+          "t": 1589
+        },
+        {
+          "h": "Applying the principle to psychedelics: REBUS",
+          "t": 1823
+        },
+        {
+          "h": "An aside on Feyerabend",
+          "t": 1985
+        },
+        {
+          "h": "The limits of REBUS, and SEBUS",
+          "t": 2166
+        },
+        {
+          "h": "Evidential adequacy",
+          "t": 2346
+        },
+        {
+          "h": "Three new applications of the free energy principle to consciousness",
+          "t": 2519
+        },
+        {
+          "h": "1. Dissonance-minimizing resonance networks",
+          "t": 2674
+        },
+        {
+          "h": "2. Bayesian energy sinks and symmetry",
+          "t": 3038
+        },
+        {
+          "h": "3. Indra's Net",
+          "t": 3526
+        },
+        {
+          "h": "Conclusion",
+          "t": 3990
+        }
+      ]
+    },
+    {
+      "file": "transcripts/The Emergence of Self-Awareness — Conscious Holography as an Evolved Hardware Accelerator.md",
+      "slug": "the-emergence-of-self-awareness",
+      "title": "The Emergence of Self-Awareness: Conscious Holography as an Evolved Hardware Accelerator",
+      "youtube": "T9qct5Qxs0w",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "T9qct5Qxs0w"
+        }
+      ],
+      "date": "2025-06-04",
+      "timestamps": [
+        {
+          "h": "The qualia of the day: thyme tea",
+          "t": 46
+        },
+        {
+          "h": "The CIMC inauguration",
+          "t": 199
+        },
+        {
+          "h": "Wolfram and computational irreducibility",
+          "t": 366
+        },
+        {
+          "h": "Physicalist idealism versus computational functionalism",
+          "t": 581
+        },
+        {
+          "h": "David Pearce's four questions",
+          "t": 742
+        },
+        {
+          "h": "Holography between fields of different dimensionalities",
+          "t": 849
+        },
+        {
+          "h": "Evidence from cessation",
+          "t": 1042
+        },
+        {
+          "h": "The research program",
+          "t": 1139
+        },
+        {
+          "h": "Coupled oscillators and the free energy principle",
+          "t": 1173
+        },
+        {
+          "h": "The central core as a multiplexer",
+          "t": 1396
+        },
+        {
+          "h": "Painting the full picture",
+          "t": 1536
+        },
+        {
+          "h": "Temporal depth",
+          "t": 1590
+        },
+        {
+          "h": "Growing a self-model from the bottom up",
+          "t": 1636
+        },
+        {
+          "h": "The kicker: simulating the accelerator",
+          "t": 1731
+        },
+        {
+          "h": "Why this is not the IIT animats project",
+          "t": 1982
+        },
+        {
+          "h": "A fork in the road",
+          "t": 2180
+        }
+      ]
     }
   ]
 }

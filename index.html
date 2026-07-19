@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Andrés Transcripts</title>
+<title>Andrés' Transcripts</title>
 <meta name="description" content="Transcripts of Andrés Gómez-Emilsson's talks (Qualia Research Institute), with figures and synced video.">
-<meta property="og:title" content="Andrés Transcripts">
+<meta property="og:title" content="Andrés' Transcripts">
 <meta property="og:description" content="Transcripts of Andrés Gómez-Emilsson's talks (Qualia Research Institute), with figures and synced video.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.qri.org/images/qrilogo.PNG">
@@ -71,11 +71,27 @@
   /* ---------- list (landing) page ---------- */
   ul.notelist{ list-style:none; padding:0; margin:2rem 0; }
   ul.notelist li{ margin:0 0 1rem; }
-  ul.notelist a{ display:block; background:var(--card); border:1px solid var(--border);
-        border-radius:10px; padding:1rem 1.2rem; text-decoration:none; color:var(--fg);
-        transition:border-color .15s; }
+  ul.notelist a{ display:flex; gap:1.1rem; align-items:center; background:var(--card);
+        border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem;
+        text-decoration:none; color:var(--fg); transition:border-color .15s; }
   ul.notelist a:hover{ border-color:var(--accent); }
-  ul.notelist .t{ font-weight:600; }
+  ul.notelist .thumb{ flex:0 0 150px; width:150px; aspect-ratio:16/9; object-fit:cover;
+        border-radius:8px; background:#000; }
+  ul.notelist .tile{ min-width:0; }
+  ul.notelist .t{ display:block; font-weight:600; }
+  @media (max-width:560px){ ul.notelist .thumb{ flex-basis:104px; width:104px; } }
+  ul.notelist .nd{ display:inline-block; font-family:system-ui,sans-serif; font-size:.75rem;
+        color:var(--muted); margin-top:.35rem; margin-right:.7rem; }
+  .sortbar{ display:flex; justify-content:flex-end; margin-top:1.4rem; font-family:system-ui,sans-serif; }
+  /* date sits in a gutter left of the link block, not inside the text flow */
+  nav.files a{ position:relative; margin-left:58px; }
+  nav.files a .d{ position:absolute; left:-58px; top:.45rem; width:50px; text-align:right;
+        color:var(--muted); font-size:.66rem; font-family:system-ui,sans-serif;
+        white-space:nowrap; pointer-events:none; }
+  .nsort{ font-family:system-ui,sans-serif; font-size:.75rem; border:1px solid var(--border);
+        background:var(--card); color:var(--muted); border-radius:6px; cursor:pointer;
+        padding:0 .45rem; margin-left:.5rem; line-height:1.4; vertical-align:middle; }
+  .nsort:hover{ color:var(--accent); border-color:var(--accent); }
   .badge{ display:inline-block; font-family:system-ui,sans-serif; font-size:.72rem;
         color:var(--accent); background:var(--accent-soft); border-radius:20px;
         padding:.1rem .6rem; margin-top:.4rem; margin-right:.4rem; }
@@ -242,9 +258,9 @@
 </head>
 <body>
 <header class="site">
-  <img class="logo" id="logo" src="qri-logo.png" alt="QRI"
+  <img class="logo" id="logo" src="illustrations/logo.png" alt="QRI"
        onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://qri.org/images/logo.webp';}else{this.style.display='none';}">
-  <a class="home" href="#/" id="homeLink">Andrés Transcripts</a>
+  <a class="home" href="#/" id="homeLink">Andrés' Transcripts</a>
   <span id="pageActions" style="display:contents"></span>
   <span class="spacer"></span>
   <span class="searchWrap">
@@ -309,6 +325,37 @@ const fmt = t => {
 };
 const norm = s => s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slugify = s => norm(s).replace(/ /g,'-');
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmtDate(d, short){
+  if (!d) return '';
+  const [y,m,day] = d.split('-').map(Number);
+  return short ? MONTHS[m-1] + ' ' + y : MONTHS[m-1] + ' ' + day + ', ' + y;
+}
+function sortedNotes(){
+  const dir = (localStorage.getItem('sortOrder') || 'oldest') === 'oldest' ? 1 : -1;
+  return [...manifest.notes].sort((a,b) => ((a.date||'') < (b.date||'') ? -1 : 1) * dir);
+}
+function navInner(curSlug){
+  const order = localStorage.getItem('sortOrder') || 'oldest';
+  let h = '<h4>Transcripts <button class="nsort" id="navSort" title="'
+        + (order === 'oldest' ? 'Sorted oldest first — click for newest first' : 'Sorted newest first — click for oldest first')
+        + '">' + (order === 'oldest' ? '↑' : '↓') + '</button></h4>';
+  for (const n of sortedNotes())
+    h += '<a href="#/' + esc(n.slug) + '"' + (n.slug === curSlug ? ' class="cur"' : '') + '>'
+       + (n.date ? '<span class="d">' + fmtDate(n.date, true) + '</span>' : '')
+       + esc(n.title.split(':')[0]) + '</a>';
+  return h;
+}
+function attachNavSort(){
+  const b = $('#navSort');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    const order = localStorage.getItem('sortOrder') || 'oldest';
+    localStorage.setItem('sortOrder', order === 'oldest' ? 'newest' : 'oldest');
+    const nav = document.querySelector('nav.files');
+    if (nav && curNote){ nav.innerHTML = navInner(curNote.slug); attachNavSort(); }
+  });
+}
 
 function preprocess(src, notesByTitle){
   src = src.replace(/!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
@@ -399,6 +446,14 @@ function setPageActions(note){
     html += '<a class="btn sbtn" href="' + esc(note.substack) + '" target="_blank" rel="noopener" title="Companion write-up on Substack">'
           + '<svg viewBox="0 0 448 512" width="11" height="11" fill="currentColor" style="vertical-align:-1px;margin-right:.35em">'
           + '<path d="M0 0h448v62H0zM0 100h448v62H0zM0 200h448v312L224 385 0 512z"/></svg>Substack</a>';
+  if (note.qualiacomputing)
+    html += '<a class="btn" href="' + esc(note.qualiacomputing) + '" target="_blank" rel="noopener" title="Companion post on Qualia Computing">'
+          + '<img src="illustrations/harmonic%20society%20by%20ALGE.png" alt="" '
+          + 'style="height:13px;width:13px;object-fit:cover;border-radius:3px;vertical-align:-2px;margin-right:.35em">Qualia Computing</a>';
+  if (note.qri)
+    html += '<a class="btn" href="' + esc(note.qri) + '" target="_blank" rel="noopener" title="Companion post on qri.org">'
+          + '<img src="illustrations/logo.png" alt="" '
+          + 'style="height:13px;width:13px;object-fit:contain;vertical-align:-2px;margin-right:.35em">QRI</a>';
   pa.innerHTML = html;
 
   $('#copyMd').addEventListener('click', async () => {
@@ -711,17 +766,27 @@ function renderList(){
   document.title = manifest.site.title;
   setPageActions(null);
   curNote = null;
-  let html = '<div class="wrap"><ul class="notelist">';
-  for (const n of manifest.notes){
+  const order = localStorage.getItem('sortOrder') || 'oldest';
+  let html = '<div class="wrap"><div class="sortbar">'
+    + '<button class="btn" id="sortBtn" title="Change sort order">Sort: '
+    + (order === 'oldest' ? 'oldest first ↑' : 'newest first ↓') + '</button></div><ul class="notelist">';
+  for (const n of sortedNotes()){
     const synced = n.youtube && n.timestamps && n.timestamps.length;
-    const hasVid = (n.videos && n.videos.length) || n.youtube;
-    html += '<li><a href="#/' + esc(n.slug) + '"><div class="t">' + esc(n.title) + '</div>'
+    const vid = (n.videos && n.videos.length) ? n.videos[0].id : n.youtube;
+    html += '<li><a href="#/' + esc(n.slug) + '">'
+          + (vid ? '<img class="thumb" loading="lazy" src="https://i.ytimg.com/vi/' + esc(vid) + '/mqdefault.jpg" alt="">' : '')
+          + '<span class="tile"><span class="t">' + esc(n.title) + '</span>'
+          + (n.date ? '<span class="nd">' + fmtDate(n.date) + '</span>' : '')
           + (synced ? '<span class="badge">&#9654; synced with video</span>'
-             : hasVid ? '<span class="badge">&#9654; video available</span>' : '')
-          + '</a></li>';
+             : vid ? '<span class="badge">&#9654; video available</span>' : '')
+          + '</span></a></li>';
   }
   html += '</ul></div>';
   $('#app').innerHTML = html;
+  $('#sortBtn').addEventListener('click', () => {
+    localStorage.setItem('sortOrder', order === 'oldest' ? 'newest' : 'oldest');
+    renderList();
+  });
 }
 
 /* ================= article page ================= */
@@ -753,11 +818,7 @@ async function renderNote(note, params){
   document.body.classList.add('article');
   document.body.classList.remove('vhide');
 
-  let nav = '<nav class="files"><h4>Transcripts</h4>';
-  for (const n of manifest.notes)
-    nav += '<a href="#/' + esc(n.slug) + '"' + (n.slug === note.slug ? ' class="cur"' : '') + '>'
-         + esc(n.title.split(':')[0]) + '</a>';
-  nav += '</nav>';
+  const nav = '<nav class="files">' + navInner(note.slug) + '</nav>';
 
   $('#app').innerHTML =
     '<div class="layout">' + nav
@@ -780,6 +841,7 @@ async function renderNote(note, params){
     + '</div>'
     + '</div>';
 
+  attachNavSort();
   decorateArticle(note, hasSync);
   buildToc(hasSync);
   curVids = vids; activeVid = 0;
