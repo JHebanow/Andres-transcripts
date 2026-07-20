@@ -68,20 +68,30 @@
 
   .wrap{ max-width:760px; margin:0 auto; padding:1.5rem 1.2rem 5rem; }
 
-  /* ---------- list (landing) page ---------- */
-  ul.notelist{ list-style:none; padding:0; margin:2rem 0; }
-  ul.notelist li{ margin:0 0 1rem; }
-  ul.notelist a{ display:flex; gap:1.1rem; align-items:center; background:var(--card);
-        border:1px solid var(--border); border-radius:10px; padding:.9rem 1.1rem;
-        text-decoration:none; color:var(--fg); transition:border-color .15s; }
-  ul.notelist a:hover{ border-color:var(--accent); }
-  ul.notelist .thumb{ flex:0 0 150px; width:150px; aspect-ratio:16/9; object-fit:cover;
-        border-radius:8px; background:#000; }
-  ul.notelist .tile{ min-width:0; }
-  ul.notelist .t{ display:block; font-weight:600; }
-  @media (max-width:560px){ ul.notelist .thumb{ flex-basis:104px; width:104px; } }
-  ul.notelist .nd{ display:inline-block; font-family:system-ui,sans-serif; font-size:.75rem;
-        color:var(--muted); margin-top:.35rem; margin-right:.7rem; }
+  /* ---------- list (landing) page: compact list ---------- */
+  .wrap.list{ max-width:820px; }
+  ul.notelist{ list-style:none; padding:0; margin:1rem 0 2rem;
+        border:1px solid var(--border); border-radius:12px; background:var(--card);
+        overflow:hidden; }
+  ul.notelist li + li{ border-top:1px solid var(--border); }
+  ul.notelist li.yhead{ font-family:system-ui,sans-serif; font-size:.72rem;
+        letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+        color:var(--muted); padding:.55rem 1rem .35rem; background:var(--bg); }
+  ul.notelist a{ display:flex; align-items:center; gap:.9rem; padding:.55rem .9rem;
+        text-decoration:none; color:var(--fg); }
+  ul.notelist a:hover{ background:var(--accent-soft); }
+  ul.notelist .thumb{ flex:0 0 96px; width:96px; aspect-ratio:16/9; object-fit:cover;
+        border-radius:6px; background:#000; }
+  ul.notelist .tile{ min-width:0; flex:1; display:flex; align-items:center; gap:.9rem; }
+  ul.notelist .t{ flex:1; font-weight:600; font-size:.98rem; line-height:1.35; }
+  ul.notelist .nd{ font-family:system-ui,sans-serif; font-size:.75rem; color:var(--muted);
+        white-space:nowrap; text-align:right; flex:0 0 auto; }
+  ul.notelist .badge{ display:none; }
+  @media (max-width:560px){
+    ul.notelist .thumb{ flex-basis:72px; width:72px; }
+    ul.notelist .t{ font-size:.9rem; }
+    ul.notelist .nd{ display:none; }
+  }
   .sortbar{ display:flex; justify-content:flex-end; margin-top:1.4rem; font-family:system-ui,sans-serif; }
   /* date sits in a gutter left of the link block, not inside the text flow */
   nav.files a{ position:relative; margin-left:58px; }
@@ -767,10 +777,18 @@ function renderList(){
   setPageActions(null);
   curNote = null;
   const order = localStorage.getItem('sortOrder') || 'oldest';
-  let html = '<div class="wrap"><div class="sortbar">'
+  const notes = sortedNotes();
+  const groupByYear = notes.length >= 15;   // year headers kick in once the collection grows
+  let html = '<div class="wrap list"><div class="sortbar">'
     + '<button class="btn" id="sortBtn" title="Change sort order">Sort: '
     + (order === 'oldest' ? 'oldest first ↑' : 'newest first ↓') + '</button></div><ul class="notelist">';
-  for (const n of sortedNotes()){
+  let lastYear = null;
+  for (const n of notes){
+    const year = (n.date || '').slice(0, 4);
+    if (groupByYear && year && year !== lastYear){
+      html += '<li class="yhead">' + esc(year) + '</li>';
+      lastYear = year;
+    }
     const synced = n.youtube && n.timestamps && n.timestamps.length;
     const vid = (n.videos && n.videos.length) ? n.videos[0].id : n.youtube;
     html += '<li><a href="#/' + esc(n.slug) + '">'
