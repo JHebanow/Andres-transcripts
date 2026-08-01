@@ -10,7 +10,7 @@
 
 **Andrés:** How is it going?
 
-**Joscha:** Very well. I'm so glad we finally found the time to sit together. We don't have much time today, but maybe there will be a second installment soon.
+**Joscha:** Very well. I'm so glad that we found the time to finally sit together. We don't have much time today, but maybe there will be a second installment soon.
 
 **Andrés:** Yes, absolutely. Let's have a casual conversation about consciousness, intelligence, AI.
 
