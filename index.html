@@ -122,6 +122,10 @@
         color:var(--fg); margin-bottom:2px; border-left:3px solid transparent; }
   nav.files a:hover{ background:var(--accent-soft); }
   nav.files a.cur{ background:var(--accent-soft); border-left-color:var(--accent); font-weight:600; }
+  /* faint preview highlight while hovering a cross-link in the text */
+  nav.files a.peek{ background:color-mix(in srgb, var(--accent) 8%, transparent);
+        border-left-color:color-mix(in srgb, var(--accent) 45%, transparent); }
+  article a.xref{ text-decoration-style:dotted; text-underline-offset:2px; }
 
   .sidePanel{ position:sticky; top:4rem; font-family:system-ui,sans-serif;
         max-height:calc(100vh - 5.5rem); display:flex; flex-direction:column; min-height:0; }
@@ -156,6 +160,14 @@
   article hr{ border:none; border-top:1px solid var(--border); margin:2rem 0; }
   article blockquote{ border-left:3px solid var(--accent); margin:1rem 0; padding:.1rem 1rem;
         color:var(--muted); }
+
+  /* dialogue: one accent colour per speaker, one continuous line per turn */
+  article .turn{ border-left:3px solid var(--spk, var(--border)); padding:.1rem 0 .1rem .85rem;
+        margin:1.05rem 0; }
+  article .turn > *:first-child{ margin-top:0; }
+  article .turn > *:last-child{ margin-bottom:0; }
+  article .turn .who{ color:var(--spk); font-weight:700; }
+  article .turn img{ margin-left:0; }
   .footnotes{ font-size:.9rem; color:var(--muted); }
   sup.footnote-ref a{ text-decoration:none; padding:0 .1em; }
 
@@ -356,6 +368,23 @@ function navInner(curSlug){
        + esc(n.title.split(':')[0]) + '</a>';
   return h;
 }
+/* links to other transcripts on this site: hovering one previews it in the left panel */
+function markCrossLinks(){
+  for (const a of document.querySelectorAll('#article a[href^="#/"]')){
+    const slug = decodeURIComponent(a.getAttribute('href').slice(2));
+    if (!manifest.notes.some(n => n.slug === slug)) continue;
+    a.classList.add('xref');
+    a.addEventListener('mouseenter', () => {
+      const t = document.querySelector('nav.files a[href="#/' + CSS.escape(slug) + '"]');
+      if (!t || t.classList.contains('cur')) return;
+      t.classList.add('peek');
+      t.scrollIntoView({block:'nearest'});
+    });
+    a.addEventListener('mouseleave', () =>
+      document.querySelectorAll('nav.files a.peek').forEach(x => x.classList.remove('peek')));
+  }
+}
+
 function attachNavSort(){
   const b = $('#navSort');
   if (!b) return;
@@ -860,6 +889,7 @@ async function renderNote(note, params){
     + '</div>';
 
   attachNavSort();
+  markCrossLinks();
   decorateArticle(note, hasSync);
   buildToc(hasSync);
   curVids = vids; activeVid = 0;
@@ -907,8 +937,43 @@ async function renderNote(note, params){
 }
 
 /* Give headings ids, wrap into sections, attach timestamps */
+/* Group dialogue into one bordered block per speaking turn: a paragraph starting
+   with "**Speaker:**" opens a turn, and every following block (extra paragraphs,
+   lists, quotes, figures) joins it until the next speaker or heading. */
+function markSpeakers(note){
+  if (!note.speakers) return;
+  const art = $('#article');
+  const names = Object.keys(note.speakers);
+  const speakerOf = el => {
+    if (!el || el.tagName !== 'P') return null;
+    const b = el.firstElementChild;
+    if (!b || b.tagName !== 'STRONG') return null;
+    const label = b.textContent.replace(/:\s*$/, '').trim();
+    return names.includes(label) ? {name: label, strong: b} : null;
+  };
+  let turn = null;
+  for (const node of Array.from(art.children)){
+    if (/^H[1-6]$/.test(node.tagName) || node.classList.contains('footnotes')){
+      turn = null;                       // headings and the footnote list end a turn
+      continue;
+    }
+    const s = speakerOf(node);
+    if (s){
+      turn = document.createElement('div');
+      turn.className = 'turn';
+      turn.style.setProperty('--spk', note.speakers[s.name]);
+      s.strong.classList.add('who');
+      art.insertBefore(turn, node);
+      turn.appendChild(node);
+    } else if (turn){
+      turn.appendChild(node);            // continuation of the current turn
+    }
+  }
+}
+
 function decorateArticle(note, hasSync){
   const art = $('#article');
+  markSpeakers(note);
   art.querySelectorAll('h1,h2,h3').forEach(h => {
     h.id = slugify(h.textContent);
     h.dataset.title = h.textContent;          // clean text, before chips are appended

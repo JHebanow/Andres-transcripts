@@ -1122,6 +1122,101 @@
           "t": 2180
         }
       ]
+    },
+    {
+      "file": "transcripts/Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1.md",
+      "slug": "joscha-bach-nature-of-consciousness-part-1",
+      "title": "Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1",
+      "youtube": "vyuRCwfK1s0",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "vyuRCwfK1s0"
+        }
+      ],
+      "date": "2025-01-17",
+      "speakers": {
+        "Andrés": "#C0672B",
+        "Joscha": "#2F6B8F"
+      },
+      "timestamps": [
+        {
+          "h": "Is consciousness primary?",
+          "t": 25
+        },
+        {
+          "h": "Which universe are we pointing at?",
+          "t": 86
+        },
+        {
+          "h": "Dreaming, and the constraints on the dream",
+          "t": 225
+        },
+        {
+          "h": "Does a photon have qualia?",
+          "t": 397
+        },
+        {
+          "h": "Two vocabularies: qualia, and features in an embedding space",
+          "t": 565
+        },
+        {
+          "h": "The blueness of blue",
+          "t": 721
+        },
+        {
+          "h": "Is color a relational property?",
+          "t": 764
+        },
+        {
+          "h": "Tetrachromats: three dimensions or four?",
+          "t": 1044
+        },
+        {
+          "h": "Magenta and the shape of color space",
+          "t": 1515
+        },
+        {
+          "h": "Qualia varieties and the boundaries between modalities",
+          "t": 1595
+        },
+        {
+          "h": "Could you grow a synesthete?",
+          "t": 1726
+        },
+        {
+          "h": "Which qualia varieties are possible?",
+          "t": 2015
+        },
+        {
+          "h": "Divisive normalization and psychedelics",
+          "t": 2187
+        },
+        {
+          "h": "Hypothesis-based perception",
+          "t": 2348
+        },
+        {
+          "h": "Reconstructing specific artifacts",
+          "t": 2547
+        },
+        {
+          "h": "Soup, circuits, and waves",
+          "t": 2696
+        },
+        {
+          "h": "Resonance and the transitivity of binding",
+          "t": 2784
+        },
+        {
+          "h": "Why is the binding problem hard?",
+          "t": 2941
+        },
+        {
+          "h": "Two retinas, one world",
+          "t": 3153
+        }
+      ]
     }
   ]
 }
