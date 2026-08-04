@@ -28,6 +28,33 @@
     --card:#1d2024; --border:#2c3036; --hl:#25203180; --img-bg:#f5f3ee; --flash:#8a6d0099;
   }
   *{ box-sizing:border-box }
+
+  /* ---------- minimal scrollbars ---------- */
+  nav.files, .sidePanel .toc, #searchResults, #fnpop{
+        scrollbar-width:thin; scrollbar-color:transparent transparent; }
+  nav.files:hover, .sidePanel .toc:hover, #searchResults:hover, #fnpop:hover{
+        scrollbar-color:color-mix(in srgb, var(--fg) 22%, transparent) transparent; }
+  nav.files::-webkit-scrollbar, .sidePanel .toc::-webkit-scrollbar,
+  #searchResults::-webkit-scrollbar, #fnpop::-webkit-scrollbar{ width:7px; height:7px; }
+  nav.files::-webkit-scrollbar-track, .sidePanel .toc::-webkit-scrollbar-track,
+  #searchResults::-webkit-scrollbar-track, #fnpop::-webkit-scrollbar-track{ background:transparent; }
+  nav.files::-webkit-scrollbar-thumb, .sidePanel .toc::-webkit-scrollbar-thumb,
+  #searchResults::-webkit-scrollbar-thumb, #fnpop::-webkit-scrollbar-thumb{
+        background:transparent; border-radius:99px; }
+  nav.files:hover::-webkit-scrollbar-thumb, .sidePanel .toc:hover::-webkit-scrollbar-thumb,
+  #searchResults:hover::-webkit-scrollbar-thumb, #fnpop:hover::-webkit-scrollbar-thumb{
+        background:color-mix(in srgb, var(--fg) 20%, transparent); }
+  nav.files::-webkit-scrollbar-thumb:hover, .sidePanel .toc::-webkit-scrollbar-thumb:hover,
+  #searchResults::-webkit-scrollbar-thumb:hover, #fnpop::-webkit-scrollbar-thumb:hover{
+        background:var(--accent) !important; }
+  /* page scrollbar: same restraint, always visible so long articles stay navigable */
+  html{ scrollbar-width:thin; scrollbar-color:color-mix(in srgb, var(--fg) 18%, transparent) transparent; }
+  body::-webkit-scrollbar{ width:10px; }
+  body::-webkit-scrollbar-track{ background:transparent; }
+  body::-webkit-scrollbar-thumb{ background:color-mix(in srgb, var(--fg) 18%, transparent);
+        border-radius:99px; border:3px solid var(--bg); background-clip:padding-box; }
+  body::-webkit-scrollbar-thumb:hover{ background:color-mix(in srgb, var(--accent) 70%, transparent);
+        background-clip:padding-box; border:3px solid var(--bg); }
   body{ margin:0; background:var(--bg); color:var(--fg);
         font-family:"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
         font-size:1.06rem; line-height:1.65; }
@@ -365,7 +392,7 @@ function navInner(curSlug){
   for (const n of sortedNotes())
     h += '<a href="#/' + esc(n.slug) + '"' + (n.slug === curSlug ? ' class="cur"' : '') + '>'
        + (n.date ? '<span class="d">' + fmtDate(n.date, true) + '</span>' : '')
-       + esc(n.title.split(':')[0]) + '</a>';
+       + esc(n.navTitle || n.title.split(':')[0]) + '</a>';
   return h;
 }
 /* links to other transcripts on this site: hovering one previews it in the left panel */
