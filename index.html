@@ -342,6 +342,30 @@ let curVids = [], activeVid = 0;      // videos of the current note; active tab
 let ytReady = false;
 window.onYouTubeIframeAPIReady = () => { ytReady = true; };
 
+/* ================= analytics (GoatCounter) =================
+   Put your site code between the quotes to switch it on, e.g. 'andres-transcripts'
+   for https://andres-transcripts.goatcounter.com. Left empty, nothing is loaded
+   and no requests are made at all. Nothing is ever shown to visitors. */
+const GC_CODE = 'jheb';
+let gcQueue = [];
+function initAnalytics(){
+  if (!GC_CODE) return;
+  window.goatcounter = {no_onload: true};      // hash routing: we send views ourselves
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter', 'https://' + GC_CODE + '.goatcounter.com/count');
+  s.onload = () => { gcQueue.splice(0).forEach(r => window.goatcounter.count(r)); };
+  document.head.appendChild(s);
+}
+function countView(){
+  if (!GC_CODE) return;
+  const h = location.hash.replace(/^#\/?/, '');
+  const rec = {path: '/' + h.split('?')[0], title: document.title};
+  if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(rec);
+  else gcQueue.push(rec);
+}
+
 /* ================= theme ================= */
 function effectiveTheme(){
   const set = document.documentElement.getAttribute('data-theme');
@@ -478,6 +502,7 @@ async function boot(){
   md = window.markdownit({html:true, linkify:true, typographer:true}).use(window.markdownitFootnote);
   window.addEventListener('hashchange', route);
   initGlobalUI();
+  initAnalytics();
   route();
 }
 
@@ -857,6 +882,7 @@ function renderList(){
   }
   html += '</ul></div>';
   $('#app').innerHTML = html;
+  countView();
   $('#sortBtn').addEventListener('click', () => {
     localStorage.setItem('sortOrder', order === 'oldest' ? 'newest' : 'oldest');
     renderList();
@@ -954,6 +980,8 @@ async function renderNote(note, params){
       pendingSeek = {t, v: Math.min(vids.length - 1, +params.get('v') || 0)};
     }
   }
+
+  countView();
 
   if (pendingJump && pendingJump.slug === note.slug){
     const p = pendingJump; pendingJump = null;
