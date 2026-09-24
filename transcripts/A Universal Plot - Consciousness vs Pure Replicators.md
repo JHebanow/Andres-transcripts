@@ -226,7 +226,7 @@ And that's about it. So, thank you so much, and infinite bliss! Yay!
 
 [^secret-of-scent]: Luca Turin, *The Secret of Scent: Adventures in Perfume and the Science of Smell* (Faber & Faber, 2006).
 
-[^greigite]: Greigite (Fe₃S₄, iron(II,III) sulfide) is the mineral that gives kala namak its brownish-pink to dark violet color. Its characteristic eggy smell comes chiefly from hydrogen sulfide, alongside sodium sulfide and other sulfur compounds formed during kiln-firing. [Wikipedia: Kala namak](https://en.wikipedia.org/wiki/Kala_namak)
+[^greigite]: Greigite (Fe₃S₄, iron(II,III) sulfide) is the mineral that gives kala namak its brownish-pink to dark violet color. Its characteristic eggy smell comes chiefly from hydrogen sulfide, alongside sodium sulfide and other sulfur compounds formed during kiln-firing. [Wikipedia: Greigite](https://en.wikipedia.org/wiki/Greigite)
 
 [^kegan]: Robert Kegan's five "orders of consciousness," which extend Piagetian stage theory into adulthood: the impulsive mind, the instrumental (or imperial) mind, the socialized mind, the self-authoring mind, and the self-transforming mind. [Wikipedia: Constructive developmental framework](https://en.wikipedia.org/wiki/Constructive_developmental_framework)
 
