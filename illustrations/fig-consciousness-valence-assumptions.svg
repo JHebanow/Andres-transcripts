@@ -38,5 +38,5 @@
   <text x="490.0" y="116.0" font-size="12.5" fill="#1a1a1a" text-anchor="middle">Consciousness is a real, determinate feature of the universe</text>
   <line x1="490.0" y1="144.0" x2="490.0" y2="176.0" stroke="#1a1a1a" stroke-width="1.1" stroke-dasharray="5 4"/>
   <circle cx="490.0" cy="176.0" r="3.6" fill="#1a1a1a" stroke="none" stroke-width="1"/>
-  <text x="490.0" y="602.0" font-size="11.5" fill="#6b6b6b" text-anchor="middle" font-style="italic">Based on Figure 3 of Michael Edward Johnson, Principia Qualia (2016).</text>
+  <text x="490.0" y="602.0" font-size="11.5" fill="#6b6b6b" text-anchor="middle" font-style="italic">Based on Figure 7 of Michael Edward Johnson, Principia Qualia (2016).</text>
 </svg>
