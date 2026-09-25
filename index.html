@@ -943,9 +943,9 @@ async function renderNote(note, params){
 
   attachNavSort();
   markCrossLinks();
+  curVids = vids; activeVid = 0;
   decorateArticle(note, hasSync);
   buildToc(hasSync);
-  curVids = vids; activeVid = 0;
   if (hasVideo){
     initPlayer(vids[0].id, hasSync);
     initSideResize();
