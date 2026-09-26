@@ -1,14 +1,12 @@
 # Creating the Screen of Consciousness: Cavity Grids, Beam Splitters, and Path Integrals
 
-*Andrés Gómez Emilsson — Qualia Research Institute*
-
 Hello, everybody. Welcome back. Today we're going to talk about the screen of consciousness: some intuitions for why it's a difficult problem, and some intuition for how I'm approaching it.
 
 I recently spent three hours just obsessively thinking about this. It's normally in the back of my mind. Richard Feynman said that one of the tricks to getting a lot of good theoretical work done is to keep something like ten of your biggest problems always in the back of your mind, so that when you encounter new techniques, new approaches, new arguments or new data, you always check them against those.[^feynman-problems] In my case, the list in the back of my mind is: How does a screen of consciousness arise? How is valence implemented? How do you quantify consonance and dissonance in arbitrary physical systems? Things having to do with multi-agent coordination dynamics, and generalized ethics. How do we define causality in a good, rigorous way?
 
 So when I encounter new data or new arguments, I tend to go through the list of problems I obsess over — the ones that are my life's mission to figure out — and sometimes surprising things emerge. Even though the screen of consciousness is usually a background problem for me, recently it has been more in the forefront, partly because I think I do have some possible ways to tackle it. We'll get into it in a moment.
 
-## Qualia of the Day: Benzodiazepine Withdrawal
+## The qualia of the day: benzodiazepine withdrawal
 
 Before we get there: the qualia of the day is benzodiazepine withdrawal. This is awful to discuss, but very important — one of the early YouTube videos on my channel was on no-nonsense approaches to benzodiazepine withdrawal.[^benzo-video] I want to say a couple of things about it.
 
@@ -244,6 +242,8 @@ So anyway, with that: thank you so much for tuning in. Infinite bliss, everybody
 
 ---
 
+## Footnotes
+
 [^feynman-problems]: The anecdote comes from Gian-Carlo Rota, who reports Feynman's advice as keeping "a dozen of your favorite problems constantly present in your mind," testing each new trick or result against all twelve. Rota, *Indiscrete Thoughts* (Birkhäuser, 1997), in the chapter "Ten Lessons I Wish I Had Been Taught."
 
 [^benzo-video]: YouTube, 6 January 2021: <https://www.youtube.com/watch?v=QBe_0UIBylY>
@@ -252,7 +252,7 @@ So anyway, with that: thank you so much for tuning in. Infinite bliss, everybody
 
 [^cluster-headaches]: Alfredo Parra, "Quantifying the Global Burden of Extreme Pain from Cluster Headaches," EA Forum, 2024: <https://forum.effectivealtruism.org/posts/geh2g2nKb7Kkp26ze/quantifying-the-global-burden-of-extreme-pain-from-cluster>. The analysis uses a long-tail model and Monte Carlo simulation to estimate that cluster headaches may contribute more aggregate suffering than migraine, cancer pain, or major depressive disorder. On the DMT protocol specifically, see "DMT for Cluster Headaches: Aborting and Preventing Extreme Pain with Tryptamines and Other Methods": <https://qualiacomputing.com/2025/06/26/dmt-for-cluster-headaches-aborting-and-preventing-extreme-pain-with-tryptamines-and-other-methods/>
 
-[^clusterfree]: The campaign is ClusterFree, a non-profit initiative incubated by QRI, led by Alfredo Parra with Andrés Gómez Emilsson as co-founder, in collaboration with Clusterbusters. Its first project is one global open letter plus eleven country-specific open letters seeking access to tryptamine treatment for cluster headache patients: <https://clusterfree.org/>
+[^clusterfree]: The campaign is ClusterFree, a non-profit initiative incubated by QRI, led by Alfredo Parra with Andrés Gómez-Emilsson as co-founder, in collaboration with Clusterbusters. Its first project is one global open letter plus eleven country-specific open letters seeking access to tryptamine treatment for cluster headache patients: <https://clusterfree.org/>
 
 [^anti-tolerance]: "Anti-Tolerance Drugs," Qualia Computing, 7 November 2018: <https://qualiacomputing.com/2018/11/07/anti-tolerance-drugs/>. The post proposes a drug class that targets the negative-feedback mechanisms producing tolerance, rather than the primary effect, and surveys candidates including proglumide, agmatine, black seed oil, DXM, ibogaine, and ultra-low-dose naltrexone.
 
@@ -264,4 +264,4 @@ So anyway, with that: thank you so much for tuning in. Infinite bliss, everybody
 
 [^random-walk]: On a closed grid of compartments that loses no light, a random walk spends the same share of time in every interior compartment, so there is no central peak. The peak appears when light can leave through the outer walls: the distribution that decays most slowly, the principal mode of the cavity, is then weighted toward the centre, like the fundamental vibration of a drumhead, whichever compartment the light first enters. For a given light source, where the light is densest still depends mainly on where it enters.
 
-[^cube-orbifold]: A cube has 48 symmetries (rotations and reflections). Identifying all the points they carry onto one another leaves a region one-forty-eighth of the cube, the orbifold written ∗432. Cube Flipper develops this example from the talk in "Path integrals and orbifolds: What is it like to be a cube?", smoothbrains.net, 1 June 2025: <https://smoothbrains.net/posts/2025-06-01-path-integrals-and-orbifolds.html>
+[^cube-orbifold]: A cube has 48 symmetries (rotations and reflections). Identifying all the points they carry onto one another leaves a region one-forty-eighth of the cube, the orbifold written ∗432. Cube Flipper develops this example from the talk in ["Path integrals and orbifolds: What is it like to be a cube?"](https://smoothbrains.net/posts/2025-06-01-path-integrals-and-orbifolds.html) (1 June 2025).
