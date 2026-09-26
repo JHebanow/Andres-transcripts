@@ -342,6 +342,11 @@
 
 <script>
 "use strict";
+/* Site root, fixed at load. A <base> pins relative paths (manifest, transcripts,
+   illustrations) to it, because the address bar is rewritten to t/<slug>.html
+   while reading a transcript — that URL carries the link-preview card. */
+const ROOT = location.href.split('#')[0].split('?')[0].replace(/[^/]*$/, '');
+(function(){ const b = document.createElement('base'); b.href = ROOT; document.head.prepend(b); })();
 /* ================= state ================= */
 const BUST = Date.now();          // cache-buster for illustrations
 let manifest = null, md = null, player = null, pollTimer = null;
@@ -542,6 +547,8 @@ function route(){
   const slug = decodeURIComponent(qi < 0 ? raw : raw.slice(0, qi));
   const params = new URLSearchParams(qi < 0 ? '' : raw.slice(qi + 1));
   const note = manifest.notes.find(n => n.slug === slug);
+  // show a shareable address: t/<slug>.html for transcripts, the site root otherwise
+  try{ history.replaceState(null, '', note ? ROOT + 't/' + note.slug + '.html' + h : ROOT + (h || '')); }catch(e){}
   if (note) renderNote(note, params); else renderList();
   window.scrollTo(0,0);
 }
@@ -557,7 +564,6 @@ function setPageActions(note){
   +     '<button id="dlMdBtn">Markdown (.md)</button>'
   +     '<button id="dlPdfBtn" title="Opens the print dialog — choose “Save as PDF”">PDF</button>'
   +   '</span></span>'
-  + '<button class="btn" id="shareBtn" title="Copy a link to this transcript (shows its video preview when shared)">🔗 Copy link</button>'
   + '<span class="ok" id="copyOk">copied ✓</span>';
   if (note.substack)
     html += '<a class="btn sbtn" href="' + esc(note.substack) + '" target="_blank" rel="noopener" title="Companion write-up on Substack">'
@@ -575,12 +581,6 @@ function setPageActions(note){
 
   $('#copyMd').addEventListener('click', async () => {
     try{ await navigator.clipboard.writeText(curSrc); }
-    catch(e){ alert('Copy failed — your browser blocked clipboard access.'); return; }
-    const ok = $('#copyOk'); ok.style.display = 'inline';
-    setTimeout(() => ok.style.display = 'none', 1500);
-  });
-  $('#shareBtn').addEventListener('click', async () => {
-    try{ await navigator.clipboard.writeText(shareUrl(note.slug)); }
     catch(e){ alert('Copy failed — your browser blocked clipboard access.'); return; }
     const ok = $('#copyOk'); ok.style.display = 'inline';
     setTimeout(() => ok.style.display = 'none', 1500);
@@ -745,9 +745,7 @@ function hideResume(){ $('#resume').classList.remove('show'); }
 
 /* ================= global UI (once) ================= */
 /* shareable link: t/<slug>.html carries the preview card, then forwards to #/<slug> */
-function shareUrl(slug){
-  return location.href.split('#')[0].replace(/[^/]*$/, '') + 't/' + slug + '.html';
-}
+function shareUrl(slug){ return ROOT + 't/' + slug + '.html'; }
 let toastT = null;
 function showToast(txt){
   let el = document.getElementById('toast');
@@ -756,6 +754,13 @@ function showToast(txt){
   clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 900);
 }
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#/"]');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  const target = a.getAttribute('href');
+  if (location.hash === target) route(); else location.hash = target;
+});
 /* interactive figures: mount iframes last (moving an iframe in the DOM reloads it),
    and let each page report its own height so nothing scrolls inside the frame */
 function mountInteractives(){
