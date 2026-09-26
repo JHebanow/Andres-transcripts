@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam-splitter cavity</title>
+<style>
+  :root{ --fg:#1e2226; --muted:#6b7280; --accent:#7c5cbf; --line:#d9d5cc; --panel:#15171a; }
+  *{ box-sizing:border-box }
+  html,body{ margin:0; background:transparent; color:var(--fg);
+    font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap{ display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:14px; padding:4px; }
+  @media (max-width:600px){ .wrap{ grid-template-columns:1fr; } }
+  .stage{ position:relative; }
+  #cv{ display:block; width:100%; aspect-ratio:1/1; background:var(--panel); border-radius:8px;
+    touch-action:none; cursor:crosshair; outline:none; }
+    .hint{ font-size:12px; color:var(--muted); margin:6px 2px 0; }
+  .panel h3{ font-size:13px; margin:0 0 6px; font-weight:600; }
+  #ring{ display:block; width:150px; height:150px; margin:0 auto; background:var(--panel); border-radius:50%; }
+  .cap{ font-size:12px; color:var(--muted); margin:6px 0 12px; text-align:center; }
+  .ctl{ margin:0 0 10px; }
+  .ctl label{ display:flex; flex-wrap:wrap; align-items:flex-end; column-gap:8px; font-size:12px; color:var(--muted); }
+  .ctl label b{ margin-left:auto; color:var(--fg); font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .ctl input[type=range]{ width:100%; accent-color:var(--accent); margin:2px 0 0; }
+  .seg{ display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; margin-bottom:10px; }
+  .seg button{ flex:1; font:inherit; font-size:12px; padding:4px 0; border:0; background:transparent;
+    color:var(--fg); cursor:pointer; }
+  .seg button.on{ background:var(--accent); color:#fff; }
+  button.reset{ font:inherit; font-size:12px; border:1px solid var(--line); background:transparent;
+    border-radius:7px; padding:3px 10px; cursor:pointer; color:var(--fg); }
+  .note{ font-size:11px; color:var(--muted); margin:10px 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stage">
+    <canvas id="cv" role="img"
+      aria-label="A disc packed with circular compartments whose walls are partially reflecting. A light beam enters and splits at every wall."></canvas>
+    <p class="hint" id="hint"></p>
+  </div>
+  <aside class="panel">
+    <h3 id="ringTitle">View from inside</h3>
+    <canvas id="ring" width="300" height="300" aria-label="Brightness of light arriving at the selected compartment from each direction"></canvas>
+    <p class="cap">Light arriving from each direction</p>
+    <div class="seg" role="group" aria-label="What to show">
+      <button id="vBeam" class="on">Beam</button><button id="vMode">Long-run pattern</button>
+    </div>
+    <div class="ctl"><label for="R0"><span>Wall reflectivity</span><b id="R0v"></b></label>
+      <input id="R0" type="range" min="0" max="98" step="1" value="30"></div>
+    <button class="reset" id="reset">Reset</button>
+    <p class="note">Each wall reflects part of the light and lets the rest through. Shading: light per unit area.</p>
+    <p class="note">The long-run pattern is where light settles after bouncing for a long time, wherever it enters: the random walk's long-run distribution between compartments, as in PageRank, with light escaping at the rim. Rays only, no interference.</p>
+  </aside>
+</div>
+<script>
+"use strict";
+/* ---------- geometry: [x, y, r], cluster radius 1, compartment 0 = centre ---------- */
+const CIRCLES = [[0.0,0.0,0.15],[0.240113,0.087648,0.09961],[0.228937,-0.120265,0.102603],[0.059396,-0.261192,0.111861],[-0.152484,-0.206753,0.100902],[-0.256443,-0.025853,0.101743],[0.095635,0.250276,0.111926],[-0.122714,0.226609,0.101702],[-0.335838,0.177888,0.11092],[0.44149,-0.024097,0.124693],[-0.37245,-0.213866,0.113179],[0.320724,0.287937,0.110292],[-0.110244,-0.434222,0.124456],[-0.045445,0.434696,0.114269],[0.274965,-0.333454,0.109498],[-0.475374,-0.006851,0.112011],[-0.265699,0.388253,0.104829],[0.172928,0.452809,0.098854],[0.121854,-0.500106,0.110812],[0.482497,-0.256907,0.105701],[-0.338896,-0.428703,0.098262],[0.531828,0.201121,0.111967],[-0.479454,0.349028,0.106495],[-0.581391,0.17309,0.09084],[0.380745,0.505694,0.109587],[-0.598686,-0.195976,0.107763],[-0.201605,0.586478,0.097501],[0.063401,0.636254,0.108801],[0.340561,-0.545624,0.106581],[-0.0322,-0.64647,0.095685],[0.654014,-0.125101,0.10461],[-0.228747,-0.626992,0.095825],[-0.525546,-0.383727,0.087731],[-0.39974,0.548661,0.098211],[-0.693678,0.010249,0.100962],[0.519304,-0.453638,0.088443],[0.571755,0.412356,0.097009],[0.709758,0.076962,0.099],[0.262093,0.669463,0.086647],[0.154462,-0.709839,0.095441],[-0.430122,-0.611614,0.100136],[0.660889,-0.341919,0.085911],[-0.688234,0.334569,0.096785],[-0.107584,0.768463,0.101336],[0.716204,0.289615,0.086546],[-0.604126,0.504237,0.086586],[-0.720357,-0.373378,0.101354],[-0.330815,0.729117,0.08896],[-0.790381,0.176528,0.085393],[-0.618309,-0.544688,0.092047],[-0.797461,-0.155972,0.088997],[-0.14666,-0.80144,0.090972],[0.348454,-0.756032,0.097975],[0.520451,-0.637484,0.089406],[0.560088,0.603889,0.088879],[0.156,0.827714,0.097876],[0.42856,0.722045,0.081928],[0.026716,-0.839406,0.080512],[-0.334561,-0.788626,0.091365],[0.845246,-0.063638,0.090256],[0.808026,-0.233723,0.077854],[0.681439,-0.54358,0.090968],[-0.544404,0.673382,0.086793],[0.860289,0.189465,0.082927],[-0.891639,0.024234,0.091492],[0.75548,0.466328,0.088479],[0.184756,-0.887356,0.078642],[-0.584989,-0.715393,0.075879],[0.816135,-0.441019,0.072329],[0.33348,0.855246,0.075727],[0.005097,0.924557,0.075429],[-0.234192,0.89691,0.07302],[-0.887369,-0.290045,0.066431],[-0.771505,0.510462,0.07491],[-0.864689,0.332224,0.073685],[0.867764,0.344548,0.066336]];
+const NC = CIRCLES.length;
+const CX = new Float64Array(NC), CY = new Float64Array(NC), CR = new Float64Array(NC), AREA = new Float64Array(NC);
+CIRCLES.forEach((c, k) => { CX[k] = c[0]; CY[k] = c[1]; CR[k] = c[2]; AREA[k] = Math.PI * c[2] * c[2]; });
+const VIEW = 1.55;          // world half-width shown
+const NBINS = 72;
+
+/* ---------- physics (mirrors cavity_trace.py) ---------- */
+function nFromR0(R0){ const R1 = R0 / (2 - R0), q = Math.sqrt(R1); return (1 + q) / (1 - q); }
+let RS = 0, RP = 0;                         // outputs of filmR (avoids allocation)
+function filmR(cosI, n){
+  const sinI = Math.sqrt(Math.max(0, 1 - cosI * cosI)), sinT = sinI / n;
+  const cosT = Math.sqrt(Math.max(0, 1 - sinT * sinT));
+  const rs = (cosI - n * cosT) / (cosI + n * cosT), rp = (n * cosI - cosT) / (n * cosI + cosT);
+  const Rs = rs * rs, Rp = rp * rp;
+  RS = 2 * Rs / (1 + Rs); RP = 2 * Rp / (1 + Rp);
+}
+let HIT_T = 0, HIT_K = -1;
+function nextHitOutside(px, py, dx, dy, skip){
+  let bt = Infinity, bk = -1;
+  for (let k = 0; k < NC; k++){
+    const ox = px - CX[k], oy = py - CY[k];
+    const b = ox * dx + oy * dy, c = ox * ox + oy * oy - CR[k] * CR[k];
+    const disc = b * b - c;
+    if (disc <= 0) continue;
+    const s = Math.sqrt(disc);
+    let t = -b - s;
+    if (!(t > 1e-9 && !(k === skip && t < 1e-7))){
+      t = -b + s;
+      if (!(t > 1e-9 && !(k === skip && t < 1e-7))) continue;
+    }
+    if (t < bt){ bt = t; bk = k; }
+  }
+  HIT_T = bt; HIT_K = bk;
+}
+function containerOf(x, y){
+  for (let k = 0; k < NC; k++){ const ox = x - CX[k], oy = y - CY[k]; if (ox * ox + oy * oy < CR[k] * CR[k]) return k; }
+  return -1;
+}
+
+/* deterministic branching tree: used for drawing (and for the exact cross-check) */
+function traceTree(rays, R0, iMin, maxDepth, maxSegs){
+  const n = nFromR0(R0);
+  const segs = [];                            // flat: x0,y0,x1,y1,I,wallsMet
+  const E = new Float64Array(NC);
+  let escaped = 0, truncated = 0, count = 0;
+  const stack = rays.map(r => [r[0], r[1], r[2], r[3], r[4] / 2, r[4] / 2, 0, -1, containerOf(r[0], r[1])]);
+  while (stack.length){
+    const [x, y, dx, dy, Is, Ip, depth, skip, inside] = stack.pop();
+    const I = Is + Ip;
+    if (I < iMin || depth > maxDepth || count >= maxSegs){ truncated += I; continue; }
+    let t, k;
+    if (inside >= 0){
+      const ox = x - CX[inside], oy = y - CY[inside];
+      const b = ox * dx + oy * dy, c = ox * ox + oy * oy - CR[inside] * CR[inside];
+      t = -b + Math.sqrt(Math.max(0, b * b - c)); k = inside;
+    } else { nextHitOutside(x, y, dx, dy, skip); t = HIT_T; k = HIT_K; }
+    count++;
+    if (k < 0){ escaped += I; segs.push(x, y, x + dx * 6, y + dy * 6, I, depth); continue; }
+    if (inside >= 0) E[inside] += I * t;
+    let hx = x + t * dx, hy = y + t * dy;
+    let nx = hx - CX[k], ny = hy - CY[k]; const L = Math.hypot(nx, ny); nx /= L; ny /= L;
+    hx = CX[k] + CR[k] * nx; hy = CY[k] + CR[k] * ny;
+    segs.push(x, y, hx, hy, I, depth);
+    const dn = dx * nx + dy * ny;
+    filmR(Math.abs(dn), n);
+    let rdx = dx - 2 * dn * nx, rdy = dy - 2 * dn * ny; const L2 = Math.hypot(rdx, rdy); rdx /= L2; rdy /= L2;
+    stack.push([hx, hy, dx, dy, Is * (1 - RS), Ip * (1 - RP), depth + 1, k, dn < 0 ? k : -1]);
+    stack.push([hx, hy, rdx, rdy, Is * RS, Ip * RP, depth + 1, k, dn > 0 ? k : -1]);
+  }
+  return {segs, E, escaped, truncated, count};
+}
+
+function mulberry32(seed){
+  let a = seed >>> 0;
+  return function(){
+    a = (a + 0x6D2B79F5) >>> 0; let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+/* Monte Carlo photons: unbiased brightness and view-from-inside, nothing truncated */
+function monteCarlo(sample, R0, photons, lateAfter, stepBudget, seed){
+  const rnd = mulberry32(seed), n = nFromR0(R0);
+  const E = new Float64Array(NC), view = new Float64Array(NC * NBINS);
+  let escaped = 0, unresolved = 0, launched = 0, steps = 0, captured = 0, allE = 0, totalHits = 0;
+  const S = [0, 0, 0, 0];
+  for (let p = 0; p < photons && steps < stepBudget; p++){
+    launched++;
+    sample(rnd, S);
+    let x = S[0], y = S[1], dx = S[2], dy = S[3];
+    const polS = rnd() < 0.5;
+    let inside = containerOf(x, y), skip = -1, hits = 0, done = false;
+    for (let s = 0; s < 5000; s++){
+      steps++;
+      let t, k;
+      if (inside >= 0){
+        const ox = x - CX[inside], oy = y - CY[inside];
+        const b = ox * dx + oy * dy, c = ox * ox + oy * oy - CR[inside] * CR[inside];
+        t = -b + Math.sqrt(Math.max(0, b * b - c)); k = inside;
+      } else { nextHitOutside(x, y, dx, dy, skip); t = HIT_T; k = HIT_K; }
+      if (k < 0){ escaped++; done = true; break; }
+      if (inside >= 0){
+        allE += t;
+        if (hits >= lateAfter){
+          E[inside] += t; captured += t;
+          let a = Math.atan2(-dy, -dx);
+          view[inside * NBINS + (Math.floor((a + Math.PI) / (2 * Math.PI) * NBINS) % NBINS)] += t;
+        }
+      }
+      x += t * dx; y += t * dy;
+      let nx = x - CX[k], ny = y - CY[k]; const L = Math.hypot(nx, ny); nx /= L; ny /= L;
+      x = CX[k] + CR[k] * nx; y = CY[k] + CR[k] * ny;
+      const dn = dx * nx + dy * ny;
+      filmR(Math.abs(dn), n);
+      hits++; totalHits++;
+      if (rnd() < (polS ? RS : RP)){
+        dx -= 2 * dn * nx; dy -= 2 * dn * ny; const L2 = Math.hypot(dx, dy); dx /= L2; dy /= L2;
+      } else inside = dn < 0 ? k : -1;
+      skip = k;
+    }
+    if (!done) unresolved++;
+  }
+  const w = 1 / launched;
+  for (let k = 0; k < NC; k++) E[k] *= w;
+  for (let i = 0; i < view.length; i++) view[i] *= w;
+  return {E, view, escaped: escaped * w, unresolved: unresolved * w, launched, hitsPerPhoton: totalHits * w,
+          capturedShare: allE > 0 ? captured / allE : 0};
+}
+
+/* Cavity's own mode: Monte Carlo transition matrix between compartments (one step = one wall
+   encounter from inside a compartment; light inside each compartment taken as well mixed),
+   then its leading left eigenvector by power iteration: PageRank with leakage at the rim. */
+function cavityMode(R0, per, seed){
+  const rnd = mulberry32(seed), n = nFromR0(R0);
+  const P = new Float64Array(NC * NC), C = new Float32Array(NC * NC * NBINS);
+  const binOf = (dx, dy) => Math.floor((Math.atan2(-dy, -dx) + Math.PI) / (2 * Math.PI) * NBINS) % NBINS;
+  for (let i = 0; i < NC; i++){
+    for (let p = 0; p < per; p++){
+      let x, y;
+      do { x = CX[i] + CR[i] * (2 * rnd() - 1); y = CY[i] + CR[i] * (2 * rnd() - 1); }
+      while ((x - CX[i]) ** 2 + (y - CY[i]) ** 2 >= CR[i] * CR[i]);
+      const a = 2 * Math.PI * rnd(); let dx = Math.cos(a), dy = Math.sin(a);
+      const polS = rnd() < 0.5;
+      const ox = x - CX[i], oy = y - CY[i], b = ox * dx + oy * dy, c = ox * ox + oy * oy - CR[i] * CR[i];
+      const t = -b + Math.sqrt(Math.max(0, b * b - c));
+      x += t * dx; y += t * dy;
+      let nx = (x - CX[i]) / CR[i], ny = (y - CY[i]) / CR[i], dn = dx * nx + dy * ny;
+      filmR(Math.abs(dn), n);
+      if (rnd() < (polS ? RS : RP)){                      // reflected: the light stays in i
+        dx -= 2 * dn * nx; dy -= 2 * dn * ny;
+        P[i * NC + i] += 1; C[(i * NC + i) * NBINS + binOf(dx, dy)] += 1; continue;
+      }
+      let skip = i;
+      for (let s = 0; s < 10000; s++){                    // cross the gaps until it enters a compartment
+        nextHitOutside(x, y, dx, dy, skip);
+        const k = HIT_K; if (k < 0) break;                // escaped at the rim
+        x += HIT_T * dx; y += HIT_T * dy;
+        nx = (x - CX[k]) / CR[k]; ny = (y - CY[k]) / CR[k]; dn = dx * nx + dy * ny;
+        filmR(Math.abs(dn), n);
+        if (rnd() < (polS ? RS : RP)){ dx -= 2 * dn * nx; dy -= 2 * dn * ny; const L = Math.hypot(dx, dy); dx /= L; dy /= L; skip = k; }
+        else { P[i * NC + k] += 1; C[(i * NC + k) * NBINS + binOf(dx, dy)] += 1; break; }
+      }
+    }
+  }
+  for (let q = 0; q < P.length; q++) P[q] /= per;
+  // leading left eigenvector: x <- x P, renormalised each step
+  let v = new Float64Array(NC).fill(1 / NC), lam = 0;
+  for (let it = 0; it < 4000; it++){
+    const nv = new Float64Array(NC);
+    for (let i = 0; i < NC; i++){ const vi = v[i]; if (!vi) continue; for (let j = 0; j < NC; j++) nv[j] += vi * P[i * NC + j]; }
+    let s = 0; for (let j = 0; j < NC; j++) s += nv[j];
+    lam = s; let diff = 0;
+    for (let j = 0; j < NC; j++){ nv[j] /= s; diff += Math.abs(nv[j] - v[j]); }
+    v = nv; if (diff < 1e-12) break;
+  }
+  // energy in a compartment ~ occupancy x mean chord (pi r / 2); light arriving at it, by direction
+  const E = new Float64Array(NC), view = new Float64Array(NC * NBINS);
+  let tot = 0;
+  for (let k = 0; k < NC; k++){ E[k] = v[k] * Math.PI * CR[k] / 2; tot += E[k]; }
+  for (let k = 0; k < NC; k++) E[k] /= tot;
+  for (let i = 0; i < NC; i++) for (let k = 0; k < NC; k++){
+    const w = v[i] / per, base = (i * NC + k) * NBINS;
+    for (let b2 = 0; b2 < NBINS; b2++) view[k * NBINS + b2] += w * C[base + b2];
+  }
+  return {E, view, occupancy: v, keep: lam, P};
+}
+const modeCache = new Map();
+function modeFor(R0){
+  const key = Math.round(R0 * 100);
+  if (!modeCache.has(key)) modeCache.set(key, cavityMode(R0, 3000, 777));
+  return modeCache.get(key);
+}
+
+/* ---------- state ---------- */
+const DEFAULTS = {view:'beam', mode:'beam', sx:-1.42, sy:0.10, ang:0, R0:0.30, W:0.30, sel:0, rays:true, energy:true};   // beam width fixed
+let st = Object.assign({}, DEFAULTS);
+let dragging = null, frameReq = 0, draft = false, lastTree = null, lastMC = null, lastMode = null;
+
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const ring = document.getElementById('ring'), rctx = ring.getContext('2d');
+const $ = id => document.getElementById(id);
+
+function raysFor(){
+  if (st.mode === 'lamp'){
+    const m = draft ? 72 : 180, out = [];
+    for (let i = 0; i < m; i++){ const a = 2 * Math.PI * (i + 0.5) / m; out.push([st.sx, st.sy, Math.cos(a), Math.sin(a), 1 / m]); }
+    return out;
+  }
+  const dx = Math.cos(st.ang), dy = Math.sin(st.ang), px = -dy, py = dx;
+  if (st.W < 1e-6) return [[st.sx, st.sy, dx, dy, 1]];
+  const m = draft ? 9 : 21, out = [];
+  for (let i = 0; i < m; i++){ const u = i / (m - 1) - 0.5; out.push([st.sx + px * st.W * u, st.sy + py * st.W * u, dx, dy, 1 / m]); }
+  return out;
+}
+function sampler(){
+  if (st.mode === 'lamp'){
+    const x = st.sx, y = st.sy;
+    return (rnd, S) => { const a = 2 * Math.PI * rnd(); S[0] = x; S[1] = y; S[2] = Math.cos(a); S[3] = Math.sin(a); };
+  }
+  const dx = Math.cos(st.ang), dy = Math.sin(st.ang), px = -dy, py = dx, W = st.W, x = st.sx, y = st.sy;
+  return (rnd, S) => { const u = W > 0 ? rnd() - 0.5 : 0; S[0] = x + px * W * u; S[1] = y + py * W * u; S[2] = dx; S[3] = dy; };
+}
+
+function compute(){
+  if (st.view === 'mode'){
+    // while the slider is being dragged, keep showing the last accurate mode; recompute on release
+    if (!draft || !lastMode || modeCache.has(Math.round(st.R0 * 100))) lastMode = modeFor(st.R0);
+    return;
+  }
+  lastTree = traceTree(raysFor(), st.R0, draft ? 1e-3 : 2e-4, 48, draft ? 6000 : 40000);
+  lastMC = monteCarlo(sampler(), st.R0, draft ? 6000 : 40000, 0, draft ? 4e5 : 3e6, 12345);
+}
+const field = () => st.view === 'mode' ? lastMode : lastMC;
+
+/* ---------- drawing ---------- */
+let W = 0, H = 0, DPR = 1, SCALE = 1;
+function resize(){
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  const r = cv.getBoundingClientRect();
+  W = Math.max(200, Math.round(r.width)); H = W;
+  cv.width = W * DPR; cv.height = H * DPR;
+  SCALE = (W / 2) / VIEW;
+}
+const X = x => W / 2 + x * SCALE, Y = y => H / 2 - y * SCALE;
+const wx = px => (px - W / 2) / SCALE, wy = py => (H / 2 - py) / SCALE;
+
+function densities(){
+  const d = new Float64Array(NC);
+  const F = field();
+  for (let k = 0; k < NC; k++) d[k] = F.E[k] / AREA[k];
+  return d;
+}
+function draw(){
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.clearRect(0, 0, W, H);
+  const d = densities();
+  let dmax = 0; for (let k = 0; k < NC; k++) dmax = Math.max(dmax, d[k]);
+  // compartments: brightness fill (log scale over 3 decades), then walls
+  for (let k = 0; k < NC; k++){
+    ctx.beginPath(); ctx.arc(X(CX[k]), Y(CY[k]), CR[k] * SCALE, 0, 2 * Math.PI);
+    if (st.energy && dmax > 0 && d[k] > 0){
+      const v = st.view === 'mode' ? Math.pow(d[k] / dmax, 1.2)            // mode: linear in share
+                                   : Math.max(0, 1 + Math.log10(d[k] / dmax) / 2);  // beam: log, two decades
+      const alpha = st.view === 'mode' ? 0.05 + 0.8 * v : 0.03 + 0.5 * Math.pow(v, 1.6);
+      ctx.fillStyle = `rgba(255,${Math.round(110 + 100 * v)},${Math.round(40 + 70 * v)},${alpha.toFixed(3)})`;
+      ctx.fill();
+    }
+    ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(230,228,223,0.55)'; ctx.stroke();
+  }
+  // rays: additive, bucketed by intensity into 12 alpha levels
+  if (st.view === 'beam' && st.rays && lastTree){
+    const s = lastTree.segs, per = st.mode === 'lamp' ? 1 / (draft ? 72 : 180) : (st.W < 1e-6 ? 1 : 1 / (draft ? 9 : 21));
+    const buckets = Array.from({length: 12}, () => new Path2D());
+    for (let i = 0; i < s.length; i += 6){
+      const rel = s[i + 4] / per;                       // intensity relative to one launched ray
+      const lvl = Math.floor(Math.max(0, 1 + Math.log10(Math.max(rel, 1e-6)) / 3) * 11.999);
+      if (lvl <= 0) continue;
+      const p = buckets[lvl]; p.moveTo(X(s[i]), Y(s[i + 1])); p.lineTo(X(s[i + 2]), Y(s[i + 3]));
+    }
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.lineWidth = 1.1; ctx.lineCap = 'round';
+    buckets.forEach((p, lvl) => { if (!lvl) return; ctx.strokeStyle = `rgba(255,214,140,${(0.04 + 0.66 * Math.pow(lvl / 11, 2)).toFixed(3)})`; ctx.stroke(p); });
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  // selected compartment
+  const k = st.sel;
+  ctx.beginPath(); ctx.arc(X(CX[k]), Y(CY[k]), CR[k] * SCALE + 2, 0, 2 * Math.PI);
+  ctx.lineWidth = 2; ctx.strokeStyle = '#b39ae8'; ctx.stroke();
+  // source handles (only when showing light from a source)
+  if (st.view === 'beam'){
+  ctx.lineWidth = 2; ctx.strokeStyle = '#fff'; ctx.fillStyle = '#ffd68c';
+  ctx.beginPath(); ctx.arc(X(st.sx), Y(st.sy), 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (st.mode === 'beam'){
+    const ax = st.sx + Math.cos(st.ang) * 0.26, ay = st.sy + Math.sin(st.ang) * 0.26;
+    ctx.beginPath(); ctx.moveTo(X(st.sx), Y(st.sy)); ctx.lineTo(X(ax), Y(ay)); ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.beginPath(); ctx.arc(X(ax), Y(ay), 5, 0, 2 * Math.PI); ctx.lineWidth = 2; ctx.strokeStyle = '#fff'; ctx.stroke();
+    if (st.W > 0){
+      const px = -Math.sin(st.ang) * st.W / 2, py = Math.cos(st.ang) * st.W / 2;
+      ctx.beginPath(); ctx.moveTo(X(st.sx - px), Y(st.sy - py)); ctx.lineTo(X(st.sx + px), Y(st.sy + py));
+      ctx.strokeStyle = 'rgba(255,214,140,0.9)'; ctx.lineWidth = 2; ctx.stroke();
+    }
+  }
+  }
+  drawRing(d);
+  stats();
+}
+function drawRing(d){
+  const S = ring.width, c = S / 2, k = st.sel;
+  rctx.setTransform(1, 0, 0, 1, 0, 0); rctx.clearRect(0, 0, S, S);
+  const F = field();
+  let vmax = 0; for (let b = 0; b < NBINS; b++) vmax = Math.max(vmax, F.view[k * NBINS + b]);
+  const r0 = S * 0.20, r1 = S * 0.46;
+  for (let b = 0; b < NBINS; b++){
+    const v = vmax > 0 ? F.view[k * NBINS + b] / vmax : 0;
+    // bin b holds light arriving FROM angle a (math angle; canvas y is flipped)
+    const a0 = -Math.PI + 2 * Math.PI * b / NBINS, a1 = a0 + 2 * Math.PI / NBINS + 0.01;
+    rctx.beginPath(); rctx.arc(c, c, r1, -a0, -a1, true); rctx.arc(c, c, r0, -a1, -a0, false); rctx.closePath();
+    rctx.fillStyle = `rgba(255,${Math.round(150 + 80 * v)},${Math.round(60 + 90 * v)},${(0.04 + 0.96 * Math.pow(v, 0.45)).toFixed(3)})`;
+    rctx.fill();
+  }
+  rctx.beginPath(); rctx.arc(c, c, 5, 0, 2 * Math.PI); rctx.fillStyle = '#b39ae8'; rctx.fill();
+}
+function name(k){ return k === 0 ? 'the centre' : 'compartment #' + (k + 1); }
+function stats(){
+  $('ringTitle').textContent = 'View from inside ' + name(st.sel);
+  $('R0v').textContent = Math.round(st.R0 * 100) + '%';
+  $('vBeam').classList.toggle('on', st.view === 'beam');
+  $('vMode').classList.toggle('on', st.view === 'mode');
+  $('hint').textContent = st.view === 'beam'
+    ? 'Drag the source ● or its aim ○. Click a compartment to see the view from inside it.'
+    : 'Click a compartment to see the view from inside it.';
+}
+function update(isDraft){
+  draft = !!isDraft;
+  if (frameReq) return;
+  frameReq = requestAnimationFrame(() => { frameReq = 0; compute(); draw(); });
+}
+
+/* ---------- interaction ---------- */
+function aimPoint(){ return [st.sx + Math.cos(st.ang) * 0.26, st.sy + Math.sin(st.ang) * 0.26]; }
+function clampView(v){ return Math.max(-VIEW + 0.03, Math.min(VIEW - 0.03, v)); }
+cv.addEventListener('pointerdown', e => {
+  const r = cv.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
+  const near = (x, y) => Math.hypot(X(x) - px, Y(y) - py) < (e.pointerType === 'touch' ? 24 : 14);
+  const [ax, ay] = aimPoint();
+  if (st.view === 'beam' && st.mode === 'beam' && near(ax, ay)) dragging = 'aim';
+  else if (st.view === 'beam' && near(st.sx, st.sy)) dragging = 'src';
+  else {
+    const k = containerOf(wx(px), wy(py));
+    if (k >= 0){ st.sel = k; draw(); }
+    return;
+  }
+  cv.setPointerCapture(e.pointerId);
+  e.preventDefault();
+});
+cv.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const r = cv.getBoundingClientRect(), x = wx(e.clientX - r.left), y = wy(e.clientY - r.top);
+  if (dragging === 'src'){ st.sx = clampView(x); st.sy = clampView(y); }
+  else st.ang = Math.atan2(y - st.sy, x - st.sx);
+  update(true);
+});
+const endDrag = () => { if (dragging){ dragging = null; update(false); } };
+cv.addEventListener('pointerup', endDrag); cv.addEventListener('pointercancel', endDrag);
+$('R0').addEventListener('input', e => { st.R0 = +e.target.value / 100; update(true); });
+$('R0').addEventListener('change', () => update(false));
+$('vBeam').addEventListener('click', () => { st.view = 'beam'; update(false); });
+$('vMode').addEventListener('click', () => { st.view = 'mode'; update(false); });
+$('reset').addEventListener('click', () => {
+  st = Object.assign({}, DEFAULTS);
+  $('R0').value = 30;
+  update(false);
+});
+
+/* ---------- sizing + height reporting to the host page ---------- */
+function reportHeight(){
+  if (window.parent !== window)
+    window.parent.postMessage({type: 'fig-height', height: Math.ceil(document.querySelector('.wrap').getBoundingClientRect().height) + 2}, '*');
+}
+new ResizeObserver(() => { resize(); if (lastMC) draw(); reportHeight(); }).observe(document.body);
+resize(); compute(); draw(); reportHeight();
+window.__cavity = {traceTree, monteCarlo, cavityMode, nFromR0, CIRCLES, get st(){ return st; }, update, draw, compute};   // test hook
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 236" width="720" height="236" font-family="Verdana, 'DejaVu Sans', sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Topological segmentation by twisting a balloon</title>
+<desc id="d">Left: one balloon with a ring around its middle. Middle: twisting shrinks that ring. Right: two balloons that share a single pinch point; any path from a point a in one to a point b in the other must pass through it.</desc>
+<defs><radialGradient id="ballGrad" cx="0.38" cy="0.35" r="0.75"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3dbf3"/></radialGradient></defs>
+<circle cx="86" cy="86" r="66" fill="url(#ballGrad)" stroke="#1e2226" stroke-width="1.6"/>
+<ellipse cx="86" cy="86" rx="66" ry="15" fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+<ellipse cx="86" cy="86" rx="13" ry="66" fill="none" stroke="#7c5cbf" stroke-width="2.2"/>
+<path d="M 318 58.29 A 52 52 0 1 1 318 113.71 A 52 52 0 1 1 318 58.29 Z" fill="url(#ballGrad)" stroke="#1e2226" stroke-width="1.6"/>
+<ellipse cx="318" cy="86" rx="5" ry="27.71" fill="none" stroke="#7c5cbf" stroke-width="2.2"/>
+<circle cx="534" cy="86" r="50" fill="url(#ballGrad)" stroke="#1e2226" stroke-width="1.6"/>
+<circle cx="634" cy="86" r="50" fill="url(#ballGrad)" stroke="#1e2226" stroke-width="1.6"/>
+<path d="M556 66 L584 86 L612 108" fill="none" stroke="#7c5cbf" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 4"/>
+<circle cx="584" cy="86" r="4.2" fill="#7c5cbf" stroke="#ffffff" stroke-width="1.4"/>
+<circle cx="556" cy="66" r="3.4" fill="#1e2226" stroke="none" stroke-width="0"/>
+<circle cx="612" cy="108" r="3.4" fill="#1e2226" stroke="none" stroke-width="0"/>
+<text x="548" y="70" font-size="13" text-anchor="end" fill="#1e2226" font-weight="bold">a</text>
+<text x="620" y="113" font-size="13" text-anchor="start" fill="#1e2226" font-weight="bold">b</text>
+<line x1="584" y1="158" x2="584" y2="101" stroke="#7c5cbf" stroke-width="1.4" stroke-linecap="butt"/>
+<polygon points="584,93 587,101 581,101" fill="#7c5cbf"/>
+<text x="584" y="173" font-size="12" text-anchor="middle" fill="#7c5cbf">pinch point</text>
+<line x1="164" y1="86" x2="202" y2="86" stroke="#6b7280" stroke-width="1.8" stroke-linecap="butt"/>
+<polygon points="212,86 202,90 202,82" fill="#6b7280"/>
+<line x1="426" y1="86" x2="464" y2="86" stroke="#6b7280" stroke-width="1.8" stroke-linecap="butt"/>
+<polygon points="474,86 464,90 464,82" fill="#6b7280"/>
+<text x="86" y="204" font-size="13" text-anchor="middle" fill="#1e2226" font-weight="bold">one balloon</text>
+<text x="86" y="222" font-size="12" text-anchor="middle" fill="#6b7280">a ring around its middle</text>
+<text x="318" y="204" font-size="13" text-anchor="middle" fill="#1e2226" font-weight="bold">twisting</text>
+<text x="318" y="222" font-size="12" text-anchor="middle" fill="#6b7280">the ring shrinks</text>
+<text x="584" y="204" font-size="13" text-anchor="middle" fill="#1e2226" font-weight="bold">two balloons connected at a point</text>
+<text x="584" y="222" font-size="12" text-anchor="middle" fill="#6b7280">every path from a to b crosses it</text>
+</svg>
