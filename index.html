@@ -379,8 +379,7 @@ function initAnalytics(){
 }
 function countView(){
   if (!GC_CODE) return;
-  const h = location.hash.replace(/^#\/?/, '');
-  const rec = {path: '/' + h.split('?')[0], title: document.title};
+  const rec = {path: '/' + (curNote ? curNote.slug : ''), title: document.title};
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count(rec);
   else gcQueue.push(rec);
 }
@@ -531,6 +530,7 @@ async function boot(){
   $('#homeLink').textContent = manifest.site.title;
   md = window.markdownit({html:true, linkify:true, typographer:true}).use(window.markdownitFootnote);
   window.addEventListener('hashchange', route);
+  window.addEventListener('popstate', () => { if (!location.hash) route(); });
   initGlobalUI();
   initAnalytics();
   route();
@@ -542,13 +542,16 @@ function route(){
   teardownPlayer();
   hideResume();
   closeDrawers();
-  const raw = h.replace(/^#\/?/, '');
+  // route from '#/slug' (in-site clicks) or from the clean t/<slug>.html address (back/forward)
+  let raw = '';
+  if (h.startsWith('#/')) raw = h.slice(2);
+  else { const pm = location.pathname.match(/\/t\/([^/]+)\.html$/); if (pm) raw = pm[1]; }
   const qi = raw.indexOf('?');
   const slug = decodeURIComponent(qi < 0 ? raw : raw.slice(0, qi));
   const params = new URLSearchParams(qi < 0 ? '' : raw.slice(qi + 1));
   const note = manifest.notes.find(n => n.slug === slug);
   // show a shareable address: t/<slug>.html for transcripts, the site root otherwise
-  try{ history.replaceState(null, '', note ? ROOT + 't/' + note.slug + '.html' + h : ROOT + (h || '')); }catch(e){}
+  try{ history.replaceState(null, '', note ? ROOT + 't/' + note.slug + '.html' : ROOT); }catch(e){}
   if (note) renderNote(note, params); else renderList();
   window.scrollTo(0,0);
 }
@@ -1196,7 +1199,7 @@ function buildToc(hasSync){
       e.preventDefault();
       if (follow) setFollow(false, true);
       smoothScrollTo(h);
-      history.replaceState(null, '', location.href.split('#')[0] + '#/' + curNote.slug);
+      history.replaceState(null, '', ROOT + 't/' + curNote.slug + '.html');
     });
     toc.appendChild(a);
     tocItems.push({el:a, head:h});
