@@ -1,6 +1,7 @@
 {
   "site": {
-    "title": "Andrés' Transcripts"
+    "title": "Andrés' Transcripts",
+    "url": "https://jhebanow.github.io/Andres-transcripts/"
   },
   "notes": [
     {
@@ -84,7 +85,8 @@
           "id": "TNJrJEA8sEM"
         }
       ],
-      "date": "2022-03-16"
+      "date": "2022-03-16",
+      "desc": "Attention and awareness as oscillatory complements, and what meditation and psychedelics reveal about them."
     },
     {
       "file": "transcripts/Non-Linear Wave Computing.md",
@@ -264,7 +266,8 @@
         }
       ],
       "date": "2022-03-05",
-      "qri": "https://qri.org/blog/nonlinear-wave-computing"
+      "qri": "https://qri.org/blog/nonlinear-wave-computing",
+      "desc": "How non-linear waves could build our world-simulation, from vibes to gestalts to whole realms of experience."
     },
     {
       "file": "transcripts/Projective Intelligence.md",
@@ -323,7 +326,8 @@
           "id": "ZhAiQ69F_nY"
         }
       ],
-      "date": "2024-10-29"
+      "date": "2024-10-29",
+      "desc": "How vision and touch project into each other, and why that projection may be a core engine of intelligence."
     },
     {
       "file": "transcripts/Subagents part 1 and 2.md",
@@ -528,7 +532,8 @@
           "id": "1Ls-aYJ3lnY"
         }
       ],
-      "date": "2025-05-19"
+      "date": "2025-05-19",
+      "desc": "Sub-agents, the self and embodiment across two parts: energy minimization, mereology, self-organization, and the “world of light”."
     },
     {
       "file": "transcripts/The Brain as a Non-Linear Optical Computer.md",
@@ -679,7 +684,8 @@
           "id": "ELp0904CjLw"
         }
       ],
-      "date": "2022-11-26"
+      "date": "2022-11-26",
+      "desc": "Notes from a two-week jhāna retreat, and speculation about the brain as a non-linear optical computer."
     },
     {
       "file": "transcripts/The Self, the Buddha Hive mind and Indra's Net.md",
@@ -787,7 +793,8 @@
         }
       ],
       "substack": "https://andrsgmezemilsson.substack.com/p/the-self-buddhaminds-cross-frequency",
-      "date": "2026-04-16"
+      "date": "2026-04-16",
+      "desc": "Three senses of “self”, what binds an organism into one, and a DMT encounter with a Buddha hive mind."
     },
     {
       "file": "transcripts/Monads That Know Their Own Nature.md",
@@ -870,7 +877,8 @@
           "t": 2377
         }
       ],
-      "date": "2026-01-29"
+      "date": "2026-01-29",
+      "desc": "Why we find consciousness puzzling, and which kinds of systems could come to understand their own nature."
     },
     {
       "file": "transcripts/From Neural Activity to Field Topology.md",
@@ -958,7 +966,8 @@
           "h": "Acknowledgments",
           "t": 4458
         }
-      ]
+      ],
+      "desc": "How coupling kernels could link neural oscillations to field topology, and explain why DMT and 5-MeO-DMT feel so different."
     },
     {
       "file": "transcripts/Psychedelics and the Free Energy Principle.md",
@@ -1042,7 +1051,8 @@
           "h": "Conclusion",
           "t": 3990
         }
-      ]
+      ],
+      "desc": "The free energy principle, the REBUS model of psychedelics, and three new applications of it to consciousness."
     },
     {
       "file": "transcripts/The Emergence of Self-Awareness — Conscious Holography as an Evolved Hardware Accelerator.md",
@@ -1121,7 +1131,8 @@
           "h": "A fork in the road",
           "t": 2180
         }
-      ]
+      ],
+      "desc": "Is consciousness a hardware accelerator? A research program for testing holography between fields of different dimensionalities."
     },
     {
       "file": "transcripts/Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1.md",
@@ -1217,7 +1228,8 @@
           "t": 3153
         }
       ],
-      "navTitle": "Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness"
+      "navTitle": "Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness",
+      "desc": "Joscha Bach and Andrés Gómez-Emilsson debate qualia, color space, synesthesia and the binding problem."
     },
     {
       "file": "transcripts/What Makes DMT Experiences Truly Significant — Energy Models, Non-Linear Optics, and Field Computing.md",
@@ -1297,7 +1309,8 @@
           "t": 2787
         }
       ],
-      "navTitle": "What Makes DMT Experiences Truly Significant?"
+      "navTitle": "What Makes DMT Experiences Truly Significant?",
+      "desc": "Why the geometry and energetics of DMT experiences matter far more than their semantic content."
     },
     {
       "file": "transcripts/A Universal Plot - Consciousness vs Pure Replicators.md",
@@ -1374,7 +1387,8 @@
           "t": 3057
         }
       ],
-      "qualiacomputing": "https://qualiacomputing.com/2017/12/20/the-universal-plot-part-i-consciousness-vs-pure-replicators/"
+      "qualiacomputing": "https://qualiacomputing.com/2017/12/20/the-universal-plot-part-i-consciousness-vs-pure-replicators/",
+      "desc": "The big-picture frame for reality: a four-stage progression from good vs. evil to the struggle between consciousness and pure replicators."
     },
     {
       "file": "transcripts/Creating the Screen of Consciousness.md",
@@ -1462,7 +1476,8 @@
           "h": "Closing",
           "t": 3494
         }
-      ]
+      ],
+      "desc": "Why the “screen” of consciousness is a hard problem, and a model built from cavity grids, beam splitters and path integrals."
     }
   ]
 }

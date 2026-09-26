@@ -184,6 +184,12 @@
   article h3{ font-size:1.1rem; }
   article img{ max-width:100%; height:auto; display:block; margin:1.4rem auto;
         background:var(--img-bg); border-radius:8px; padding:6px; cursor:zoom-in; }
+  /* interactive figures: the markdown keeps a static SVG (Obsidian, print, no-JS);
+     the site mounts an iframe over it and hides the SVG once mounted */
+  article .fig-interactive{ margin:1.4rem 0; background:var(--img-bg); border-radius:8px; padding:6px; }
+  article .fig-interactive img.fig-print{ margin:0 auto; padding:0; background:none; }
+  article .fig-interactive iframe{ display:block; width:100%; height:560px; border:0; }
+  article .fig-interactive.mounted img.fig-print{ display:none; }
   article hr{ border:none; border-top:1px solid var(--border); margin:2rem 0; }
   article blockquote{ border-left:3px solid var(--accent); margin:1rem 0; padding:.1rem 1rem;
         color:var(--muted); }
@@ -251,8 +257,16 @@
     .layout, body.sync .layout{ display:block; margin:0 !important; padding:0; max-width:none; }
     section.chunk{ border:none; margin-left:0; padding-left:0; background:none !important; }
     article img{ padding:0; background:#fff; page-break-inside:avoid; }
+    article .fig-interactive{ background:none; padding:0; }
+    article .fig-interactive iframe{ display:none !important; }
+    article .fig-interactive img.fig-print{ display:block !important; }
     article a, sup.footnote-ref a{ color:#000; }
   }
+
+  #toast{ position:fixed; top:4.2rem; left:50%; transform:translateX(-50%); z-index:300;
+        background:#000c; color:#fff; font-family:system-ui,sans-serif; font-size:.85rem;
+        padding:.35rem .8rem; border-radius:8px; opacity:0; transition:opacity .2s; pointer-events:none; }
+  #toast.show{ opacity:1; }
 
   /* ---------- continue-reading chip ---------- */
   #resume{ position:fixed; left:50%; bottom:1.2rem; transform:translate(-50%, 5rem);
@@ -448,6 +462,17 @@ function attachNavSort(){
 }
 
 function preprocess(src, notesByTitle){
+  // static figure + "<!-- interactive: x.html -->" on the next line -> placeholder;
+  // mountInteractives() adds the iframe after the article has been sectioned
+  src = src.replace(/!\[\[([^\]|]+?\.svg)(?:\|([^\]]*))?\]\][ \t]*\r?\n[ \t]*<!--\s*interactive:\s*([^\s>]+?\.html)\s*-->/gi,
+    (m, target, alias, html) => {
+      const t = target.trim(), h = html.trim();
+      const svg = t.includes('/') ? t : 'illustrations/' + t;
+      const page = h.includes('/') ? h : 'illustrations/' + h;
+      return '<div class="fig-interactive" data-src="' + esc(encodeURI(page)) + '?v=' + BUST
+        + '" data-title="' + esc(alias || t) + '"><img class="fig-print" src="'
+        + esc(encodeURI(svg)) + '?v=' + BUST + '" alt="' + esc(alias || t) + '"></div>';
+    });
   src = src.replace(/!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
     const t = target.trim();
     if (/\.(svg|png|jpe?g|gif|webp)$/i.test(t)){
@@ -532,6 +557,7 @@ function setPageActions(note){
   +     '<button id="dlMdBtn">Markdown (.md)</button>'
   +     '<button id="dlPdfBtn" title="Opens the print dialog — choose “Save as PDF”">PDF</button>'
   +   '</span></span>'
+  + '<button class="btn" id="shareBtn" title="Copy a link to this transcript (shows its video preview when shared)">🔗 Copy link</button>'
   + '<span class="ok" id="copyOk">copied ✓</span>';
   if (note.substack)
     html += '<a class="btn sbtn" href="' + esc(note.substack) + '" target="_blank" rel="noopener" title="Companion write-up on Substack">'
@@ -549,6 +575,12 @@ function setPageActions(note){
 
   $('#copyMd').addEventListener('click', async () => {
     try{ await navigator.clipboard.writeText(curSrc); }
+    catch(e){ alert('Copy failed — your browser blocked clipboard access.'); return; }
+    const ok = $('#copyOk'); ok.style.display = 'inline';
+    setTimeout(() => ok.style.display = 'none', 1500);
+  });
+  $('#shareBtn').addEventListener('click', async () => {
+    try{ await navigator.clipboard.writeText(shareUrl(note.slug)); }
     catch(e){ alert('Copy failed — your browser blocked clipboard access.'); return; }
     const ok = $('#copyOk'); ok.style.display = 'inline';
     setTimeout(() => ok.style.display = 'none', 1500);
@@ -614,6 +646,7 @@ function initSideResize(){
 /* ================= full-text search ================= */
 function stripMd(s){
   return s
+    .replace(/<!--[\s\S]*?-->/g,' ')
     .replace(/!\[\[[^\]]*\]\]/g,' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g,' ')
     .replace(/\[\^[^\]]+\]:?/g,' ')
@@ -711,9 +744,41 @@ function offerResume(note){
 function hideResume(){ $('#resume').classList.remove('show'); }
 
 /* ================= global UI (once) ================= */
+/* shareable link: t/<slug>.html carries the preview card, then forwards to #/<slug> */
+function shareUrl(slug){
+  return location.href.split('#')[0].replace(/[^/]*$/, '') + 't/' + slug + '.html';
+}
+let toastT = null;
+function showToast(txt){
+  let el = document.getElementById('toast');
+  if (!el){ el = document.createElement('div'); el.id = 'toast'; document.body.appendChild(el); }
+  el.textContent = txt; el.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 900);
+}
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
+/* interactive figures: mount iframes last (moving an iframe in the DOM reloads it),
+   and let each page report its own height so nothing scrolls inside the frame */
+function mountInteractives(){
+  document.querySelectorAll('#article .fig-interactive:not(.mounted)').forEach(box => {
+    const f = document.createElement('iframe');
+    f.src = box.dataset.src;
+    f.title = box.dataset.title || 'Interactive figure';
+    f.loading = 'lazy';
+    box.appendChild(f);
+    box.classList.add('mounted');
+  });
+}
+function onFigMessage(e){
+  if (e.origin !== location.origin || !e.data || e.data.type !== 'fig-height') return;
+  const f = Array.from(document.querySelectorAll('#article .fig-interactive iframe'))
+    .find(x => x.contentWindow === e.source);
+  const h = Math.round(+e.data.height);
+  if (f && h > 50 && h < 5000) f.style.height = h + 'px';
+}
+
 function initGlobalUI(){
   window.addEventListener('resize', applySideLayout);
+  window.addEventListener('message', onFigMessage);
 
   // mobile drawers
   $('#drawerL').addEventListener('click', () => {
@@ -785,25 +850,24 @@ function initGlobalUI(){
       player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
       return;
     }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
-      const dir = e.key === 'ArrowRight' ? 1 : -1;
-      const secs = sections.filter(s => s.v === activeVid);
-      if (player && secs.length && player.getCurrentTime){
-        // seek to previous/next chapter in the video that is playing
-        e.preventDefault();
-        let t; try{ t = player.getCurrentTime(); }catch(err){ return; }
-        let idx = -1;
-        secs.forEach((s,i) => { if (s.t <= t + 0.5) idx = i; });
-        const ni = Math.min(secs.length - 1, Math.max(0, idx + dir));
-        player.seekTo(secs[ni].t, true); player.playVideo();
-      } else if (tocItems.length){
-        // scroll to previous/next chapter in the text
-        e.preventDefault();
-        let idx = -1;
-        tocItems.forEach((it,i) => { if (it.head.getBoundingClientRect().top <= 120) idx = i; });
-        const ni = Math.min(tocItems.length - 1, Math.max(0, idx + dir));
-        smoothScrollTo(tocItems[ni].head);
-      }
+    // YouTube-style: arrows skip 5 s, Shift+< / Shift+> change playback speed
+    if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.shiftKey){
+      if (!player || !player.getCurrentTime) return;
+      e.preventDefault();
+      let t; try{ t = player.getCurrentTime(); }catch(err){ return; }
+      player.seekTo(Math.max(0, t + (e.key === 'ArrowRight' ? 5 : -5)), true);
+      showToast((e.key === 'ArrowRight' ? '+5 s' : '−5 s'));
+      return;
+    }
+    if (e.key === '<' || e.key === '>'){
+      if (!player || !player.getPlaybackRate) return;
+      e.preventDefault();
+      const rates = (player.getAvailablePlaybackRates && player.getAvailablePlaybackRates()) || [0.25,0.5,0.75,1,1.25,1.5,1.75,2];
+      const cur = player.getPlaybackRate();
+      let i = rates.indexOf(cur); if (i < 0) i = rates.indexOf(1);
+      i = Math.min(rates.length - 1, Math.max(0, i + (e.key === '>' ? 1 : -1)));
+      player.setPlaybackRate(rates[i]);
+      showToast(rates[i] + '×');
     }
   });
 
@@ -945,6 +1009,7 @@ async function renderNote(note, params){
   markCrossLinks();
   curVids = vids; activeVid = 0;
   decorateArticle(note, hasSync);
+  mountInteractives();
   buildToc(hasSync);
   if (hasVideo){
     initPlayer(vids[0].id, hasSync);
@@ -1077,7 +1142,7 @@ function decorateArticle(note, hasSync){
       : 'Copy link to this section';
     l.addEventListener('click', async e => {
       e.stopPropagation();                       // don't trigger the seek-on-click of stamped headings
-      const base = location.href.split('#')[0] + '#/' + note.slug;
+      const base = shareUrl(note.slug);
       const url = e2 !== undefined
         ? base + '?t=' + Math.floor(e2.t) + (e2.v ? '&v=' + e2.v : '')
         : base + '?h=' + h.id;
