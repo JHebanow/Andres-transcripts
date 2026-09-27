@@ -252,7 +252,8 @@
   @media print{
     :root, :root[data-theme="dark"]{ --bg:#fff; --fg:#000; --muted:#444; --border:#bbb;
         --img-bg:transparent; --accent:#000; --accent-soft:transparent; --hl:transparent; }
-    header.site, nav.files, .sidePanel, #resume, #fnpop, #lightbox, .chip, .lnk{ display:none !important; }
+    header.site, nav.files, .sidePanel, #resume, #fnpop, #lightbox, .chip, .lnk,
+    .drawerTab, #backdrop, #toast{ display:none !important; }
     body{ background:#fff !important; color:#000 !important; font-size:11pt; }
     .layout, body.sync .layout{ display:block; margin:0 !important; padding:0; max-width:none; }
     section.chunk{ border:none; margin-left:0; padding-left:0; background:none !important; }
@@ -283,12 +284,15 @@
         writing-mode:vertical-rl; text-orientation:mixed; cursor:pointer;
         background:var(--card); color:var(--muted); border:1px solid var(--border); }
   .drawerTab.left{ left:0; border-left:none; border-radius:0 8px 8px 0; }
-  .drawerTab.right{ right:0; border-right:none; border-radius:8px 0 0 8px; transform:rotate(180deg); }
+  .drawerTab.right{ right:0; border-right:none; border-radius:8px 0 0 8px; }
   #backdrop{ display:none; position:fixed; inset:0; background:#0007; z-index:210; }
   body.dL #backdrop, body.dR #backdrop{ display:block; }
 
   @media (max-width:1180px){
-    .layout, body.sync .layout{ display:block; max-width:800px; }
+    /* one column; the video panel moves above the article so it can stay pinned at the top */
+    .layout, body.sync .layout{ display:flex; flex-direction:column; max-width:800px; }
+    .layout > article{ order:1; min-width:0; }
+    .sidePanel{ order:0; }
     .sideRsz{ display:none; }
     body.article .drawerTab{ display:block; }
 
@@ -296,23 +300,44 @@
     nav.files{ display:block; position:fixed; left:0; top:0; bottom:0; z-index:220;
         width:min(78vw, 320px); max-height:none; background:var(--bg);
         border-right:1px solid var(--border); padding:1.2rem 1rem;
-        transform:translateX(-105%); transition:transform .28s ease; overflow:auto; }
+        transform:translateX(-105%); transition:transform .28s ease; overflow:auto;
+        overscroll-behavior:contain; }
     body.dL nav.files{ transform:none; }
 
     /* right drawer: chapters */
-    .sidePanel{ position:static; display:block; max-height:none; margin-bottom:1rem; }
-    .sidePanel .toc{ position:fixed; right:0; top:0; bottom:0; z-index:220;
+    .sidePanel{ position:static; display:block; max-height:none; margin-bottom:.6rem; }
+    /* on phones the chapters list is moved to <body> (see placeToc) so the pinned
+       video panel can't trap it underneath the backdrop */
+    body > #toc{ position:fixed; right:0; top:0; bottom:0; z-index:220; display:block;
         width:min(78vw, 320px); background:var(--bg); border-left:1px solid var(--border);
         padding:1.2rem 1rem; transform:translateX(105%); transition:transform .28s ease;
-        overflow:auto; }
-    body.dR .sidePanel .toc{ transform:none; }
+        overflow:auto; overscroll-behavior:contain; font-family:system-ui,sans-serif; }
+    body.dR > #toc{ transform:none; }
 
-    /* split screen: video docked at the top, collapsible */
-    body.sync .videoPanel{ position:sticky; top:3.2rem; z-index:50; background:var(--bg);
-        padding:.4rem 0; }
-    body.sync .videoPanel .frame{ max-height:36vh; max-width:calc(36vh*16/9); margin:0 auto; }
+    /* split screen: video pinned under the header, can be hidden */
+    body.sync .videoPanel{ position:sticky; top:var(--hdrh, 3.2rem); z-index:50;
+        background:var(--bg); padding:.4rem 0; }
+    body.sync .videoPanel .frame{ max-height:30vh; max-width:calc(30vh*16/9); margin:0 auto; }
+    body.sync .videoPanel .controls{ margin:.4rem 0 0; justify-content:center; }
     body.vhide .videoPanel .frame, body.vhide .videoPanel .vtabs{ display:none; }
     #vidToggle{ display:inline-block; }
+  }
+  /* compact header on phones: icons only, labels hidden */
+  @media (max-width:700px){
+    header.site{ padding:.5rem .7rem; gap:.4rem; }
+    header.site img.logo{ height:24px; }
+    header.site a.home{ font-size:.95rem; margin-right:.1rem; }
+    header.site .btn{ padding:.28rem .55rem; }
+    header.site .btn .lbl{ display:none; }
+    header.site .btn img, header.site .btn svg{ margin-right:0 !important; }
+    #searchBox{ width:34px; padding:.28rem .55rem; }
+    #searchBox::placeholder{ color:transparent; }
+    #searchBox{ background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa0a8' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M20 20l-4.6-4.6'/%3E%3C/svg%3E") no-repeat center / 15px; }
+    #searchBox:focus{ background-image:none; }
+    #searchBox:focus{ width:60vw; }
+    #searchBox:focus::placeholder{ color:var(--muted); }
+    header.site .spacer{ display:none; }
+    .searchWrap{ margin-left:auto; }
   }
   #vidToggle{ display:none; }
   .err{ color:#c0392b; font-family:system-ui,sans-serif; }
@@ -391,8 +416,8 @@ function effectiveTheme(){
   return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 function applyThemeBtn(){
-  document.getElementById('themeBtn').textContent =
-    effectiveTheme() === 'dark' ? '☀️ Light' : '🌙 Dark';
+  document.getElementById('themeBtn').innerHTML =
+    effectiveTheme() === 'dark' ? '☀️<span class="lbl"> Light</span>' : '🌙<span class="lbl"> Dark</span>';
 }
 (function initTheme(){
   const saved = localStorage.getItem('theme');
@@ -561,8 +586,8 @@ function setPageActions(note){
   const pa = $('#pageActions');
   if (!note){ pa.innerHTML = ''; return; }
   let html =
-    '<button class="btn" id="copyMd" title="Copy the transcript markdown">⧉ Copy transcript</button>'
-  + '<span class="dlWrap"><button class="btn" id="dlBtn" title="Download this transcript">⬇ Download ▾</button>'
+    '<button class="btn" id="copyMd" title="Copy the transcript markdown">⧉<span class="lbl"> Copy transcript</span></button>'
+  + '<span class="dlWrap"><button class="btn" id="dlBtn" title="Download this transcript">⬇<span class="lbl"> Download ▾</span></button>'
   +   '<span class="dlMenu" id="dlMenu">'
   +     '<button id="dlMdBtn">Markdown (.md)</button>'
   +     '<button id="dlPdfBtn" title="Opens the print dialog — choose “Save as PDF”">PDF</button>'
@@ -571,15 +596,15 @@ function setPageActions(note){
   if (note.substack)
     html += '<a class="btn sbtn" href="' + esc(note.substack) + '" target="_blank" rel="noopener" title="Companion write-up on Substack">'
           + '<svg viewBox="0 0 448 512" width="11" height="11" fill="currentColor" style="vertical-align:-1px;margin-right:.35em">'
-          + '<path d="M0 0h448v62H0zM0 100h448v62H0zM0 200h448v312L224 385 0 512z"/></svg>Substack</a>';
+          + '<path d="M0 0h448v62H0zM0 100h448v62H0zM0 200h448v312L224 385 0 512z"/></svg><span class="lbl">Substack</span></a>';
   if (note.qualiacomputing)
     html += '<a class="btn" href="' + esc(note.qualiacomputing) + '" target="_blank" rel="noopener" title="Companion post on Qualia Computing">'
           + '<img src="illustrations/harmonic%20society%20by%20ALGE.png" alt="" '
-          + 'style="height:13px;width:13px;object-fit:cover;border-radius:3px;vertical-align:-2px;margin-right:.35em">Qualia Computing</a>';
+          + 'style="height:13px;width:13px;object-fit:cover;border-radius:3px;vertical-align:-2px;margin-right:.35em"><span class="lbl">Qualia Computing</span></a>';
   if (note.qri)
     html += '<a class="btn" href="' + esc(note.qri) + '" target="_blank" rel="noopener" title="Companion post on qri.org">'
           + '<img src="illustrations/logo.png" alt="" '
-          + 'style="height:13px;width:13px;object-fit:contain;vertical-align:-2px;margin-right:.35em">QRI</a>';
+          + 'style="height:13px;width:13px;object-fit:contain;vertical-align:-2px;margin-right:.35em"><span class="lbl">QRI</span></a>';
   pa.innerHTML = html;
 
   $('#copyMd').addEventListener('click', async () => {
@@ -757,6 +782,24 @@ function showToast(txt){
   clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 900);
 }
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
+/* phones: chapters drawer lives directly in <body>; desktop: back inside the side panel */
+function placeToc(){
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+  const panel = document.querySelector('.sidePanel');
+  if (matchMedia('(max-width:1180px)').matches){
+    if (toc.parentElement !== document.body) document.body.appendChild(toc);
+  } else if (panel && toc.parentElement !== panel){
+    panel.appendChild(toc);
+  }
+}
+window.addEventListener('resize', placeToc);
+/* header height (it wraps on phones) so the pinned video sits right under it */
+function syncHeaderHeight(){
+  const h = document.querySelector('header.site');
+  if (h) document.documentElement.style.setProperty('--hdrh', h.offsetHeight + 'px');
+}
+window.addEventListener('resize', syncHeaderHeight);
 document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="#/"]');
   if (!a || e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
@@ -925,6 +968,7 @@ function initGlobalUI(){
 
 /* ================= list page ================= */
 function renderList(){
+  document.querySelectorAll('body > #toc').forEach(x => x.remove());
   document.body.classList.remove('sync','hide-nav','article','vhide');
   document.title = manifest.site.title;
   setPageActions(null);
@@ -988,6 +1032,7 @@ async function renderNote(note, params){
   const hasSync = !!(hasVideo && note.timestamps && note.timestamps.length);
   document.body.classList.toggle('sync', hasVideo);   // wide right column whenever there is a video
   document.body.classList.add('article');
+  document.querySelectorAll('body > #toc').forEach(x => x.remove());
   document.body.classList.remove('vhide');
 
   const nav = '<nav class="files">' + navInner(note.slug) + '</nav>';
@@ -1025,10 +1070,18 @@ async function renderNote(note, params){
     document.querySelectorAll('.vtab').forEach(b =>
       b.addEventListener('click', () => switchVid(+b.dataset.i)));
     const vt = $('#vidToggle');
-    if (vt) vt.addEventListener('click', () => {
-      const hidden = document.body.classList.toggle('vhide');
-      vt.textContent = hidden ? 'Show video' : 'Hide video';
-    });
+    if (vt){
+      const setV = hidden => {
+        document.body.classList.toggle('vhide', hidden);
+        vt.textContent = hidden ? 'Show video' : 'Hide video';
+      };
+      setV(localStorage.getItem('vhide') === '1');
+      vt.addEventListener('click', () => {
+        const hidden = !document.body.classList.contains('vhide');
+        setV(hidden);
+        try{ localStorage.setItem('vhide', hidden ? '1' : '0'); }catch(e){}
+      });
+    }
   }
   applySideLayout();
   window.addEventListener('scroll', onScrollToc, {passive:true});
@@ -1055,6 +1108,8 @@ async function renderNote(note, params){
   }
 
   countView();
+  syncHeaderHeight();
+  placeToc();
 
   if (pendingJump && pendingJump.slug === note.slug){
     const p = pendingJump; pendingJump = null;
