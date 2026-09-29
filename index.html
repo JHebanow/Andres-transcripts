@@ -43,13 +43,10 @@
   #themeBtn .ring{ fill:none; stroke:currentColor; stroke-width:1.5px; }
   #themeBtn .half{ fill:currentColor; opacity:.78; transform-origin:12px 12px;
         transition:transform .52s cubic-bezier(.22,1,.36,1), opacity .28s; }
-  #themeBtn .glint{ fill:var(--bg); opacity:.9;
-        transition:transform .52s cubic-bezier(.22,1,.36,1), fill .28s; }
   html.is-dark #themeBtn .eclipse{ transform:rotate(180deg) scale(1.08); }
   html.is-dark #themeBtn .half{ opacity:.92; transform:scaleX(-1); }
-  html.is-dark #themeBtn .glint{ transform:translate(7.2px, 7.8px) scale(.7); }
   @media (prefers-reduced-motion: reduce){
-    #themeBtn .eclipse, #themeBtn .half, #themeBtn .glint, body{ transition:none; }
+    #themeBtn .eclipse, #themeBtn .half, body{ transition:none; }
   }
 
   /* ---------- minimal scrollbars ---------- */
@@ -382,7 +379,6 @@
     <svg class="eclipse" viewBox="0 0 24 24" aria-hidden="true">
       <circle class="ring" cx="12" cy="12" r="8.25"></circle>
       <path class="half" d="M12 3.75a8.25 8.25 0 0 0 0 16.5Z"></path>
-      <circle class="glint" cx="8.4" cy="8.1" r="1.15"></circle>
     </svg></button>
 </header>
 <div id="app"><p class="loading wrap">Loading…</p></div>
