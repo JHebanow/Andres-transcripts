@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laser Chess Demo</title>
+<style>
+:root{
+  --bg:#f6f4ef; --panel:#ffffff; --ink:#1d1f23; --muted:#5d6169; --line:#dcd8cf;
+  --accent:#c2412d; --btn:#eeebe4; --btn-hover:#e4e0d7; --btn-on:#1d1f23; --btn-on-ink:#ffffff;
+  --track:#e6e2da;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --panel:#1d2025; --ink:#ecebe7; --muted:#a4a7ae; --line:#31353c;
+    --accent:#ff7a5c; --btn:#272a30; --btn-hover:#30343b; --btn-on:#ecebe7; --btn-on-ink:#15171b;
+    --track:#2b2f36;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --panel:#1d2025; --ink:#ecebe7; --muted:#a4a7ae; --line:#31353c;
+  --accent:#ff7a5c; --btn:#272a30; --btn-hover:#30343b; --btn-on:#ecebe7; --btn-on-ink:#15171b;
+  --track:#2b2f36;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+h1{font-size:17px;margin:0 0 2px;font-weight:650;letter-spacing:.01em}
+.sub{color:var(--muted);font-size:13.5px;margin:0}
+.head{margin:0 0 12px}
+button{font:inherit;color:var(--ink);background:var(--btn);border:1px solid var(--line);cursor:pointer}
+button:hover{background:var(--btn-hover)}
+button:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.icon{width:32px;height:32px;border-radius:8px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+button.icon svg{width:18px;height:18px}
+.board{position:relative;width:100%;aspect-ratio:10/8;border-radius:8px;overflow:hidden;background:#0e1117}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+canvas.dragging{cursor:grabbing}
+.controls{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;margin-top:10px;font-size:13.5px}
+.bend{display:flex;align-items:center;gap:8px}
+.bend input{width:120px;accent-color:var(--accent);margin:0}
+.tog{display:flex;align-items:center;gap:6px;cursor:pointer}
+.tog input{accent-color:var(--accent);width:15px;height:15px;margin:0}
+.spacer{flex:1}
+.iconbtns{display:flex;gap:6px}
+.meters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.meter{font-size:12px;color:var(--muted)}
+.meter .row{display:flex;justify-content:space-between;gap:6px;white-space:nowrap}
+.meter b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:4px;background:var(--track);border-radius:2px;margin-top:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:2px;transition:width .25s}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:12px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend svg{width:16px;height:16px;flex:none}
+@media (max-width:420px){.wrap{padding:8px}.card{padding:12px}.controls{gap:8px 10px}.bend input{width:72px}.meters{gap:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+  <div class="head">
+    <h1>Laser chess demo</h1>
+  </div>
+
+  <div class="board">
+    <canvas id="cv" tabindex="0" role="img" aria-label="Laser chess board. Drag pieces to move them; select a piece and press R to rotate it or the arrow keys to move it."></canvas>
+  </div>
+
+  <div class="controls">
+    <label class="bend" title="Bend the mirrors">
+      <span>Bend</span>
+      <input id="warp" type="range" min="0" max="100" value="35" aria-label="Bend the mirrors">
+    </label>
+    <label class="tog"><input id="slow" type="checkbox"> Slow light</label>
+    <span class="spacer"></span>
+    <span class="iconbtns">
+    <button id="rotBtn" class="icon" type="button" title="Rotate selected piece (R)" aria-label="Rotate selected piece">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.5 10a5.5 5.5 0 1 1-1.6-3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14.6 2.8v3.9h-3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="8" width="4" height="4" rx=".6" fill="currentColor" transform="rotate(45 10 10)"/></svg>
+    </button>
+    <button id="resetBtn" class="icon" type="button" title="Reset board" aria-label="Reset board">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.6-3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.4 2.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    </span>
+  </div>
+
+  <div class="meters">
+    <div class="meter"><div class="row"><span>King</span><b id="mKing">0%</b></div><div class="bar"><i id="bKing" style="background:#e7b53c"></i></div></div>
+    <div class="meter"><div class="row"><span>Escaped</span><b id="mEsc">0%</b></div><div class="bar"><i id="bEsc" style="background:#ff6a4a"></i></div></div>
+    <div class="meter"><div class="row"><span>Absorbed</span><b id="mAbs">0%</b></div><div class="bar"><i id="bAbs" style="background:#7d8796"></i></div></div>
+  </div>
+
+  <div class="legend" aria-hidden="true">
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><rect x="2" y="2" width="14" height="14" rx="2" fill="#3a2422"/><path d="M11 6l4 3-4 3z" fill="#ff5a3c"/></svg>Laser</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><line x1="3" y1="15" x2="15" y2="3" stroke="#cfd8e3" stroke-width="2.6" stroke-linecap="round"/></svg>Mirror</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><line x1="3" y1="15" x2="15" y2="3" stroke="#8fd0ff" stroke-width="2.2" stroke-dasharray="3 2.2" stroke-linecap="round"/></svg>Beam splitter</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><rect x="3" y="3" width="12" height="12" rx="2" fill="#2c313a" stroke="#56606d"/></svg>Absorber</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><circle cx="9" cy="9" r="7" fill="#e7b53c"/><path d="M5 11.5h8l.6-5-2.4 2-2.2-3-2.2 3-2.4-2z" fill="#5a3f08"/></svg>King (the self)</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><line x1="9" y1="5" x2="9" y2="13" stroke="#f1f1f1" stroke-width="2" stroke-linecap="round"/></svg>Thin spear</span>
+    <span><svg viewBox="0 0 18 18"><rect width="18" height="18" rx="3" fill="#0e1117"/><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2ff" stop-opacity=".05"/><stop offset="1" stop-color="#7fb2ff" stop-opacity=".6"/></linearGradient></defs><rect x="2" y="2" width="14" height="14" rx="2" fill="url(#lg)" stroke="#6f9fe8" stroke-opacity=".7"/></svg>Graded-index block</span>
+  </div>
+
+</div>
+</div>
+
+<script>
+(function(){
+"use strict";
+const COLS=10, ROWS=8;
+const NRAYS=81, BEAM_W=0.42;
+const EPS=1e-6, MAX_SEGS=60000, MAX_DEPTH=80, MIN_I=2e-6;
+const DELTA=0.07, DIFF=0.35, DIFF_K=31, DIFF_A=55*Math.PI/180, DIFF_VIS=5;
+const GRIN_G=1.15, GRIN_H=0.46;
+const DIRS=[[1,0],[0,1],[-1,0],[0,-1]];
+
+// ---------- scenes ----------
+const BASE=[
+  {type:"laser",c:0,r:1,rot:0},
+  {type:"mirror",c:6,r:1,rot:1},
+  {type:"splitter",c:6,r:4,rot:0},
+  {type:"mirror",c:2,r:4,rot:1},
+  {type:"block",c:2,r:0,rot:0},
+  {type:"mirror",c:6,r:6,rot:0},
+  {type:"block",c:3,r:6,rot:0},
+  {type:"king",c:8,r:6,rot:0},
+  {type:"block",c:9,r:3,rot:0}
+];
+const SCENES=[
+  {name:"By design", warp:0, extra:[]},
+  {name:"Bent mirrors", warp:0.8, extra:[]},
+  {name:"Edge diffraction", warp:0, extra:[{type:"spear",c:4,r:4,rot:0}]},
+  {name:"Graded index", warp:0, extra:[{type:"grin",c:4,r:1,rot:1}]},
+  {name:"Generalized", warp:0.35, extra:[{type:"spear",c:5,r:4,rot:0},{type:"grin",c:3,r:1,rot:1}]}
+];
+
+let pieces=[], warp=0, sceneIdx=4, selected=null, noKing=false;
+let segs=[], stats=null, maxS=1, front=Infinity, animStart=0, animDur=450, animating=false;
+
+function loadScene(i){
+  sceneIdx=i;
+  const sc=SCENES[i];
+  pieces=BASE.concat(sc.extra).map((p,k)=>({...p,seed:k*7.31+1.7}));
+  warp=sc.warp;
+  warpIn.value=Math.round(warp*100);
+  selected=null;
+  retrace(true);
+}
+
+// ---------- math ----------
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]], sub=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+const mul=(a,s)=>[a[0]*s,a[1]*s], dot=(a,b)=>a[0]*b[0]+a[1]*b[1];
+const cross=(a,b)=>a[0]*b[1]-a[1]*b[0];
+const norm=a=>{const l=Math.hypot(a[0],a[1]);return [a[0]/l,a[1]/l];};
+const rot=(v,a)=>[v[0]*Math.cos(a)-v[1]*Math.sin(a),v[0]*Math.sin(a)+v[1]*Math.cos(a)];
+function rnd(seed){const x=Math.sin(seed*127.1+311.7)*43758.5453;return (x-Math.floor(x))*2-1;}
+
+function mirrorGeom(p){
+  const cx=p.c+0.5, cy=p.r+0.5;
+  const base=(p.rot%2===0)?-Math.PI/4:Math.PI/4;          // '/' or '\'
+  const scale=p.type==="splitter"?0.7:1;
+  const tilt=warp*scale*0.32*rnd(p.seed);
+  const a=base+tilt, u=[Math.cos(a),Math.sin(a)], n=[-u[1],u[0]];
+  const k=warp*scale*1.15*(0.55+0.45*Math.abs(rnd(p.seed+7)))*(p.rot<2?1:-1);
+  return {c:[cx,cy],u,n,L:0.62,k};
+}
+function hitMirror(g,p,d){
+  if(Math.abs(g.k)<1e-4){
+    const den=cross(d,g.u); if(Math.abs(den)<1e-12) return null;
+    const w=sub(g.c,p), t=cross(w,g.u)/den, s=cross(w,d)/den;
+    if(t>EPS && Math.abs(s)<=g.L) return {t,n:g.n};
+    return null;
+  }
+  const R=1/Math.abs(g.k), sg=Math.sign(g.k);
+  const C=add(g.c,mul(g.n,sg*R));
+  const f=sub(p,C), b=dot(f,d), cc=dot(f,f)-R*R, disc=b*b-cc;
+  if(disc<0) return null;
+  const sq=Math.sqrt(disc); let best=null;
+  for(const t of [-b-sq,-b+sq]){
+    if(t<=EPS) continue;
+    const x=add(p,mul(d,t));
+    if(Math.abs(dot(sub(x,g.c),g.u))>g.L) continue;
+    if(dot(sub(x,C),mul(g.n,-sg))<=0) continue;
+    if(!best||t<best.t) best={t,n:mul(sub(x,C),1/R)};
+  }
+  return best;
+}
+function arcPoints(g,m){
+  const pts=[];
+  for(let i=0;i<=m;i++){
+    const s=-g.L+2*g.L*i/m;
+    if(Math.abs(g.k)<1e-4){pts.push(add(g.c,mul(g.u,s)));continue;}
+    const R=1/Math.abs(g.k), sg=Math.sign(g.k);
+    const h=R-Math.sqrt(Math.max(0,R*R-s*s));           // sagitta
+    pts.push(add(add(g.c,mul(g.u,s)),mul(g.n,sg*h)));
+  }
+  return pts;
+}
+function hitBox(p,d,cx,cy,h){
+  let tmin=-Infinity,tmax=Infinity;
+  const o=[p[0]-cx,p[1]-cy];
+  for(let a=0;a<2;a++){
+    if(Math.abs(d[a])<1e-12){ if(Math.abs(o[a])>h) return null; }
+    else{
+      let t1=(-h-o[a])/d[a], t2=(h-o[a])/d[a];
+      if(t1>t2){const q=t1;t1=t2;t2=q;}
+      tmin=Math.max(tmin,t1); tmax=Math.min(tmax,t2);
+      if(tmin>tmax) return null;
+    }
+  }
+  return tmin>EPS?tmin:null;
+}
+function hitCircle(p,d,c,r){
+  const f=sub(p,c), b=dot(f,d), cc=dot(f,f)-r*r, disc=b*b-cc;
+  if(disc<0) return null;
+  const t=-b-Math.sqrt(disc);
+  return t>EPS?t:null;
+}
+function spearGeom(p){
+  const u=p.rot%2===0?[0,1]:[1,0];
+  const c=[p.c+0.5,p.r+0.5], L=0.12;
+  return {c,u,n:[-u[1],u[0]],L,tips:[add(c,mul(u,-L)),add(c,mul(u,L))]};
+}
+function edgeT(p,d){
+  let t=Infinity;
+  if(d[0]>1e-12) t=Math.min(t,(COLS-p[0])/d[0]); else if(d[0]<-1e-12) t=Math.min(t,-p[0]/d[0]);
+  if(d[1]>1e-12) t=Math.min(t,(ROWS-p[1])/d[1]); else if(d[1]<-1e-12) t=Math.min(t,-p[1]/d[1]);
+  return Math.max(t,0);
+}
+function active(){return pieces.filter(p=>!(noKing&&p.type==="king"));}
+
+// ---------- tracing ----------
+function trace(){
+  const P=active();
+  const geoms=P.map(p=>(p.type==="mirror"||p.type==="splitter")?mirrorGeom(p):p.type==="spear"?spearGeom(p):null);
+  const spears=P.map((p,i)=>p.type==="spear"?geoms[i]:null).filter(Boolean);
+  const out=[]; const st={king:0,escaped:0,absorbed:0,lost:0,emitted:0};
+  const stack=[];
+  P.forEach(p=>{
+    if(p.type!=="laser") return;
+    const d=DIRS[p.rot], perp=[-d[1],d[0]];
+    const o=add([p.c+0.5,p.r+0.5],mul(d,0.40));
+    for(let i=0;i<NRAYS;i++){
+      const off=(i/(NRAYS-1)-0.5)*BEAM_W;
+      stack.push({p:add(o,mul(perp,off)),d:[...d],I:1/NRAYS,s:0,depth:0,diff:false,vis:1});
+      st.emitted+=1/NRAYS;
+    }
+  });
+  while(stack.length){
+    const ray=stack.pop();
+    if(ray.I<MIN_I||ray.depth>MAX_DEPTH||out.length>MAX_SEGS){st.lost+=ray.I;continue;}
+    const p=ray.p, d=ray.d;
+    let best={t:edgeT(p,d),kind:"edge"};
+    for(let i=0;i<P.length;i++){
+      const q=P[i], cx=q.c+0.5, cy=q.r+0.5; let h=null;
+      if(q.type==="mirror"||q.type==="splitter"){const r=hitMirror(geoms[i],p,d); if(r) h={t:r.t,n:r.n,kind:q.type};}
+      else if(q.type==="block"){const t=hitBox(p,d,cx,cy,0.36); if(t!==null) h={t,kind:"absorb"};}
+      else if(q.type==="laser"){const t=hitBox(p,d,cx,cy,0.34); if(t!==null) h={t,kind:"absorb"};}
+      else if(q.type==="king"){const t=hitCircle(p,d,[cx,cy],0.33); if(t!==null) h={t,kind:"king"};}
+      else if(q.type==="grin"){const t=hitBox(p,d,cx,cy,GRIN_H); if(t!==null) h={t,kind:"grin",piece:q};}
+      else if(q.type==="spear"){
+        const g=geoms[i], den=cross(d,g.u);
+        if(Math.abs(den)>1e-12){const w=sub(g.c,p), t=cross(w,g.u)/den, s=cross(w,d)/den;
+          if(t>EPS&&Math.abs(s)<=g.L) h={t,kind:"absorb"};}
+      }
+      if(h&&h.t<best.t) best=h;
+    }
+    // edge diffraction at spear tips
+    if(!ray.diff){
+      for(const g of spears){
+        for(const E of g.tips){
+          const tau=dot(sub(E,p),d);
+          if(tau<=EPS||tau>best.t+1e-9) continue;
+          const dist=Math.hypot(...sub(add(p,mul(d,tau)),E));
+          if(dist>=DELTA) continue;
+          const frac=DIFF*(1-dist/DELTA), Id=ray.I*frac;
+          ray.I-=Id;
+          let wsum=0; const ws=[];
+          for(let j=0;j<DIFF_K;j++){const a=-DIFF_A+2*DIFF_A*j/(DIFF_K-1); const w=Math.exp(-((a/0.55)**2)); ws.push([a,w]); wsum+=w;}
+          for(const [a,w] of ws){
+            const dd=rot(d,a);
+            stack.push({p:add(E,mul(dd,0.015)),d:dd,I:Id*w/wsum,s:ray.s+tau,depth:ray.depth+1,diff:true,vis:DIFF_VIS});
+          }
+        }
+      }
+    }
+    const q=add(p,mul(d,best.t));
+    out.push({a:p,b:q,I:ray.I,v:ray.vis,s0:ray.s,s1:ray.s+best.t});
+    const s1=ray.s+best.t, nd=ray.depth+1;
+    if(best.kind==="edge") st.escaped+=ray.I;
+    else if(best.kind==="absorb") st.absorbed+=ray.I;
+    else if(best.kind==="king") st.king+=ray.I;
+    else if(best.kind==="mirror"||best.kind==="splitter"){
+      const n=best.n, r=norm(sub(d,mul(n,2*dot(d,n))));
+      if(best.kind==="mirror") stack.push({...ray,p:add(q,mul(r,1e-5)),d:r,s:s1,depth:nd});
+      else{
+        stack.push({...ray,p:add(q,mul(r,1e-5)),d:r,I:ray.I/2,s:s1,depth:nd});
+        stack.push({...ray,p:add(q,mul(d,1e-5)),d:[...d],I:ray.I/2,s:s1,depth:nd});
+      }
+    } else if(best.kind==="grin"){
+      const g0=best.piece, gc=[g0.c+0.5,g0.r+0.5], gv=mul(DIRS[g0.rot],GRIN_G);
+      let x=add(q,mul(d,1e-4)), dd=[...d], s=s1, last=x; const ds=0.01;
+      for(let i=0;i<4000;i++){
+        dd=norm(add(dd,mul(gv,ds)));
+        x=add(x,mul(dd,ds)); s+=ds;
+        const outside=Math.abs(x[0]-gc[0])>GRIN_H||Math.abs(x[1]-gc[1])>GRIN_H;
+        if(i%3===2||outside){out.push({a:last,b:x,I:ray.I,v:ray.vis,s0:s-dot(sub(x,last),dd),s1:s}); last=x;}
+        if(outside) break;
+      }
+      stack.push({...ray,p:x,d:dd,s,depth:nd});
+    }
+  }
+  return {segs:out,stats:st};
+}
+
+// ---------- canvas ----------
+const cv=document.getElementById("cv"), ctx=cv.getContext("2d");
+const light=document.createElement("canvas"), lctx=light.getContext("2d");
+let W=0,H=0,dpr=1,cell=1;
+function resize(){
+  dpr=Math.min(window.devicePixelRatio||1,2);
+  const r=cv.getBoundingClientRect();
+  W=Math.round(r.width*dpr); H=Math.round(r.height*dpr);
+  cv.width=W; cv.height=H; light.width=W; light.height=H;
+  cell=W/COLS;
+  draw(); postHeight();
+}
+const X=v=>v*cell;
+
+function drawBoard(){
+  ctx.fillStyle="#0e1117"; ctx.fillRect(0,0,W,H);
+  for(let c=0;c<COLS;c++)for(let r=0;r<ROWS;r++){
+    if((c+r)%2){ctx.fillStyle="#121721";ctx.fillRect(c*cell,r*cell,cell,cell);}
+  }
+  ctx.strokeStyle="rgba(255,255,255,0.05)"; ctx.lineWidth=1;
+  ctx.beginPath();
+  for(let c=1;c<COLS;c++){ctx.moveTo(Math.round(c*cell)+.5,0);ctx.lineTo(Math.round(c*cell)+.5,H);}
+  for(let r=1;r<ROWS;r++){ctx.moveTo(0,Math.round(r*cell)+.5);ctx.lineTo(W,Math.round(r*cell)+.5);}
+  ctx.stroke();
+}
+function drawLight(){
+  lctx.setTransform(1,0,0,1,0,0);
+  lctx.clearRect(0,0,W,H);
+  lctx.globalCompositeOperation="lighter";
+  lctx.lineCap="round";
+  lctx.lineWidth=Math.max(1,1.1*dpr);
+  const overlap=NRAYS*lctx.lineWidth/(BEAM_W*cell);       // rays covering each pixel of the beam
+  const k=1.0/Math.max(overlap,0.5);
+  for(const s of segs){
+    if(s.s0>=front) continue;
+    let b=s.b;
+    if(s.s1>front){const f=(front-s.s0)/(s.s1-s.s0); b=add(s.a,mul(sub(s.b,s.a),f));}
+    const a=Math.min(1,s.I*NRAYS*k*s.v);
+    if(a<0.002) continue;
+    lctx.strokeStyle=`rgba(255,72,46,${a})`;
+    lctx.beginPath(); lctx.moveTo(X(s.a[0]),X(s.a[1])); lctx.lineTo(X(b[0]),X(b[1])); lctx.stroke();
+  }
+  ctx.save();
+  ctx.globalCompositeOperation="lighter";
+  try{ctx.filter=`blur(${Math.round(5*dpr)}px)`; ctx.globalAlpha=0.7; ctx.drawImage(light,0,0);}catch(e){}
+  ctx.filter="none"; ctx.globalAlpha=1; ctx.drawImage(light,0,0);
+  ctx.restore();
+}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function drawPiece(p,ox,oy,ghost){
+  const cx=X(ox+0.5), cy=X(oy+0.5);
+  ctx.save(); if(ghost) ctx.globalAlpha=0.75;
+  if(p.type==="mirror"||p.type==="splitter"){
+    const g=mirrorGeom(p); const shift=sub([ox+0.5,oy+0.5],g.c);
+    const pts=arcPoints(g,24).map(v=>add(v,shift));
+    ctx.lineCap="round";
+    const path=()=>{ctx.beginPath();pts.forEach((v,i)=>i?ctx.lineTo(X(v[0]),X(v[1])):ctx.moveTo(X(v[0]),X(v[1])));};
+    if(p.type==="mirror"){
+      ctx.strokeStyle="rgba(0,0,0,0.55)"; ctx.lineWidth=Math.max(4,cell*0.085); path(); ctx.stroke();
+      ctx.strokeStyle="#cfd8e3"; ctx.lineWidth=Math.max(2.4,cell*0.05); path(); ctx.stroke();
+    }else{
+      ctx.strokeStyle="rgba(0,0,0,0.5)"; ctx.lineWidth=Math.max(3.5,cell*0.07); path(); ctx.stroke();
+      ctx.strokeStyle="#8fd0ff"; ctx.lineWidth=Math.max(2,cell*0.04); ctx.setLineDash([cell*0.08,cell*0.06]); path(); ctx.stroke(); ctx.setLineDash([]);
+    }
+  }else if(p.type==="block"){
+    const h=0.36*cell; rr(cx-h,cy-h,2*h,2*h,cell*0.06); ctx.fillStyle="#2c313a"; ctx.fill();
+    ctx.strokeStyle="#56606d"; ctx.lineWidth=Math.max(1,cell*0.02); ctx.stroke();
+  }else if(p.type==="laser"){
+    const h=0.34*cell; rr(cx-h,cy-h,2*h,2*h,cell*0.06); ctx.fillStyle="#3a2422"; ctx.fill();
+    ctx.strokeStyle="#6b3a33"; ctx.lineWidth=Math.max(1,cell*0.02); ctx.stroke();
+    const d=DIRS[p.rot], pp=[-d[1],d[0]];
+    ctx.beginPath();
+    ctx.moveTo(cx+X(d[0]*0.30),cy+X(d[1]*0.30));
+    ctx.lineTo(cx+X(-d[0]*0.05+pp[0]*0.2),cy+X(-d[1]*0.05+pp[1]*0.2));
+    ctx.lineTo(cx+X(-d[0]*0.05-pp[0]*0.2),cy+X(-d[1]*0.05-pp[1]*0.2));
+    ctx.closePath(); ctx.fillStyle="#ff5a3c"; ctx.fill();
+  }else if(p.type==="king"){
+    const hitNow=stats&&stats.king>1e-4&&!ghost;
+    if(hitNow){const gr=ctx.createRadialGradient(cx,cy,0,cx,cy,cell*0.6);gr.addColorStop(0,"rgba(255,80,50,0.55)");gr.addColorStop(1,"rgba(255,80,50,0)");ctx.fillStyle=gr;ctx.fillRect(cx-cell*0.6,cy-cell*0.6,cell*1.2,cell*1.2);}
+    ctx.beginPath(); ctx.arc(cx,cy,0.33*cell,0,Math.PI*2); ctx.fillStyle="#e7b53c"; ctx.fill();
+    ctx.strokeStyle="#8a6416"; ctx.lineWidth=Math.max(1,cell*0.02); ctx.stroke();
+    const s=cell/18;
+    ctx.beginPath(); ctx.moveTo(cx-4*s,cy+2.5*s); ctx.lineTo(cx+4*s,cy+2.5*s); ctx.lineTo(cx+4.6*s,cy-2.5*s);
+    ctx.lineTo(cx+2.2*s,cy-0.5*s); ctx.lineTo(cx,cy-3.5*s); ctx.lineTo(cx-2.2*s,cy-0.5*s); ctx.lineTo(cx-4.6*s,cy-2.5*s); ctx.closePath();
+    ctx.fillStyle="#5a3f08"; ctx.fill();
+  }else if(p.type==="spear"){
+    const g=spearGeom(p), sh=sub([ox+0.5,oy+0.5],g.c), a=add(g.tips[0],sh), b=add(g.tips[1],sh);
+    ctx.lineCap="round"; ctx.strokeStyle="#f1f1f1"; ctx.lineWidth=Math.max(2,cell*0.035);
+    ctx.beginPath(); ctx.moveTo(X(a[0]),X(a[1])); ctx.lineTo(X(b[0]),X(b[1])); ctx.stroke();
+  }else if(p.type==="grin"){
+    const h=GRIN_H*cell, d=DIRS[p.rot];
+    const gr=ctx.createLinearGradient(cx-d[0]*h,cy-d[1]*h,cx+d[0]*h,cy+d[1]*h);
+    gr.addColorStop(0,"rgba(127,178,255,0.04)"); gr.addColorStop(1,"rgba(127,178,255,0.45)");
+    rr(cx-h,cy-h,2*h,2*h,cell*0.05); ctx.fillStyle=gr; ctx.fill();
+    ctx.strokeStyle="rgba(111,159,232,0.7)"; ctx.lineWidth=Math.max(1,cell*0.02); ctx.stroke();
+    const tip=[cx+d[0]*h*0.75,cy+d[1]*h*0.75], pp=[-d[1],d[0]], hw=cell*0.07;
+    ctx.beginPath(); ctx.moveTo(tip[0],tip[1]);
+    ctx.lineTo(tip[0]-d[0]*hw*1.6+pp[0]*hw,tip[1]-d[1]*hw*1.6+pp[1]*hw);
+    ctx.lineTo(tip[0]-d[0]*hw*1.6-pp[0]*hw,tip[1]-d[1]*hw*1.6-pp[1]*hw);
+    ctx.closePath(); ctx.fillStyle="rgba(170,205,255,0.85)"; ctx.fill();
+  }
+  ctx.restore();
+}
+function drawSelection(p){
+  const x=X(p.c), y=X(p.r), m=cell*0.04;
+  ctx.save(); ctx.strokeStyle="#ffcf6b"; ctx.lineWidth=Math.max(1.5,cell*0.025);
+  ctx.setLineDash([cell*0.1,cell*0.07]); ctx.strokeRect(x+m,y+m,cell-2*m,cell-2*m); ctx.restore();
+}
+function draw(){
+  if(!W) return;
+  drawBoard();
+  drawLight();
+  for(const p of active()){
+    if(drag&&drag.moved&&p===drag.p) continue;
+    drawPiece(p,p.c,p.r,false);
+  }
+  if(selected&&!(drag&&drag.moved)&&active().includes(selected)) drawSelection(selected);
+  if(drag&&drag.moved){
+    const tc=Math.floor(drag.x), tr=Math.floor(drag.y);
+    if(validTarget(drag.p,tc,tr)){ctx.save();ctx.fillStyle="rgba(255,207,107,0.12)";ctx.fillRect(X(tc),X(tr),cell,cell);ctx.restore();}
+    drawPiece(drag.p,drag.x-0.5,drag.y-0.5,true);
+  }
+}
+
+// ---------- state updates ----------
+function setMeter(id,bar,v){document.getElementById(id).textContent=(v*100).toFixed(v>0&&v<0.01?1:0)+"%";document.getElementById(bar).style.width=(v*100).toFixed(1)+"%";}
+function retrace(animate){
+  const r=trace(); segs=r.segs; stats=r.stats;
+  maxS=segs.reduce((m,s)=>Math.max(m,s.s1),0.001);
+  const E=stats.emitted||1;
+  setMeter("mKing","bKing",stats.king/E); setMeter("mEsc","bEsc",stats.escaped/E); setMeter("mAbs","bAbs",(stats.absorbed+stats.lost)/E);
+  if(animate) fire(); else {front=Infinity; draw();}
+}
+function fire(){
+  animDur=slowIn.checked?6000:450; front=0; animStart=performance.now();
+  if(!animating){animating=true; requestAnimationFrame(tick);}
+}
+function tick(now){
+  const f=Math.min(1,(now-animStart)/animDur);
+  front=f>=1?Infinity:f*maxS;
+  draw();
+  if(f<1) requestAnimationFrame(tick); else animating=false;
+}
+function pieceAt(c,r){return active().find(p=>p.c===c&&p.r===r)||null;}
+function validTarget(p,c,r){return c>=0&&r>=0&&c<COLS&&r<ROWS&&!pieces.some(q=>q!==p&&q.c===c&&q.r===r);}
+function rotateSel(){if(!selected) return; selected.rot=(selected.rot+1)%4; retrace(true);}
+function moveSel(dc,dr){if(!selected) return; const c=selected.c+dc, r=selected.r+dr; if(validTarget(selected,c,r)){selected.c=c;selected.r=r;retrace(true);}}
+
+// ---------- input ----------
+let drag=null;
+function evPos(e){const r=cv.getBoundingClientRect();return [(e.clientX-r.left)/r.width*COLS,(e.clientY-r.top)/r.height*ROWS];}
+cv.addEventListener("pointerdown",e=>{
+  const [x,y]=evPos(e), p=pieceAt(Math.floor(x),Math.floor(y));
+  if(!p){selected=null;draw();return;}
+  drag={p,x,y,x0:x,y0:y,moved:false,wasSel:selected===p};
+  selected=p; cv.setPointerCapture(e.pointerId); cv.classList.add("dragging"); draw();
+});
+cv.addEventListener("pointermove",e=>{
+  if(!drag) return;
+  const [x,y]=evPos(e); drag.x=x; drag.y=y;
+  if(!drag.moved&&Math.hypot(x-drag.x0,y-drag.y0)>0.18) drag.moved=true;
+  if(drag.moved) draw();
+});
+function endDrag(e,cancel){
+  if(!drag) return;
+  const d=drag; drag=null; cv.classList.remove("dragging");
+  if(d.moved&&!cancel){
+    const c=Math.floor(d.x), r=Math.floor(d.y);
+    if(validTarget(d.p,c,r)&&(c!==d.p.c||r!==d.p.r)){d.p.c=c;d.p.r=r;retrace(true);return;}
+  }else if(!d.moved&&d.wasSel&&!cancel){rotateSel();return;}
+  draw();
+}
+cv.addEventListener("pointerup",e=>endDrag(e,false));
+cv.addEventListener("pointercancel",e=>endDrag(e,true));
+cv.addEventListener("keydown",e=>{
+  const k=e.key;
+  if(k==="r"||k==="R"){rotateSel();e.preventDefault();}
+  else if(k==="ArrowLeft"){moveSel(-1,0);e.preventDefault();}
+  else if(k==="ArrowRight"){moveSel(1,0);e.preventDefault();}
+  else if(k==="ArrowUp"){moveSel(0,-1);e.preventDefault();}
+  else if(k==="ArrowDown"){moveSel(0,1);e.preventDefault();}
+  else if(k==="Tab"&&!e.shiftKey&&selected===null){const a=active();if(a.length){selected=a[0];draw();e.preventDefault();}}
+  else if(k==="n"||k==="N"){const a=active();if(a.length){const i=(a.indexOf(selected)+1)%a.length;selected=a[i];draw();}}
+});
+
+const warpIn=document.getElementById("warp"), slowIn=document.getElementById("slow");
+warpIn.addEventListener("input",()=>{warp=warpIn.value/100;retrace(false);});
+warpIn.addEventListener("change",()=>retrace(true));
+slowIn.addEventListener("change",()=>fire());
+document.getElementById("rotBtn").addEventListener("click",rotateSel);
+document.getElementById("resetBtn").addEventListener("click",()=>loadScene(sceneIdx));
+
+function postHeight(){try{parent.postMessage({type:"embed-height",height:document.documentElement.scrollHeight},"*");}catch(e){}}
+if(window.ResizeObserver) new ResizeObserver(resize).observe(cv); else window.addEventListener("resize",resize);
+loadScene(4);
+resize();
+
+// test hook
+window.__laserChess={trace,loadScene,setWarp:v=>{warp=v;warpIn.value=Math.round(v*100);retrace(false);},
+  getPieces:()=>pieces,getStats:()=>stats,getSegs:()=>segs,
+  finish:()=>{front=Infinity;draw();},SCENES,COLS,ROWS};
+})();
+</script>
+</body>
+</html>
