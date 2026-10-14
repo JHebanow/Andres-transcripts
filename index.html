@@ -208,8 +208,20 @@
      the site mounts an iframe over it and hides the SVG once mounted */
   article .fig-interactive{ margin:1.4rem 0; background:var(--img-bg); border-radius:8px; padding:6px; }
   article .fig-interactive img.fig-print{ margin:0 auto; padding:0; background:none; }
-  article .fig-interactive iframe{ display:block; width:100%; height:560px; border:0; }
-  article .fig-interactive.mounted img.fig-print{ display:none; }
+  article .fig-interactive iframe{ display:block; width:100%; height:560px; border:0; overflow:hidden; }
+  article .fig-interactive.mounted img.fig-print,
+  article .fig-interactive.mounted a.fig-print{ display:none; }
+  article .fig-interactive a.fig-print{ display:block; text-align:center; padding:1rem;
+        font-family:system-ui,sans-serif; font-size:.9rem; }
+  article .fig-interactive.solo{ background:none; padding:0; }
+  article figure.fig{ margin:1.4rem auto; padding:8px 8px 10px; background:var(--img-bg);
+        border-radius:8px; }
+  article figure.fig img{ margin:0 auto; padding:0; background:none; border-radius:4px; }
+  article figure.fig figcaption{ margin-top:.55rem; padding:0 .3rem; text-align:center;
+        font-family:system-ui,sans-serif; font-size:.82rem; line-height:1.45; font-style:italic;
+        color:var(--muted); }
+  html.is-dark article figure.fig figcaption{ color:#4a4f57; }
+  html.is-dark article figure.fig figcaption a{ color:#5b3fa0; }
   article hr{ border:none; border-top:1px solid var(--border); margin:2rem 0; }
   article blockquote{ border-left:3px solid var(--accent); margin:1rem 0; padding:.1rem 1rem;
         color:var(--muted); }
@@ -451,6 +463,7 @@ function applyThemeBtn(){
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     applyThemeBtn();
+    document.querySelectorAll('#article .fig-interactive iframe').forEach(f => { try{ syncFigTheme(f); }catch(e){} });
   });
 })();
 
@@ -525,13 +538,39 @@ function preprocess(src, notesByTitle){
         + '" data-title="' + esc(alias || t) + '"><img class="fig-print" src="'
         + esc(encodeURI(svg)) + '?v=' + BUST + '" alt="' + esc(alias || t) + '"></div>';
     });
-  src = src.replace(/!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]/g, (m, target, alias) => {
+  // standalone "<!-- interactive: x.html -->" (no static figure above it) -> iframe only
+  src = src.replace(/^[ \t]*<!--\s*interactive:\s*([^\s>]+?\.html)\s*-->[ \t]*$/gim, (m, html) => {
+    const h = html.trim();
+    const page = h.includes('/') ? h : 'illustrations/' + h;
+    return '<div class="fig-interactive solo" data-src="' + esc(encodeURI(page)) + '?v=' + BUST
+      + '" data-title="Interactive figure"><a class="fig-print" href="' + esc(encodeURI(page))
+      + '">Open the interactive figure</a></div>';
+  });
+  // image embed directly followed (next line) by an *italic line* -> figure with caption
+  // inside the same frame. Optional width: ![[file.jpg|alt|420]] or ![[file.jpg|420]]
+  const imgParts = (target, rest) => {
+    const t = target.trim();
+    const bits = (rest || '').split('|').map(x => x.trim()).filter(Boolean);
+    let width = null, alt = '';
+    for (const b of bits){ if (/^\d+$/.test(b)) width = +b; else alt = b; }
+    const file = t.includes('/') ? t : 'illustrations/' + t;
+    return {file, alt: alt || t, width};
+  };
+  src = src.replace(/^!\[\[([^\]|]+?\.(?:svg|png|jpe?g|gif|webp))((?:\|[^\]|]*)*)\]\][ \t]*\r?\n\*(.+)\*[ \t]*$/gim,
+    (m, target, rest, cap) => {
+      const p = imgParts(target, rest);
+      return '<figure class="fig"' + (p.width ? ' style="max-width:' + (p.width + 24) + 'px"' : '') + '>'
+        + '<img src="' + esc(encodeURI(p.file)) + '?v=' + BUST + '" alt="' + esc(p.alt) + '">'
+        + '<figcaption>' + md.renderInline(cap) + '</figcaption></figure>';
+    });
+  src = src.replace(/!\[\[([^\]|]+?)((?:\|[^\]|]*)*)\]\]/g, (m, target, rest) => {
     const t = target.trim();
     if (/\.(svg|png|jpe?g|gif|webp)$/i.test(t)){
-      const file = t.includes('/') ? t : 'illustrations/' + t;
-      return '<img src="' + esc(encodeURI(file)) + '?v=' + BUST + '" alt="' + esc(alias || t) + '">';
+      const p = imgParts(target, rest);
+      return '<img src="' + esc(encodeURI(p.file)) + '?v=' + BUST + '" alt="' + esc(p.alt) + '"'
+        + (p.width ? ' style="max-width:' + p.width + 'px"' : '') + '>';
     }
-    return alias || t;
+    return (rest || '').replace(/^\|/, '') || t;
   });
   src = src.replace(/(!\[[^\]]*\]\()([^)\/:]+\.(?:svg|png|jpe?g|gif|webp))(\))/gi,
     (m, a, f, z) => a + 'illustrations/' + f + '?v=' + BUST + z);
@@ -838,12 +877,33 @@ function mountInteractives(){
     f.src = box.dataset.src;
     f.title = box.dataset.title || 'Interactive figure';
     f.loading = 'lazy';
+    f.setAttribute('scrolling', 'no');
+    f.addEventListener('load', () => { syncFigTheme(f); fitFig(f); });
     box.appendChild(f);
     box.classList.add('mounted');
   });
 }
+/* size each figure frame to its content from the outside (same origin), so it never
+   needs a scrollbar — even if the figure reports its height late or not at all */
+function fitFig(f){
+  let d; try{ d = f.contentDocument; }catch(e){ return; }
+  if (!d || !d.documentElement) return;
+  d.documentElement.style.overflow = 'hidden';
+  if (d.body) d.body.style.overflow = 'hidden';
+  const fit = () => {
+    const h = Math.ceil(Math.max(d.documentElement.scrollHeight, d.body ? d.body.scrollHeight : 0));
+    if (h > 50 && h < 5000) f.style.height = h + 'px';
+  };
+  fit();
+  try{ new ResizeObserver(fit).observe(d.body || d.documentElement); }catch(e){}
+}
+/* embedded figures follow the site's light/dark choice (same origin, so set it directly) */
+function syncFigTheme(f){
+  try{ f.contentDocument.documentElement.setAttribute('data-theme', effectiveTheme()); }catch(e){}
+}
 function onFigMessage(e){
-  if (e.origin !== location.origin || !e.data || e.data.type !== 'fig-height') return;
+  if (e.origin !== location.origin || !e.data ||
+      (e.data.type !== 'fig-height' && e.data.type !== 'embed-height')) return;
   const f = Array.from(document.querySelectorAll('#article .fig-interactive iframe'))
     .find(x => x.contentWindow === e.source);
   const h = Math.round(+e.data.height);
@@ -1313,7 +1373,7 @@ function initPlayer(videoId, hasSync){
     try{
       player = new YT.Player('yt', {
         videoId: videoId,
-        host: 'https://www.youtube-nocookie.com',
+        host: 'https://www.youtube.com',   // normal host: carries the viewer's YouTube login, so bot checks can be passed
         playerVars: {rel:0, modestbranding:1},
         events: { onReady: startPolling, onError: () => {} }
       });
