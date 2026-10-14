@@ -1583,6 +1583,84 @@
           "t": 4612
         }
       ]
+    },
+    {
+      "file": "transcripts/Explaining DMT Hallucinations.md",
+      "slug": "explaining-dmt-hallucinations",
+      "title": "Explaining DMT Hallucinations: Laser Chess and Cel Animation as Key Metaphors (cf Non-Linear Optics)",
+      "navTitle": "Explaining DMT Hallucinations",
+      "youtube": "mn0itlgBZAA",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "mn0itlgBZAA"
+        }
+      ],
+      "date": "2025-04-06",
+      "desc": "The brain as a non-linear optical computer: laser chess, Fourier optics and cel animation as models of DMT hallucinations.",
+      "timestamps": [
+        {
+          "h": "The qualia of the day: Earl Grey tea",
+          "t": 41
+        },
+        {
+          "h": "The QUALIUS retreat",
+          "t": 116
+        },
+        {
+          "h": "The brain as a non-linear optical computer",
+          "t": 340
+        },
+        {
+          "h": "Laser chess",
+          "t": 601
+        },
+        {
+          "h": "Psychedelics bend the mirrors",
+          "t": 1096
+        },
+        {
+          "h": "A hierarchy of optical weirdness",
+          "t": 1348
+        },
+        {
+          "h": "The laser as attention: the transformer analogy",
+          "t": 1581
+        },
+        {
+          "h": "Indra's Net",
+          "t": 1851
+        },
+        {
+          "h": "The self as the king",
+          "t": 1932
+        },
+        {
+          "h": "Fourier optics and cel animation",
+          "t": 2206
+        },
+        {
+          "h": "DMT hallucinations as cel animation artifacts",
+          "t": 2490
+        },
+        {
+          "h": "Holographic and recursive cels",
+          "t": 2678
+        },
+        {
+          "h": "Recap",
+          "t": 2956
+        },
+        {
+          "h": "A demonstration with polarizing filters",
+          "t": 3061
+        },
+        {
+          "h": "Speculation on the substrate: microtubules and liquid crystals",
+          "t": 3162
+        }
+      ],
+      "qualiacomputing": "https://qualiacomputing.com/2025/03/03/cel-animation-as-a-key-metaphor-to-model-dmt-hallucinations/"
     }
   ]
 }
