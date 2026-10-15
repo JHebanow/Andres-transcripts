@@ -304,7 +304,7 @@ function trace(){
         dd=norm(add(dd,mul(gv,ds)));
         x=add(x,mul(dd,ds)); s+=ds;
         const outside=Math.abs(x[0]-gc[0])>GRIN_H||Math.abs(x[1]-gc[1])>GRIN_H;
-        if(i%3===2||outside){out.push({a:last,b:x,I:ray.I,v:ray.vis,s0:s-dot(sub(x,last),dd),s1:s}); last=x;}
+        if(i%6===5||outside){out.push({a:last,b:x,I:ray.I,v:ray.vis,s0:s-dot(sub(x,last),dd),s1:s}); last=x;}
         if(outside) break;
       }
       stack.push({...ray,p:x,d:dd,s,depth:nd});
@@ -316,12 +316,17 @@ function trace(){
 // ---------- canvas ----------
 const cv=document.getElementById("cv"), ctx=cv.getContext("2d");
 const light=document.createElement("canvas"), lctx=light.getContext("2d");
+const glow=document.createElement("canvas"), gctx=glow.getContext("2d");      // quarter-size glow buffer
+const cache=document.createElement("canvas"), cctx=cache.getContext("2d");   // finished light (beams + glow)
+let cacheValid=false, drawSegs=[];
 let W=0,H=0,dpr=1,cell=1;
 function resize(){
   dpr=Math.min(window.devicePixelRatio||1,2);
   const r=cv.getBoundingClientRect();
   W=Math.round(r.width*dpr); H=Math.round(r.height*dpr);
-  cv.width=W; cv.height=H; light.width=W; light.height=H;
+  cv.width=W; cv.height=H; light.width=W; light.height=H; cache.width=W; cache.height=H;
+  glow.width=Math.max(1,Math.round(W/4)); glow.height=Math.max(1,Math.round(H/4));
+  prepSegs();
   cell=W/COLS;
   draw(); postHeight();
 }
@@ -338,28 +343,54 @@ function drawBoard(){
   for(let r=1;r<ROWS;r++){ctx.moveTo(0,Math.round(r*cell)+.5);ctx.lineTo(W,Math.round(r*cell)+.5);}
   ctx.stroke();
 }
-function drawLight(){
+/* Precompute what each segment needs for drawing (pixel coords, colour string),
+   dropping invisible ones, once per retrace/resize instead of every frame. */
+const ALPHA=[]; for(let i=0;i<=255;i++) ALPHA.push(`rgba(255,72,46,${(i/255).toFixed(3)})`);
+function prepSegs(){
+  cacheValid=false;
+  if(!W){drawSegs=[];return;}
+  const lw=Math.max(1,1.1*dpr), overlap=NRAYS*lw/(BEAM_W*cell), k=1.0/Math.max(overlap,0.5);
+  const out=[];
+  for(const s of segs){
+    const a=Math.min(1,s.I*NRAYS*k*s.v);
+    if(a<0.002) continue;
+    out.push({ax:s.a[0]*cell,ay:s.a[1]*cell,bx:s.b[0]*cell,by:s.b[1]*cell,s0:s.s0,s1:s.s1,col:ALPHA[Math.max(1,Math.round(a*255))]});
+  }
+  out.sort((x,y)=>x.s0-y.s0);            // lets the animation stop at the wavefront early
+  drawSegs=out;
+}
+function renderLight(tctx){
   lctx.setTransform(1,0,0,1,0,0);
   lctx.clearRect(0,0,W,H);
   lctx.globalCompositeOperation="lighter";
   lctx.lineCap="round";
   lctx.lineWidth=Math.max(1,1.1*dpr);
-  const overlap=NRAYS*lctx.lineWidth/(BEAM_W*cell);       // rays covering each pixel of the beam
-  const k=1.0/Math.max(overlap,0.5);
-  for(const s of segs){
-    if(s.s0>=front) continue;
-    let b=s.b;
-    if(s.s1>front){const f=(front-s.s0)/(s.s1-s.s0); b=add(s.a,mul(sub(s.b,s.a),f));}
-    const a=Math.min(1,s.I*NRAYS*k*s.v);
-    if(a<0.002) continue;
-    lctx.strokeStyle=`rgba(255,72,46,${a})`;
-    lctx.beginPath(); lctx.moveTo(X(s.a[0]),X(s.a[1])); lctx.lineTo(X(b[0]),X(b[1])); lctx.stroke();
+  for(const s of drawSegs){
+    if(s.s0>=front) break;
+    let bx=s.bx, by=s.by;
+    if(s.s1>front){const f=(front-s.s0)/(s.s1-s.s0); bx=s.ax+(s.bx-s.ax)*f; by=s.ay+(s.by-s.ay)*f;}
+    lctx.strokeStyle=s.col;
+    lctx.beginPath(); lctx.moveTo(s.ax,s.ay); lctx.lineTo(bx,by); lctx.stroke();
   }
-  ctx.save();
-  ctx.globalCompositeOperation="lighter";
-  try{ctx.filter=`blur(${Math.round(5*dpr)}px)`; ctx.globalAlpha=0.7; ctx.drawImage(light,0,0);}catch(e){}
-  ctx.filter="none"; ctx.globalAlpha=1; ctx.drawImage(light,0,0);
-  ctx.restore();
+  // glow: blur a quarter-size copy (16x fewer pixels than blurring at full size), then scale it back up
+  gctx.setTransform(1,0,0,1,0,0);
+  gctx.clearRect(0,0,glow.width,glow.height);
+  try{gctx.filter="blur(1.5px)";}catch(e){}
+  gctx.drawImage(light,0,0,glow.width,glow.height);
+  gctx.filter="none";
+  tctx.save();
+  tctx.globalCompositeOperation="lighter";
+  tctx.imageSmoothingEnabled=true;
+  tctx.globalAlpha=0.7; tctx.drawImage(glow,0,0,W,H);
+  tctx.globalAlpha=1; tctx.drawImage(light,0,0);
+  tctx.restore();
+}
+function drawLight(){
+  if(front===Infinity){
+    // finished beams never change while you drag or select pieces: render once, then reuse
+    if(!cacheValid){cctx.clearRect(0,0,W,H); renderLight(cctx); cacheValid=true;}
+    ctx.save(); ctx.globalCompositeOperation="lighter"; ctx.drawImage(cache,0,0); ctx.restore();
+  } else renderLight(ctx);
 }
 function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function drawPiece(p,ox,oy,ghost){
@@ -440,7 +471,7 @@ function draw(){
 // ---------- state updates ----------
 function setMeter(id,bar,v){document.getElementById(id).textContent=(v*100).toFixed(v>0&&v<0.01?1:0)+"%";document.getElementById(bar).style.width=(v*100).toFixed(1)+"%";}
 function retrace(animate){
-  const r=trace(); segs=r.segs; stats=r.stats;
+  const r=trace(); segs=r.segs; stats=r.stats; prepSegs();
   maxS=segs.reduce((m,s)=>Math.max(m,s.s1),0.001);
   const E=stats.emitted||1;
   setMeter("mKing","bKing",stats.king/E); setMeter("mEsc","bEsc",stats.escaped/E); setMeter("mAbs","bAbs",(stats.absorbed+stats.lost)/E);
@@ -499,14 +530,19 @@ cv.addEventListener("keydown",e=>{
 });
 
 const warpIn=document.getElementById("warp"), slowIn=document.getElementById("slow");
-warpIn.addEventListener("input",()=>{warp=warpIn.value/100;retrace(false);});
+let warpRAF=0;
+warpIn.addEventListener("input",()=>{
+  warp=warpIn.value/100;
+  if(!warpRAF) warpRAF=requestAnimationFrame(()=>{warpRAF=0;retrace(false);});
+});
 warpIn.addEventListener("change",()=>retrace(true));
 slowIn.addEventListener("change",()=>fire());
 document.getElementById("rotBtn").addEventListener("click",rotateSel);
 document.getElementById("resetBtn").addEventListener("click",()=>loadScene(sceneIdx));
 
 function postHeight(){try{parent.postMessage({type:"embed-height",height:document.documentElement.scrollHeight},"*");}catch(e){}}
-if(window.ResizeObserver) new ResizeObserver(resize).observe(cv); else window.addEventListener("resize",resize);
+let rzRAF=0; const queueResize=()=>{if(!rzRAF) rzRAF=requestAnimationFrame(()=>{rzRAF=0;resize();});};
+if(window.ResizeObserver) new ResizeObserver(queueResize).observe(cv); else window.addEventListener("resize",queueResize);
 loadScene(4);
 resize();
 
