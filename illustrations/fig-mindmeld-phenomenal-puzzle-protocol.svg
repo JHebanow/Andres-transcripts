@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 556" width="1080" height="556" role="img">
+  <title>Phenomenal-puzzle protocol in eight steps</title>
+  <rect x="0" y="0" width="1080" height="556" rx="14" fill="#fbfbf8"/>
+  <rect x="20.00" y="20.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="36.00" y="52.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >1</text>
+  <circle cx="104.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="184.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="104.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="184.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <rect x="284.00" y="20.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="300.00" y="52.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >2</text>
+  <circle cx="368.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="448.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="368.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="448.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <line x1="315.95" y1="129.21" x2="348.66" y2="144.51" stroke="#1d1d1b" stroke-width="2"/>
+  <line x1="342.74" y1="108.89" x2="348.66" y2="144.51" stroke="#1d1d1b" stroke-width="2"/>
+  <circle cx="324.00" cy="112.00" r="19.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.2"/>
+  <circle cx="335.40" cy="112.00" r="4.40" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="318.30" cy="121.87" r="4.40" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <circle cx="318.30" cy="102.13" r="4.40" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <text x="334.00" y="81.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="12.5" font-weight="normal" font-style="italic" text-anchor="middle" fill="#1d1d1b" >odd one out?</text>
+  <path d="M 462.00 65.00 A 12.95 12.95 0 0 1 483.21 68.98 A 9.08 9.08 0 0 1 494.50 79.05 A 7.26 7.26 0 0 1 490.58 90.50 A 11.30 11.30 0 0 1 473.29 97.97 A 13.54 13.54 0 0 1 450.71 97.97 A 11.30 11.30 0 0 1 433.42 90.50 A 7.26 7.26 0 0 1 429.50 79.05 A 9.08 9.08 0 0 1 440.79 68.98 A 12.95 12.95 0 0 1 462.00 65.00 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2" stroke-linejoin="round" />
+  <circle cx="456.60" cy="117.00" r="4.20" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.8"/>
+  <circle cx="452.64" cy="130.20" r="2.60" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.8"/>
+  <text x="462.00" y="87.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="15" font-weight="normal" font-style="italic" text-anchor="middle" fill="#1d1d1b" >Zzz…</text>
+  <rect x="548.00" y="20.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="564.00" y="52.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >3</text>
+  <circle cx="632.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="712.00" cy="170.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="632.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="712.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <circle cx="632.00" cy="182.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="621.61" cy="164.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="642.39" cy="164.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <rect x="812.00" y="20.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="828.00" y="52.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >4</text>
+  <path d="M 917.21 144.72 A 33 33 0 1 0 917.21 195.28 Q 936.00 186.50 954.79 195.28 A 33 33 0 1 0 954.79 144.72 Q 936.00 153.50 917.21 144.72 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6" stroke-linejoin="round" />
+  <text x="896.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="976.00" y="227.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <circle cx="893.92" cy="181.82" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="886.81" cy="162.29" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <circle cx="907.28" cy="165.90" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="987.59" cy="173.11" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="967.51" cy="178.49" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <circle cx="972.89" cy="158.41" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <rect x="20.00" y="286.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="36.00" y="318.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >5</text>
+  <circle cx="104.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="184.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="104.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="184.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <path d="M 110.00 333.00 A 12.95 12.95 0 0 1 131.21 336.98 A 9.08 9.08 0 0 1 142.50 347.05 A 7.26 7.26 0 0 1 138.58 358.50 A 11.30 11.30 0 0 1 121.29 365.97 A 13.54 13.54 0 0 1 98.71 365.97 A 11.30 11.30 0 0 1 81.42 358.50 A 7.26 7.26 0 0 1 77.50 347.05 A 9.08 9.08 0 0 1 88.79 336.98 A 12.95 12.95 0 0 1 110.00 333.00 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2" stroke-linejoin="round" />
+  <circle cx="106.40" cy="384.10" r="4.20" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.8"/>
+  <circle cx="103.76" cy="396.64" r="2.60" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.8"/>
+  <text x="110.00" y="355.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="15" font-weight="normal" font-style="italic" text-anchor="middle" fill="#1d1d1b" >Zzz…</text>
+  <circle cx="173.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="194.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="184.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <rect x="178.00" y="370.00" width="54.00" height="13.00" rx="0" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.8"/>
+  <rect x="178.00" y="370.00" width="24.30" height="13.00" rx="0" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <line x1="208.24" y1="373.00" x2="208.24" y2="380.00" stroke="#1d1d1b" stroke-width="1.6"/>
+  <line x1="214.18" y1="373.00" x2="214.18" y2="380.00" stroke="#1d1d1b" stroke-width="1.6"/>
+  <line x1="220.12" y1="373.00" x2="220.12" y2="380.00" stroke="#1d1d1b" stroke-width="1.6"/>
+  <line x1="226.06" y1="373.00" x2="226.06" y2="380.00" stroke="#1d1d1b" stroke-width="1.6"/>
+  <rect x="284.00" y="286.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="300.00" y="318.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >6</text>
+  <circle cx="368.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="448.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="368.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="448.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <circle cx="437.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="437.61" cy="430.00" r="11.00" fill="none" stroke="#d62828" stroke-width="2.2"/>
+  <circle cx="458.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="448.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <path d="M 406.18 368.31 A 48 20 0 1 1 426.02 374.54 L 430.00 401.00 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2" stroke-linejoin="round" />
+  <text x="444.00" y="361.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="15" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1d1d1b" >Found it!</text>
+  <rect x="548.00" y="286.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="564.00" y="318.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >7</text>
+  <path d="M 653.21 410.72 A 33 33 0 1 0 653.21 461.28 Q 672.00 452.50 690.79 461.28 A 33 33 0 1 0 690.79 410.72 Q 672.00 419.50 653.21 410.72 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6" stroke-linejoin="round" />
+  <text x="632.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="712.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <circle cx="621.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="621.61" cy="430.00" r="11.00" fill="none" stroke="#d62828" stroke-width="2.2"/>
+  <circle cx="642.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="632.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <circle cx="701.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="701.61" cy="430.00" r="11.00" fill="none" stroke="#d62828" stroke-width="2.2"/>
+  <circle cx="722.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="712.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <rect x="812.00" y="286.00" width="248.00" height="250.00" rx="12" fill="#efeee8" stroke="none" stroke-width="0"/>
+  <text x="828.00" y="318.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="21" font-weight="bold" font-style="normal" text-anchor="start" fill="#1d1d1b" >8</text>
+  <circle cx="896.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <circle cx="976.00" cy="436.00" r="31.00" fill="#ffffff" stroke="#1d1d1b" stroke-width="2.6"/>
+  <text x="896.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A</text>
+  <text x="976.00" y="493.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="17" font-weight="bold" font-style="normal" text-anchor="middle" fill="#1d1d1b" >B</text>
+  <circle cx="885.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="885.61" cy="430.00" r="11.00" fill="none" stroke="#d62828" stroke-width="2.2"/>
+  <circle cx="906.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="896.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <circle cx="965.61" cy="430.00" r="5.50" fill="#1d1d1b" stroke="none" stroke-width="0"/>
+  <circle cx="965.61" cy="430.00" r="11.00" fill="none" stroke="#d62828" stroke-width="2.2"/>
+  <circle cx="986.39" cy="430.00" r="5.50" fill="#2fa84f" stroke="none" stroke-width="0"/>
+  <circle cx="976.00" cy="448.00" r="5.50" fill="#f28a24" stroke="none" stroke-width="0"/>
+  <path d="M 867.33 368.31 A 44 20 0 1 1 885.52 374.54 L 888.00 401.00 Z" fill="#ffffff" stroke="#1d1d1b" stroke-width="2" stroke-linejoin="round" />
+  <text x="902.00" y="361.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="15" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1d1d1b" >Correct!</text>
+  <text x="936.00" y="522.00" font-family="DejaVu Sans, Verdana, sans-serif" font-size="12.5" font-weight="normal" font-style="normal" text-anchor="middle" fill="#1d1d1b" >A: “B is independently conscious!”</text>
+</svg>
