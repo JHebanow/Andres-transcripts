@@ -214,6 +214,19 @@
   article .fig-interactive a.fig-print{ display:block; text-align:center; padding:1rem;
         font-family:system-ui,sans-serif; font-size:.9rem; }
   article .fig-interactive.solo{ background:none; padding:0; }
+  /* pinnable figure: pin button inside the frame; pinned = docked over the top of the article column */
+  article .fig-pin{ margin:1.4rem 0; }
+  article .fig-pin-box{ position:relative; background:var(--img-bg); border-radius:8px;
+        padding:30px 6px 6px; }
+  article .fig-pin-box img{ margin:0 auto; padding:0; background:none; }
+  .pinBtn{ position:absolute; top:5px; right:6px; width:24px; height:22px; padding:0;
+        display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
+        border-radius:6px; border:1px solid #0002; background:#fff9; color:#555; }
+  .pinBtn:hover{ color:#5b3fa0; border-color:#5b3fa0; }
+  .pinBtn[aria-pressed="true"]{ background:#5b3fa0; border-color:#5b3fa0; color:#fff; }
+  article .fig-pin-box.pinned{ position:fixed; z-index:60; box-shadow:0 8px 28px #0006;
+        background:#f5f3ee; }
+  article .fig-pin-box.pinned img{ max-height:38vh; width:auto; max-width:100%; cursor:zoom-in; }
   article figure.fig{ margin:1.4rem auto; padding:8px 8px 10px; background:var(--img-bg);
         border-radius:8px; }
   article figure.fig img{ margin:0 auto; padding:0; background:none; border-radius:4px; }
@@ -546,8 +559,6 @@ function preprocess(src, notesByTitle){
       + '" data-title="Interactive figure"><a class="fig-print" href="' + esc(encodeURI(page))
       + '">Open the interactive figure</a></div>';
   });
-  // image embed directly followed (next line) by an *italic line* -> figure with caption
-  // inside the same frame. Optional width: ![[file.jpg|alt|420]] or ![[file.jpg|420]]
   const imgParts = (target, rest) => {
     const t = target.trim();
     const bits = (rest || '').split('|').map(x => x.trim()).filter(Boolean);
@@ -556,6 +567,18 @@ function preprocess(src, notesByTitle){
     const file = t.includes('/') ? t : 'illustrations/' + t;
     return {file, alt: alt || t, width};
   };
+  // image embed followed (next line) by "<!-- pin -->" -> figure with a pin button
+  src = src.replace(/^!\[\[([^\]|]+?\.(?:svg|png|jpe?g|gif|webp))((?:\|[^\]|]*)*)\]\][ \t]*\r?\n[ \t]*<!--\s*pin\s*-->[ \t]*$/gim,
+    (m, target, rest) => {
+      const p = imgParts(target, rest);
+      return '<div class="fig-pin"><div class="fig-pin-box">'
+        + '<button class="pinBtn" type="button" title="Pin this figure while you read on (Esc to unpin)" aria-pressed="false">'
+        + '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        + '<path d="M12 17v5"/><path d="M9 10.76V4h6v6.76l2.5 2.74H6.5z"/><path d="M8 4h8"/></svg></button>'
+        + '<img src="' + esc(encodeURI(p.file)) + '?v=' + BUST + '" alt="' + esc(p.alt) + '"></div></div>';
+    });
+  // image embed directly followed (next line) by an *italic line* -> figure with caption
+  // inside the same frame. Optional width: ![[file.jpg|alt|420]] or ![[file.jpg|420]]
   src = src.replace(/^!\[\[([^\]|]+?\.(?:svg|png|jpe?g|gif|webp))((?:\|[^\]|]*)*)\]\][ \t]*\r?\n\*(.+)\*[ \t]*$/gim,
     (m, target, rest, cap) => {
       const p = imgParts(target, rest);
@@ -844,6 +867,40 @@ function showToast(txt){
   clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 900);
 }
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
+/* pinned figures: dock over the top of the article column; a placeholder keeps the text from jumping */
+function placePinned(){
+  const art = document.getElementById('article');
+  if (!art) return;
+  const r = art.getBoundingClientRect();
+  const top = (document.querySelector('header.site') || {offsetHeight:56}).offsetHeight + 8;
+  document.querySelectorAll('#article .fig-pin-box.pinned').forEach(b => {
+    b.style.left = r.left + 'px'; b.style.width = r.width + 'px'; b.style.top = top + 'px';
+  });
+}
+function setPinned(box, on){
+  const wrap = box.parentElement, btn = box.querySelector('.pinBtn');
+  if (on){
+    document.querySelectorAll('#article .fig-pin-box.pinned').forEach(b => { if (b !== box) setPinned(b, false); });
+    wrap.style.height = wrap.offsetHeight + 'px';
+    box.classList.add('pinned'); btn.setAttribute('aria-pressed','true'); btn.title = 'Unpin (Esc)';
+    placePinned();
+  } else {
+    box.classList.remove('pinned'); btn.setAttribute('aria-pressed','false');
+    btn.title = 'Pin this figure while you read on (Esc to unpin)';
+    box.style.left = box.style.width = box.style.top = ''; wrap.style.height = '';
+  }
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('#article .pinBtn');
+  if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const box = b.closest('.fig-pin-box');
+  setPinned(box, !box.classList.contains('pinned'));
+}, true);
+window.addEventListener('resize', placePinned);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('#article .fig-pin-box.pinned').forEach(b => setPinned(b, false));
+});
 /* phones: chapters drawer lives directly in <body>; desktop: back inside the side panel */
 function placeToc(){
   const toc = document.getElementById('toc');
