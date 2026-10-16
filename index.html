@@ -197,6 +197,36 @@
   .videoPanel .frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
   .videoPanel .controls{ display:flex; gap:.6rem; margin:.6rem 0 1rem; align-items:center; flex-wrap:wrap; }
   .videoPanel .now{ font-size:.82rem; color:var(--muted); }
+  /* video + vertical speed control side by side */
+  .vrow{ display:flex; gap:8px; align-items:stretch; }
+  .vrow .frame{ flex:1 1 auto; min-width:0; }
+  .speedCol{ flex:0 0 30px; display:flex; flex-direction:column; align-items:center; gap:4px;
+        font-family:system-ui,sans-serif; font-size:.72rem; color:var(--muted);
+        font-variant-numeric:tabular-nums; }
+  .rateIcon{ background:none; border:none; padding:2px; cursor:pointer; color:var(--muted);
+        display:inline-flex; border-radius:6px; }
+  .rateIcon:hover{ color:var(--accent); }
+  #rateVal{ line-height:1; white-space:nowrap; }
+  .vslider{ position:relative; flex:1 1 auto; width:24px; min-height:60px; cursor:pointer;
+        touch-action:none; outline:none; border-radius:6px; }
+  .vslider:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .vtrack, .vfill{ position:absolute; left:50%; width:4px; margin-left:-2px; border-radius:2px; }
+  .vtrack{ top:6px; bottom:6px; background:var(--border); }
+  .vfill{ bottom:6px; height:calc((100% - 12px) * var(--pos, .43)); background:var(--accent); }
+  .vticks{ position:absolute; top:6px; bottom:6px; left:0; right:0; display:flex;
+        flex-direction:column; justify-content:space-between; align-items:center; pointer-events:none; }
+  .vticks i{ display:block; width:12px; height:2px; margin:-1px 0; border-radius:1px;
+        background:var(--muted); opacity:.5; }
+  .vticks i.on{ background:var(--accent); opacity:1; }
+  .vticks i.one{ width:16px; }
+  .vthumb{ position:absolute; left:50%; width:14px; height:14px; margin:0 0 -7px -7px; border-radius:50%;
+        bottom:calc(6px + (100% - 12px) * var(--pos, .43)); background:var(--accent);
+        border:2px solid var(--card); box-shadow:0 0 0 1px var(--accent); pointer-events:none;
+        transition:bottom .12s ease; }
+  #qtip{ position:fixed; z-index:400; pointer-events:none; background:#111c; color:#fff;
+        font-family:system-ui,sans-serif; font-size:.75rem; padding:.25rem .5rem; border-radius:6px;
+        opacity:0; transition:opacity .12s; white-space:nowrap; }
+  #qtip.show{ opacity:1; }
 
   /* ---------- article ---------- */
   article h1{ font-size:1.7rem; line-height:1.3; margin:.6rem 0 1.2rem; }
@@ -363,6 +393,8 @@
     body.sync .videoPanel{ position:sticky; top:var(--hdrh, 3.2rem); z-index:50;
         background:var(--bg); padding:.4rem 0; }
     body.sync .videoPanel .frame{ max-height:30vh; max-width:calc(30vh*16/9); margin:0 auto; }
+    body.sync .videoPanel .vrow{ justify-content:center; }
+    body.vhide .videoPanel .vrow{ display:none; }
     body.sync .videoPanel .controls{ margin:.4rem 0 0; justify-content:center; }
     body.vhide .videoPanel .frame, body.vhide .videoPanel .vtabs{ display:none; }
     #vidToggle{ display:inline-block; }
@@ -859,6 +891,91 @@ function hideResume(){ $('#resume').classList.remove('show'); }
 /* ================= global UI (once) ================= */
 /* shareable link: t/<slug>.html carries the preview card, then forwards to #/<slug> */
 function shareUrl(slug){ return ROOT + 't/' + slug + '.html'; }
+/* playback speed: slider steps through YouTube's available rates */
+function playRates(){
+  const r = player && player.getAvailablePlaybackRates && player.getAvailablePlaybackRates();
+  return (r && r.length) ? r : [0.25,0.5,0.75,1,1.25,1.5,1.75,2];
+}
+function setRate(r, quiet){
+  if (!player || !player.setPlaybackRate) return;
+  player.setPlaybackRate(r);
+  if (!quiet) showToast(r + '×');
+  updateRateLabel(r);
+}
+function setRateIndex(i){
+  const rates = playRates();
+  setRate(rates[Math.min(rates.length - 1, Math.max(0, i))], true);
+}
+function changeRate(dir){
+  if (!player || !player.getPlaybackRate) return;
+  const rates = playRates();
+  let i = rates.indexOf(player.getPlaybackRate()); if (i < 0) i = rates.indexOf(1);
+  setRate(rates[Math.min(rates.length - 1, Math.max(0, i + dir))]);
+}
+function updateRateLabel(r){
+  if (r === undefined) r = (player && player.getPlaybackRate) ? player.getPlaybackRate() : 1;
+  const el = document.getElementById('rateVal'); if (el) el.textContent = r + '×';
+  const sl = document.getElementById('rateSlider');
+  if (sl){
+    const rates = playRates(), n = rates.length;
+    let i = rates.indexOf(r); if (i < 0) i = +sl.getAttribute('aria-valuenow') || 0;
+    sl.setAttribute('aria-valuemax', n - 1); sl.setAttribute('aria-valuenow', i);
+    sl.setAttribute('aria-valuetext', r + '×');
+    sl.style.setProperty('--pos', (n > 1 ? i / (n - 1) : 0));
+    const tk = document.getElementById('rateTicks');
+    if (tk.children.length !== n)
+      tk.innerHTML = rates.map(x => '<i' + (x === 1 ? ' class="one"' : '') + '></i>').reverse().join('');
+    Array.from(tk.children).forEach((d, j) => d.classList.toggle('on', (n - 1 - j) <= i));
+  }
+}
+/* vertical speed slider: drag or click on the track; arrow keys step; top = fastest */
+function initSpeedSlider(){
+  const sl = document.getElementById('rateSlider');
+  if (!sl) return;
+  const idxAt = y => {
+    const r = sl.getBoundingClientRect(), pad = 6, n = playRates().length;
+    const f = 1 - Math.min(1, Math.max(0, (y - r.top - pad) / (r.height - 2 * pad)));
+    return Math.round(f * (n - 1));
+  };
+  let dragging = false;
+  sl.addEventListener('pointerdown', e => {
+    dragging = true; sl.setPointerCapture(e.pointerId);
+    try{ sl.focus({focusVisible:false, preventScroll:true}); }catch(err){}
+    setRateIndex(idxAt(e.clientY)); e.preventDefault();
+  });
+  sl.addEventListener('pointermove', e => { if (dragging) setRateIndex(idxAt(e.clientY)); });
+  sl.addEventListener('pointerup', () => { dragging = false; });
+  sl.addEventListener('pointercancel', () => { dragging = false; });
+  sl.addEventListener('keydown', e => {
+    const k = e.key;
+    if (k === 'ArrowUp' || k === 'ArrowRight'){ changeRate(1); e.preventDefault(); e.stopPropagation(); }
+    else if (k === 'ArrowDown' || k === 'ArrowLeft'){ changeRate(-1); e.preventDefault(); e.stopPropagation(); }
+    else if (k === 'Home'){ setRateIndex(0); e.preventDefault(); }
+    else if (k === 'End'){ setRateIndex(playRates().length - 1); e.preventDefault(); }
+  });
+  sl.addEventListener('wheel', e => { e.preventDefault(); changeRate(e.deltaY < 0 ? 1 : -1); }, {passive:false});
+  updateRateLabel(1);
+}
+/* quick tooltips for elements with data-tip (native title tooltips can't be sped up) */
+(function(){
+  let tipEl = null, tipT = null;
+  const hide = () => { clearTimeout(tipT); if (tipEl) tipEl.classList.remove('show'); };
+  document.addEventListener('mouseover', e => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) return;
+    clearTimeout(tipT);
+    tipT = setTimeout(() => {
+      if (!tipEl){ tipEl = document.createElement('div'); tipEl.id = 'qtip'; document.body.appendChild(tipEl); }
+      tipEl.textContent = t.dataset.tip;
+      tipEl.classList.add('show');
+      const r = t.getBoundingClientRect(), w = tipEl.offsetWidth;
+      tipEl.style.left = Math.max(6, Math.min(innerWidth - w - 6, r.left + r.width / 2 - w / 2)) + 'px';
+      tipEl.style.top = (r.bottom + 6) + 'px';
+    }, 300);
+  });
+  document.addEventListener('mouseout', e => { if (e.target.closest('[data-tip]')) hide(); });
+  document.addEventListener('pointerdown', hide, true);
+})();
 let toastT = null;
 function showToast(txt){
   let el = document.getElementById('toast');
@@ -1053,12 +1170,7 @@ function initGlobalUI(){
     if (e.key === '<' || e.key === '>'){
       if (!player || !player.getPlaybackRate) return;
       e.preventDefault();
-      const rates = (player.getAvailablePlaybackRates && player.getAvailablePlaybackRates()) || [0.25,0.5,0.75,1,1.25,1.5,1.75,2];
-      const cur = player.getPlaybackRate();
-      let i = rates.indexOf(cur); if (i < 0) i = rates.indexOf(1);
-      i = Math.min(rates.length - 1, Math.max(0, i + (e.key === '>' ? 1 : -1)));
-      player.setPlaybackRate(rates[i]);
-      showToast(rates[i] + '×');
+      changeRate(e.key === '>' ? 1 : -1);
     }
   });
 
@@ -1187,7 +1299,16 @@ async function renderNote(note, params){
           ? '<div class="vtabs">' + vids.map((v,i) =>
               '<button class="btn vtab' + (i===0?' on':'') + '" data-i="' + i + '">' + esc(v.label) + '</button>').join('') + '</div>'
           : '')
-      + '<div class="frame"><div id="yt"></div></div>'
+      + '<div class="vrow"><div class="frame"><div id="yt"></div></div>'
+      + '<div class="speedCol">'
+      +   '<button class="rateIcon" id="rateReset" type="button" aria-label="Reset speed to 1×" data-tip="Reset to 1×">'
+      +     '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+      +     '<path d="M4.9 18.5a9 9 0 1 1 14.2 0"/><path d="M12 13.5l4.2-4.2"/><circle cx="12" cy="13.5" r="1.3" fill="currentColor"/></svg></button>'
+      +   '<div class="vslider" id="rateSlider" role="slider" tabindex="0" aria-label="Playback speed" aria-orientation="vertical"'
+      +     ' aria-valuemin="0" aria-valuemax="7" aria-valuenow="3" data-tip="Playback speed (Shift+&lt; / Shift+&gt;)">'
+      +     '<span class="vtrack"></span><span class="vfill"></span><span class="vticks" id="rateTicks"></span><span class="vthumb"></span></div>'
+      +   '<span id="rateVal">1×</span>'
+      + '</div></div>'
       + '<div class="controls">'
       + (hasSync ? '<button class="btn on" id="followBtn" title="Scroll the transcript to follow the video">Auto-scroll: on</button>' : '')
       + '<span class="now" id="nowSec"></span>'
@@ -1209,6 +1330,8 @@ async function renderNote(note, params){
     initSideResize();
     document.querySelectorAll('.vtab').forEach(b =>
       b.addEventListener('click', () => switchVid(+b.dataset.i)));
+    initSpeedSlider();
+    $('#rateReset').addEventListener('click', () => setRate(1));
     const vt = $('#vidToggle');
     if (vt){
       const setV = hidden => {
@@ -1432,7 +1555,8 @@ function initPlayer(videoId, hasSync){
         videoId: videoId,
         host: 'https://www.youtube.com',   // normal host: carries the viewer's YouTube login, so bot checks can be passed
         playerVars: {rel:0, modestbranding:1},
-        events: { onReady: startPolling, onError: () => {} }
+        events: { onReady: startPolling, onError: () => {},
+                  onPlaybackRateChange: e => updateRateLabel(e.data) }
       });
     }catch(e){ plainEmbed(videoId); }
   };
@@ -1471,6 +1595,7 @@ function setFollow(on, silent){
 }
 
 function startPolling(){
+  updateRateLabel();
   if (pendingSeek !== null && player){
     seekSection(pendingSeek.t, pendingSeek.v);
     pendingSeek = null;
