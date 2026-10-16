@@ -40,7 +40,7 @@ You have two two-dimensional fields — the data streams from each of your eyes.
 
 But there's something much deeper going on here than a mathematical equivalence — it isn't merely that you're sacrificing a degree of freedom in exchange for a virtual dimension. You are actually *experiencing* that depth. That's so much more than "it's mathematically equivalent to a depth dimension."
 
-So what is going on? To really understand this, you'll have to bring to mind either the article or the video on non-linear wave computing, and the article on digital sentience at QRI.[^nlwc] Essentially: your world-simulation is being constructed out of non-linear waves bouncing off each other.
+So what is going on? To really understand this, you'll have to bring to mind either the article or the video on non-linear wave computing,[^nlwc] and the article on digital sentience at QRI.[^digital-sentience] Essentially: your world-simulation is being constructed out of non-linear waves bouncing off each other.
 
 When you only have one eye, the distances between points are computed by how long it takes a wave to travel from one point to another. When you integrate the two video streams, waves will start to propagate across the z-axis as well. The relationship governing how far a wave travels along the z-axis corresponds to the relative displacement in the x-axis between the two matched points in the two fields. So depth is a function of how far apart those two points are, in x, relative to each other.
 
@@ -522,46 +522,47 @@ Infinite bliss, everybody. Take care. Until next time. Ciao.
 
 ## Footnotes
 
-[^retreat-talks]: The talks are Burbea's jhāna retreat series, freely available on Dharma Seed: <https://dharmaseed.org/retreats/4496/>.
+[^retreat-talks]: Rob Burbea, [*Practising the Jhānas*](https://dharmaseed.org/retreats/4496/), freely available on Dharma Seed.
 
+[^stereopsis]: Comparable cases: Susan Barry — Oliver Sacks's "Stereo Sue," later the author of *Fixing My Gaze* — was stereoblind from infancy and gained stereopsis in her fifties through optometric vision therapy, first noticing it in her car as the steering wheel stood out from the dashboard. Bruce Bridgeman, stereoblind for 67 years, gained stereopsis in 2012 while watching the 3D film *Hugo*. The philosopher Cynthia Freeland, in *On Being Stereoblind in an Era of 3D Movies*, mentions using her left eye for distance viewing, such as watching the stage at the opera, and describes experiencing 3D depth while watching Wenders's *Pina*.
 
-[^stereopsis]: The anecdote as given appears to conflate three separate cases. Susan Barry — Oliver Sacks's "Stereo Sue," later the author of *Fixing My Gaze* — was stereoblind from infancy and gained stereopsis in her fifties through optometric vision therapy; her breakthrough moment came in her car, seeing the steering wheel stand out from the dashboard. Bruce Bridgeman, stereoblind for 67 years, gained stereopsis in 2012 while watching the 3D film *Hugo*. The opera detail comes from a third source: the philosopher Cynthia Freeland's essay *On Being Stereoblind in an Era of 3D Movies*, which mentions using her left eye for distance viewing, such as watching the stage at the opera, and which describes her surprise at experiencing 3D depth while watching Wenders's *Pina*.
+[^correspondence]: This is the *[stereo correspondence problem](https://en.wikipedia.org/wiki/Correspondence_problem)* in vision science: before disparity can be read off, the visual system has to work out which feature in the left image is the same feature in the right. The redundancy is the *epipolar constraint*: given the geometry of the two eyes, a point's match in the other field must lie on a single line (for parallel-gaze eyes, the same horizontal row), so the search collapses from two dimensions to one.
 
-[^nlwc]: *Non-Linear Wave Computing: Vibes, Gestalts, and Realms* — Andrés's talk and transcript at QRI, which sets out the view that the world-simulation is built from non-linear waves (energetic construction waves building "vibes," which build gestalts, which build realms): <https://qri.org/blog/nonlinear-wave-computing>. The companion piece on digital sentience: <https://qri.org/blog/digital-sentience>.
+[^nlwc]: [[Non-Linear Wave Computing|Non-Linear Wave Computing: Vibes, Gestalts, and Realms]] — transcript included on this site.
 
-[^anders]: Anders and Maggie, of QRI's Sweden community; see e.g. their *Qualia Productions* piece: <https://qualiacomputing.com/2019/12/03/qualia-productions-presents-when-ai-equals-advanced-incompetence/>.
+[^digital-sentience]: ["Digital Sentience Requires Solving the Boundary Problem"](https://qri.org/blog/digital-sentience) (qri.org).
+
+[^anders]: Anders and Maggie, of QRI's Sweden community; see their ["Qualia Productions Presents: When AI Equals Advanced Incompetence"](https://qualiacomputing.com/2019/12/03/qualia-productions-presents-when-ai-equals-advanced-incompetence/) (*Qualia Computing*, 2019).
 
 [^mctb]: Daniel Ingram, *Mastering the Core Teachings of the Buddha* (2008).
 
-[^right-concentration]: Leigh Brasington, *Right Concentration: A Practical Guide to the Jhānas* (2015)
+[^right-concentration]: Leigh Brasington, *Right Concentration: A Practical Guide to the Jhānas* (2015).
 
 [^opening-heart]: Martin Lowenthal and Lar Short, *Opening the Heart of Compassion: Transform Suffering Through Buddhist Psychology and Practice*.
 
 [^stf]: Rob Burbea, *Seeing That Frees: Meditations on Emptiness and Dependent Arising* (Hermes Amāra, 2014).
 
-[^correspondence]: This is the *[stereo correspondence problem](https://en.wikipedia.org/wiki/Correspondence_problem)* in vision science: before disparity can be read off, the visual system has to work out which feature in the left image is the same feature in the right. The redundancy Andrés points to is what makes it tractable — it is the *epipolar constraint*: given the geometry of the two eyes, a point's match in the other field must lie on a single line (for parallel-gaze eyes, the same horizontal row), so the search collapses from two dimensions to one.
-
 [^culadasa]: Culadasa (John Yates), co-author of *The Mind Illuminated* (2015), which makes the attention/awareness distinction central.
 
-[^sotala]: Kaj Sotala has written chapter-by-chapter summaries and discussion of *The Mind Illuminated* on LessWrong.
+[^sotala]: Kaj Sotala discusses *The Mind Illuminated*'s models on LessWrong, e.g. in ["Subagents, introspective awareness, and blending"](https://www.lesswrong.com/posts/AhcEaqWYpa2NieNsK/subagents-introspective-awareness-and-blending), part of his [sequence on multiagent models of mind](https://www.lesswrong.com/posts/M4w2rdYgCKctbADMn/sequence-introduction-non-agent-and-multiagent-models-of).
 
 [^ingram]: Daniel Ingram has written extensively on fire kasiṇa practice (a candle-flame concentration object) and on very long daily sitting schedules on retreat.
 
-[^buddhist-annealing]: *Buddhist Annealing: Wireheading Done Right with the Seven Factors of Awakening* — Qualia Computing, 2021: <https://qualiacomputing.com/2021/04/04/buddhist-annealing-wireheading-done-right-with-the-seven-factors-of-awakening/>. This is also the piece he refers to later when he says equanimity increases the stress-dissipation capacity of the nervous system.
+[^buddhist-annealing]: ["Buddhist Annealing: Wireheading Done Right with the Seven Factors of Awakening"](https://qualiacomputing.com/2021/04/04/buddhist-annealing-wireheading-done-right-with-the-seven-factors-of-awakening/) (*Qualia Computing*, 2021). It also sets out the later point that equanimity increases the stress-dissipation capacity of the nervous system.
 
-[^attention-energizes]: The "whatever you pay attention to gets energized" principle is also stated, independently of Burbea, in *DMT and Hyperbolic Geometry*: <https://qualiacomputing.com/2022/05/02/dmt-and-hyperbolic-geometry-1-million-views-special/>.
+[^attention-energizes]: The "whatever you pay attention to gets energized" principle also appears in ["DMT and Hyperbolic Geometry"](https://qualiacomputing.com/2022/05/02/dmt-and-hyperbolic-geometry-1-million-views-special/) (*Qualia Computing*, 2022).
 
-[^cdns]: The consonance/dissonance/noise signature (CDNS) was introduced in *Quantifying Bliss* (Qualia Computing, 2017) as a valence measure derived from the harmonic structure of the brain's resonant modes.
+[^cdns]: The consonance/dissonance/noise signature (CDNS) was introduced in ["Quantifying Bliss: Talk Summary"](https://qualiacomputing.com/2017/06/18/quantifying-bliss-talk-summary/) (*Qualia Computing*, 2017) as a valence measure derived from the harmonic structure of the brain's resonant modes.
 
-[^tyringham]: The Tyringham Initiative, a UK consciousness/DMT symposium series: <https://tyringhaminitiative.com/>.
+[^tyringham]: [The Tyringham Initiative](https://tyringhaminitiative.com/), a UK consciousness/DMT symposium series.
 
 [^kelvin-helmholtz]: The Kelvin–Helmholtz instability: the shearing instability at the interface between two fluids moving at different velocities, which produces the characteristic rolled-over, spiral billows.
 
-[^noble-fig]: Noble Fig by Ferrari: <https://www.fragrantica.com/perfume/Ferrari/Noble-Fig-30259.html>.
+[^noble-fig]: [Noble Fig by Ferrari](https://www.fragrantica.com/perfume/Ferrari/Noble-Fig-30259.html) (Fragrantica).
 
-[^fearless]: *Fearless* — a scent Andrés formulated, "optimized for expressing the reduction of common varieties of fear," later released in an open-source formulation as *Open Fearless*: <https://qualiacomputing.com/2022/03/16/fearless/> and <https://qri.org/scents>.
+[^fearless]: *Fearless* — a scent Andrés formulated, "optimized for expressing the reduction of common varieties of fear," later released in an open-source formulation as *Open Fearless*. See ["Fearless"](https://qualiacomputing.com/2022/03/16/fearless/) (*Qualia Computing*, 2022) and [QRI scents](https://qri.org/scents).
 
-[^hedonium]: *Hedonium Shockwave* — one of QRI's *Magical Creatures* line of scents, an exploration of positive valence in its purest form: <https://qri.org/blog/magical-creatures>; Cammarata is also the subject of Scott Alexander's *Nick Cammarata on Jhana*: <https://www.astralcodexten.com/p/nick-cammarata-on-jhana>.
+[^hedonium]: *Hedonium Shockwave* — one of QRI's [*Magical Creatures*](https://qri.org/blog/magical-creatures) line of scents, an exploration of positive valence in its purest form. On Nick Cammarata, see Scott Alexander, ["Nick Cammarata on Jhana"](https://www.astralcodexten.com/p/nick-cammarata-on-jhana).
 
 [^stv]: The Symmetry Theory of Valence, first set out in Michael Johnson's [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016): symmetry in the mathematical representation of an experience corresponds to its pleasantness.
 
@@ -569,15 +570,14 @@ Infinite bliss, everybody. Take care. Until next time. Ciao.
 
 [^attention-awareness]: [[Attention and Awareness|Attention & Awareness: Oscillatory Complementarity, Non-Linearities, and the Pointlessness of It All]] — transcript included on this site.
 
-[^neural-crystal]: The article later materialized as Andrés Gómez-Emilsson, ["Eigenmodes of the Neural Crystal: Embodied Resonators, Geometric Frustration, and Why DMT Looks Like a Kale Surface"](https://andrsgmezemilsson.substack.com/p/eigenmodes-of-the-neural-crystal) (Substack, April 2026).
+[^rhythms]: ["On *Rhythms of the Brain*: Jhanas, Local Field Potentials, and Electromagnetic Theories of Consciousness"](https://qualiacomputing.com/2022/10/27/on-rhythms-of-the-brain-jhanas-local-field-potentials-and-electromagnetic-theories-of-consciousness/) (*Qualia Computing*, 2022).
 
-[^rhythms]: See *On Rhythms of the Brain: Jhanas, Local Field Potentials, and Electromagnetic Theories of Consciousness*: <https://qualiacomputing.com/2022/10/27/on-rhythms-of-the-brain-jhanas-local-field-potentials-and-electromagnetic-theories-of-consciousness/>.
+[^neural-crystal]: Andrés Gómez-Emilsson, ["Eigenmodes of the Neural Crystal: Embodied Resonators, Geometric Frustration, and Why DMT Looks Like a Kale Surface"](https://andrsgmezemilsson.substack.com/p/eigenmodes-of-the-neural-crystal) (Substack, April 2026).
 
 [^boundary]: The [binding problem](https://wiki.qri.org/wiki/Binding_Problem) (how disparate features come to be experienced as one unified whole) and its "overlooked cousin," the boundary problem (what makes one experience one experience and not part of another). Andrés and Chris Percy set out an EM-field-topology approach in ["Don't forget the boundary problem!"](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2023.1233119/full) (*Frontiers in Human Neuroscience*, 2023).
 
 [^zero-ontology]: "Zero ontology": the view that the universe's total information/structure sums to zero, and that everything that exists arises from symmetry-breaking on that nothing, so that no net "something" is ever added. See Andrés's talk ["Why Does Anything Exist? Zero Ontology, Physical Information, and Pure Awareness"](https://www.youtube.com/watch?v=KdDNfTREQJU), and Arthur Witherall's essay on David Pearce's zero ontology, ["The Zero Ontology"](https://www.hedweb.com/witherall/zero.htm).
 
 [^ninth]: The "unfabricated" attainment beyond the eight jhānas — *nirodha samāpatti*, the cessation of perception and feeling — is sometimes numbered as a ninth attainment.
-
 
 [^pair-production]: A single photon cannot decay into an electron–positron pair in free space, since energy and momentum cannot both be conserved. Pair production requires a nearby nucleus (or a second photon) to absorb the recoil momentum, and a photon energy of at least 1.022 MeV.
