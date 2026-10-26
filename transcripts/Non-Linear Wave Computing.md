@@ -415,41 +415,41 @@ Take care, everybody. See you next time. Ciao.
 
 [^catenary]: In the talk this is called a "catenoid." The curve traced by a chain or cord hanging freely between two points is a **catenary** (a cosh curve); a *catenoid* is the minimal surface you get by revolving a catenary about an axis.
 
-[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. Lehar's site: [slehar.com](https://slehar.com/wwwRel/Lehar.html).
+[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. See [Lehar's site](https://slehar.com/wwwRel/Lehar.html).
 
 [^phase-conjugation]: The effect described — two pump beams crossed in a nonlinear crystal such that a third beam is returned along its incoming path — is **optical phase conjugation**, usually realized via degenerate four-wave mixing.
 
 [^refractive-index]: In the talk this is called "diffraction" ("the diffraction quotient, or the diffraction constant, of the material"). The quantity a strong optical field actually modulates is the **refractive index**, via the optical Kerr effect (n = n₀ + n₂·I): the beam's own intensity raises the index most where the beam is most intense, the material acts as a lens, and the beam self-focuses. Diffraction is a different phenomenon (spreading at apertures/edges) and is not what is being changed.
 
-[^shinzen]: Shinzen Young's well-known formula is *Suffering = Pain × Resistance*: with resistance driven to zero by equanimity, arbitrarily intense sensation need not constitute suffering. See *The Science of Enlightenment* (2016).
+[^shinzen]: Shinzen Young's formula *Suffering = Pain × Resistance*: with resistance driven to zero by equanimity, arbitrarily intense sensation need not constitute suffering. See *The Science of Enlightenment* (2016).
+
+[^rhythms]: György Buzsáki, *Rhythms of the Brain* (Oxford University Press, 2006), which treats brain rhythms as the product of endogenous pattern-generating networks specialized for particular frequencies, envelopes, and modes of synchronization.
 
 [^grossberg]: Stephen Grossberg, originator of **Adaptive Resonance Theory** (ART), in which perceptual categories are formed when bottom-up input and top-down expectation lock into a resonant state; see his *Conscious Mind, Resonant Brain: How Each Brain Makes a Mind* (Oxford University Press, 2021).
 
-[^rhythms]: György Buzsáki, *Rhythms of the Brain* (Oxford University Press, 2006) — the standard treatment of brain rhythms as the product of endogenous pattern-generating networks specialized for particular frequencies, envelopes, and modes of synchronization.
+[^principia-qualia]: Michael Johnson, [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016), which introduces **valence structuralism** (the claim that valence is a structural property of the mathematical object corresponding to an experience) and the **Symmetry Theory of Valence** (symmetry/consonance in that object ≈ pleasantness).
 
-[^principia-qualia]: Mike Johnson, *Principia Qualia* (2016) — introduces **valence structuralism** (the claim that valence is a structural property of the mathematical object corresponding to an experience) and the **Symmetry Theory of Valence** (symmetry/consonance in that object ≈ pleasantness). PDF: [opentheory.net/PrincipiaQualia.pdf](https://opentheory.net/PrincipiaQualia.pdf).
+[^klein]: Felix Klein's **Erlangen program** (1872) defines a geometry by the group of transformations under which its properties are invariant.
 
-[^klein]: Felix Klein's **Erlangen program** (1872) defines a geometry by the group of transformations under which its properties are invariant — i.e. geometry *is* symmetry. Klein is separately known for the Klein bottle.
-
-[^tracer]: The talk is "[Parameterizing Psychedelic Effects with QRI's Psychophysics Toolkit](https://www.youtube.com/watch?v=oXRvd-chazg)" (QRI channel), in which Andrés presents the parameterization of visual phenomenology, psychedelic tracers especially. Background: the Tracer Replication Tool — Wu, Gómez-Emilsson & Zuckerman (2020), [write-up](https://qualiacomputing.com/2020/10/09/modeling-psychedelic-tracers-with-qris-psychophysics-toolkit-the-tracer-replication-tool/), [tool](https://psychophysics.qri.org/) — which lets subjects reconstruct the tracers they saw, parameterized in ADSR-envelope terms (trails vs. replays vs. strobes, colour pulsing, and so on).
+[^tracer]: ["Parameterizing Psychedelic Effects with QRI's Psychophysics Toolkit"](https://www.youtube.com/watch?v=oXRvd-chazg) (QRI), on the parameterization of visual phenomenology, psychedelic tracers especially. The Tracer Replication Tool — Wu, Gómez-Emilsson & Zuckerman (2020); see the [write-up](https://qualiacomputing.com/2020/10/09/modeling-psychedelic-tracers-with-qris-psychophysics-toolkit-the-tracer-replication-tool/) and the [tool](https://psychophysics.qri.org/) — lets subjects reconstruct the tracers they saw, parameterized in ADSR-envelope terms (trails vs. replays vs. strobes, colour pulsing, and so on).
 
 [^pihkal]: The talk says "*PiHKAL*," but Shulgin's LSD entry is in ***TiHKAL*** (*Tryptamines I Have Known and Loved*, 1997, entry #26). *PiHKAL* (*Phenethylamines I Have Known and Loved*, 1991) covers the phenethylamines.
 
-[^smell-pca]: Almost certainly Manuel Zarzo, "Relevant psychological dimensions in the perceptual space of perfumery odors," *Food Quality and Preference* 19 (2008), 315–322 — a PCA of the Boelens–Haring perfumery database. The "core affect space" he invokes for the arousal axis is Russell's circumplex model of affect (valence × arousal).
+[^smell-pca]: Manuel Zarzo, "Relevant psychological dimensions in the perceptual space of perfumery odors," *Food Quality and Preference* 19 (2008), 315–322 — a PCA of the Boelens–Haring perfumery database. The "core affect space" of the arousal axis is Russell's circumplex model of affect (valence × arousal).
 
 [^martinus]: Martinus Thomsen (1890–1981), Danish mystic and author of *Livets Bog*, whose cosmology holds that beings evolve across incarnations toward a state combining the "masculine" and "feminine" poles.
 
-[^pearce]: David Pearce, transhumanist philosopher, author of *The Hedonistic Imperative* and co-founder (with Nick Bostrom) of the World Transhumanist Association; a long-time interlocutor of Andrés's. Pearce has said that "like horns or a tail, gender and other brutish features of Darwinian life should be relegated to evolutionary history" — vestigial anatomy a posthuman lineage would simply shed. The thought is that in beings with unbounded morphological freedom, hyper-masculine and hyper-feminine cognitive styles may persist as options while the *dichotomy* itself stops being load-bearing. See the [Sentience Research interview](https://sentience-research.org/the-imperative-to-abolish-suffering-an-interview-with-david-pearce/).
+[^pearce]: David Pearce, transhumanist philosopher, author of *The Hedonistic Imperative* and co-founder (with Nick Bostrom) of the World Transhumanist Association. He has said that "like horns or a tail, gender and other brutish features of Darwinian life should be relegated to evolutionary history"; see the [Sentience Research interview](https://sentience-research.org/the-imperative-to-abolish-suffering-an-interview-with-david-pearce/).
 
-[^future-neuroscience]: Mike Johnson, "A Future for Neuroscience" (2018), on Selen Atasoy's connectome-specific harmonic waves. The piece proposes decomposing EQ into **entrainment quotient (EnQ)** — how rapidly and deeply your harmonics fall into alignment with another person's — and **metronome quotient (MQ)** — how strongly you can create, maintain and project an emotional frame, causing others to entrain to it. It also observes that women appear on average to have higher EnQ, matching the gender remark here, and it is the source of the "mind music" phrasing. [opentheory.net](https://opentheory.net/2018/08/a-future-for-neuroscience/) / [LessWrong](https://www.lesswrong.com/posts/2pnvgwGkMZkQzCvwi/a-future-for-neuroscience).
+[^future-neuroscience]: Michael Johnson, ["A Future for Neuroscience"](https://opentheory.net/2018/08/a-future-for-neuroscience/) (2018; also on [LessWrong](https://www.lesswrong.com/posts/2pnvgwGkMZkQzCvwi/a-future-for-neuroscience)), on Selen Atasoy's connectome-specific harmonic waves. It proposes decomposing EQ into **entrainment quotient (EnQ)** — how rapidly and deeply your harmonics fall into alignment with another person's — and **metronome quotient (MQ)** — how strongly you can create, maintain and project an emotional frame, causing others to entrain to it.
+
+[^buddhist-annealing]: ["Buddhist Annealing: Wireheading Done Right with the Seven Factors of Awakening"](https://qualiacomputing.com/2021/04/04/buddhist-annealing-wireheading-done-right-with-the-seven-factors-of-awakening/) (*Qualia Computing*, 2021), which reads the seven factors of awakening as *energy-management operations* on the flow of experience that, applied in the right sequence and dosage, produce wholesome neural annealing.
 
 [^power-posing]: The original power-posing result (Carney, Cuddy & Yap 2010) failed to replicate on hormonal and behavioral measures, and Dana Carney publicly repudiated the effect in 2016.
 
-[^buddhist-annealing]: Andrés Gómez-Emilsson, "Buddhist Annealing: Wireheading Done Right with the Seven Factors of Awakening" (2021) — reads the seven factors of awakening as *energy-management operations* on the flow of experience, which, applied in the right sequence and dosage, produce wholesome neural annealing. [qualiacomputing.com](https://qualiacomputing.com/2021/04/04/buddhist-annealing-wireheading-done-right-with-the-seven-factors-of-awakening/).
+[^ingram]: Daniel Ingram, *Mastering the Core Teachings of the Buddha* (2008), a pragmatic-dharma treatment of the jhānas and the insight stages (including the Dark Night).
 
-[^ingram]: Daniel Ingram, *Mastering the Core Teachings of the Buddha* — the standard modern pragmatic-dharma treatment of the jhānas and the insight stages (including the Dark Night).
-
-[^cdns]: **CDNS** — Consonance/Dissonance/Noise Signature — QRI's proposed parameterization of an experience (Gomez Emilsson 2017, "Quantifying Bliss"), used together with the Symmetry Theory of Valence to predict valence from harmonic structure.
+[^cdns]: **CDNS** — Consonance/Dissonance/Noise Signature — QRI's proposed parameterization of an experience, introduced in ["Quantifying Bliss: Talk Summary"](https://qualiacomputing.com/2017/06/18/quantifying-bliss-talk-summary/) (*Qualia Computing*, 2017), used together with the Symmetry Theory of Valence to predict valence from harmonic structure.
 
 [^ten-realms]: The six realms (hell, hungry ghost, animal, asura/Titan, human, deva/god) of saṃsāra, extended in the Tendai/Nichiren "ten worlds" scheme by the four "noble" states: śrāvaka (voice-hearer), pratyekabuddha (cause-awakened one), bodhisattva, and buddha.
 
@@ -457,9 +457,8 @@ Take care, everybody. See you next time. Ciao.
 
 [^nirodha]: *Nirodha samāpatti* — the "cessation of perception and feeling," a meditative attainment in which experience (on the traditional account) stops entirely.
 
-[^burbea]: Rob Burbea (1965–2020), *Seeing That Frees*, and his energy-body teachings — in which craving, aversion and the sense of self are tracked as tensions and contractions in the felt energy body rather than as purely cognitive events.
+[^burbea]: Rob Burbea (1965–2020), *Seeing That Frees* (2014), and his energy-body teachings, in which craving, aversion and the sense of self are tracked as tensions and contractions in the felt energy body rather than as purely cognitive events.
 
 [^co-arising]: **Co-arising** — i.e. *dependent co-arising* (pratītyasamutpāda) as used in contemporary meditation teaching: the sense of self and the sense of world are constructed together, each conditioning the other.
 
-
-[^fourth-path]: "Fourth path" is Daniel Ingram's term (from *Mastering the Core Teachings of the Buddha*) for the fourth and final stage of awakening in the Theravāda four-path model — arahantship — reframed pragmatically as the permanent, irreversible falling-away of the sense of a separate observing self, rather than as moral perfection or the end of ordinary human problems. Andrés uses it as the operational criterion for the "Buddha" realm here: a world that stays defabricated without effort.
+[^fourth-path]: "Fourth path" is Daniel Ingram's term (from *Mastering the Core Teachings of the Buddha*) for the fourth and final stage of awakening in the Theravāda four-path model — arahantship — reframed pragmatically as the permanent falling-away of the sense of a separate observing self, rather than as moral perfection or the end of ordinary human problems.

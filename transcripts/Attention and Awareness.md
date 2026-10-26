@@ -179,7 +179,7 @@ So what's going on there? Well, there are two things.
 
 And this is very related to the free energy principle and perceptual control theory. Except that it's not reduced to it — that's also a very important point. I don't want to sound too facetious, but there are a lot of people nowadays who are very excited: "Oh, I did my PhD on the free energy principle and psychedelics, and now we understand how this works." And it's like — not even close. To some extent, that's power posing. Actually, that's just a tiny element of the puzzle. And also, I think that once you understand these other paradigms, the free energy principle is not even a fundamental thing in this case. It's an implementation detail of our nervous system, but it's not actually essential for consciousness.
 
-Anyway, I've talked a little bit about that before, I think in the psychedelics and free energy principle video, if you're more curious about it.
+Anyway, I've talked a little bit about that before, I think in the psychedelics and free energy principle video,[^fep] if you're more curious about it.
 
 But essentially, there are these things we call **Bayesian energy sinks**: what you can recognize functions as an energy sink. And so the world sheet[^world-sheet] — this wobbly thing that is made of the non-linearities interacting with each other — can crystallize around, let's say, an angel, or a demon, or a philosopher, or your mom, or a pizza, actually. Anything that you can recognize can become a Bayesian energy sink, especially if you expect it. Which is why, if you've been trained within a spiritual tradition, or if you've been watching too much TV, there's a bunch of gestalts that you have stored, and those are going to be more expected by your nervous system. It's more likely that you're going to anneal and crystallize around them.
 
@@ -235,22 +235,24 @@ And with that, I'll end there. Thank you so much for tuning in, and I'll talk to
 
 [^euclid-defs]: Euclid's *Elements*, Book I, Definition 1: "A point is that which has no part." See [Euclid's definitions](https://mathshistory.st-andrews.ac.uk/HistTopics/Euclid_definitions/) (MacTutor History of Mathematics).
 
+[^prime-radiant]: The **prime radiant** comes from a passage quoted in ["Burning Man Theme Camps of the Year 2029"](https://qualiacomputing.com/2019/04/08/burning-man-theme-camps-of-the-year-2029-from-replicator-to-rainbow-god-2-2/) (*Qualia Computing*, 2019), attributed there to Bob Sanders, *Zero Point Energy* (2019).
+
+[^wheeler]: Historically, the one-electron universe was proposed by **John Wheeler** to Feynman (Feynman recounts Wheeler phoning him with the idea in his 1965 Nobel lecture), i.e. the direction is the reverse of the one given in the talk.
+
 [^scholarpedia]: On the standard distinction — and why attention and consciousness should not be conflated — see [Attention and consciousness](http://www.scholarpedia.org/article/Attention_and_consciousness) (Scholarpedia).
 
 [^ssvep]: Lauritzen, Ales & Wade, ["The effects of visuospatial attention measured across visual cortex using source-imaged, steady-state EEG"](https://www.st-andrews.ac.uk/~jma23/papers/lauritzen2010JOV_spatial-attention.pdf), *Journal of Vision* 10 (2010) — attention measurably modulates responses across human visual cortex.
 
-[^maoi]: On MAOI interactions with other drugs, see [this overview](https://www.reddit.com/r/Drugs/comments/mo6av3/recreational_drugs_and_maoi_treatment/); combining MAOIs with serotonergic drugs risks serotonin syndrome.
+[^maoi]: Combining MAOIs with serotonergic drugs risks serotonin syndrome; see ["Recreational drugs and MAOI treatment"](https://www.reddit.com/r/Drugs/comments/mo6av3/recreational_drugs_and_maoi_treatment/) (Reddit).
+
+[^symmetry-hotel]: The **Symmetry Hotel** is described in ["DMT and Hyperbolic Geometry (1 Million Views Special)"](https://qualiacomputing.com/2022/05/02/dmt-and-hyperbolic-geometry-1-million-views-special/) (*Qualia Computing*, 2022) as a level of the DMT dose-response ladder between Threshold and Chrysanthemum: the surrounding world is still visible, but every surface is saturated with wallpaper symmetry groups. With more energy the 2D surfaces begin to hyperbolize, giving the Chrysanthemum.
 
 [^lehar-constructive]: Steven Lehar, ["The Constructive Aspect of Visual Perception"](http://slehar.com/www/ConstructiveAspect/ConstructiveAspect.html) (2008).
 
-[^hyperbolic-dmt]: Andrés Gómez-Emilsson, ["The Hyperbolic Geometry of DMT Experiences"](https://qualiacomputing.com/2016/12/12/the-hyperbolic-geometry-of-dmt-experiences/) (Qualia Computing, 2016) — introduces Bayesian energy sinks.
+[^hyperbolic-dmt]: Andrés Gómez-Emilsson, ["The Hyperbolic Geometry of DMT Experiences"](https://qualiacomputing.com/2016/12/12/the-hyperbolic-geometry-of-dmt-experiences/) (*Qualia Computing*, 2016), which introduces Bayesian energy sinks.
 
-[^wheeler]: Historically, the one-electron universe was proposed by **John Wheeler** to Feynman (Feynman recounts Wheeler phoning him with the idea in his 1965 Nobel lecture), i.e. the direction is the reverse of the one given in the talk.
+[^fep]: [[Psychedelics and the Free Energy Principle|Psychedelics and the Free Energy Principle: From REBUS to Indra's Net]] — transcript included on this site.
 
-[^prime-radiant]: The **prime radiant** as he uses it comes from a passage he quotes in ["Burning Man Theme Camps of the Year 2029"](https://qualiacomputing.com/2019/04/08/burning-man-theme-camps-of-the-year-2029-from-replicator-to-rainbow-god-2-2/) (attributed there to Bob Sanders, *Zero Point Energy*, 2019).
+[^world-sheet]: The **world-sheet** — the spatiotemporal fabric of phenomenal (especially visual) experience — is developed in "The Hyperbolic Geometry of DMT Experiences" (2016) and used across QRI work, e.g. ["Cessation Simulations"](https://qri.org/blog/cessation-simulations) and ["Indra's Net via Nonlinear Optics"](https://qualiacomputing.com/2025/09/13/indras-net-via-nonlinear-optics-dmt-phenomenology-as-evidence-for-beamsplitter-holography-and-recursive-harmonic-compression/) (*Qualia Computing*, 2025). DMT raises the sheet's energy, curving it into hyperbolic geometry.
 
-[^symmetry-hotel]: He defines the **Symmetry Hotel** in ["DMT and Hyperbolic Geometry (1 Million Views Special)"](https://qualiacomputing.com/2022/05/02/dmt-and-hyperbolic-geometry-1-million-views-special/) as a thin layer of the DMT dose-response ladder sitting between Threshold and Chrysanthemum: you still see the "real" world around you, but every surface is fully saturated with wallpaper symmetry groups — empirically, any of the 17 groups and their combinations. Raise the energy parameter further and the 2D surfaces begin to hyperbolize, unlocking the Chrysanthemum. There is a one-dimension-higher analogue, **Crystal Worlds**, between Magic Eye and Waiting Room, where space itself saturates with Euclidean space groups before hyperbolizing into Waiting Room phenomenology.
-
-[^world-sheet]: The **world-sheet** is the spatiotemporal fabric of phenomenal (especially visual) experience, developed in *The Hyperbolic Geometry of DMT Experiences* (2016) and used across QRI work — see ["Cessation Simulations"](https://qri.org/blog/cessation-simulations) and the [Indra's Net / nonlinear optics piece](https://qualiacomputing.com/2025/09/13/indras-net-via-nonlinear-optics-dmt-phenomenology-as-evidence-for-beamsplitter-holography-and-recursive-harmonic-compression/). It carries an energy that drives its curvature and complexity: DMT raises that energy, warping the sheet into hyperbolic geometry (the "kale surface"), and the hallucinations are downstream of the system trying to shed the excess. Attention acts as an *energy source*, intensifying features of the sheet; recognition acts as an *energy sink*, stabilizing them. A trip is thus an annealing process in which gestalts settle at local minima that jointly maximize recognizability and symmetry — exactly the two-sink account he gives in the "Energy Sources and Energy Sinks" section above.
-
-[^signaling]: ["Avoid Runaway Signaling in Effective Altruism"](https://qualiacomputing.com/2017/10/24/avoid-runaway-signaling-in-effective-altruism/), Qualia Computing, 24 October 2017.
+[^signaling]: ["Avoid Runaway Signaling in Effective Altruism"](https://qualiacomputing.com/2017/10/24/avoid-runaway-signaling-in-effective-altruism/) (*Qualia Computing*, 2017).
