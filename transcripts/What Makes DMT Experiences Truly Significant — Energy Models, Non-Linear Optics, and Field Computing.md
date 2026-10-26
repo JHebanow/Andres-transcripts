@@ -169,7 +169,7 @@ Okay — a lot of information, most of all just vibes. Let's figure this out for
 
 [^sol]: The Sol Foundation is a research organization focused on unidentified anomalous phenomena, co-founded in 2023 by Stanford professor of pathology Garry Nolan and anthropologist Peter Skafish. Its inaugural conference was held at Stanford in November 2023.
 
-[^knuth]: Kevin H. Knuth is a physicist at the University at Albany (SUNY). Knuth, Powell and Reali, ["Estimating Flight Characteristics of Anomalous Unidentified Aerial Vehicles"](https://doi.org/10.3390/e21100939), *Entropy* 21(10):939 (2019), estimates lower bounds on the accelerations of several documented UAP encounters, including the 2004 Nimitz encounters, ranging from roughly 100 g to thousands of g, with no observed air disturbance, sonic booms, or heat commensurate with the estimated energies. Knuth also gave a talk, ["The Physics of UAP"](https://youtu.be/HlYwktOj75A), linked from the video description.
+[^knuth]: Kevin H. Knuth is a physicist at the University at Albany (SUNY). Knuth, Powell and Reali, ["Estimating Flight Characteristics of Anomalous Unidentified Aerial Vehicles"](https://doi.org/10.3390/e21100939), *Entropy* 21(10):939 (2019), estimates lower bounds on the accelerations of several documented UAP encounters, including the 2004 Nimitz encounters, ranging from roughly 100 g to thousands of g, with no observed air disturbance, sonic booms, or heat commensurate with the estimated energies. See also Knuth's talk ["The Physics of UAP"](https://youtu.be/HlYwktOj75A), linked in the video description.
 
 [^feynman]: [*The Feynman Lectures on Physics*](https://www.feynmanlectures.caltech.edu/) is available in full online. The quantum electrodynamics lectures were published as *QED: The Strange Theory of Light and Matter* (1985).
 
@@ -181,7 +181,7 @@ Okay — a lot of information, most of all just vibes. Let's figure this out for
 
 [^harvard]: ["The Hyperbolic Geometry of DMT Experiences"](https://youtu.be/loCBvaj4eSg), talk given at the Harvard Science of Psychedelics Club (2019).
 
-[^levels]: The level taxonomy being used here — threshold, chrysanthemum, Magic Eye, Waiting Room, Breakthrough, and amnesia — is set out in [the 2016 essay](https://qualiacomputing.com/2016/12/12/the-hyperbolic-geometry-of-dmt-experiences/), which pairs each level with an approximate dose range and a description of its characteristic geometry.
+[^levels]: The level taxonomy — threshold, chrysanthemum, Magic Eye, Waiting Room, Breakthrough, and amnesia — is set out in ["The Hyperbolic Geometry of DMT Experiences"](https://qualiacomputing.com/2016/12/12/the-hyperbolic-geometry-of-dmt-experiences/) (*Qualia Computing*, 2016), which pairs each level with an approximate dose range and a description of its characteristic geometry.
 
 [^four-color]: The four-colour theorem covers maps drawn on the plane or the sphere. Surfaces of higher genus require more colours: seven for a torus, eight for a genus-2 surface such as a double doughnut or pretzel, with the Heawood formula giving the number for each genus.
 
@@ -191,10 +191,10 @@ Okay — a lot of information, most of all just vibes. Let's figure this out for
 
 [^indra]: [Indra's net](https://en.wikipedia.org/wiki/Indra%27s_net) is an image from the Huayan school of Buddhism: an infinite net with a jewel at every vertex, each jewel reflecting every other jewel, so that each contains the whole net within itself.
 
-[^rebus]: The two models alluded to here are REBUS — "relaxed beliefs under psychedelics" (Carhart-Harris & Friston, 2019), on which psychedelics reduce the precision of high-level priors — and connectome-specific harmonic waves (Atasoy et al., 2016), on which brain states are decomposed into the resonant modes of the connectome.
+[^rebus]: REBUS — "relaxed beliefs under psychedelics" (Carhart-Harris & Friston, 2019), on which psychedelics reduce the precision of high-level priors — and connectome-specific harmonic waves (Atasoy et al., 2016), on which brain states are decomposed into the resonant modes of the connectome. See [[Psychedelics and the Free Energy Principle|Psychedelics and the Free Energy Principle: From REBUS to Indra's Net]] — transcript included on this site.
+
+[^noether]: By Noether's theorem, each continuous symmetry of a physical system corresponds to a conserved quantity: symmetry under translation in space gives conservation of momentum, symmetry under translation in time gives conservation of energy, and rotational symmetry gives conservation of angular momentum.
 
 [^stv]: The symmetry theory of valence holds that the pleasantness of an experience corresponds to the symmetry of the mathematical object representing it. See ["A Primer on the Symmetry Theory of Valence"](https://opentheory.net/2021/07/a-primer-on-the-symmetry-theory-of-valence/) (Michael Johnson, 2021).
 
 [^annealing]: ["Neural Annealing: Toward a Neural Theory of Everything"](https://opentheory.net/2019/11/neural-annealing-toward-a-neural-theory-of-everything/) (Michael Johnson, 2019).
-
-[^noether]: By Noether's theorem, each continuous symmetry of a physical system corresponds to a conserved quantity: symmetry under translation in space gives conservation of momentum, symmetry under translation in time gives conservation of energy, and rotational symmetry gives conservation of angular momentum.

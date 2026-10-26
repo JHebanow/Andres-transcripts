@@ -202,30 +202,30 @@ With that — thank you so much for sticking around and watching this whole vide
 ## Footnotes
 
 
-[^cluster-headaches]: Alfredo Parra, "Quantifying the Global Burden of Extreme Pain from Cluster Headaches," EA Forum: <https://forum.effectivealtruism.org/posts/geh2g2nKb7Kkp26ze/quantifying-the-global-burden-of-extreme-pain-from-cluster>.
-
-[^kidney-stones]: Andrés Gómez-Emilsson and Alfredo Parra, "The Quest for a Stone-Free World (Chanca Piedra / *Phyllanthus niruri*)," EA Forum: <https://forum.effectivealtruism.org/posts/JNNrkeWdTHrS87opd/the-quest-for-a-stone-free-world-chanca-piedra-phyllanthus-1>.
-
-[^coupling-kernel]: The coupling kernel and its application to meditative cessations are developed in Chris Percy, Andrés Gómez-Emilsson, and Quintin Fakhri, "Cessation states: computer simulations, phenomenological assessments, and EMF theories" (2024): <https://philpapers.org/rec/PERCSC>. See also the QRI write-up "Towards Computational Simulations of Cessation": <https://qri.org/blog/cessation-simulations>.
-
 [^toe]: The episode: ["The Science of New States of Consciousness"](https://www.youtube.com/watch?v=BBP8WZpYp0Y) (*Theories of Everything* with Curt Jaimungal).
 
-[^levels-of-vision]: Marco Aqil, *Levels of Vision: From Computational Models to Psychedelics*, PhD thesis, Vrije Universiteit Amsterdam, defended February 2025: <https://research.vu.nl/en/publications/levels-of-vision-from-computational-models-to-psychedelics/> (doi: [10.5463/thesis.860](https://doi.org/10.5463/thesis.860)).
+[^cluster-headaches]: Alfredo Parra, ["Quantifying the Global Burden of Extreme Pain from Cluster Headaches"](https://forum.effectivealtruism.org/posts/geh2g2nKb7Kkp26ze/quantifying-the-global-burden-of-extreme-pain-from-cluster) (EA Forum).
 
-[^chaoss]: CHAOSS (Connectome-Harmonic Analysis Of Spatiotemporal Spectra) represents each brain region and pathway as a node and edge on a distance-weighted graph, then applies spatiotemporal graph filters that act as coupling kernels selecting the system's global harmonic modes. See its treatment in the [companion post](https://qualiacomputing.com/2025/02/09/from-neural-activity-to-field-topology-how-coupling-kernels-shape-consciousness/) and Aqil et al., *PLOS Computational Biology*: <https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008310>.
+[^kidney-stones]: Andrés Gómez-Emilsson and Alfredo Parra, ["The Quest for a Stone-Free World (Chanca Piedra / *Phyllanthus niruri*)"](https://forum.effectivealtruism.org/posts/JNNrkeWdTHrS87opd/the-quest-for-a-stone-free-world-chanca-piedra-phyllanthus-1) (EA Forum).
 
-[^divisive-normalization]: Marco Aqil, Tomas Knapen, and Serge O. Dumoulin, "Divisive normalization unifies disparate response signatures throughout the human visual hierarchy," *PNAS* 118(46):e2108713118 (2021): <https://www.pnas.org/doi/10.1073/pnas.2108713118>. Divisive normalization models a neuron's response as its driving input divided by a weighted sum of its neighbors' activity; Aqil's work links model parameters to serotonin and GABA receptor densities and shows psilocybin systematically alters surround suppression.
+[^coupling-kernel]: Developed, with its application to meditative cessations, in Chris Percy, Andrés Gómez-Emilsson, and Bijan Fakhri, ["Cessation states: computer simulations, phenomenological assessments, and EMF theories"](https://philpapers.org/rec/PERCSC) (2024); see also ["Towards Computational Simulations of Cessation"](https://qri.org/blog/cessation-simulations) (qri.org).
 
-[^connectome-harmonics]: The "connectome harmonics" framework is Selen Atasoy, Isaac Donnelly, and Joel Pearson, "Human brain networks function in connectome-specific harmonic waves," *Nature Communications* 7:10340 (2016): <https://www.nature.com/articles/ncomms10340>. Atasoy's later work with Morten Kringelbach and Gustavo Deco develops the related "turbulence" account of large-scale brain dynamics.
+[^levels-of-vision]: Marco Aqil, [*Levels of Vision: From Computational Models to Psychedelics*](https://research.vu.nl/en/publications/levels-of-vision-from-computational-models-to-psychedelics/), PhD thesis, Vrije Universiteit Amsterdam (2025), doi: [10.5463/thesis.860](https://doi.org/10.5463/thesis.860).
+
+[^chaoss]: CHAOSS (Connectome-Harmonic Analysis Of Spatiotemporal Spectra) represents each brain region and pathway as a node and edge on a distance-weighted graph, then applies spatiotemporal graph filters that act as coupling kernels selecting the system's global harmonic modes. See the [companion post](https://qualiacomputing.com/2025/02/09/from-neural-activity-to-field-topology-how-coupling-kernels-shape-consciousness/) and [Aqil et al., *PLOS Computational Biology*](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008310).
+
+[^divisive-normalization]: Marco Aqil, Tomas Knapen, and Serge O. Dumoulin, ["Divisive normalization unifies disparate response signatures throughout the human visual hierarchy"](https://www.pnas.org/doi/10.1073/pnas.2108713118), *PNAS* 118(46):e2108713118 (2021). Divisive normalization models a neuron's response as its driving input divided by a weighted sum of its neighbors' activity; Aqil's work links model parameters to serotonin and GABA receptor densities and shows psilocybin systematically alters surround suppression.
+
+[^connectome-harmonics]: Selen Atasoy, Isaac Donnelly, and Joel Pearson, ["Human brain networks function in connectome-specific harmonic waves"](https://www.nature.com/articles/ncomms10340), *Nature Communications* 7:10340 (2016). Atasoy's later work with Morten Kringelbach and Gustavo Deco develops the related "turbulence" account of large-scale brain dynamics.
 
 [^projective-intelligence]: [[Projective Intelligence|Projective Intelligence: How the Visual/Tactile Fields Use Projective Geometry for Signal Processing]] — transcript included on this site.
 
-[^pure-perception]: The observation that visual sensations devoid of somatic coupling have a distinct quality is attributed by QRI to Roger Thisdell; see his HEART essay "On Pure Perception": <https://heart.qri.org/retreats/2023-canada/roger-thisdell/on-pure-perception>.
+[^pure-perception]: Roger Thisdell, ["On Pure Perception"](https://heart.qri.org/retreats/2023-canada/roger-thisdell/on-pure-perception) (QRI HEART), on the distinct quality of visual sensations devoid of somatic coupling.
 
-[^boundary-problem]: The topological approach to the boundary problem is set out in Andrés Gómez-Emilsson and Chris Percy (2023), *Frontiers in Human Neuroscience* 17:1233119: <https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2023.1233119/full>. A gentler introduction is "The View from My Topological Pocket": <https://qualiacomputing.com/2023/10/26/the-view-from-my-topological-pocket-an-introduction-to-field-topology-for-solving-the-boundary-problem/>.
+[^boundary-problem]: Andrés Gómez-Emilsson and Chris Percy, ["Don't forget the boundary problem!"](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2023.1233119/full), *Frontiers in Human Neuroscience* 17:1233119 (2023). A gentler introduction is ["The View from My Topological Pocket"](https://qualiacomputing.com/2023/10/26/the-view-from-my-topological-pocket-an-introduction-to-field-topology-for-solving-the-boundary-problem/) (*Qualia Computing*, 2023).
 
-[^path-integral-video]: The path-integral explainer linked in the video description: <https://youtu.be/ss0HABVUkeQ>. The point that stationary (not merely minimal) optical paths contribute — so light can take a "longest path" observable in a configuration of mirrors — is Feynman's, from *QED: The Strange Theory of Light and Matter*.
+[^path-integral-video]: [Path-integral explainer](https://youtu.be/ss0HABVUkeQ), linked in the video description. That stationary (not merely minimal) optical paths contribute — so light can take a "longest path" in a configuration of mirrors — is from Feynman's *QED: The Strange Theory of Light and Matter*.
 
-[^stv]: The Symmetry Theory of Valence (the hypothesis that the pleasantness of an experience tracks the symmetry of its mathematical representation) is due to Michael Johnson; see *Principia Qualia* (2016): <https://opentheory.net/PrincipiaQualia.pdf>.
+[^stv]: The Symmetry Theory of Valence (the hypothesis that the pleasantness of an experience tracks the symmetry of its mathematical representation) is due to Michael Johnson; see [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016).
 
-[^principia-qualia]: Michael Johnson, *Principia Qualia* (2016): <https://opentheory.net/PrincipiaQualia.pdf>. "Qualia formalism" is the thesis that, for any conscious experience, there exists a mathematical object whose properties are isomorphic to the properties of that experience.
+[^principia-qualia]: Michael Johnson, [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016). "Qualia formalism" is the thesis that, for any conscious experience, there exists a mathematical object whose properties are isomorphic to the properties of that experience.

@@ -252,7 +252,7 @@ And that's about it. So, thank you so much, and infinite bliss! Yay!
 
 [^hawking]: Stephen Hawking, *A Brief History of Time* (1988), final chapter: "What is it that breathes fire into the equations?"
 
-[^open-individualism]: Open individualism: the view that there exists only one numerically identical subject of experience, who is everyone at all times. The term was coined by the philosopher Daniel Kolak and is contrasted with closed individualism (the common-sense view) and empty individualism. [Wikipedia: Open individualism](https://en.wikipedia.org/wiki/Open_individualism)
+[^open-individualism]: Open individualism: the view that there exists only one numerically identical subject of experience, who is everyone at all times. The term was coined by the philosopher Daniel Kolak and is contrasted with closed individualism and empty individualism. [Wikipedia: Open individualism](https://en.wikipedia.org/wiki/Open_individualism)
 
 [^universal-darwinism]: Universal Darwinism: the extension of the Darwinian mechanism of variation, selection and retention beyond biology, to any domain in which patterns are copied with variation — culture, the immune system, possibly cosmology. The term is Richard Dawkins's (1983). [Wikipedia: Universal Darwinism](https://en.wikipedia.org/wiki/Universal_Darwinism)
 

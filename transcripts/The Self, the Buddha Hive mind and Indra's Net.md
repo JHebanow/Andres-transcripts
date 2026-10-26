@@ -267,41 +267,38 @@ All right. With that: thank you so much, everybody. **Infinite bliss!** Take car
 
 ## Footnotes
 
-[^kolak]: Daniel Kolak, *I Am You: The Metaphysical Foundations for Global Ethics* (Springer, 2004) — the source of the closed/empty/open individualism trichotomy, and a defense of open individualism (<https://phantomself.org/kolak-i-am-you/>). See also Andrés's "Ontological Qualia: The Future of Personal Identity" (<https://qualiacomputing.com/2015/12/17/ontological-qualia-the-future-of-personal-identity/>).
+[^kolak]: Daniel Kolak, [*I Am You: The Metaphysical Foundations for Global Ethics*](https://phantomself.org/kolak-i-am-you/) (Springer, 2004), the source of the closed/empty/open individualism trichotomy and a defense of open individualism. See also ["Ontological Qualia: The Future of Personal Identity"](https://qualiacomputing.com/2015/12/17/ontological-qualia-the-future-of-personal-identity/) (*Qualia Computing*, 2015).
 
-[^zuboff]: Arnold Zuboff, *Finding Myself: Beyond the False Boundaries of Personal Identity* (Philosophy Documentation Center, 2025; foreword by Thomas Nagel), published as a supplement to *Midwest Studies in Philosophy*. Zuboff's view — which he has argued since "One Self: The Logic of Experience" (*Inquiry*, 1990) — is that the apparent boundary between oneself and other conscious beings is an illusion of perspective: there is a single subject of all consciousness. He calls it *universalism*. Andrés's interview with Zuboff is written up on his Substack ("Universalism & Unificationism: Arnold Zuboff talks to Andrés Gómez Emilsson About His Book *Finding Myself*"): <https://andrsgmezemilsson.substack.com/p/universalism-and-unificationism-arnold>
+[^zuboff]: Arnold Zuboff, *Finding Myself: Beyond the False Boundaries of Personal Identity* (Philosophy Documentation Center, 2025; foreword by Thomas Nagel), published as a supplement to *Midwest Studies in Philosophy*. Zuboff's view — argued since "One Self: The Logic of Experience" (*Inquiry*, 1990) — is that the apparent boundary between oneself and other conscious beings is an illusion of perspective: there is a single subject of all consciousness, which he calls *universalism*. See the interview ["Universalism & Unificationism: Arnold Zuboff talks to Andrés Gómez Emilsson About His Book *Finding Myself*"](https://andrsgmezemilsson.substack.com/p/universalism-and-unificationism-arnold) (Substack).
 
-[^stable]: Richard Dawkins, *The Selfish Gene*, ch. 2 ("The Replicators"), where he argues that the deepest principle is the survival of the *stable* — stable configurations persist, unstable ones don't — with Darwinian natural selection as a special case that applies once replicators exist. Andrés's paraphrase is accurate.
+[^stable]: Richard Dawkins, *The Selfish Gene*, ch. 2 ("The Replicators"), where the deepest principle is the survival of the *stable* — stable configurations persist, unstable ones don't — with Darwinian natural selection as a special case that applies once replicators exist.
 
-[^mind-dust]: "Mind dust" is William James's term (*The Principles of Psychology*, 1890, ch. 6) for the hypothesis that consciousness is built out of tiny proto-conscious atoms; James raised it in order to reject it, on the grounds that mental units do not sum into a further unified mental state — which is essentially the binding problem Andrés is invoking here.
+[^mind-dust]: "Mind dust" is William James's term (*The Principles of Psychology*, 1890, ch. 6) for the hypothesis that consciousness is built out of tiny proto-conscious atoms; James raised it in order to reject it, on the grounds that mental units do not sum into a further unified mental state.
 
-[^levin]: Michael Levin's account of how cells scale up their "cognitive light cones" into a multicellular self. See Levin, "The Computational Boundary of a 'Self': Developmental Bioelectricity Drives Multicellularity and Scale-Free Cognition," *Frontiers in Psychology* 10 (2019): <https://doi.org/10.3389/fpsyg.2019.02688>.
+[^tunicate]: The tunicate (sea squirt), whose larva has a brain and a notochord and which, on settling and metamorphosing, resorbs much of its nervous system.
+
+[^levin]: Michael Levin, ["The Computational Boundary of a 'Self': Developmental Bioelectricity Drives Multicellularity and Scale-Free Cognition"](https://doi.org/10.3389/fpsyg.2019.02688), *Frontiers in Psychology* 10 (2019), on how cells scale up their "cognitive light cones" into a multicellular self.
 
 [^orbifold]: \*442 and 333 are orbifold (Conway) notations for wallpaper groups. \*442 (= p4m) has four-fold rotation centers and mirror lines; 333 (= p3) has three-fold rotation centers and no mirrors.
 
 [^noether]: **Noether's theorem** (Emmy Noether, 1918): every continuous symmetry of a physical system corresponds to a conserved quantity — invariance under time translation gives conservation of energy, under spatial translation conservation of momentum, under rotation conservation of angular momentum.
 
-[^tunicate]: The case he has in mind is the tunicate (sea squirt), whose larva has a brain and a notochord and which, on settling and metamorphosing, resorbs much of its nervous system.
+[^cfc]: Cube Flipper, ["Cross-frequency coupling"](https://heart.qri.org/retreats/2023-brazil/cube-flipper/cross-frequency-coupling) (QRI HEART).
 
-[^projective]: Andrés's talk [[Projective Intelligence|Projective Intelligence: How the Visual/Tactile Fields Use Projective Geometry for Signal Processing]] — transcript included on this site. The core claim is that interfacing between representational spaces of different geometry and dimensionality is a fundamental computational principle, of which visual/tactile cross-modal prediction is the everyday case.
+[^projective]: [[Projective Intelligence|Projective Intelligence: How the Visual/Tactile Fields Use Projective Geometry for Signal Processing]] — transcript included on this site. The core claim is that interfacing between representational spaces of different geometry and dimensionality is a fundamental computational principle, of which visual/tactile cross-modal prediction is the everyday case.
 
 [^one-electron]: The one-electron universe was proposed by John Wheeler, who put it to Feynman in a phone call in 1940; Feynman recounted it in his 1965 Nobel lecture and developed the associated interpretation of positrons as electrons moving backwards in time.
 
-[^cel]: *Cel animation* — from "celluloid," the transparent sheets on which each animated element was painted and then layered over a background. Andrés uses "cel" as a term for discrete gestalt elements that can be independently transformed and re-composited within the visual field.
+[^screen]: The screen-and-modules model is developed in ["Indra's Net via Nonlinear Optics: DMT Phenomenology as Evidence for Beamsplitter Holography and Recursive Harmonic Compression"](https://qualiacomputing.com/2025/09/13/indras-net-via-nonlinear-optics-dmt-phenomenology-as-evidence-for-beamsplitter-holography-and-recursive-harmonic-compression/) (*Qualia Computing*, 2025), and the resonant modes of a screen transformed by its own modules in ["Eigenmodes of the Neural Crystal"](https://andrsgmezemilsson.substack.com/p/eigenmodes-of-the-neural-crystal) (Substack, 2026).
 
-[^needles]: Andrés Gómez-Emilsson, "Needles Out of Space: The Shadows of High-Dimensional Objects" — the argument that in high dimensions nearly all projections are at acute angles, so a generic high-dimensional object casts a needle-like shadow into a lower-dimensional space: <https://andrsgmezemilsson.substack.com/p/needles-out-of-space-the-shadows>
+[^cel]: *Cel animation*, from "celluloid": the transparent sheets on which each animated element was painted and then layered over a background. Here "cel" denotes a discrete gestalt element that can be independently transformed and re-composited within the visual field.
 
+[^needles]: Andrés Gómez-Emilsson, ["Needles Out of Space: The Shadows of High-Dimensional Objects"](https://andrsgmezemilsson.substack.com/p/needles-out-of-space-the-shadows) (Substack): in high dimensions nearly all projections are at acute angles, so a generic high-dimensional object casts a needle-like shadow into a lower-dimensional space.
 
-[^three-characteristics]: The three characteristics (*tilakkhaṇa*) of Buddhist doctrine: impermanence (*anicca*), non-self (*anattā*), and unsatisfactoriness (*dukkha*). Andrés's gloss — impermanence, no-self, and the impossibility of lasting satisfaction — maps onto these correctly.
+[^mara]: ["DMT Angels and Demons: How Coagulated Shards of Ignorance Project and Self-Organize Against the Self"](https://youtu.be/3TT-HDfb668).
 
-[^avatamsaka]: The *Avataṃsaka Sūtra* (Flower Ornament Scripture), a Mahāyāna text; the source of the image of **Indra's Net**, an infinite net of jewels each reflecting every other. It is among the longest Buddhist sutras (Thomas Cleary's English translation runs to roughly 1,600 pages), though "the longest" is contestable — Andrés himself hedges on this.
+[^three-characteristics]: The three characteristics (*tilakkhaṇa*) of Buddhist doctrine: impermanence (*anicca*), non-self (*anattā*), and unsatisfactoriness (*dukkha*).
 
-[^thurman]: Robert "Bob" Thurman, Buddhist scholar (and Uma Thurman's father). The reading Andrés links in his companion write-up: <https://youtu.be/HtbNirM5gS4>
+[^avatamsaka]: The *Avataṃsaka Sūtra* (Flower Ornament Scripture), a Mahāyāna text and the source of the image of **Indra's Net**, an infinite net of jewels each reflecting every other. Thomas Cleary's English translation runs to roughly 1,600 pages.
 
-
-[^screen]: The screen-and-modules model is developed in "Indra's Net via Nonlinear Optics: DMT Phenomenology as Evidence for Beamsplitter Holography and Recursive Harmonic Compression" (<https://qualiacomputing.com/2025/09/13/indras-net-via-nonlinear-optics-dmt-phenomenology-as-evidence-for-beamsplitter-holography-and-recursive-harmonic-compression/>), and the resonant modes of a screen transformed by its own modules in "Eigenmodes of the Neural Crystal" (<https://andrsgmezemilsson.substack.com/p/eigenmodes-of-the-neural-crystal>).
-
-[^cfc]: On cross-frequency coupling specifically, Andrés points to Cube Flipper's piece: <https://heart.qri.org/retreats/2023-brazil/cube-flipper/cross-frequency-coupling>
-
-[^mara]: Andrés's talk on the Mara dynamic: <https://youtu.be/3TT-HDfb668>
-
+[^thurman]: Robert Thurman, Buddhist scholar: ["Flower Ornament Sutra with Bob Thurman"](https://youtu.be/HtbNirM5gS4) (Tibet House US).

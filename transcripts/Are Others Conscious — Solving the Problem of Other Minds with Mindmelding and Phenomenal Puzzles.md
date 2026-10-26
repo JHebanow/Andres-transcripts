@@ -187,7 +187,7 @@ So, with that: Infinite bliss, everybody! Thank you so much. Take care, and see 
 
 [^workable-solution]: ["A workable solution to the problem of other minds"](https://qualiacomputing.com/2015/03/31/a-solution-to-the-problem-of-other-minds/), *Qualia Computing*, March 2015.
 
-[^letter-from-utopia]: Nick Bostrom, ["Letter from Utopia"](https://nickbostrom.com/papers/letter-from-utopia/) (first version c. 2006; published 2008). The passage read here follows an earlier version of the text; the current version (3.3, 2020) words it differently.
+[^letter-from-utopia]: Nick Bostrom, ["Letter from Utopia"](https://nickbostrom.com/papers/letter-from-utopia/) (first version c. 2006; published 2008). The passage quoted follows an earlier version of the text; the current version (3.3, 2020) words it differently.
 
 [^replicators]: [[A Universal Plot - Consciousness vs Pure Replicators|A Universal Plot — Consciousness vs. Pure Replicators: Gene Servants or Blissful Autopoietic Beings?]] — transcript included on this site.
 
