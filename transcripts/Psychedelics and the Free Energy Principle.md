@@ -194,7 +194,7 @@ With that, thank you so much. Infinite bliss! I'll talk to you another time. Tak
 
 [^frerichs-friston]: Quintin Frerichs, [*Neural Annealing: A Theory for Emotional Belief Updating in the Brain*](https://www.youtube.com/watch?v=T5p9QuqeWsg).
 
-[^deep-learning-book]: Ian Goodfellow, Yoshua Bengio & Aaron Courville, *Deep Learning* (MIT Press, 2016). Variational free energy (the evidence lower bound) is defined in the chapter on approximate inference — [p. 631 in the online edition](https://www.deeplearningbook.org/contents/inference.html#:~:text=).-,This,energy,-.).
+[^deep-learning-book]: Ian Goodfellow, Yoshua Bengio & Aaron Courville, *Deep Learning* (MIT Press, 2016). Variational free energy (the evidence lower bound) is defined in the chapter on approximate inference — [p. 631 in the online edition](https://www.deeplearningbook.org/contents/inference.html#:~:text=%29.-,This,energy,-.).
 
 [^rebus]: R. L. Carhart-Harris & K. J. Friston, ["REBUS and the Anarchic Brain: Toward a Unified Model of the Brain Action of Psychedelics"](https://pharmrev.aspetjournals.org/content/71/3/316), *Pharmacological Reviews* 71(3): 316–344 (2019). REBUS ("RElaxed Beliefs Under pSychedelics") integrates the free-energy principle and the entropic brain hypothesis, proposing that psychedelics relax the precision-weighting of high-level priors, thereby liberating bottom-up information flow (the "anarchic brain").
 
