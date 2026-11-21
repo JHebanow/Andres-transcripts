@@ -196,7 +196,11 @@
         border-radius:10px; overflow:hidden; }
   .videoPanel .frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
   .videoPanel .controls{ display:flex; gap:.6rem; margin:.6rem 0 1rem; align-items:center; flex-wrap:wrap; }
-  .videoPanel .now{ font-size:.82rem; color:var(--muted); }
+  .videoPanel .now{ font-size:.82rem; color:var(--muted); font-family:system-ui,sans-serif;
+        font-variant-numeric:tabular-nums; background:none; border:1px solid transparent;
+        border-radius:6px; padding:.15rem .4rem; cursor:pointer; transition:color .15s, background-color .15s; }
+  .videoPanel .now:hover, .videoPanel .now:focus-visible{ color:var(--accent); background:var(--accent-soft);
+        border-color:var(--accent); outline:none; }
   /* video + vertical speed control side by side */
   .vrow{ display:flex; gap:8px; align-items:stretch; }
   .vrow .frame{ flex:1 1 auto; min-width:0; }
@@ -1311,7 +1315,7 @@ async function renderNote(note, params){
       + '</div></div>'
       + '<div class="controls">'
       + (hasSync ? '<button class="btn on" id="followBtn" title="Scroll the transcript to follow the video">Auto-scroll: on</button>' : '')
-      + '<span class="now" id="nowSec"></span>'
+      + '<button class="now" id="nowSec" type="button" data-tip="Click to copy a link to the video at this time">0:00</button>'
       + '<a class="btn" id="extLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + esc(vids[0].id) + '" title="Open on YouTube">↗ YouTube</a>'
       + '<button class="btn" id="vidToggle" title="Show or hide the video">Hide video</button>'
       + '</div>' : '')
@@ -1331,6 +1335,13 @@ async function renderNote(note, params){
     document.querySelectorAll('.vtab').forEach(b =>
       b.addEventListener('click', () => switchVid(+b.dataset.i)));
     initSpeedSlider();
+    $('#nowSec').addEventListener('click', async () => {
+      const v = curVids[activeVid] || curVids[0];
+      let t = 0; try{ t = Math.floor(player.getCurrentTime()); }catch(e){}
+      const url = 'https://youtu.be/' + v.id + (t > 0 ? '?t=' + t : '');
+      try{ await navigator.clipboard.writeText(url); showToast('Link copied at ' + fmt(t)); }
+      catch(e){ showToast('Copy failed'); }
+    });
     $('#rateReset').addEventListener('click', () => setRate(1));
     const vt = $('#vidToggle');
     if (vt){
