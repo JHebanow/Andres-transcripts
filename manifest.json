@@ -1986,6 +1986,139 @@
         }
       ],
       "date": "2021-02-07"
+    },
+    {
+      "file": "transcripts/Digital Sentience - Can Digital Computers Ever Wake Up.md",
+      "slug": "digital-sentience",
+      "title": "Digital Sentience: Can Digital Computers Ever \"Wake Up\"?",
+      "navTitle": "Digital Sentience",
+      "youtube": "IlIgmTALU74",
+      "videos": [
+        {
+          "label": "Watch",
+          "id": "IlIgmTALU74"
+        }
+      ],
+      "date": "2021-06-07",
+      "desc": "Why digital computers may never be conscious: Marr's levels, the binding and boundary problems, and topological segmentation as an alternative to computationalism.",
+      "timestamps": [
+        {
+          "h": "The qualia of the day: the intentional stance",
+          "t": 113
+        },
+        {
+          "h": "The layers of the debate",
+          "t": 310
+        },
+        {
+          "h": "My philosophical journey",
+          "t": 489
+        },
+        {
+          "h": "Finding the others",
+          "t": 1045
+        },
+        {
+          "h": "Meeting David Pearce",
+          "t": 1639
+        },
+        {
+          "h": "Bad arguments against digital sentience",
+          "t": 1844
+        },
+        {
+          "h": "Marr's levels of analysis",
+          "t": 1972
+        },
+        {
+          "h": "Interactions between levels",
+          "t": 2160
+        },
+        {
+          "h": "Where theories place consciousness",
+          "t": 2244
+        },
+        {
+          "h": "The Chinese room and lookup tables",
+          "t": 2486
+        },
+        {
+          "h": "Solving all the constraints at once",
+          "t": 2729
+        },
+        {
+          "h": "David Pearce's four problems",
+          "t": 2904
+        },
+        {
+          "h": "The binding problem",
+          "t": 3010
+        },
+        {
+          "h": "Attention versus awareness",
+          "t": 3128
+        },
+        {
+          "h": "Why synchrony is not enough",
+          "t": 3282
+        },
+        {
+          "h": "Discrete moments of experience",
+          "t": 3510
+        },
+        {
+          "h": "QRI's approach: frame invariance",
+          "t": 3582
+        },
+        {
+          "h": "Functions are observer-dependent",
+          "t": 3630
+        },
+        {
+          "h": "The binding and boundary problems",
+          "t": 3768
+        },
+        {
+          "h": "Topological segmentation",
+          "t": 3905
+        },
+        {
+          "h": "Pearce's desiderata revisited",
+          "t": 4027
+        },
+        {
+          "h": "Field computing",
+          "t": 4190
+        },
+        {
+          "h": "Imperfect modularization",
+          "t": 4318
+        },
+        {
+          "h": "A new paradigm of intelligence",
+          "t": 4400
+        },
+        {
+          "h": "Resonance and IIT",
+          "t": 4506
+        },
+        {
+          "h": "IIT's minimum information partition",
+          "t": 4560
+        },
+        {
+          "h": "No natural boundaries for causality",
+          "t": 4732
+        },
+        {
+          "h": "Neural networks and implicit integration",
+          "t": 4857
+        },
+        {
+          "h": "Conclusion: mind dust",
+          "t": 5046
+        }
+      ]
     }
   ]
 }
