@@ -195,7 +195,7 @@ So, with that: Infinite bliss, everybody! Thank you so much. Take care, and see 
 
 [^private-language]: Wittgenstein's private language argument (*Philosophical Investigations*, §§243–315) concludes that a language whose words refer to the speaker's immediate private sensations, and which is in principle intelligible only to that speaker, is impossible. Reading it as requiring an actual community of speakers (the "community view") is one contested interpretation among several. See ["Private Language"](https://plato.stanford.edu/entries/private-language/), *Stanford Encyclopedia of Philosophy*.
 
-[^digital-sentience]: ["Digital Sentience: Can Digital Computers Ever 'Wake Up'?"](https://www.youtube.com/watch?v=IlIgmTALU74) (June 2021).
+[^digital-sentience]: [[Digital Sentience - Can Digital Computers Ever Wake Up|Digital Sentience: Can Digital Computers Ever "Wake Up"?]] — transcript included on this site.
 
 [^marr]: David Marr's three levels for describing an information-processing system: computational (what problem it solves, and why), algorithmic or representational (how it solves it), and implementational (how it is physically realized). See ["David Marr"](https://en.wikipedia.org/wiki/David_Marr_%28neuroscientist%29).
 
