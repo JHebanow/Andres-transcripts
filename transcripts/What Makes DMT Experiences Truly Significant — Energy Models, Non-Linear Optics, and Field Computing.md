@@ -198,3 +198,7 @@ Okay — a lot of information, most of all just vibes. Let's figure this out for
 [^stv]: The symmetry theory of valence holds that the pleasantness of an experience corresponds to the symmetry of the mathematical object representing it. See ["A Primer on the Symmetry Theory of Valence"](https://opentheory.net/2021/07/a-primer-on-the-symmetry-theory-of-valence/) (Michael Johnson, 2021).
 
 [^annealing]: ["Neural Annealing: Toward a Neural Theory of Everything"](https://opentheory.net/2019/11/neural-annealing-toward-a-neural-theory-of-everything/) (Michael Johnson, 2019).
+
+## Further resources
+
+- ["Why Does DMT Feel So Real? Multi-modal Coherence, High Temperature Parameter, Tactile Hallucinations"](https://youtu.be/Bgv1ptz1wOc), Andrés Gómez-Emilsson (YouTube).

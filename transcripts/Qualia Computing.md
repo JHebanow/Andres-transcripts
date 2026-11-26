@@ -234,10 +234,17 @@ With that, thank you very much, and I'll talk to you another time on another top
 
 [^stv]: ["On Dark Rooms, Jhanas, Ecstasy, and the Symmetry Theory of Valence"](https://qualiacomputing.com/2021/10/31/on-dark-rooms-jhanas-ecstasy-and-the-symmetry-theory-of-valence/) (Qualia Computing, 2021), a discussion of the symmetry theory of valence in relation to the free energy principle's "dark room problem". The hypothesis was introduced in Michael Edward Johnson's *Principia Qualia* (2016).
 
-[^hyperbolic]: ["The Hyperbolic Geometry of DMT Experiences: Symmetries, Sheets, and Saddled Scenes"](https://qri.org/blog/hyperbolic-geometry-DMT) (qri.org, 2016).
+[^hyperbolic]: ["The Hyperbolic Geometry of DMT Experiences: Symmetries, Sheets, and Saddled Scenes"](https://qri.org/blog/hyperbolic-geometry-DMT) (qri.org, 2016). Talk version: ["The Hyperbolic Geometry of DMT Experiences (@Harvard Science of Psychedelics Club)"](https://youtu.be/loCBvaj4eSg) (QRI, YouTube).
 
 [^free-wheeling]: ["Free-Wheeling Hallucinations"](https://qualiacomputing.com/2019/01/06/free-wheeling-hallucinations/) (Qualia Computing, 2019) and ["Free-Wheeling Hallucinations: Be the Free-Willed God of Your Inner World-Simulation"](https://youtu.be/o1wjDOwXjY4) (video, 2021).
 
 [^meq]: In the 30-item revised Mystical Experience Questionnaire (MEQ30), "Experience of oneness in relation to an 'inner world' within" is item 20. Frederick S. Barrett, Matthew W. Johnson, and Roland R. Griffiths, ["Validation of the revised Mystical Experience Questionnaire in experimental sessions with psilocybin"](https://pmc.ncbi.nlm.nih.gov/articles/PMC5203697/) (*Journal of Psychopharmacology*, 2015).
 
 [^pseudo-time]: ["What Is Time? Explaining Time-Loops, Moments of Eternity, Time Branching, Time Reversal, and More…"](https://youtu.be/gBw-b4vy6jA) (video) and ["The Pseudo-Time Arrow: Explaining Phenomenal Time with Implicit Causal Structures in Networks of Local Binding"](https://qri.org/blog/pseudo-time-arrow) (qri.org, 2018).
+
+## Further resources
+
+- Anders Amelin and Maggie Wassinge, ["Thinking Like a Musical Instrument or Psychoactive Substances Give Access to the Nature of Brains"](https://youtu.be/tqRA2m9zlns) (Qualia Productions, YouTube).
+- Alexander Mordvintsev et al., ["Growing Neural Cellular Automata"](https://distill.pub/2020/growing-ca/), *Distill* (2020).
+- ["Unveiling the Mind-Blowing Biotech of Regeneration: Michael Levin"](https://youtu.be/Z0TNfysTazc), *Theories of Everything* with Curt Jaimungal (YouTube).
+- ["Research Lineages"](https://qri.org/research-lineages), QRI: the formalism, self-organization, and phenomenology traditions QRI builds on.

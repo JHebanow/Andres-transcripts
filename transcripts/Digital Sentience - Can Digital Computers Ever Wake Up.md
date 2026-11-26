@@ -80,7 +80,7 @@ And what happened? Well, I met David Pearce, whom I had read before, which was g
 
 But the joke was on me, because after very long conversations — after meeting him multiple times, for a total of maybe 20 hours of one-on-one conversation — he eventually changed my mind. And maybe it was a little bit embarrassing to me. I had built up so much momentum in this worldview: basically a functionalist, or computational-theory-of-mind, account of consciousness. So much of my personality, so many of my drives, were oriented towards "What's going to happen when we build a conscious digital computer?" And all of a sudden that collapsed, because he had really good arguments.
 
-So what are those arguments? Let's get into that. One more thing: I've also TA'd a philosophy of mind course at Stanford. And I've talked to so many people in the LessWrong and effective altruism cluster; I know their arguments, and I've read a bunch of LessWrong. If it weren't for David Pearce, that is what I would be advocating — it's the smart-person view I would be pursuing. But the truth is a little more interesting than that. So let's get into it.
+So what are those arguments? Let's get into that. One more thing: I've also TA'd a philosophy of mind course at Stanford. And I've talked to so many people in the LessWrong and effective altruism cluster[^animal-debate]; I know their arguments, and I've read a bunch of LessWrong. If it weren't for David Pearce, that is what I would be advocating — it's the smart-person view I would be pursuing. But the truth is a little more interesting than that. So let's get into it.
 
 ## Bad arguments against digital sentience
 
@@ -223,7 +223,7 @@ From this point of view, the problem we have — and you could say a lot of ment
 
 ### A new paradigm of intelligence
 
-My very, very, very honest assessment here is that as we start to understand the ways in which consciousness is used for its field behavior, that will give rise to a completely new paradigm of intelligence, one that generalizes beyond what David Pearce would call the mind-blind IQ tests. Despite my personal interest in that field — I like solving puzzles and so on — that's really just scratching the surface of what intelligence can be. Ultimately, intelligence also has to do with whether you're able to focus on what's significant. And what is significant is hugely contentious. Of course, I believe that what's significant has to do with hedonic tone and valence and eradicating suffering; I almost think a test of general intelligence is whether you can identify that as one of the main plot points of reality. But the point is that holistic intelligence has to do not only with whether you're able to solve standard IQ-puzzle-type things, but also with whether you're able to recruit field behavior in new, novel, interesting ways. I very much think, for example, that the crazy things you see on DMT are powerful demonstrations of how field behavior is the driver of the computational horsepower of the brain. That's something for you to explore.
+My very, very, very honest assessment here is that as we start to understand the ways in which consciousness is used for its field behavior, that will give rise to a completely new paradigm of intelligence, one that generalizes beyond what David Pearce would call the mind-blind IQ tests[^pearce-machines]. Despite my personal interest in that field — I like solving puzzles and so on — that's really just scratching the surface of what intelligence can be. Ultimately, intelligence also has to do with whether you're able to focus on what's significant. And what is significant is hugely contentious. Of course, I believe that what's significant has to do with hedonic tone and valence and eradicating suffering; I almost think a test of general intelligence is whether you can identify that as one of the main plot points of reality. But the point is that holistic intelligence has to do not only with whether you're able to solve standard IQ-puzzle-type things, but also with whether you're able to recruit field behavior in new, novel, interesting ways. I very much think, for example, that the crazy things you see on DMT are powerful demonstrations of how field behavior is the driver of the computational horsepower of the brain. That's something for you to explore.
 
 ## Resonance and IIT
 
@@ -267,6 +267,8 @@ All right, this has been a little longer than usual, but I hope it was worth it.
 
 [^foritensum]: The test can be viewed in the ["HRT Museum"](https://hriqtests.com/hrt-museum/#:~:text=Foritensum%20%E2%80%93%20Andreas%20Gunnarsson) at High Range IQ Tests.
 
+[^animal-debate]: ["A Debate on Animal Consciousness"](https://rationalconspiracy.com/2015/12/16/a-debate-on-animal-consciousness/) (*Rational Conspiracy*, 2015), a debate among members of the rationalist community.
+
 [^principia-qualia]: Michael Edward Johnson, [*Principia Qualia: Blueprint for a New Science*](https://opentheory.net/PrincipiaQualia.pdf) (2016). The eight sub-problems are the reality mapping, substrate, boundary (binding), scale, topology of information, state space, vocabulary, and translation problems.
 
 [^pearce-four-problems]: Set out alongside Johnson's eight problems in ["Breaking Down the Problem of Consciousness"](https://qualiacomputing.com/2019/11/22/breaking-down-the-problem-of-consciousness/), Qualia Computing, 2019.
@@ -283,8 +285,15 @@ All right, this has been a little longer than usual, but I hope it was worth it.
 
 [^dyson]: ["Are Brains Analogue or Digital? | Prof Freeman Dyson"](https://youtu.be/JLT6omWrvIw).
 
+[^pearce-machines]: David Pearce, ["Humans and Intelligent Machines: Co-Evolution, Fusion or Replacement?"](https://www.biointelligence-explosion.com/parable.html).
+
 [^mip]: In IIT, the minimum information partition is the partition of a system that makes the least difference to its cause–effect structure; integrated information (Φ) is measured across it. See ["Integrated Information Theory of Consciousness"](https://iep.utm.edu/integrated-information-theory-of-consciousness/), *Internet Encyclopedia of Philosophy*.
 
 [^exclusion]: The wording comes from IIT's exclusion postulate, under which the cause–effect structure is specified over the single set of elements over which it is maximally irreducible (Φ<sup>max</sup>), "thus laying maximal claim to existence": Giulio Tononi and Christof Koch, ["Consciousness: here, there and everywhere?"](https://royalsocietypublishing.org/rstb/article/370/1668/20140167/22537/Consciousness-here-there-and-everywhere#:~:text=from%20its%20intrinsic%20perspective%2C%20thus%20laying%20maximal%20claim%20to%20existence.), *Philosophical Transactions of the Royal Society B* 370 (2015): 20140167.
 
 [^mind-dust]: William James's term, from chapter 6 ("The Mind-Stuff Theory") of [*The Principles of Psychology*](https://psychclassics.yorku.ca/James/Principles/prin6.htm) (1890).
+
+## Further resources
+
+- ["Glossary"](https://www.qualiaresearchinstitute.org/glossary), QRI: key terms and concept handles of the QRI research program.
+- ["Welcoming Steven Lehar as a QRI Lineage"](https://qri.org/blog/steven-lehar-lineage), QRI (2021).

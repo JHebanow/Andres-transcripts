@@ -229,7 +229,7 @@ So are you saying that maybe the space of possible qualia varieties might corres
 
 **Joscha:** Yeah, that probably constricts the state space quite a bit, for sure.
 
-**Andrés:** But it's not an infinite space by any means. It's in principle studiable: in principle, in computer simulations, we could catalog it — make a kind of periodic table of the self-organizing principles that are stable.
+**Andrés:** But it's not an infinite space by any means. It's in principle studiable: in principle, in computer simulations, we could catalog it — make a kind of periodic table of the self-organizing principles that are stable.[^sop-reduction]
 
 ## Divisive normalization and psychedelics
 
@@ -331,7 +331,7 @@ And so my hypothesis would be that consciousness is precisely, subjectively, thi
 
 ## Footnotes
 
-[^topological-pockets]: QRI's introduction to the idea: [The View From My Topological Pocket](https://qri.org/blog/my-topological-pocket).
+[^topological-pockets]: QRI's introduction to the idea: [The View From My Topological Pocket](https://qri.org/blog/my-topological-pocket). See also ["On Attention as the Management of Electromagnetic Field Lines"](https://qri.org/blog/attention-field-lines).
 
 [^interface-theory]: Hoffman, Singh & Prakash, "The Interface Theory of Perception", *Psychonomic Bulletin & Review* 22 (2015), 1480–1506.
 
@@ -343,6 +343,8 @@ And so my hypothesis would be that consciousness is precisely, subjectively, thi
 
 [^learned-synesthesia]: For grapheme-colour synaesthesia there is direct evidence of this kind of learned mapping: Witthoft & Winawer identified eleven synaesthetes whose letter-colour pairings matched a set of Fisher-Price alphabet magnets sold between 1972 and 1990. ["Learning, Memory, and Synesthesia"](https://journals.sagepub.com/doi/abs/10.1177/0956797612452573), *Psychological Science* 24 (2013), 258–265.
 
+[^sop-reduction]: Andrés Gómez-Emilsson, ["Self-Organizing Principles Reduction"](https://heart.qri.org/retreats/2023-canada/andres-gomez-emilsson/self-organizing-principles-reduction.html) (QRI HEART, 2023), on the self-organizing principles that define the 5-MeO-DMT experience.
+
 [^divisive-normalization]: In a divisive-normalization model, a unit's response is its own driving input divided by the summed activity of a pool of neighbouring units, so that the same input yields a weaker response when the surround is active.
 
 [^psilocybin-normalization]: Aqil, de Hollander, Vreugdenhil, Knapen & Dumoulin, ["Psilocybin alters visual contextual computations"](https://www.nature.com/articles/s41467-025-65150-y), *Nature Communications* 16 (2025). Using 7T fMRI with sweeping high-contrast bar stimuli, the study finds that psilocybin systematically reduces surround suppression in early visual areas, expressed as a drop in the activation constant of a divisive-normalization population-receptive-field model. The related mapping of normalization parameters onto receptor distributions is in [Computational model links normalization to chemoarchitecture in the human visual system](https://pmc.ncbi.nlm.nih.gov/articles/PMC10776006/), *Science Advances* 10 (2024).
@@ -353,6 +355,18 @@ And so my hypothesis would be that consciousness is precisely, subjectively, thi
 
 [^shipibo]: The geometric designs of the Shipibo-Conibo of the Peruvian Amazon are called *kené*, and are applied to textiles, ceramics and the body. The link to ayahuasca is contested: Brabec de Mori and Mori Silvano de Brabec argue that the designs predate Shipibo use of the brew. Overview: [Kené](https://en.wikipedia.org/wiki/Kené).
 
-[^coupling-kernels]: [[From Neural Activity to Field Topology|From Neural Activity to Field Topology: How Coupling Kernels Shape Consciousness]] — transcript included on this site. The lineage of replication tools runs from the [Tracer Replication Tool](https://qri.org/blog/psychophysics-toolkit) to OscillEditor, which lets users design coupling kernels for Kuramoto oscillators on a log-polar lattice.
+[^coupling-kernels]: [[From Neural Activity to Field Topology|From Neural Activity to Field Topology: How Coupling Kernels Shape Consciousness]] — transcript included on this site. The lineage of replication tools runs from the [Tracer Replication Tool](https://qri.org/blog/psychophysics-toolkit) to OscillEditor, which lets users design coupling kernels for Kuramoto oscillators on a log-polar lattice. See also ["Towards Computational Simulations of Cessation"](https://qri.org/blog/cessation-simulations).
 
 [^boundary-problem]: Andrés's Frontiers paper with Chris Percy: [Don't forget the boundary problem! How EM field topology can address the overlooked cousin to the binding problem for consciousness](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2023.1233119/full).
+
+## Further resources
+
+- ["The Electrostatic Brain: How a Web of Neurons Generates the World-Simulation that is You"](https://qri.org/blog/electrostatic-brain), QRI.
+- ["Costs of Embodiment"](https://qualiacomputing.com/2024/07/30/costs-of-embodiment/), *Qualia Computing* (2024).
+- Andrés Gómez-Emilsson, ["If You Blink You'll Miss It: Accelerating Insight Practice with 5-MeO-DMT"](https://heart.qri.org/retreats/2023-canada/andres-gomez-emilsson/if-you-blink-youll-miss-it.html), QRI HEART (2024).
+- Andrés Gómez-Emilsson, ["Phases of Liquid Crystals as an Explanatory Framework to Distinguish Between DMT and 5-MeO-DMT"](https://heart.qri.org/retreats/2023-canada/andres-gomez-emilsson/phases-of-liquid-crystals.html), QRI HEART (2024).
+- Andrés Gómez-Emilsson, ["Visual Effects of 5-MeO-DMT"](https://heart.qri.org/retreats/2023-canada/andres-gomez-emilsson/visual-effects.html), QRI HEART (2024).
+- Andrés Gómez-Emilsson, ["Topology Effects on 5-MeO-DMT"](https://heart.qri.org/retreats/2023-canada/andres-gomez-emilsson/topology-effects.html), QRI HEART (2023).
+- Cube Flipper, ["5-MeO-DMT: A crash course in phenomenal field topology"](https://heart.qri.org/retreats/2023-canada/cube-flipper/5-meo-dmt.html), QRI HEART (2024).
+- Cube Flipper, ["Cross-frequency coupling"](https://heart.qri.org/retreats/2023-brazil/cube-flipper/cross-frequency-coupling.html), QRI HEART (2024): animated visual stimuli exploring cross-frequency coupling on psychedelics.
+- Murat, ["Saccades & Perception"](https://heart.qri.org/retreats/2023-brazil/murat/saccades.html), QRI HEART (2024): the hypothesis that saccades interrupt visual annealing.

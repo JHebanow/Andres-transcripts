@@ -562,7 +562,7 @@ Infinite bliss, everybody. Take care. Until next time. Ciao.
 
 [^fearless]: *Fearless* — a scent Andrés formulated, "optimized for expressing the reduction of common varieties of fear," later released in an open-source formulation as *Open Fearless*. See ["Fearless"](https://qualiacomputing.com/2022/03/16/fearless/) (*Qualia Computing*, 2022) and [QRI scents](https://qri.org/scents).
 
-[^hedonium]: *Hedonium Shockwave* — one of QRI's [*Magical Creatures*](https://qri.org/blog/magical-creatures) line of scents, an exploration of positive valence in its purest form. On Nick Cammarata, see Scott Alexander, ["Nick Cammarata on Jhana"](https://www.astralcodexten.com/p/nick-cammarata-on-jhana).
+[^hedonium]: *Hedonium Shockwave* — one of QRI's [*Magical Creatures*](https://qri.org/blog/magical-creatures) line of scents, an exploration of positive valence in its purest form. On Nick Cammarata, see Scott Alexander, ["Nick Cammarata on Jhana"](https://www.astralcodexten.com/p/nick-cammarata-on-jhana). See also Stephen Zerfas, ["A response to ACX's 'Nick Cammarata and Jhana' post"](https://www.jhourney.io/blog/scott-alexander-nick-cammarata-jhana) (Jhourney), and Scott Alexander, ["Can People Be Honestly Wrong About Their Own Experiences?"](https://astralcodexten.substack.com/p/can-people-be-honestly-wrong-about) (*Astral Codex Ten*).
 
 [^stv]: The Symmetry Theory of Valence, first set out in Michael Johnson's [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf) (2016): symmetry in the mathematical representation of an experience corresponds to its pleasantness.
 

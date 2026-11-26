@@ -20,7 +20,7 @@ Let's get into the subject of the day, which is the computational properties of 
 
 ## The CIMC inauguration
 
-For context, I really enjoyed the Thursday, Friday, and Saturday of last week: the inauguration of the California Institute for Machine Consciousness.[^cimc] Joscha Bach is leading it, and he's a classic computational functionalist — he's trying to make sense of consciousness from a computational perspective.[^bach-conversation] He brought Wolfram to give presentations and to have long, extended conversations. There were also a lot of amazing researchers who came, especially on Friday. It was a very packed day with a lot of presentations, with, for example, Michael Levin, Luca Turin, and Lex Fridman. I didn't get a chance to talk to Fridman, but I wish I had — I was going to show him psychedelic cryptography[^psycrypto] and see what he thought about it. I just didn't have a chance. And amazing people like Christine Peterson and Robert Prentner were there.
+For context, I really enjoyed the Thursday, Friday, and Saturday of last week: the inauguration of the California Institute for Machine Consciousness.[^cimc] Joscha Bach[^joscha] is leading it, and he's a classic computational functionalist — he's trying to make sense of consciousness from a computational perspective.[^bach-conversation] He brought Wolfram to give presentations and to have long, extended conversations. There were also a lot of amazing researchers who came, especially on Friday. It was a very packed day with a lot of presentations, with, for example, Michael Levin, Luca Turin, and Lex Fridman. I didn't get a chance to talk to Fridman, but I wish I had — I was going to show him psychedelic cryptography[^psycrypto] and see what he thought about it. I just didn't have a chance. And amazing people like Christine Peterson and Robert Prentner were there.
 
 It actually felt extremely friendly. It was an extremely friendly gathering, where essentially everything everybody said made sense. The thing that doesn't make sense — and I don't think it goes all the way — is computational functionalism as a full theory of consciousness. However, there are absolutely key insights within that crowd and within that paradigm that point in the right direction.
 
@@ -172,6 +172,8 @@ Okay, with that — I really hope the microphone didn't peter out. Thank you so 
 ## Footnotes
 
 [^cimc]: The [California Institute for Machine Consciousness](https://cimc.ai/), founded 2024–25 and directed by Joscha Bach, supports research into consciousness under a computational paradigm. Its inaugural event, held over three days in San Francisco, included a salon at the Internet Archive between Bach and Stephen Wolfram.
+
+[^joscha]: [[Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1|Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1]] — transcript included on this site.
 
 [^bach-conversation]: [[Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1|Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1]] — transcript included on this site.
 

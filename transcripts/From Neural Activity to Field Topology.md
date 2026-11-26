@@ -12,9 +12,9 @@ The other thing I want to mention — and this is important — is that we're re
 
 If you don't follow me on Twitter yet, I recommend you do — not that you should *get* Twitter, since that's not necessarily good for your mental health and long-term productivity, but if you already have an account, definitely follow me. I'm **algekalipso** on X (formerly Twitter). We also have a Facebook group that a lot of the OG people are in, called Qualia Computing Networking. It has a bit of an entry bar — we ask that you answer the questions to be admitted into the club — essentially to keep the conversation high-quality and build a community of people who are really passionate about this and know quite a bit about it.
 
-I've been kept quite busy on a number of fronts, traveling a lot. I went to Amsterdam in January for about two weeks, in collaboration with people from the **Cyberdelic Nexus** (I'll mention them by name at the end of the video). We have a recording of a presentation I gave there — essentially about new research paradigms for making sense of psychedelic states of consciousness in a quantitative, algorithmic way. Expect a video about that; it's really high quality, that one in particular, because it was very professionally recorded, and I thought the content was particularly good as far as QRI content is concerned. I worked very hard to make that presentation excellent for you to learn a lot.
+I've been kept quite busy on a number of fronts, traveling a lot. I went to Amsterdam in January[^amsterdam] for about two weeks, in collaboration with people from the **Cyberdelic Nexus** (I'll mention them by name at the end of the video). We have a recording of a presentation I gave there — essentially about new research paradigms for making sense of psychedelic states of consciousness in a quantitative, algorithmic way. Expect a video about that; it's really high quality, that one in particular, because it was very professionally recorded, and I thought the content was particularly good as far as QRI content is concerned. I worked very hard to make that presentation excellent for you to learn a lot.
 
-Earlier this week I had a podcast with Curt from *Theories of Everything* on YouTube, coming out in a week or two, so be on the lookout for that.[^toe] Last week I recorded a conversation with **Joscha Bach**, who is currently a famous computationalist and a very bright guy — and someone I really like as a friend, a very sensitive soul. I really appreciated that conversation; it's also going to come out pretty soon. And I recorded a video with **Carl Hayden Smith** and others in the sphere of people trying to formalize the study of psychedelics and take them seriously in legal and ethical ways. We recorded some of that in Amsterdam. That's just the tip of the iceberg — we've been busy doing a bunch of other things as well.
+Earlier this week I had a podcast with Curt from *Theories of Everything* on YouTube, coming out in a week or two, so be on the lookout for that.[^toe] Last week I recorded a conversation with **Joscha Bach**[^joscha], who is currently a famous computationalist and a very bright guy — and someone I really like as a friend, a very sensitive soul. I really appreciated that conversation; it's also going to come out pretty soon. And I recorded a video with **Carl Hayden Smith** and others in the sphere of people trying to formalize the study of psychedelics and take them seriously in legal and ethical ways. We recorded some of that in Amsterdam. That's just the tip of the iceberg — we've been busy doing a bunch of other things as well.
 
 ### An ethics interlude: cluster headaches and kidney stones
 
@@ -201,8 +201,11 @@ With that — thank you so much for sticking around and watching this whole vide
 
 ## Footnotes
 
+[^amsterdam]: ["QRI Meetup Amsterdam: The Coupling Kernels Revolution"](https://luma.com/lnlr664k) (Luma event page, 25 January 2025), with the programme and the list of academic and artistic collaborators.
 
 [^toe]: The episode: ["The Science of New States of Consciousness"](https://www.youtube.com/watch?v=BBP8WZpYp0Y) (*Theories of Everything* with Curt Jaimungal).
+
+[^joscha]: [[Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1|Joscha Bach and Andrés Gómez-Emilsson on the Nature of Consciousness — Part 1]] — transcript included on this site. Joscha Bach's website: [bach.ai](http://bach.ai/).
 
 [^cluster-headaches]: Alfredo Parra, ["Quantifying the Global Burden of Extreme Pain from Cluster Headaches"](https://forum.effectivealtruism.org/posts/geh2g2nKb7Kkp26ze/quantifying-the-global-burden-of-extreme-pain-from-cluster) (EA Forum).
 

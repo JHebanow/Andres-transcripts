@@ -24,7 +24,7 @@ So that's the qualia of the day. Highly recommended. You can get it with meditat
 
 Now let's get to the topic of the day: the free energy principle, more concretely.
 
-A couple of preliminaries. Karl Friston's free energy principle and predictive coding as a paradigm are slightly different things. The free energy principle can derive predictive coding — maybe not the other way around — but they're very interrelated. And they're part of the lineages of QRI. We now have ten lineages that we draw a lot of inspiration and theoretical framework from — lenses we use to understand the world — and we also have our own lenses, like neural annealing, the symmetry theory of valence, the tyranny of the intentional object, and a bunch of other things that are ours. We've been developing them for the last seven years or so. It's been a big effort, and hopefully we'll be able to present all of it in a very formal fashion, with predictions and tests of those predictions. But QRI doesn't exist in a vacuum. It very much exists in the context that these other lineages generate — they're all very important — and one of them is the free energy principle. So it's very important to QRI.
+A couple of preliminaries. Karl Friston's free energy principle and predictive coding as a paradigm[^fep-guide] are slightly different things. The free energy principle can derive predictive coding — maybe not the other way around — but they're very interrelated. And they're part of the lineages of QRI. We now have ten lineages that we draw a lot of inspiration and theoretical framework from — lenses we use to understand the world — and we also have our own lenses, like neural annealing, the symmetry theory of valence, the tyranny of the intentional object, and a bunch of other things that are ours. We've been developing them for the last seven years or so. It's been a big effort, and hopefully we'll be able to present all of it in a very formal fashion, with predictions and tests of those predictions. But QRI doesn't exist in a vacuum. It very much exists in the context that these other lineages generate — they're all very important — and one of them is the free energy principle. So it's very important to QRI.
 
 I'd also mention that Quintin Frerichs, the lead engineer at QRI, actually presented neural annealing to Karl Friston and his lab.[^frerichs-friston] We got a lot of really interesting feedback — mostly extremely positive and encouraging — and they suggested we publish a particular version of what we were working on. That's in the works, and I'm very excited about it.
 
@@ -182,7 +182,7 @@ With that, thank you so much. Infinite bliss! I'll talk to you another time. Tak
 
 [^indras-net]: **Indra's net** — an image from the Huayan (Flower Garland) school of Buddhism, also present in Hindu cosmology, in which the god Indra hangs an infinite net with a jewel at each node, every jewel reflecting every other jewel (and their reflections) endlessly. It is used as a metaphor for the mutual interdependence and interpenetration of all phenomena. See [Wikipedia: Indra's net](https://en.wikipedia.org/wiki/Indra%27s_net).
 
-[^burbea]: Rob Burbea, *Seeing That Frees: Meditations on Emptiness and Dependent Arising* (Hermes Amāra, 2014; [publisher page](https://www.troubador.co.uk/bookshop/mind-body-spirit/seeing-that-frees/)). Burbea (1965–2020) was a Dharma teacher at Gaia House; the book develops "ways of seeing" (including emptiness and dependent arising) as skills that can be applied to reduce the "fabrication" of suffering, rather than as claims about ultimate metaphysical truth.
+[^burbea]: Rob Burbea, *Seeing That Frees: Meditations on Emptiness and Dependent Arising* (Hermes Amāra, 2014; [publisher page](https://www.troubador.co.uk/bookshop/mind-body-spirit/seeing-that-frees/)). Burbea (1965–2020) was a Dharma teacher at Gaia House; the book develops "ways of seeing" (including emptiness and dependent arising) as skills that can be applied to reduce the "fabrication" of suffering, rather than as claims about ultimate metaphysical truth. His later "Soulmaking Dharma" teachings: [Soulmaking Dharma](https://www.buddhistinquiry.org/soulmaking-2020-prequisites/) (Barre Center for Buddhist Studies).
 
 [^spiritual-materialism]: **Spiritual materialism** — a term popularized by Chögyam Trungpa (*Cutting Through Spiritual Materialism*, 1973) for the ego's tendency to co-opt spiritual attainments and experiences into a new self-image, thereby reinforcing rather than dissolving the sense of self.
 
@@ -191,6 +191,8 @@ With that, thank you so much. Infinite bliss! I'll talk to you another time. Tak
 [^stv]: **Symmetry theory of valence (STV)** — the proposal, originating with Michael Johnson, that the pleasantness of a state of consciousness corresponds to the symmetry of the mathematical object describing it; more symmetrical/consonant states are more positively valenced. Developed in Johnson's [*Principia Qualia*](https://opentheory.net/PrincipiaQualia.pdf).
 
 [^tyranny]: **Tyranny of the intentional object** — the error of attributing the felt quality (e.g. bliss) of an experience to the *object* the experience seems to be about, rather than to the structural/qualia-level properties of the experience itself. See [Tyranny of the Intentional Object](https://qri.org/blog/tyranny-of-the-intentional-object).
+
+[^fep-guide]: Karl Friston, ["The free-energy principle: a rough guide to the brain?"](https://www.fil.ion.ucl.ac.uk/~karl/The%20free-energy%20principle%20-%20a%20rough%20guide%20to%20the%20brain.pdf), *Trends in Cognitive Sciences* 13(7), 2009.
 
 [^frerichs-friston]: Quintin Frerichs, [*Neural Annealing: A Theory for Emotional Belief Updating in the Brain*](https://www.youtube.com/watch?v=T5p9QuqeWsg).
 
@@ -213,3 +215,7 @@ With that, thank you so much. Infinite bliss! I'll talk to you another time. Tak
 [^hyperbolic-dmt]: Andrés Gómez-Emilsson, ["The Hyperbolic Geometry of DMT Experiences"](https://qualiacomputing.com/2016/12/12/the-hyperbolic-geometry-of-dmt-experiences/), *Qualia Computing* (2016), source of the "energy parameter," "world-sheet," and "Bayesian energy sink" concepts.
 
 [^marr]: **Marr's levels of analysis** — David Marr's three levels for analyzing an information-processing system: the *computational* level (what problem is being solved and why), the *algorithmic/representational* level (what representations and procedures), and the *implementation* level (how it is physically realized).
+
+## Further resources
+
+- ["Why Does DMT Feel So Real? Multi-modal Coherence, High Temperature Parameter, Tactile Hallucinations"](https://youtu.be/Bgv1ptz1wOc), Andrés Gómez-Emilsson (YouTube).

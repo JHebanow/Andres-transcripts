@@ -2,7 +2,7 @@
 
 Hello, hello everybody, welcome back. Today we're going to talk about wave computing — more specifically, non-linear wave computing. The title of this video is "Non-Linear Wave Computing: Vibes, Gestalts, and Realms."
 
-Essentially, I think that wave computing is a component of **qualia computing**: the way in which our world simulation is constructed and fabricated by our nervous system, managed and edited, elegantly updated, and so on.
+Essentially, I think that wave computing is a component of **qualia computing**[^qualia-computing]: the way in which our world simulation is constructed and fabricated by our nervous system, managed and edited, elegantly updated, and so on.
 
 ## The qualia of the day
 
@@ -14,7 +14,7 @@ So let's get into it.
 
 Let's break down the title of the video: non-linear wave computing — vibes, gestalts, and realms. Take the first component first: what are non-linear waves?
 
-We're sold this story in high school that what's called the **superposition principle** applies to waves in general. If you drop a rock in a lake, and another rock in the same lake a couple of seconds later, you see the waves propagate — and they superimpose, but they continue traveling uninterrupted. In a sense they're not interacting with one another. They can superimpose, and that's totally fine.
+We're sold this story in high school that what's called the **superposition principle**[^linear-waves] applies to waves in general. If you drop a rock in a lake, and another rock in the same lake a couple of seconds later, you see the waves propagate — and they superimpose, but they continue traveling uninterrupted. In a sense they're not interacting with one another. They can superimpose, and that's totally fine.
 
 A lot of waves do behave that way: sound waves within a reasonable energy regime — what's called the linear energy regime — most water waves within a reasonable energy regime, light as well, and many other phenomena follow the superposition principle. But that is not a law of nature. Not all waves behave that way.
 
@@ -24,7 +24,7 @@ Strictly speaking, waves in water are only *approximately* linear. They're never
 
 ### Solitons
 
-Technically speaking, there's a whole category of non-linear phenomena in water — and in other media as well — called **solitons**. Solitons are very weird. People had observed them in the past and didn't know what was going on. You can be in a lake and all of a sudden you see this blob of water traveling in a straight line. What *is* that? It doesn't make any sense; it's very unusual behavior for a wave. And they collide — and when they collide, weird things can happen, almost as if particles were colliding. It's a very strange wave–particle hybrid. (Ultimately everything in physics is a bit like that.)
+Technically speaking, there's a whole category of non-linear phenomena in water — and in other media as well — called **solitons**.[^soliton] Solitons are very weird. People had observed them in the past and didn't know what was going on. You can be in a lake and all of a sudden you see this blob of water traveling in a straight line. What *is* that? It doesn't make any sense; it's very unusual behavior for a wave. And they collide — and when they collide, weird things can happen, almost as if particles were colliding. It's a very strange wave–particle hybrid. (Ultimately everything in physics is a bit like that.)
 
 So what's going on with solitons? The full technical description would be its own lecture, but approximately, you have a balance of two forces. One is **dispersion** — how quickly different frequencies, different spacings of the wave, travel in the medium. In water it turns out that small waves actually travel faster than large waves; that's dispersion. The other is the non-linearity. With a soliton, these two cancel each other out perfectly and form a stable equilibrium that can travel as a unit. It's very, very trippy, isn't it? The fast wave is trying to advance, but the non-linearity is pushing it back, and they're in perfect balance, and they just travel at a constant speed that way.
 
@@ -72,7 +72,7 @@ The archetypal example for me would be DMT. DMT induces these super-high-energy 
 
 This seems very out there, but adept meditators will say something like — in Buddhism they might put it as "ten thousand universes in a single second" — that even though most of your experience is predominantly created out of one particular kind of raw material, one particular raw tool (the energetic construction waves), there is always a little bit of an element of the other things. It's just that the dose is sufficiently low that you don't really pay attention to it, you don't reify it, you don't realize it's there.
 
-**Dark Night of the Soul** waves are essentially *deconstructing*. The closest phenomenology most people might associate with this is restlessness. In the extreme case, you have restless legs, as well as **akathisia**, withdrawal from various kinds of drugs. Breakups — a romantic breakup, whatever it may be — grieving: these will be full of these waves.
+**Dark Night of the Soul** waves[^dark-night] are essentially *deconstructing*. The closest phenomenology most people might associate with this is restlessness. In the extreme case, you have restless legs, as well as **akathisia**, withdrawal from various kinds of drugs. Breakups — a romantic breakup, whatever it may be — grieving: these will be full of these waves.
 
 What they feel like is that they deconstruct as opposed to adding up. When they collide, they create an unpleasant vacuum, where the waves get deconstructed. A lot of a Dark Night experience is that you're dislodging patterns ingrained in your experience — you're dislodging the non-linearities that are carving and creating your experience — and you have to wait for them to naturally shake themselves apart.
 
@@ -412,14 +412,21 @@ Take care, everybody. See you next time. Ciao.
 
 ## Footnotes
 
+[^qualia-computing]: [[Qualia Computing|Qualia Computing: How Conscious States Are Used For Efficient And Non-Trivial Information Processing]] — transcript included on this site.
+
+[^linear-waves]: ["Linear and nonlinear waves"](http://www.scholarpedia.org/article/Linear_and_nonlinear_waves), *Scholarpedia*.
 
 [^catenary]: In the talk this is called a "catenoid." The curve traced by a chain or cord hanging freely between two points is a **catenary** (a cosh curve); a *catenoid* is the minimal surface you get by revolving a catenary about an axis.
 
-[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. See [Lehar's site](https://slehar.com/wwwRel/Lehar.html).
+[^soliton]: ["Soliton"](https://en.wikipedia.org/wiki/Soliton), Wikipedia.
+
+[^lehar]: Steven Lehar, perceptual theorist, author of *The World in Your Head* and of the "harmonic resonance theory of neurocomputation," which proposes that perception is implemented by standing-wave resonance in neural tissue rather than by feature-detector hierarchies. See [Lehar's site](https://slehar.com/wwwRel/Lehar.html). See also his ["The Constructive Aspect of Visual Perception"](http://slehar.com/www/ConstructiveAspect/ConstructiveAspect.html) and QRI's ["Welcoming Steven Lehar as a QRI Lineage"](https://qri.org/blog/steven-lehar-lineage) (2021).
 
 [^phase-conjugation]: The effect described — two pump beams crossed in a nonlinear crystal such that a third beam is returned along its incoming path — is **optical phase conjugation**, usually realized via degenerate four-wave mixing.
 
 [^refractive-index]: In the talk this is called "diffraction" ("the diffraction quotient, or the diffraction constant, of the material"). The quantity a strong optical field actually modulates is the **refractive index**, via the optical Kerr effect (n = n₀ + n₂·I): the beam's own intensity raises the index most where the beam is most intense, the material acts as a lens, and the beam self-focuses. Diffraction is a different phenomenon (spreading at apertures/edges) and is not what is being changed.
+
+[^dark-night]: Daniel Ingram, ["Dissolution (Entrance to the Dark Night)"](https://www.mctb.org/mctb2/table-of-contents/part-iv-insight/30-the-progress-of-insight/5-dissolution-entrance-to-the-dark-night/), *Mastering the Core Teachings of the Buddha*, 2nd ed., part IV, ch. 30.
 
 [^shinzen]: Shinzen Young's formula *Suffering = Pain × Resistance*: with resistance driven to zero by equanimity, arbitrarily intense sensation need not constitute suffering. See *The Science of Enlightenment* (2016).
 
@@ -462,3 +469,7 @@ Take care, everybody. See you next time. Ciao.
 [^co-arising]: **Co-arising** — i.e. *dependent co-arising* (pratītyasamutpāda) as used in contemporary meditation teaching: the sense of self and the sense of world are constructed together, each conditioning the other.
 
 [^fourth-path]: "Fourth path" is Daniel Ingram's term (from *Mastering the Core Teachings of the Buddha*) for the fourth and final stage of awakening in the Theravāda four-path model — arahantship — reframed pragmatically as the permanent falling-away of the sense of a separate observing self, rather than as moral perfection or the end of ordinary human problems.
+
+## Further resources
+
+- Amaranth Cove, ["The Everlast"](https://open.spotify.com/track/4WuBuD1XoYot0tp6v09Wd7), Spotify: a track given in the video description as an example of a peaceful, cheerful, heavenly vibe.

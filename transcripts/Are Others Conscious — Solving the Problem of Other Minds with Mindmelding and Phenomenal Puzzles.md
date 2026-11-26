@@ -214,3 +214,7 @@ So, with that: Infinite bliss, everybody! Thank you so much. Take care, and see 
 [^wada-test]: In clinical use, the Wada test establishes which hemisphere supports language and memory before epilepsy surgery: a barbiturate, usually sodium amobarbital, is delivered by catheter into one internal carotid artery, temporarily anesthetizing that hemisphere. See ["Wada test"](https://en.wikipedia.org/wiki/Wada_test).
 
 [^yudkowsky-debate]: ["A Debate on Animal Consciousness"](https://web.archive.org/web/20230525093353/https://rationalconspiracy.com/2015/12/16/a-debate-on-animal-consciousness/comment-page-1/#comment-21539) (2015), a compiled online debate among members of the rationalist community in which Yudkowsky's view is discussed.
+
+## Further resources
+
+- ["Beyond Turing: A Solution to the Problem of Other Minds Using Mindmelding and Phenomenal Puzzles"](https://www.youtube.com/watch?v=sCQUedFo1FM), Andrés Gómez-Emilsson (YouTube): video version of the 2016 post.
