@@ -281,6 +281,7 @@
   article .turn .who{ color:var(--spk); font-weight:700; }
   article .turn img{ margin-left:0; }
   .footnotes{ font-size:.9rem; color:var(--muted); }
+  .further{ font-size:.9rem; color:var(--muted); }
   sup.footnote-ref a{ text-decoration:none; padding:0 .1em; }
 
   @keyframes flashbg{ 0%{background-color:var(--flash)} 100%{background-color:transparent} }
@@ -294,6 +295,40 @@
   section.chunk{ border-left:3px solid transparent; margin-left:-1rem; padding-left:1rem;
         transition:background .4s, border-color .4s; border-radius:4px; }
   section.chunk.active{ background:var(--hl); border-left-color:var(--accent); }
+
+  /* ---------- paragraph sync (sync/<name>.sync.json) ---------- */
+  #article{ position:relative; }
+  section.chunk{ isolation:isolate; }        /* lets the band below sit under the text, over the chapter tint */
+  #article .para-on{ position:relative; }
+  #article .para-on::before{ content:''; position:absolute; z-index:-1; pointer-events:none;
+        top:calc(-1 * var(--pvt, 6px)); bottom:calc(-1 * var(--pvb, 6px));
+        left:calc(-1 * var(--pl, 16px)); right:calc(-1 * var(--pr, 0px));
+        background:var(--accent-soft); }
+  #paraRail{ position:absolute; top:0; bottom:0; right:-1.15rem; width:3px; border-radius:2px;
+        background:var(--border); pointer-events:none; opacity:0; transition:opacity .4s; }
+  #paraRail.on{ opacity:1; }
+  #paraMark{ position:absolute; left:-1px; width:5px; top:0; height:0; border-radius:0;
+        background:var(--accent); transition:top .5s ease, height .5s ease; }
+  @media (max-width:1180px){ #paraRail{ right:-.7rem; } }
+  /* sentence highlight (CSS Custom Highlight API: no change to the page's markup) */
+  /* on/off switches under the video */
+  .tgl{ display:inline-flex; align-items:center; gap:.45rem; font-family:system-ui,sans-serif;
+        font-size:.82rem; color:var(--muted); cursor:pointer; user-select:none; }
+  .tgl[hidden]{ display:none; }
+  .sw{ position:relative; flex:0 0 auto; width:30px; height:17px; padding:0; border-radius:9px;
+        border:1px solid var(--border); background:var(--border); cursor:pointer;
+        transition:background .2s, border-color .2s; }
+  .sw::after{ content:''; position:absolute; top:1px; left:1px; width:13px; height:13px;
+        border-radius:50%; background:#fff; box-shadow:0 1px 2px #0005; transition:transform .2s; }
+  .sw.on{ background:var(--accent); border-color:var(--accent); }
+  .sw.on::after{ transform:translateX(13px); }
+  .sw:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  ::highlight(sent){ background-color:#ffe36e; }
+  ::highlight(sent-est){ text-decoration:underline dotted #e0a000 2px; text-underline-offset:3px; }
+  #article .sync-miss{ outline:2px dashed #d33; outline-offset:4px; }
+  #article .sync-sentmiss{ outline:2px dashed #e0a000; outline-offset:4px; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) ::highlight(sent){ background-color:#a8861f99; } }
+  :root[data-theme="dark"] ::highlight(sent){ background-color:#a8861f99; }
 
   /* ---------- footnote hover preview ---------- */
   #fnpop{ position:fixed; z-index:300; max-width:400px; background:var(--card);
@@ -332,7 +367,9 @@
     :root, :root[data-theme="dark"]{ --bg:#fff; --fg:#000; --muted:#444; --border:#bbb;
         --img-bg:transparent; --accent:#000; --accent-soft:transparent; --hl:transparent; }
     header.site, nav.files, .sidePanel, #resume, #fnpop, #lightbox, .chip, .lnk,
-    .drawerTab, #backdrop, #toast{ display:none !important; }
+    .drawerTab, #backdrop, #toast, #paraRail{ display:none !important; }
+    #article .para-on::before{ display:none; }
+    ::highlight(sent){ background-color:transparent; }
     body{ background:#fff !important; color:#000 !important; font-size:11pt; }
     .layout, body.sync .layout{ display:block; margin:0 !important; padding:0; max-width:none; }
     section.chunk{ border:none; margin-left:0; padding-left:0; background:none !important; }
@@ -536,6 +573,17 @@ function sortedNotes(){
   const dir = (localStorage.getItem('sortOrder') || 'oldest') === 'oldest' ? 1 : -1;
   return [...manifest.notes].sort((a,b) => ((a.date||'') < (b.date||'') ? -1 : 1) * dir);
 }
+let navScroll = null;
+function restoreNavScroll(){
+  const nav = document.querySelector('nav.files');
+  if (!nav) return;
+  if (navScroll != null) nav.scrollTop = navScroll;
+  const cur = nav.querySelector('a.cur');           // and the opened transcript is always in view
+  if (cur){
+    const r = cur.getBoundingClientRect(), nr = nav.getBoundingClientRect();
+    if (r.top < nr.top || r.bottom > nr.bottom) nav.scrollTop += r.top - nr.top - (nr.height - r.height) / 2;
+  }
+}
 function navInner(curSlug){
   const order = localStorage.getItem('sortOrder') || 'oldest';
   let h = '<h4>Transcripts <button class="nsort" id="navSort" title="'
@@ -644,14 +692,17 @@ function preprocess(src, notesByTitle){
 /* rAF smooth scroll: recomputes the target every frame, so images loading
    mid-scroll can't cause an offset or an end-of-scroll snap */
 const HEADER_OFFSET = 74;
-function smoothScrollTo(el){
+function smoothScrollTo(el, extra){
   suppressScrollSense = Date.now() + 1400;
   cancelAnimationFrame(scrollAnim);
   const dur = 600, t0 = performance.now(), y0 = window.scrollY;
+  // on narrow screens the video sits sticky above the text: land below it, not under it
+  const vp = videoAbove();
+  const top = vp ? Math.max(HEADER_OFFSET, vp.getBoundingClientRect().bottom + 12) : HEADER_OFFSET;
   const tick = now => {
     const p = Math.min(1, (now - t0) / dur);
     const e = 1 - Math.pow(1 - p, 3);
-    const yT = Math.max(0, window.scrollY + el.getBoundingClientRect().top - HEADER_OFFSET);
+    const yT = Math.max(0, window.scrollY + el.getBoundingClientRect().top - top - (extra || 0));
     window.scrollTo(0, y0 + (yT - y0) * e);
     if (p < 1) scrollAnim = requestAnimationFrame(tick);
   };
@@ -675,6 +726,8 @@ async function boot(){
   document.title = manifest.site.title;
   $('#homeLink').textContent = manifest.site.title;
   md = window.markdownit({html:true, linkify:true, typographer:true}).use(window.markdownitFootnote);
+  // a footnote cited twice shows the same number both times (not "[2:1]")
+  md.renderer.rules.footnote_caption = (tokens, idx) => '[' + (tokens[idx].meta.id + 1) + ']';
   window.addEventListener('hashchange', route);
   window.addEventListener('popstate', () => { if (!location.hash) route(); });
   initGlobalUI();
@@ -1036,11 +1089,11 @@ function initSpeedSlider(){
   document.addEventListener('pointerdown', hide, true);
 })();
 let toastT = null;
-function showToast(txt){
+function showToast(txt, ms){
   let el = document.getElementById('toast');
   if (!el){ el = document.createElement('div'); el.id = 'toast'; document.body.appendChild(el); }
   el.textContent = txt; el.classList.add('show');
-  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 900);
+  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), ms || 900);
 }
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
 /* pinned figures: dock over the top of the article column; a placeholder keeps the text from jumping */
@@ -1327,6 +1380,8 @@ function renderList(){
 
 /* ================= article page ================= */
 async function renderNote(note, params){
+  const oldNav = document.querySelector('nav.files');
+  if (oldNav) navScroll = oldNav.scrollTop;         // the transcript list keeps its place
   $('#app').innerHTML = '<p class="loading wrap">Loading…</p>';
   let src;
   try{
@@ -1378,31 +1433,41 @@ async function renderNote(note, params){
       +   '<span id="rateVal">1×</span>'
       + '</div></div>'
       + '<div class="controls">'
-      + (hasSync ? '<button class="btn on" id="followBtn" title="Scroll the transcript to follow the video">Auto-scroll: on</button>' : '')
-      + '<button class="now" id="nowSec" type="button" data-tip="Click to copy a link to the video at this time">0:00</button>'
-      + '<a class="btn" id="extLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + esc(vids[0].id) + '" title="Open on YouTube">↗ YouTube</a>'
-      + '<button class="btn" id="vidToggle" title="Show or hide the video">Hide video</button>'
+      + (hasSync ? '<label class="tgl" data-tip="Scroll the transcript to follow the video">Auto-scroll'
+                 + '<button class="sw on" id="followBtn" type="button" role="switch" aria-checked="true"></button></label>' : '')
+      + '<label class="tgl" id="sentTgl" hidden data-tip="Highlight the sentence being spoken">Sentences'
+      +   '<button class="sw" id="sentBtn" type="button" role="switch" aria-checked="false"></button></label>'
+      + '<button class="now" id="nowSec" type="button" data-tip="Click to copy a link to this transcript at this time">0:00</button>'
+      + '<a class="btn" id="extLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + esc(vids[0].id) + '" data-tip="Open on YouTube">↗ YouTube</a>'
+      + '<button class="btn" id="vidToggle" data-tip="Show or hide the video">Hide video</button>'
       + '</div>' : '')
     +   '<div class="toc" id="toc"><h4>Chapters</h4></div>'
     + '</div>'
     + '</div>';
 
   attachNavSort();
+  restoreNavScroll();
   markCrossLinks();
   curVids = vids; activeVid = 0;
+  placeFurtherResources();
   decorateArticle(note, hasSync);
   mountInteractives();
+  if (hasVideo){
+    loadParaSync(note, params);
+    const sb = $('#sentBtn');
+    if (sb){ sb.addEventListener('click', () => setSentOn(!sentOn)); setSentOn(sentOn, true); }
+  }
   buildToc(hasSync);
   if (hasVideo){
     initPlayer(vids[0].id, hasSync);
     initSideResize();
     document.querySelectorAll('.vtab').forEach(b =>
-      b.addEventListener('click', () => switchVid(+b.dataset.i)));
+      b.addEventListener('click', () => selectVid(+b.dataset.i)));
     initSpeedSlider();
     $('#nowSec').addEventListener('click', async () => {
-      const v = curVids[activeVid] || curVids[0];
+      // link to this transcript on the site, opening with the video at the current time
       let t = 0; try{ t = Math.floor(player.getCurrentTime()); }catch(e){}
-      const url = 'https://youtu.be/' + v.id + (t > 0 ? '?t=' + t : '');
+      const url = shareUrl(curNote.slug) + '?t=' + t + (activeVid ? '&v=' + activeVid : '');
       try{ await navigator.clipboard.writeText(url); showToast('Link copied at ' + fmt(t)); }
       catch(e){ showToast('Copy failed'); }
     });
@@ -1455,6 +1520,20 @@ async function renderNote(note, params){
   } else if (!deepDone){
     offerResume(note);
   }
+}
+
+/* "## Further resources" is written after the footnote definitions, but markdown-it collects
+   footnotes at the very end — move that section back below the footnote list. */
+function placeFurtherResources(){
+  const art = $('#article');
+  const fn = art.querySelector(':scope > section.footnotes');
+  const h = Array.from(art.querySelectorAll(':scope > h2')).find(x => /^further resources$/i.test(x.textContent.trim()));
+  if (!fn || !h) return;
+  h.dataset.tip = 'Links from the video description that are not cited anywhere in the transcript';
+  const move = [h];
+  for (let n = h.nextElementSibling; n && !/^H[12]$/.test(n.tagName) && !n.matches('hr.footnotes-sep, section.footnotes'); n = n.nextElementSibling)
+    move.push(n);
+  move.forEach((x, i) => { if (i) x.classList.add('further'); art.appendChild(x); });
 }
 
 /* Give headings ids, wrap into sections, attach timestamps */
@@ -1555,15 +1634,26 @@ function decorateArticle(note, hasSync){
 }
 
 /* switch the panel player to another video of the same note */
-function switchVid(i, startT){
+function switchVid(i, startT, play = true){
   if (!curVids[i]) return;
   activeVid = i;
   document.querySelectorAll('.vtab').forEach((x,ix) => x.classList.toggle('on', ix === i));
   const ext = $('#extLink'); if (ext) ext.href = 'https://www.youtube.com/watch?v=' + curVids[i].id;
   if (player && player.loadVideoById){
-    if (startT != null) player.loadVideoById({videoId: curVids[i].id, startSeconds: startT});
+    if (!play && player.cueVideoById)          // load it ready to play, but leave starting it to the viewer
+      player.cueVideoById({videoId: curVids[i].id, startSeconds: startT || 0});
+    else if (startT != null) player.loadVideoById({videoId: curVids[i].id, startSeconds: startT});
     else player.loadVideoById(curVids[i].id);
   }
+}
+/* Part 1 / Part 2 tabs above the player: switch the video without playing it, and bring the
+   transcript to where that video begins */
+function selectVid(i){
+  if (i === activeVid) return;
+  switchVid(i, 0, false);
+  const first = sections.filter(s => s.v === i).sort((a, b) => a.t - b.t)[0];
+  if (first) smoothScrollTo(first.head);
+  setTimeout(() => syncNow(false), 300);
 }
 function seekSection(t, v){
   if (!player) return;
@@ -1582,6 +1672,7 @@ function buildToc(hasSync){
     const a = document.createElement('a');
     a.href = '#' + h.id;
     a.className = h.tagName === 'H3' ? 'h3' : '';
+    if (h.dataset.tip) a.dataset.tip = h.dataset.tip;
     a.textContent = (h.dataset.title || h.textContent).trim();
     const e = tsByHead[h.dataset.plain || norm(a.textContent)];
     if (hasSync && e !== undefined){
@@ -1591,7 +1682,12 @@ function buildToc(hasSync){
     a.addEventListener('click', e => {
       e.preventDefault();
       if (follow) setFollow(false, true);
+      // near the end of the page a heading can't scroll up to the top: flash it right away
+      // so it's clear where it is (decided before scrolling, so it never depends on timing)
+      const want = window.scrollY + h.getBoundingClientRect().top - HEADER_OFFSET;
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
       smoothScrollTo(h);
+      if (want > maxY + 40) flash(h);
       history.replaceState(null, '', ROOT + 't/' + curNote.slug + '.html');
     });
     toc.appendChild(a);
@@ -1604,6 +1700,10 @@ function onScrollToc(){
   let active = null;
   for (const it of tocItems){
     if (it.head.getBoundingClientRect().top <= 120) active = it; else break;
+  }
+  // scrolled to the very bottom: the last heading on screen counts as current
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4){
+    for (const it of tocItems) if (it.head.getBoundingClientRect().top < window.innerHeight * 0.85) active = it;
   }
   tocItems.forEach(it => it.el.classList.toggle('cur', it === active));
   if (active){
@@ -1665,7 +1765,7 @@ function setFollow(on, silent){
   const b = $('#followBtn');
   if (!b) return;
   b.classList.toggle('on', on);
-  b.textContent = 'Auto-scroll: ' + (on ? 'on' : 'off');
+  b.setAttribute('aria-checked', on ? 'true' : 'false');
   if (on && !silent) syncNow(true);
 }
 
@@ -1675,7 +1775,7 @@ function startPolling(){
     seekSection(pendingSeek.t, pendingSeek.v);
     pendingSeek = null;
   }
-  pollTimer = setInterval(() => syncNow(false), 400);
+  pollTimer = setInterval(() => syncNow(false), 250);
 }
 
 function syncNow(force){
@@ -1686,9 +1786,22 @@ function syncNow(force){
   let active = null;
   for (const s of sections){
     if (s.v !== activeVid) continue;            // only sections of the video that is playing
-    if (s.t <= t + 0.3) active = s;
+    if (s.t <= t + SYNC_LEAD) active = s;
   }
   document.querySelectorAll('section.chunk.active').forEach(x => { if (!active || x !== active.el) x.classList.remove('active'); });
+  const para = syncPara(t);                     // paragraph-level sync, when a sync file exists
+  updateSentence(para, t);
+  if (para){
+    const changed = para !== curPara;
+    if (changed) setPara(para);
+    else placeParaMark();                       // layout may have moved (images, resize)
+    if (active) active.el.classList.add('active');
+    if ((changed && follow) || force){
+      const first = active && para.first && para.sec === active.el;
+      smoothScrollTo(first ? active.head : para.el, first ? 0 : paraOffset());
+    }
+    return;
+  }
   if (!active) return;
   if (!active.el.classList.contains('active')){
     active.el.classList.add('active');
@@ -1698,10 +1811,244 @@ function syncNow(force){
   }
 }
 
+/* ================= paragraph sync =================
+   sync/<transcript name>.sync.json, made by the Transcriber app (Chapters window →
+   "Save paragraph sync…"): {"version":1,"paras":[{"k":"first eight words","t":12.3}, …]}.
+   Paragraphs are matched by their first words (normalised exactly like sync.py), in order,
+   so the file keeps working when a paragraph is added or removed. No file = chapter sync only. */
+let paraItems = [], curPara = null;
+const SYNC_LEAD = 0.3;          // chapter, paragraph and sentence highlights all switch this early (s)
+const SYNC_FILLERS = new Set(['um','uh','uhm','umm','erm','er','ah','hmm','mm','mhm']);
+function syncTokens(text){
+  return text.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase()
+    .replace(/[’']/g, '').split(/[^a-z0-9]+/).filter(w => w && !SYNC_FILLERS.has(w));
+}
+function paraText(el){
+  const c = el.cloneNode(true);
+  c.querySelectorAll('sup.footnote-ref, .chip, .lnk, ul, ol').forEach(x => x.remove());
+  return c.textContent;
+}
+async function loadParaSync(note, params){
+  paraItems = []; curPara = null; clearSent();
+  const stem = note.file.replace(/^.*\//, '').replace(/\.md$/i, '');
+  let data;
+  try{
+    const r = await fetch(encodeURI('sync/' + stem + '.sync.json'), {cache:'no-store'});
+    if (!r.ok) return;
+    data = await r.json();
+  }catch(e){ return; }
+  if (curNote !== note || !data || !Array.isArray(data.paras)) return;
+  const art = $('#article');
+  if (!art) return;
+  const els = Array.from(art.querySelectorAll('p, li')).filter(el =>
+    !el.closest('.footnotes, .further, figure, .fig-interactive, table') &&
+    !(el.tagName === 'P' && el.closest('li')));
+  const list = data.paras, missed = [];
+  let j = 0;
+  const seen = new Set();
+  for (const el of els){
+    const toks = syncTokens(paraText(el));
+    if (!toks.length) continue;
+    const key = toks.slice(0, 8).join(' '), short = toks.slice(0, 5).join(' ');
+    let hit = -1;
+    for (let k = j; k < Math.min(list.length, j + 12); k++){
+      const lk = list[k].k || '';
+      if (lk === key || (toks.length >= 5 && lk.split(' ').slice(0, 5).join(' ') === short)){ hit = k; break; }
+    }
+    if (hit < 0){ missed.push(el); continue; }   // paragraph not in the file: it inherits the one before
+    j = hit + 1;
+    const sec = el.closest('section.chunk');
+    const s = sections.find(x => x.el === sec);
+    const item = {el, t: +list[hit].t || 0, s: Array.isArray(list[hit].s) ? list[hit].s : null,
+                  se: Array.isArray(list[hit].se) ? list[hit].se : [], v: list[hit].v != null ? +list[hit].v : (s ? s.v : 0),
+                  sec, first: !seen.has(sec)};
+    seen.add(sec);
+    paraItems.push(item);
+  }
+  if (!paraItems.length) return;
+  alignToChapters();
+  const st = $('#sentTgl');
+  if (st && canSent && paraItems.some(x => x.s)) st.hidden = false;
+  const rail = document.createElement('div');
+  rail.id = 'paraRail'; rail.setAttribute('aria-hidden', 'true');
+  rail.innerHTML = '<span id="paraMark"></span>';
+  art.appendChild(rail);
+  if (params && params.has('check')) showSyncCheck(missed);
+  if (player) syncNow(false);
+}
+
+/* #/slug?check — review before publishing: red dashed = paragraph not in the sync file (no
+   highlight at all), orange dashed = its sentences don't match the file (no sentence highlight),
+   dotted underline = sentence whose time was estimated (check it in the video). */
+function showSyncCheck(missed){
+  missed.forEach(el => el.classList.add('sync-miss'));
+  const bad = paraItems.filter(it => { it.ranges = undefined; return !sentRanges(it); });
+  bad.forEach(it => it.el.classList.add('sync-sentmiss'));
+  let est = 0;
+  if (canSent){
+    const hl = new Highlight();
+    for (const it of paraItems){
+      if (!it.ranges) continue;
+      for (const j of it.se){ if (it.ranges[j + 1]){ hl.add(it.ranges[j + 1]); est++; } }
+    }
+    CSS.highlights.set('sent-est', hl);
+  }
+  showToast('Sync check: ' + missed.length + ' paragraph(s) without timing, ' + bad.length
+    + ' without sentence timing, ' + est + ' estimated sentence(s)', 8000);
+}
+/* The chapter timestamps (manifest) are the reference: a chapter's first paragraph starts exactly
+   at its timestamp, nothing before it in the page may start later, nothing after it earlier.
+   So the chapter, paragraph and sentence highlights always change together at a chapter break. */
+function alignToChapters(){
+  for (const sec of sections){
+    const fi = paraItems.findIndex(x => x.sec === sec.el);
+    if (fi < 0) continue;
+    paraItems.forEach((it, i) => {
+      if (it.v !== sec.v) return;
+      if (i < fi){
+        it.t = Math.min(it.t, sec.t);
+        if (it.s) it.s = it.s.map(x => Math.min(x, sec.t));
+      } else {
+        if (i === fi) it.t = sec.t; else it.t = Math.max(it.t, sec.t);
+        if (it.s) it.s = it.s.map(x => Math.max(x, it.t));
+      }
+    });
+  }
+}
+function syncPara(t){
+  if (!paraItems.length) return null;
+  let p = null;
+  for (const it of paraItems){
+    if (it.v !== activeVid) continue;
+    if (it.t <= t + SYNC_LEAD) p = it;
+  }
+  return p;
+}
+function setPara(p){
+  if (curPara){ curPara.el.classList.remove('para-on'); ['--pl','--pr','--pvt','--pvb'].forEach(v => curPara.el.style.removeProperty(v)); }
+  curPara = p;
+  p.el.classList.add('para-on');
+  placeParaMark();
+}
+const PARA_PAD = 6;                              // px the band reaches above/below the paragraph
+function placeParaMark(){
+  const rail = $('#paraRail'), mark = $('#paraMark'), art = $('#article');
+  if (!rail || !mark || !art || !curPara) return;
+  const el = curPara.el, a = art.getBoundingClientRect(), r = el.getBoundingClientRect();
+  // band from the chapter's left bar to its right edge, whatever the paragraph's indent
+  const sec = el.closest('section.chunk');
+  if (sec){
+    const sr = sec.getBoundingClientRect(), bl = parseFloat(getComputedStyle(sec).borderLeftWidth) || 0;
+    el.style.setProperty('--pl', Math.max(0, r.left - sr.left - bl) + 'px');
+    el.style.setProperty('--pr', Math.max(0, sr.right - r.right) + 'px');
+  }
+  // reach PARA_PAD above/below the paragraph, but never past the chapter's own edges
+  let pt = PARA_PAD, pb = PARA_PAD;
+  if (sec){
+    const sr = sec.getBoundingClientRect();
+    pt = Math.max(0, Math.min(PARA_PAD, r.top - sr.top));
+    pb = Math.max(0, Math.min(PARA_PAD, sr.bottom - r.bottom));
+  }
+  el.style.setProperty('--pvt', pt + 'px');
+  el.style.setProperty('--pvb', pb + 'px');
+  const top = Math.round(r.top - a.top - pt), h = Math.round(r.height + pt + pb);
+  if (mark.dataset.pos !== top + ',' + h){
+    mark.dataset.pos = top + ',' + h;
+    mark.style.top = top + 'px'; mark.style.height = h + 'px';
+  }
+  rail.classList.add('on');
+}
+/* ---- sentence highlight: "s" in the sync file = start times of a paragraph's 2nd, 3rd … sentence.
+   The rendered paragraph is split with the same rule as sync.py; if the counts disagree (the
+   paragraph was edited after the file was made), that paragraph simply gets no sentence highlight. */
+const canSent = !!(window.CSS && CSS.highlights && window.Highlight);
+let sentOn = false, curSent = null;
+try{ sentOn = localStorage.getItem('sentHL') === '1'; }catch(e){}
+function setSentOn(on, quiet){
+  sentOn = on;
+  const b = $('#sentBtn');
+  if (b){ b.classList.toggle('on', on); b.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  if (!quiet){ try{ localStorage.setItem('sentHL', on ? '1' : '0'); }catch(e){} }
+  if (!on) clearSent(); else if (player) syncNow(false);
+}
+function clearSent(){
+  if (curSent){ try{ CSS.highlights.delete('sent'); }catch(e){} curSent = null; }
+}
+const SENT_END = /[.!?\u2026]+[)\]"'\u201d\u2019\u00bb]*\s+/g;
+function sentRanges(item){
+  if (item.ranges !== undefined) return item.ranges;
+  const el = item.el, nodes = [];
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {acceptNode: n => {
+    const pe = n.parentElement;
+    if (pe.closest('sup.footnote-ref, .chip, .lnk, .who')) return NodeFilter.FILTER_REJECT;   // .who = speaker name
+    if (el.tagName === 'LI' && pe.closest('li') !== el) return NodeFilter.FILTER_REJECT;   // nested list
+    return NodeFilter.FILTER_ACCEPT;
+  }});
+  let text = '';
+  for (let n; (n = walker.nextNode()); ){ nodes.push({n, at: text.length}); text += n.data; }
+  const cuts = [0];                              // split points, same rule as sync.py
+  SENT_END.lastIndex = 0;
+  for (let m; (m = SENT_END.exec(text)); ){
+    const end = m.index + m[0].length, nx = text.charAt(end);
+    if (nx && nx !== nx.toUpperCase() && nx === nx.toLowerCase()) continue;   // next word starts lowercase
+    cuts.push(end);
+  }
+  cuts.push(text.length);
+  const merged = [];
+  for (let i = 0; i < cuts.length - 1; i++){
+    const p = [cuts[i], cuts[i + 1]], str = text.slice(p[0], p[1]);
+    if (merged.length && !syncTokens(str).length) merged[merged.length - 1][1] = p[1];
+    else if (str.trim()) merged.push(p);
+  }
+  if (merged.length > 1 && !syncTokens(text.slice(merged[0][0], merged[0][1])).length){
+    merged[1][0] = merged[0][0]; merged.shift();
+  }
+  item.ranges = null;
+  if (!nodes.length || merged.length !== (item.s || []).length + 1) return null;
+  const pos = (off, isEnd) => {                  // text offset -> [node, offset]
+    let k = nodes.length - 1;
+    while (k > 0 && (isEnd ? nodes[k].at >= off : nodes[k].at > off)) k--;
+    return [nodes[k].n, Math.min(off - nodes[k].at, nodes[k].n.data.length)];
+  };
+  item.ranges = merged.map(([a, b]) => {
+    while (a < b && /\s/.test(text.charAt(a))) a++;
+    while (b > a && /\s/.test(text.charAt(b - 1))) b--;
+    const r = document.createRange();
+    r.setStart(...pos(a, false)); r.setEnd(...pos(b, true));
+    return r;
+  });
+  return item.ranges;
+}
+function updateSentence(item, t){
+  if (!canSent) return;
+  if (!sentOn || !item){ clearSent(); return; }
+  const rs = sentRanges(item);
+  if (!rs){ clearSent(); return; }
+  let i = 0;
+  const ss = item.s || [];
+  while (i < ss.length && ss[i] <= t + SYNC_LEAD) i++;
+  if (curSent && curSent.item === item && curSent.i === i) return;
+  curSent = {item, i};
+  CSS.highlights.set('sent', new Highlight(rs[i]));
+}
+
+/* the video panel when it is pinned ABOVE the transcript (narrow screens), else null */
+function videoAbove(){
+  const vp = document.querySelector('body.sync .videoPanel'), art = $('#article');
+  if (!vp || !art || getComputedStyle(vp).position !== 'sticky') return null;
+  const v = vp.getBoundingClientRect(), a = art.getBoundingClientRect();
+  return (v.left < a.right && v.right > a.left) ? vp : null;   // beside the text = desktop layout
+}
+function paraOffset(){
+  if (videoAbove()) return Math.round(window.innerHeight * 0.04);
+  return Math.min(140, Math.round(window.innerHeight * 0.18));
+}
+
 function teardownPlayer(){
   if (pollTimer){ clearInterval(pollTimer); pollTimer = null; }
   if (player && player.destroy){ try{ player.destroy(); }catch(e){} }
   player = null; sections = []; tocItems = []; follow = true; pendingSeek = null; activeVid = 0;
+  paraItems = []; curPara = null; clearSent();
   window.removeEventListener('scroll', onScrollToc);
 }
 
