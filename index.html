@@ -38,6 +38,26 @@
         transition:color .2s, border-color .2s, background-color .28s; }
   #themeBtn:hover{ color:var(--fg); border-color:var(--accent); }
   #themeBtn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+  /* keyboard-shortcuts button: small and quiet next to the theme toggle */
+  #keysBtn{ width:24px; height:24px; border-radius:999px; padding:0; margin-right:.15rem; cursor:pointer;
+        background:none; border:1px solid var(--border); color:var(--muted); opacity:.7;
+        font:600 .75rem/1 system-ui,sans-serif; transition:opacity .2s, color .2s, border-color .2s; }
+  #keysBtn:hover, #keysBtn:focus-visible{ opacity:1; color:var(--fg); border-color:var(--accent); outline:none; }
+  #keysHelp{ position:fixed; inset:0; z-index:450; display:none; align-items:center; justify-content:center;
+        background:#0008; backdrop-filter:blur(3px); }
+  #keysHelp.open{ display:flex; }
+  #keysHelp .kbox{ background:var(--card); color:var(--fg); border:1px solid var(--border); border-radius:12px;
+        box-shadow:0 10px 40px #0006; padding:1.1rem 1.4rem 1rem; font-family:system-ui,sans-serif;
+        font-size:.88rem; max-width:92vw; }
+  #keysHelp h4{ margin:0 0 .7rem; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  #keysHelp td{ padding:.28rem .9rem .28rem 0; vertical-align:middle; }
+  #keysHelp td:first-child{ white-space:nowrap; color:var(--muted); }
+  #keysHelp kbd{ display:inline-block; min-width:1.6em; text-align:center; padding:.1rem .4rem;
+        border:1px solid var(--border); border-bottom-width:2px; border-radius:5px; background:var(--bg);
+        color:var(--fg); font:500 .78rem/1.3 system-ui,sans-serif; }
+  #keysHelp .khint{ margin:.7rem 0 0; font-size:.76rem; color:var(--muted); }
+  @media print{ #keysBtn, #keysHelp{ display:none !important; } }
+  @media (hover:none) and (pointer:coarse){ #keysBtn{ display:none; } }   /* touch screens: no keyboard */
   #themeBtn .eclipse{ width:15px; height:15px; display:block;
         transition:transform .52s cubic-bezier(.22,1,.36,1); }
   #themeBtn .ring{ fill:none; stroke:currentColor; stroke-width:1.5px; }
@@ -238,6 +258,11 @@
   article h3{ font-size:1.1rem; }
   article img{ max-width:100%; height:auto; display:block; margin:1.4rem auto;
         background:var(--img-bg); border-radius:8px; padding:6px; cursor:zoom-in; }
+  /* ![[file|alt|340|right]]: a smaller figure with the text flowing beside it */
+  article img.float-right{ float:right; width:46%; margin:.35rem 0 .8rem 1.4rem; }
+  article img.float-left{ float:left; width:46%; margin:.35rem 1.4rem .8rem 0; }
+  article h1, article h2, article h3{ clear:both; }
+  @media (max-width:560px){ article img.float-right, article img.float-left{ float:none; width:auto; margin:1.4rem auto; } }
   /* interactive figures: the markdown keeps a static SVG (Obsidian, print, no-JS);
      the site mounts an iframe over it and hides the SVG once mounted */
   article .fig-interactive{ margin:1.4rem 0; background:var(--img-bg); border-radius:8px; padding:6px; }
@@ -473,6 +498,7 @@
     <input id="searchBox" type="search" placeholder="Search transcripts…" autocomplete="off">
     <div id="searchResults"></div>
   </span>
+  <button id="keysBtn" type="button" aria-label="Keyboard shortcuts" data-tip="Keyboard shortcuts (?)">?</button>
   <button id="themeBtn" type="button" title="Toggle light/dark mode" aria-label="Toggle color theme">
     <svg class="eclipse" viewBox="0 0 24 24" aria-hidden="true">
       <circle class="ring" cx="12" cy="12" r="8.25"></circle>
@@ -482,6 +508,20 @@
 <div id="app"><p class="loading wrap">Loading…</p></div>
 <div id="fnpop"></div>
 <div id="lightbox"><img alt=""></div>
+<div id="keysHelp" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts"><div class="kbox">
+  <h4>Keyboard shortcuts</h4>
+  <table>
+    <tr><td><kbd>Space</kbd></td><td>Play / pause</td></tr>
+    <tr><td>Hold <kbd>Space</kbd></td><td>Play at 2× while held</td></tr>
+    <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Back / forward 5 seconds</td></tr>
+    <tr><td><kbd>J</kbd> <kbd>L</kbd></td><td>Back / forward 10 seconds</td></tr>
+    <tr><td><kbd>Shift</kbd> + <kbd>&lt;</kbd> <kbd>&gt;</kbd></td><td>Slower / faster</td></tr>
+    <tr><td><kbd>/</kbd></td><td>Search transcripts</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Close search, pop-ups, a pinned figure</td></tr>
+    <tr><td><kbd>?</kbd></td><td>Show this list</td></tr>
+  </table>
+  <p class="khint">Video keys work on a transcript page with a video.</p>
+</div></div>
 <button id="resume">↩ Continue where you left off</button>
 <button class="drawerTab left" id="drawerL" title="Transcripts">☰ Transcripts</button>
 <button class="drawerTab right" id="drawerR" title="Chapters">☰ Chapters</button>
@@ -646,10 +686,14 @@ function preprocess(src, notesByTitle){
   const imgParts = (target, rest) => {
     const t = target.trim();
     const bits = (rest || '').split('|').map(x => x.trim()).filter(Boolean);
-    let width = null, alt = '';
-    for (const b of bits){ if (/^\d+$/.test(b)) width = +b; else alt = b; }
+    let width = null, alt = '', side = null;
+    for (const b of bits){
+      if (/^\d+$/.test(b)) width = +b;
+      else if (/^(left|right)$/i.test(b)) side = b.toLowerCase();   // text wraps around the figure
+      else alt = b;
+    }
     const file = t.includes('/') ? t : 'illustrations/' + t;
-    return {file, alt: alt || t, width};
+    return {file, alt: alt || t, width, side};
   };
   // image embed followed (next line) by "<!-- pin -->" -> figure with a pin button
   src = src.replace(/^!\[\[([^\]|]+?\.(?:svg|png|jpe?g|gif|webp))((?:\|[^\]|]*)*)\]\][ \t]*\r?\n[ \t]*<!--\s*pin\s*-->[ \t]*$/gim,
@@ -675,6 +719,7 @@ function preprocess(src, notesByTitle){
     if (/\.(svg|png|jpe?g|gif|webp)$/i.test(t)){
       const p = imgParts(target, rest);
       return '<img src="' + esc(encodeURI(p.file)) + '?v=' + BUST + '" alt="' + esc(p.alt) + '"'
+        + (p.side ? ' class="float-' + p.side + '"' : '')
         + (p.width ? ' style="max-width:' + p.width + 'px"' : '') + '>';
     }
     return (rest || '').replace(/^\|/, '') || t;
@@ -1008,6 +1053,7 @@ function playRates(){
   const r = player && player.getAvailablePlaybackRates && player.getAvailablePlaybackRates();
   return (r && r.length) ? r : [0.25,0.5,0.75,1,1.25,1.5,1.75,2];
 }
+let spaceHold = null;            // space bar held down (see the keyboard handlers)
 function setRate(r, quiet){
   if (!player || !player.setPlaybackRate) return;
   player.setPlaybackRate(r);
@@ -1089,11 +1135,12 @@ function initSpeedSlider(){
   document.addEventListener('pointerdown', hide, true);
 })();
 let toastT = null;
+function hideToast(){ const el = document.getElementById('toast'); if (el) el.classList.remove('show'); clearTimeout(toastT); }
 function showToast(txt, ms){
   let el = document.getElementById('toast');
   if (!el){ el = document.createElement('div'); el.id = 'toast'; document.body.appendChild(el); }
   el.textContent = txt; el.classList.add('show');
-  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), ms || 900);
+  clearTimeout(toastT); if (ms !== Infinity) toastT = setTimeout(() => el.classList.remove('show'), ms || 900);
 }
 function closeDrawers(){ document.body.classList.remove('dL','dR'); }
 /* pinned figures: dock over the top of the article column; a placeholder keeps the text from jumping */
@@ -1256,18 +1303,54 @@ function initGlobalUI(){
     if (e.target.closest('#lightbox')) lb.classList.remove('open');
   });
 
+  // keyboard-shortcuts list: the ? button, the ? key, a click outside the box closes it
+  $('#keysBtn').addEventListener('click', () => $('#keysHelp').classList.toggle('open'));
+  $('#keysHelp').addEventListener('click', e => { if (!e.target.closest('.kbox')) $('#keysHelp').classList.remove('open'); });
+
   // keyboard
+  document.addEventListener('keyup', e => {
+    if (e.key !== ' ' || !spaceHold) return;
+    e.preventDefault();
+    clearTimeout(spaceHold.timer);
+    const h = spaceHold; spaceHold = null;
+    if (!player || !player.getPlayerState) return;
+    if (h.boost){ setRate(h.rate || 1, true); hideToast(); }
+    else player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
+  });
+  window.addEventListener('blur', () => {
+    if (spaceHold){                                // released outside the page: don't stay at 2x
+      clearTimeout(spaceHold.timer);
+      if (spaceHold.boost && player){ setRate(spaceHold.rate || 1, true); hideToast(); }
+      spaceHold = null;
+    }
+    // clicking the video moves keyboard focus into YouTube's frame, where the site's keys
+    // (space, arrows, J/L, speed) can't be heard; take focus back right after the click
+    setTimeout(() => {
+      const f = document.activeElement;
+      if (f && f.tagName === 'IFRAME' && f.closest('.videoPanel')){ f.blur(); window.focus(); }
+    }, 0);
+  });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape'){
+      $('#keysHelp').classList.remove('open');
       lb.classList.remove('open'); hideFnPop(0); closeSearch(); hideResume(); closeDrawers();
       return;
     }
     if (e.target.matches('input, textarea, select') || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === '/'){ e.preventDefault(); sb.focus(); return; }
+    if (e.key === '?'){ e.preventDefault(); $('#keysHelp').classList.toggle('open'); return; }
     if (!curNote) return;
     if (e.key === ' ' && player && player.getPlayerState){
       e.preventDefault();
-      player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
+      if (e.repeat || spaceHold) return;
+      // decided on release: a tap toggles play/pause, holding plays at 2x until let go
+      spaceHold = {boost: false, timer: setTimeout(() => {
+        if (!spaceHold) return;
+        let r = 1; try{ r = player.getPlaybackRate(); }catch(err){}
+        spaceHold.boost = true; spaceHold.rate = r;
+        if (player.getPlayerState() !== 1) player.playVideo();
+        setRate(2, true); showToast('2×', Infinity);
+      }, 350)};
       return;
     }
     // YouTube-style: arrows skip 5 s, Shift+< / Shift+> change playback speed
