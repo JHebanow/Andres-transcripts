@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="660" viewBox="0 0 760 660">
+<rect x="0" y="0" width="760" height="660" rx="14" fill="#fbfaf6" stroke="#d9d6cc" stroke-width="1.5"/>
+<text x="32.00" y="44.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#222" text-anchor="start">Where does the boundary of an experience fall?</text>
+<rect x="272" y="401.0" width="456" height="44" rx="8" fill="#e8f0fb" stroke="#3d6fb6" stroke-width="1.5"/>
+<path d="M 300.00 92.00 L 306.00 104.00 L 294.00 104.00 Z" fill="#8a8a8a" stroke="none" stroke-width="0" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 300.00 608.00 L 300.00 104.00" fill="none" stroke="#8a8a8a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="300.00" y="78.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">larger scale</text>
+<text x="300.00" y="630.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">smaller scale</text>
+<circle cx="300.00" cy="600.00" r="5.5" fill="#555"/>
+<text x="322.00" y="605.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Atoms and particles</text>
+<circle cx="300.00" cy="541.00" r="5.5" fill="#555"/>
+<text x="322.00" y="546.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Cells</text>
+<circle cx="300.00" cy="482.00" r="5.5" fill="#555"/>
+<text x="322.00" y="487.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Neural clusters</text>
+<circle cx="300.00" cy="423.00" r="8" fill="#3d6fb6"/>
+<text x="322.00" y="428.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1f4e8c" text-anchor="start">A nervous system: one subject of experience</text>
+<circle cx="300.00" cy="364.00" r="5.5" fill="#555"/>
+<text x="322.00" y="369.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">A choir singing in synchrony</text>
+<circle cx="300.00" cy="305.00" r="5.5" fill="#555"/>
+<text x="322.00" y="310.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Families and societies</text>
+<circle cx="300.00" cy="246.00" r="5.5" fill="#555"/>
+<text x="322.00" y="251.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Ecosystems</text>
+<circle cx="300.00" cy="187.00" r="5.5" fill="#555"/>
+<text x="322.00" y="192.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">Galaxies</text>
+<circle cx="300.00" cy="128.00" r="5.5" fill="#555"/>
+<text x="322.00" y="133.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#222" text-anchor="start">The whole universe</text>
+<path d="M 242.00 472.00 L 232.00 472.00 L 232.00 610.00 L 242.00 610.00" fill="none" stroke="#b5651d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 242.00 118.00 L 232.00 118.00 L 232.00 374.00 L 242.00 374.00" fill="none" stroke="#7a4fa3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 262.00 449.00 L 268.00 461.00 L 256.00 461.00 Z" fill="#b5651d" stroke="none" stroke-width="0" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 262.00 541.00 L 262.00 461.00" fill="none" stroke="#b5651d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 262.00 397.00 L 256.00 385.00 L 268.00 385.00 Z" fill="#7a4fa3" stroke="none" stroke-width="0" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 262.00 246.00 L 262.00 385.00" fill="none" stroke="#7a4fa3" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="218.00" y="516.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#b5651d" text-anchor="end">Lower-levels</text>
+<text x="218.00" y="536.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#b5651d" text-anchor="end">boundary problem</text>
+<text x="218.00" y="556.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" font-style="italic" fill="#222" text-anchor="end">Why not smaller?</text>
+<text x="218.00" y="576.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#777" text-anchor="end">(Scylla)</text>
+<text x="218.00" y="221.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#7a4fa3" text-anchor="end">Higher-levels</text>
+<text x="218.00" y="241.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#7a4fa3" text-anchor="end">boundary problem</text>
+<text x="218.00" y="261.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" font-style="italic" fill="#222" text-anchor="end">Why not larger?</text>
+<text x="218.00" y="281.00" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#777" text-anchor="end">(Charybdis)</text>
+</svg>
