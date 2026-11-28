@@ -198,7 +198,22 @@
         max-height:calc(100vh - 5.5rem); display:flex; flex-direction:column; min-height:0; }
   .sidePanel .toc{ overflow:auto; min-height:0; flex:1 1 auto; }
   .videoPanel .frame, .videoPanel .controls, .videoPanel .vtabs{ flex:0 0 auto; }
-  .vtabs{ display:flex; gap:.4rem; margin-bottom:.55rem; }
+  /* Part 1 / Part 2 switch: one slanted strip sitting on the video's top edge; a tint with a
+     top accent line slides to the chosen part */
+  .vtabs{ position:relative; display:inline-flex; align-self:flex-start; margin:0 0 0 0;
+        border:1px solid var(--border); border-bottom:0; overflow:hidden; background:var(--card);
+        transform:skewX(-14deg); transform-origin:bottom left; font-family:system-ui,sans-serif; }
+  .vtabs .vtab{ all:unset; position:relative; z-index:1; cursor:pointer; user-select:none;
+        font-size:.82rem; padding:.42rem 1.15rem; color:var(--muted); transition:color .25s; }
+  .vtabs .vtab + .vtab{ border-left:1px solid var(--border); }
+  .vtabs .vtab > span{ display:inline-block; transform:skewX(14deg); }
+  .vtabs .vtab:hover{ color:var(--fg); }
+  .vtabs .vtab.on{ color:var(--fg); }
+  .vtabs .vtab:focus-visible{ outline:2px solid var(--accent); outline-offset:-2px; }
+  .vtabs .vind{ position:absolute; top:0; bottom:0; left:0; width:calc(100% / var(--n, 2));
+        background:var(--accent-soft); box-shadow:inset 0 2px 0 var(--accent);
+        transform:translateX(calc(var(--i, 0) * 100%)); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+  .vtabs + .vrow .frame{ border-top-left-radius:0; }
   .sideRsz{ position:absolute; left:-17px; top:0; bottom:0; width:14px; cursor:ew-resize;
         display:flex; align-items:center; justify-content:center; touch-action:none; }
   .sideRsz::after{ content:''; width:4px; height:34px; border-radius:2px; background:var(--border); }
@@ -219,6 +234,11 @@
   .videoPanel .now{ font-size:.82rem; color:var(--muted); font-family:system-ui,sans-serif;
         font-variant-numeric:tabular-nums; background:none; border:1px solid transparent;
         border-radius:6px; padding:.15rem .4rem; cursor:pointer; transition:color .15s, background-color .15s; }
+  .videoPanel .now .tsel{ display:inline-block; max-width:0; overflow:hidden; white-space:nowrap;
+        vertical-align:bottom; transition:max-width .35s ease; }
+  .videoPanel .now.sel{ color:var(--accent); background:var(--accent-soft); border-color:var(--accent); }
+  .videoPanel .now.sel .tsel{ max-width:16em; }
+  ::highlight(shared){ background-color:#e9d2fd; color:#1e2226; }   /* passage opened from a shared link */
   .videoPanel .now:hover, .videoPanel .now:focus-visible{ color:var(--accent); background:var(--accent-soft);
         border-color:var(--accent); outline:none; }
   /* video + vertical speed control side by side */
@@ -1502,8 +1522,8 @@ async function renderNote(note, params){
     +   (hasVideo ?
         '<div class="sideRsz" id="sideRsz" title="Drag to resize · double-click to reset"></div>'
       + (vids.length > 1
-          ? '<div class="vtabs">' + vids.map((v,i) =>
-              '<button class="btn vtab' + (i===0?' on':'') + '" data-i="' + i + '">' + esc(v.label) + '</button>').join('') + '</div>'
+          ? '<div class="vtabs" role="tablist" style="--n:' + vids.length + ';--i:0"><span class="vind"></span>' + vids.map((v,i) =>
+              '<button class="vtab' + (i===0?' on':'') + '" type="button" role="tab" data-i="' + i + '"><span>' + esc(v.label) + '</span></button>').join('') + '</div>'
           : '')
       + '<div class="vrow"><div class="frame"><div id="yt"></div></div>'
       + '<div class="speedCol">'
@@ -1520,8 +1540,8 @@ async function renderNote(note, params){
                  + '<button class="sw on" id="followBtn" type="button" role="switch" aria-checked="true"></button></label>' : '')
       + '<label class="tgl" id="sentTgl" hidden data-tip="Highlight the sentence being spoken">Sentences'
       +   '<button class="sw" id="sentBtn" type="button" role="switch" aria-checked="false"></button></label>'
-      + '<button class="now" id="nowSec" type="button" data-tip="Click to copy a link to this transcript at this time">0:00</button>'
-      + '<a class="btn" id="extLink" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + esc(vids[0].id) + '" data-tip="Open on YouTube">↗ YouTube</a>'
+      + '<button class="now" id="nowSec" type="button" data-tip="Click to copy a link to this transcript at this time">'
+      +   '<span class="tsel">Copy link to selection&nbsp;·&nbsp;</span><span class="tval">0:00</span></button>'
       + '<button class="btn" id="vidToggle" data-tip="Show or hide the video">Hide video</button>'
       + '</div>' : '')
     +   '<div class="toc" id="toc"><h4>Chapters</h4></div>'
@@ -1547,7 +1567,13 @@ async function renderNote(note, params){
     document.querySelectorAll('.vtab').forEach(b =>
       b.addEventListener('click', () => selectVid(+b.dataset.i)));
     initSpeedSlider();
+    $('#nowSec').addEventListener('mousedown', e => e.preventDefault());   // keep the text selection
     $('#nowSec').addEventListener('click', async () => {
+      if (selLink){                                    // text selected: link to that passage
+        try{ await navigator.clipboard.writeText(selLink.url); showToast('Link to selection copied (' + fmt(selLink.t) + ')'); }
+        catch(e){ showToast('Copy failed'); }
+        return;
+      }
       // link to this transcript on the site, opening with the video at the current time
       let t = 0; try{ t = Math.floor(player.getCurrentTime()); }catch(e){}
       const url = shareUrl(curNote.slug) + '?t=' + t + (activeVid ? '&v=' + activeVid : '');
@@ -1586,6 +1612,8 @@ async function renderNote(note, params){
         }, 80);
       }
     }
+    const q = params.get('q');
+    if (q){ deepDone = true; setTimeout(() => showSharedText(q), 120); }
     const t = parseFloat(params.get('t'));
     if (!isNaN(t) && hasVideo){
       deepDone = true;
@@ -1721,7 +1749,7 @@ function switchVid(i, startT, play = true){
   if (!curVids[i]) return;
   activeVid = i;
   document.querySelectorAll('.vtab').forEach((x,ix) => x.classList.toggle('on', ix === i));
-  const ext = $('#extLink'); if (ext) ext.href = 'https://www.youtube.com/watch?v=' + curVids[i].id;
+  const vt = document.querySelector('.vtabs'); if (vt) vt.style.setProperty('--i', i);
   if (player && player.loadVideoById){
     if (!play && player.cueVideoById)          // load it ready to play, but leave starting it to the viewer
       player.cueVideoById({videoId: curVids[i].id, startSeconds: startT || 0});
@@ -1865,7 +1893,7 @@ function syncNow(force){
   if (!player || !player.getCurrentTime) return;
   let t;
   try{ t = player.getCurrentTime(); }catch(e){ return; }
-  const el = $('#nowSec'); if (el) el.textContent = fmt(t);
+  const el = $('#nowSec .tval'); if (el && !selLink) el.textContent = fmt(t);
   let active = null;
   for (const s of sections){
     if (s.v !== activeVid) continue;            // only sections of the video that is playing
@@ -1912,7 +1940,7 @@ function paraText(el){
   return c.textContent;
 }
 async function loadParaSync(note, params){
-  paraItems = []; curPara = null; clearSent();
+  paraItems = []; curPara = null; clearSent(); selLink = null;
   const stem = note.file.replace(/^.*\//, '').replace(/\.md$/i, '');
   let data;
   try{
@@ -2057,6 +2085,19 @@ function setSentOn(on, quiet){
 function clearSent(){
   if (curSent){ try{ CSS.highlights.delete('sent'); }catch(e){} curSent = null; }
 }
+const SENT_ABBR = new Set(['mr','mrs','ms','dr','prof','sr','jr','st','vs','cf']);   // same list as sync.py
+function sentAbbrev(text, m){                    // same rule as _is_abbrev in sync.py
+  if (m[0][0] !== '.' || m[0][1] === '.') return false;
+  const before = text.slice(0, m.index), after = text.slice(m.index + m[0].length);
+  const w = /(?:^|[\s("\u201c\u2018\u2014\u2013-])([A-Za-z]+)$/.exec(before);
+  if (!w) return false;
+  if (SENT_ABBR.has(w[1].toLowerCase())) return true;
+  if (w[1].length === 1 && /[A-Z]/.test(w[1])){
+    if (/(?:[A-Z][a-z]+|(?:^|\s)[A-Z]\.)\s+[A-Z]$/.test(before)) return true;
+    if (/^[A-Z]\.\s/.test(after)) return true;
+  }
+  return false;
+}
 const SENT_END = /[.!?\u2026]+[)\]"'\u201d\u2019\u00bb]*\s+/g;
 function sentRanges(item){
   if (item.ranges !== undefined) return item.ranges;
@@ -2074,6 +2115,7 @@ function sentRanges(item){
   for (let m; (m = SENT_END.exec(text)); ){
     const end = m.index + m[0].length, nx = text.charAt(end);
     if (nx && nx !== nx.toUpperCase() && nx === nx.toLowerCase()) continue;   // next word starts lowercase
+    if (sentAbbrev(text, m)) continue;                                        // "Mr.", "Dr.", initials ("G. A. Cohen")
     cuts.push(end);
   }
   cuts.push(text.length);
@@ -2122,6 +2164,83 @@ function videoAbove(){
   const v = vp.getBoundingClientRect(), a = art.getBoundingClientRect();
   return (v.left < a.right && v.right > a.left) ? vp : null;   // beside the text = desktop layout
 }
+/* ---- link to a selected passage: selecting text in the transcript turns the time button into
+   "Copy link to selection · m:ss" (time = start of the sentence the selection begins in). The link
+   opens the transcript with that passage highlighted and the video at that time. */
+let selLink = null;
+function selectionLink(){
+  const sel = window.getSelection();
+  const art = $('#article');
+  if (!sel || sel.isCollapsed || !sel.rangeCount || !art || !curNote) return null;
+  const r = sel.getRangeAt(0);
+  if (!art.contains(r.commonAncestorContainer)) return null;
+  const startEl = (r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement);
+  if (startEl.closest('.footnotes, .further, #paraRail')) return null;
+  const text = sel.toString().replace(/\s+/g, ' ').trim();
+  if (text.length < 2) return null;
+  // time: the sentence (or paragraph, or chapter) the selection starts in
+  let t = null, v = activeVid;
+  const it = paraItems.find(x => x.el.contains(startEl) || x.el === startEl);
+  if (it){
+    t = it.t; v = it.v;
+    const rs = (it.ranges === undefined) ? sentRanges(it) : it.ranges;
+    if (rs) rs.forEach((sr, i) => { if (sr.compareBoundaryPoints(Range.START_TO_START, r) <= 0) t = i ? it.s[i - 1] : it.t; });
+  } else {
+    const sec = startEl.closest('section.chunk');
+    const s0 = sections.find(x => x.el === sec);
+    if (s0){ t = s0.t; v = s0.v; }
+  }
+  let url = shareUrl(curNote.slug) + '?';
+  if (t != null) url += 't=' + Math.floor(t) + (v ? '&v=' + v : '') + '&';
+  url += 'q=' + encodeURIComponent(text.slice(0, 120));
+  return {url, t: t || 0};
+}
+function onSelChange(){
+  const b = $('#nowSec');
+  if (!b) return;
+  selLink = selectionLink();
+  b.classList.toggle('sel', !!selLink);
+  b.querySelector('.tval').textContent = fmt(selLink ? selLink.t : (player && player.getCurrentTime ? player.getCurrentTime() : 0));
+}
+let selRaf = 0;
+document.addEventListener('selectionchange', () => { cancelAnimationFrame(selRaf); selRaf = requestAnimationFrame(onSelChange); });
+/* opening such a link: find the passage, scroll to it and mark it */
+function showSharedText(q){
+  const art = $('#article');
+  if (!art) return;
+  const nodes = [];
+  let text = '';
+  const w = document.createTreeWalker(art, NodeFilter.SHOW_TEXT);
+  for (let n; (n = w.nextNode()); ){
+    if (n.parentElement.closest('.chip, .lnk, sup.footnote-ref, #paraRail')) continue;
+    nodes.push({n, at: text.length}); text += n.data;
+  }
+  // compare with whitespace collapsed; map collapsed offsets back to the raw text
+  let flat = '', map = [];
+  for (let i = 0; i < text.length; i++){
+    const ws = /\s/.test(text[i]);
+    if (ws && (flat.endsWith(' ') || !flat)) continue;
+    flat += ws ? ' ' : text[i]; map.push(i);
+  }
+  const needle = q.replace(/\s+/g, ' ').trim();
+  let k = flat.indexOf(needle);
+  if (k < 0) k = flat.toLowerCase().indexOf(needle.toLowerCase());
+  if (k < 0){ locateAndFlash(q); return; }
+  const a = map[k], b = map[k + needle.length - 1] + 1;
+  const at = off => { let i = nodes.length - 1; while (i > 0 && nodes[i].at > off) i--; return [nodes[i].n, off - nodes[i].at]; };
+  const range = document.createRange();
+  range.setStart(...at(a)); const [en, eo] = at(b - 1); range.setEnd(en, eo + 1);
+  if (follow) setFollow(false, true);
+  smoothScrollTo(range.startContainer.parentElement, paraOffset());
+  if (canSent){
+    const hl = new Highlight(range);
+    hl.priority = 1;                      // drawn over the yellow sentence highlight, not mixed with it
+    CSS.highlights.set('shared', hl);
+    const clear = () => { CSS.highlights.delete('shared'); document.removeEventListener('pointerdown', clear); };
+    setTimeout(() => document.addEventListener('pointerdown', clear), 400);
+  } else flash(range.startContainer.parentElement.closest('p, li') || range.startContainer.parentElement);
+}
+
 function paraOffset(){
   if (videoAbove()) return Math.round(window.innerHeight * 0.04);
   return Math.min(140, Math.round(window.innerHeight * 0.18));
