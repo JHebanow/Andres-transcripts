@@ -192,7 +192,7 @@
   /* faint preview highlight while hovering a cross-link in the text */
   nav.files a.peek{ background:color-mix(in srgb, var(--accent) 8%, transparent);
         border-left-color:color-mix(in srgb, var(--accent) 45%, transparent); }
-  article a.xref{ text-decoration-style:dotted; text-underline-offset:2px; }
+  article a.xref, #fnpop a.xref{ text-decoration-style:dotted; text-underline-offset:2px; }
 
   .sidePanel{ position:sticky; top:4rem; font-family:system-ui,sans-serif;
         max-height:calc(100vh - 5.5rem); display:flex; flex-direction:column; min-height:0; }
@@ -659,18 +659,25 @@ function navInner(curSlug){
 function markCrossLinks(){
   for (const a of document.querySelectorAll('#article a[href^="#/"]')){
     const slug = decodeURIComponent(a.getAttribute('href').slice(2));
-    if (!manifest.notes.some(n => n.slug === slug)) continue;
-    a.classList.add('xref');
-    a.addEventListener('mouseenter', () => {
-      const t = document.querySelector('nav.files a[href="#/' + CSS.escape(slug) + '"]');
-      if (!t || t.classList.contains('cur')) return;
-      t.classList.add('peek');
-      t.scrollIntoView({block:'nearest'});
-    });
-    a.addEventListener('mouseleave', () =>
-      document.querySelectorAll('nav.files a.peek').forEach(x => x.classList.remove('peek')));
+    if (manifest.notes.some(n => n.slug === slug)) a.classList.add('xref');
   }
 }
+/* hovering a link to another transcript (in the text, the footnotes, or the footnote pop-up,
+   which is a copy made later) highlights that transcript in the left-hand list */
+document.addEventListener('mouseover', e => {
+  const a = e.target.closest && e.target.closest('a.xref');
+  if (!a || a.contains(e.relatedTarget)) return;
+  const slug = decodeURIComponent(a.getAttribute('href').slice(2));
+  const t = document.querySelector('nav.files a[href="#/' + CSS.escape(slug) + '"]');
+  if (!t || t.classList.contains('cur')) return;
+  t.classList.add('peek');
+  t.scrollIntoView({block:'nearest'});
+});
+document.addEventListener('mouseout', e => {
+  const a = e.target.closest && e.target.closest('a.xref');
+  if (!a || a.contains(e.relatedTarget)) return;
+  document.querySelectorAll('nav.files a.peek').forEach(x => x.classList.remove('peek'));
+});
 
 function attachNavSort(){
   const b = $('#navSort');
