@@ -32,7 +32,7 @@ Notice how, in both the hotel case and the personal-identity case, it is importa
 
 ### What follows
 
-**Arnold:** You who felt cheated and you who felt blessed: there is far more for you. There is always escape from what harms or confines you, and there are endless varieties of what you love to find. Death is not annihilation, for you are present in all conscious beings. Your self-interest reaches equally to all, because their pains and pleasures are equally yours. You are in the oppressor and the oppressed, the perpetrator and the victim. Knowledge of this truth could soften narrow selfishness and curb retribution. You would know it's all you.
+**Arnold:** You who felt cheated and you who felt blessed should know there is very much more for you. Always escape alive from what harms or confines you. Find endless varieties of what you love. Death is not annihilation, for you are present in all conscious beings. Your self-interest reaches equally to all, because their pains and pleasures are equally yours. You are in the oppressor and the oppressed, the perpetrator and the victim. Knowledge of this truth could soften narrow selfishness and curb retribution. You would know it's all you.
 
 **Andrés:** Awesome.
 
